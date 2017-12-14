@@ -1,2 +1,5 @@
 a.out
 main
+google-api-cpp-client/*
+apis-client-generator/*
+env/*

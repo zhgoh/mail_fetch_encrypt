@@ -1,0 +1,3 @@
+[submodule "google-api-cpp-client"]
+	path = google-api-cpp-client
+	url = git@github.com:google/google-api-cpp-client.git
