@@ -36,7 +36,6 @@ LIBS = \
 -lgoogleapis_json \
 -lgoogleapis_utils \
 -lpthread \
--lprotobuf \
 -lcurl \
 -lssl \
 -lcrypto \
