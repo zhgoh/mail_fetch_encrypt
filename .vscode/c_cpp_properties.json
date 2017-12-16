@@ -35,9 +35,8 @@
                 "/usr/include/x86_64-linux-gnu",
                 "/usr/include",
                 "${workspaceRoot}",
-                "${workspaceRoot}/google-api-cpp-client/service_apis/calendar",
-                "${workspaceRoot}/google-api-cpp-client/src",
-                "${workspaceRoot}/google-api-cpp-client/external_dependencies/install/include"
+                "${workspaceRoot}/include", 
+                "${workspaceRoot}/include/samples"
             ],
             "defines": [],
             "intelliSenseMode": "clang-x64",
@@ -51,7 +50,8 @@
                     "/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed",
                     "/usr/include/x86_64-linux-gnu",
                     "/usr/include",
-                    "${workspaceRoot}"
+                    "${workspaceRoot}",
+                    "${workspaceRoot}/include"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""

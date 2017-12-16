@@ -1,6 +1,6 @@
 ### General variables to change
 OUTPUT_NAME = main
-SRC = calender_main.cpp
+SRC = Calendar_main.cpp CalendarSample.cpp
 
 ### More or less fixed variables below
 CC = g++
