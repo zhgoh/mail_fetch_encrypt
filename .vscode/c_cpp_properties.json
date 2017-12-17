@@ -39,6 +39,7 @@
                 "${workspaceRoot}/include/samples"
             ],
             "defines": [],
+            "compileCommands": "",
             "intelliSenseMode": "clang-x64",
             "browse": {
                 "path": [

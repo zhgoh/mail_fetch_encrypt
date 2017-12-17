@@ -53,7 +53,7 @@
 
 #include <iostream>
 #include "googleapis/client/util/status.h"
-#include "sample/calendar/CalendarSample.h"
+#include "samples/calendar/CalendarSample.h"
 
 int main(int argc, char* argv[]) 
 {
