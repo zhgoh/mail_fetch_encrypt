@@ -55,7 +55,7 @@
                     "${workspaceRoot}/include"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": ""
+                "databaseFilename": "{workspaceRoot}/compile_commands,json"
             }
         },
         {
