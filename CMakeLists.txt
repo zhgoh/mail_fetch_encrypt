@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 3.1)
 project (MailRetrieve)
 
-set (CMAKE_CXX_STANDARD 11)
+set (CMAKE_CXX_STANDARD 14)
 
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 

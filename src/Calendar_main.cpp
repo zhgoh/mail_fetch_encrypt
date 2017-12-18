@@ -55,19 +55,19 @@
 #include "googleapis/client/util/status.h"
 #include "samples/calendar/CalendarSample.h"
 
-int main(int argc, char* argv[]) 
+int main(int argc, char *argv[])
 {
-  googleapis::util::Status status = googleapis::CalendarSample::Startup(argc, argv);
-  if (!status.ok()) 
-  {
-    std::cerr << "Could not initialize application." << std::endl;
-    std::cerr << status.error_message() << std::endl;
-    return -1;
-  }
-
-  googleapis::CalendarSample sample;
-  sample.Run();
-  std::cout << "Done!" << std::endl;
-
-  return 0;
+    googleapis::util::Status status = googleapis::CalendarSample::Startup(argc, argv);
+    if (!status.ok())
+    {
+        std::cerr << "Could not initialize application." << std::endl;
+        std::cerr << status.error_message() << std::endl;
+        return -1;
+    }
+    
+    googleapis::CalendarSample sample;
+    sample.Run();
+    std::cout << "Done!" << std::endl;
+    
+    return 0;
 }
