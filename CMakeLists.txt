@@ -31,6 +31,7 @@ set (   PROJECT_LINK_LIBS
 
 link_directories( lib )
 
-set(SOURCES src/Calendar_main.cpp src/CalendarSample.cpp)
+set(SOURCES src/main.cpp src/Gmail.cpp src/Client.cpp)
+#set(SOURCES src/Calendar_main.cpp src/CalendarSample.cpp)
 add_executable(Acronis_Mail ${SOURCES})
 target_link_libraries(Acronis_Mail ${PROJECT_LINK_LIBS} pthread dl)

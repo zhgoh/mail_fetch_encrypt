@@ -49,9 +49,7 @@ googleapis::util::Status googleapis::CalendarSample::Startup(int argc, char *arg
 {
     if ((argc < 2) || (argc > 3))
     {
-        string error =
-                googleapis::StrCat("Invalid Usage:\n",
-                                   argv[0], " <client_secrets_file> [<cacerts_path>]\n");
+        string error = googleapis::StrCat("Invalid Usage:\n", argv[0], " <client_secrets_file> [<cacerts_path>]\n");
         return googleapis::client::StatusInvalidArgument(error);
     }
     
@@ -80,8 +78,7 @@ googleapis::util::Status googleapis::CalendarSample::Startup(int argc, char *arg
             NewPermanentCallback(&PromptShellForAuthorizationCode, flow_.get()));
     
     string home_path;
-    status = googleapis::client::FileCredentialStoreFactory::GetSystemHomeDirectoryStorePath(
-            &home_path);
+    status = googleapis::client::FileCredentialStoreFactory::GetSystemHomeDirectoryStorePath(&home_path);
     if (status.ok())
     {
         googleapis::client::FileCredentialStoreFactory store_factory(home_path);

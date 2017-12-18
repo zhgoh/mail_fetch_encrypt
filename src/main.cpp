@@ -6,14 +6,26 @@ Create a C++ console application to retrieve items in specific Gmail mailbox
 Parameters are: mailbox name, mailbox password, start of the retrieval period, end of the retrieval period. 
 You need to use official API provided by Google, no IMAP/POP3. 
 */
-
+#define GOOGLE_STRIP_LOG 1
 #include <iostream>
-#include <string>
+#include "googleapis/util/status.h"
+#include "samples/gmail/Gmail.h"
+#include "samples/gmail/Client.h"
 
-bool RetrieveMail(const std::string &mailBox, const std::string &pass, int start, int end);
-
-int main()
+int main(int argc, char *argv[])
 {
-    std::cout << "aaa";
+    auto status = Startup(argc, argv);
+    if (!status.ok())
+    {
+        std::cerr << "Could not initialize application." << std::endl;
+        std::cerr << status.error_message() << std::endl;
+        return -1;
+    }
+    
+    googleapis::Gmail mail;
+    mail.Get();
+    
+    std::cout << "Done!" << std::endl;
     return 0;
 }
+
