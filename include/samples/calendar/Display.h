@@ -81,7 +81,8 @@ void DisplayList(const googleapis::string &prefix, const googleapis::string &tit
         if (first)
         {
             first = false;
-        } else
+        }
+        else
         {
             std::cout << std::endl;
         }

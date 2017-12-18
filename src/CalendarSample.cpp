@@ -23,7 +23,8 @@ static googleapis::util::Status PromptShellForAuthorizationCode(
     if (authorization_code->empty())
     {
         return googleapis::client::StatusCanceled("Canceled");
-    } else
+    }
+    else
     {
         return googleapis::client::StatusOk();
     }
@@ -34,7 +35,8 @@ static googleapis::util::Status ValidateUserName(const string &name)
     if (name.find('/') != string::npos)
     {
         return googleapis::client::StatusInvalidArgument("UserNames cannot contain '/'");
-    } else if (name == "." || name == "..")
+    }
+    else if (name == "." || name == "..")
     {
         return googleapis::client::StatusInvalidArgument(
                 googleapis::StrCat("'", name, "' is not a valid UserName"));
@@ -249,7 +251,8 @@ void googleapis::CalendarSample::PatchEvent(
     {
         std::cout << "Patched event:" << std::endl;
         Display("  ", *cloud_event);
-    } else
+    }
+    else
     {
         std::cout << "** Could not get patched event: " << status.error_message()
                   << std::endl;
@@ -277,7 +280,8 @@ void googleapis::CalendarSample::UpdateEvent(
     {
         std::cout << "Updated event:" << std::endl;
         Display("  ", *cloud_event);
-    } else
+    }
+    else
     {
         std::cout << "** Could not get updated event: " << status.error_message()
                   << std::endl;
@@ -388,7 +392,8 @@ void googleapis::CalendarSample::Run()
             if (response->body_reader())
             {
                 detail = response->body_reader()->RemainderToString();
-            } else
+            }
+            else
             {
                 detail = "No response data available.";
             }
