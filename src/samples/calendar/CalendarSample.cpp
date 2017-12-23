@@ -137,8 +137,7 @@ googleapis::util::Status google_calendar_api::CalendarSample::Authorize()
     googleapis::client::OAuth2RequestOptions options;
     options.email = email;
     googleapis::util::Status status =
-            flow_->RefreshCredentialWithOptions(options, &#define CALENDERSAMPLE
-);
+            flow_->RefreshCredentialWithOptions(options, &credential_);
     if (!status.ok())
     {
         return status;
