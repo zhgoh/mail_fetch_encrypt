@@ -79,12 +79,13 @@ bool Init(const char *client_secrets_path)
         LOG(ERROR) << "Not adding a credential store: " << status.error_message();
         return false;
     }
-
+    
+    // NOTE: Whenever there's a new API, change the Credential Store for different APIS
     FileCredentialStoreFactory store_factory(dir);
-    flow->ResetCredentialStore(store_factory.NewCredentialStore("CalendarSample", &status));
+    flow->ResetCredentialStore(store_factory.NewCredentialStore("Mail Retrieve", &status));
 
 
-    flow->set_default_scopes(google_gmail_api::GmailService::SCOPES::GMAIL_READONLY);
+    flow->set_default_scopes(google_gmail_api::GmailService::SCOPES::MAIL_GOOGLE_COM);
     flow->mutable_client_spec()->set_redirect_uri(OAuth2AuthorizationFlow::kOutOfBandUrl);
     flow->set_authorization_code_callback(NewPermanentCallback(&PromptShellForAuthorizationCode, flow.get()));
 
@@ -109,7 +110,8 @@ bool Authorize()
             << "Address: ";
     
     std::string email;
-    std::getline(std::cin, email);
+    email = "ggneverdie92@gmail.com";
+    //std::getline(std::cin, email);
     
     if (!email.empty())
     {
@@ -122,7 +124,8 @@ bool Authorize()
     }
     
     OAuth2RequestOptions options;
-    options.email = email;
+    options.email = "ggneverdie92@gmail.com";
+    // options.email = email;
     
     Status status = flow->RefreshCredentialWithOptions(options, &credential);
     if (!status.ok())
@@ -140,6 +143,7 @@ static void Send(const char *url, const HttpRequest::HttpMethod &method, const c
 {
     std::unique_ptr<HttpRequest> request(httpTransport->NewHttpRequest(method));
     request->set_url(url);
+    request->set_credential(&credential);
     
     if (data)
     {
@@ -151,7 +155,7 @@ static void Send(const char *url, const HttpRequest::HttpMethod &method, const c
     Status status = request->Execute();
     if (!status.ok())
     {
-        std::cerr << status.error_message();
+        LOG(ERROR) << status.error_message() << std::endl;
     }
     
     
@@ -162,7 +166,7 @@ static void Send(const char *url, const HttpRequest::HttpMethod &method, const c
     }
     else
     {
-        std::cout << "Failed with status=" << response->status().error_message() << std::endl;
+        LOG(ERROR) << "Failed with status=" << response->status().error_message() << std::endl;
     }
 }
 
@@ -218,5 +222,21 @@ Status ValidateUserName(const std::string &name)
 
 void GetMail()
 {
-    SendGet("https://www.googleapis.com/gmail/v1/users/ggneverdie92%40gmail.com/profile");
+    SendGet("https://www.googleapis.com/gmail/v1/users/me/messages");
+    return;
+    
+//    std::string keys;
+//    while (true)
+//    {
+//        std::cout << "Commands: ";
+//        std::getline(std::cin, keys);
+//
+//        if (keys == "exit")
+//            break;
+//
+//        SendGet(keys.c_str());
+//        // https://www.googleapis.com/gmail/v1/users/me/messages
+//        // https://www.googleapis.com/gmail/v1/users/ggneverdie92@gmail.com/profile
+//    }
+    
 }
