@@ -52,7 +52,7 @@ bool Init(const char *client_secrets_path)
     HttpTransportFactory *factory = new CurlHttpTransportFactory(config.get());
     config->ResetDefaultTransportFactory(factory);
 
-    googleapis::util::Status status;
+    Status status;
     flow.reset(OAuth2AuthorizationFlow::MakeFlowFromClientSecretsPath(
                     client_secrets_path, config->NewDefaultTransportOrDie(), &status));
 
@@ -107,7 +107,7 @@ bool Authorize()
         }
     }
     
-    googleapis::client::OAuth2RequestOptions options;
+    OAuth2RequestOptions options;
     options.email = email;
     
     Status status = flow->RefreshCredentialWithOptions(options, &credential);
@@ -123,7 +123,7 @@ bool Authorize()
 
 static void Send(const char *url, HttpRequest::HttpMethod method, const char *data = nullptr)
 {
-    std::unique_ptr<googleapis::client::HttpRequest> request(httpTransport->NewHttpRequest(method));
+    std::unique_ptr<HttpRequest> request(httpTransport->NewHttpRequest(method));
     request->set_url(url);
     
     if (data)
@@ -133,7 +133,7 @@ static void Send(const char *url, HttpRequest::HttpMethod method, const char *da
         request->set_content_type("text/plain");
     }
     
-    googleapis::util::Status status = request->Execute();
+    Status status = request->Execute();
     if (!status.ok())
     {
         std::cerr << status.error_message();
