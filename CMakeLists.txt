@@ -2,8 +2,10 @@ cmake_minimum_required (VERSION 3.1)
 project (MailRetrieve)
 
 set (CMAKE_CXX_STANDARD 14)
-
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
+
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/certs/roots.pem DESTINATION ${EXECUTABLE_OUTPUT_PATH}/)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/certs/README DESTINATION ${EXECUTABLE_OUTPUT_PATH}/)
 
 # Bring the headers into the project
 include_directories(include)
@@ -36,7 +38,7 @@ link_directories( lib )
 #        "include/google/gmail_api/*.h")
 
 # Compile my cpp files
-set(SOURCES src/main.cpp src/Client.cpp src/Utils.cpp)
+set(SOURCES src/main.cpp src/Client.cpp)
 #set(SOURCES src/samples/calendar/Calendar_main.cpp src/samples/calendar/CalendarSample.cpp)
 
 add_executable(Acronis_Mail ${SOURCES})
