@@ -43,7 +43,7 @@ using googleapis::NewPermanentCallback;
 static std::unique_ptr<HttpTransportLayerConfig> config;
 static std::unique_ptr<HttpTransport> httpTransport;
 static std::unique_ptr<OAuth2AuthorizationFlow> flow;
-static OAuth2Credential credential;
+static std::unique_ptr<OAuth2Credential> credential;
 
 Status PromptShellForAuthorizationCode(
         OAuth2AuthorizationFlow *flow,
@@ -53,12 +53,16 @@ Status PromptShellForAuthorizationCode(
 Status ValidateUserName(const std::string &name);
 
 void SendGet(const char *url);
-void SendPost(const char *url);
-void SendPostWithData(const char *url);
+//void SendPost(const char *url);
+//void SendPostWithData(const char *url);
 
 bool Init(const char *client_secrets_path)
 {
-    // Set up HttpTransportLayer.
+    // Set up the credential
+    credential = std::make_unique<OAuth2Credential>();
+    
+    // Set up HttpTransportLayer config
+    //credential
     config = std::make_unique<HttpTransportLayerConfig>();
     
     /* TODO: Check how to get rid of this Memory leak, making it a smart pointer
@@ -127,14 +131,14 @@ bool Authorize()
     options.email = "ggneverdie92@gmail.com";
     // options.email = email;
     
-    Status status = flow->RefreshCredentialWithOptions(options, &credential);
+    Status status = flow->RefreshCredentialWithOptions(options, credential.get());
     if (!status.ok())
     {
         LOG(ERROR) << "Refresh credentials failed " << status.error_message();
         return false;
     }
     
-    credential.set_flow(flow.get());
+    credential->set_flow(flow.get());
     std::cout << "Authorized " << email << std::endl;
     return true;
 }
@@ -143,7 +147,7 @@ static void Send(const char *url, const HttpRequest::HttpMethod &method, const c
 {
     std::unique_ptr<HttpRequest> request(httpTransport->NewHttpRequest(method));
     request->set_url(url);
-    request->set_credential(&credential);
+    request->set_credential(credential.get());
     
     if (data)
     {
@@ -175,15 +179,15 @@ void SendGet(const char *url)
     Send(url, HttpRequest::GET);
 }
 
-void SendPost(const char *url)
-{
-    Send(url, HttpRequest::POST);
-}
-
-void SendPostWithData(const char *url)
-{
-    Send(url, HttpRequest::POST, "Hello World");
-}
+//void SendPost(const char *url)
+//{
+//    Send(url, HttpRequest::POST);
+//}
+//
+//void SendPostWithData(const char *url)
+//{
+//    Send(url, HttpRequest::POST, "Hello World");
+//}
 
 Status PromptShellForAuthorizationCode(
         OAuth2AuthorizationFlow *flow,
@@ -223,7 +227,6 @@ Status ValidateUserName(const std::string &name)
 void GetMail()
 {
     SendGet("https://www.googleapis.com/gmail/v1/users/me/messages");
-    return;
     
 //    std::string keys;
 //    while (true)
