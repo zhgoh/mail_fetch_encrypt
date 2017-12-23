@@ -7,18 +7,16 @@ Parameters are: mailbox name, mailbox password, start of the retrieval period, e
 You need to use official API provided by Google, no IMAP/POP3. 
 */
 #include "Client.h"
-#include <iostream>
+#include <glog/logging.h>
 
 int main(int argc, char *argv[])
 {
-    std::string path;
-    if (argc == 3)
-    {
-        path = argv[2];
-    }
+    // Init google logging otherwise it will complain
+    google::InitGoogleLogging(argv[0]);
     
     Init("./secrets.json");
     Authorize();
+    GetMail();
     
     return 0;
 }

@@ -7,8 +7,6 @@
 
 bool Init(const char *client_secrets_path);
 bool Authorize();
-void SendGet(const char *url);
-void SendPost(const char *url);
-void SendPostWithData(const char *url);
+void GetMail();
 
 #endif //MAILRETRIEVE_CLIENT_H
