@@ -6,6 +6,10 @@
 #include "../../googleapis/client/transport/http_response.h"
 #include "../../googleapis/strings/strcat.h"
 #include "../../googleapis/client/data/data_reader.h"
+#include "../../google/calendar_api/calendar_list_entry.h"
+#include "../../google/calendar_api/calendar.h"
+#include "../../google/calendar_api/events.h"
+
 
 void DisplayError(googleapis::client::ClientServiceRequest *request)
 {

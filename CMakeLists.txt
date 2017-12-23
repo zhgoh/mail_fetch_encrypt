@@ -31,7 +31,13 @@ set (   PROJECT_LINK_LIBS
 
 link_directories( lib )
 
-set(SOURCES src/main.cpp src/Gmail.cpp src/Client.cpp)
-#set(SOURCES src/Calendar_main.cpp src/CalendarSample.cpp)
+# Compile the google service headers
+#file(GLOB google_headers
+#        "include/google/gmail_api/*.h")
+
+# Compile my cpp files
+set(SOURCES src/main.cpp src/Client.cpp src/Utils.cpp)
+#set(SOURCES src/samples/calendar/Calendar_main.cpp src/samples/calendar/CalendarSample.cpp)
+
 add_executable(Acronis_Mail ${SOURCES})
 target_link_libraries(Acronis_Mail ${PROJECT_LINK_LIBS} pthread dl)
