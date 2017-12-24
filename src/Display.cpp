@@ -10,6 +10,8 @@ using googleapis::client::ClientServiceRequest;
 using googleapis::client::HttpResponse;
 
 using google_gmail_api::Message;
+using google_gmail_api::MessagePart;
+using google_gmail_api::MessagePartBody;
 
 void DisplayError(ClientServiceRequest *request)
 {
@@ -26,14 +28,30 @@ void DisplayError(ClientServiceRequest *request)
     std::cout << std::endl;
 }
 
-void Display(const string &prefix, const Message &entry)
+void Display(const std::string &prefix, const Message &entry)
 {
-//    std::cout << prefix << "CalendarListEntry" << std::endl;
-//    std::cout << prefix << "  ID: " << entry.get_id() << std::endl;
-//    std::cout << prefix << "  Summary: " << entry.get_summary() << std::endl;
-//    if (entry.has_description())
-//    {
-//        std::cout << prefix << "  Description: " << entry.get_description()
-//                  << std::endl;
-//    }
+    std::cout << prefix << "Message Entry" << std::endl;
+    std::cout << prefix << "  Thread ID: " << entry.get_thread_id() << std::endl;
+    
+    if (entry.has_payload())
+    {
+        Display(prefix, entry.get_payload());
+    }
+}
+
+void Display(const std::string &prefix, const MessagePart &entry)
+{
+    std::cout << prefix << "Message Part" << std::endl;
+    std::cout << prefix << "  ID: " << entry.get_part_id() << std::endl;
+    
+    if (entry.has_body())
+    {
+        Display(prefix, entry.get_body());
+    }
+}
+
+void Display(const std::string &prefix, const MessagePartBody &entry)
+{
+    std::cout << prefix << "Message Part Body" << std::endl;
+    std::cout << prefix << "  Data: " << entry.get_data() << std::endl;
 }

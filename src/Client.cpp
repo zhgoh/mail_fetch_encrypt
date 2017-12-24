@@ -4,6 +4,7 @@
 
 #define GOOGLE_STRIP_LOG 1
 #include <iostream>
+#include <fstream>
 #include <memory>
 
 #include "googleapis/util/status.h"
@@ -40,6 +41,7 @@ using googleapis::client::StatusCanceled;
 using googleapis::client::StatusOk;
 using googleapis::client::OAuth2AuthorizationFlow;
 using googleapis::client::OAuth2RequestOptions;
+using googleapis::client::Date;
 
 using google_gmail_api::GmailService;
 using google_gmail_api::Message;
@@ -51,14 +53,15 @@ static std::unique_ptr<OAuth2AuthorizationFlow> flow;
 static std::unique_ptr<OAuth2Credential> credential;
 static std::unique_ptr<GmailService> service;
 
-Status PromptShellForAuthorizationCode(
+static Status PromptShellForAuthorizationCode(
         OAuth2AuthorizationFlow *flow,
         const OAuth2RequestOptions &options,
         std::string *authorization_code);
 
-Status ValidateUserName(const std::string &name);
+static Status ValidateUserName(const std::string &name);
+static bool Authorize(const std::string &profile);
 
-bool Init(const char *client_secrets_path)
+bool Init(const std::string &client_secrets_path, const std::string &profile)
 {
     // Set up the credential
     credential = std::make_unique<OAuth2Credential>();
@@ -103,27 +106,15 @@ bool Init(const char *client_secrets_path)
     }
     
     service = std::make_unique<GmailService>(httpTransport);
+    
+    return Authorize(profile);
 }
 
-// Taken from Calendar sample
-bool Authorize()
+static bool Authorize(const std::string &profile)
 {
-    std::cout
-            << std::endl
-            << "Welcome to the Google APIs for C++ Mail Retrieve.\n"
-            << "You will need to authorize this program to look at your mail.\n"
-            << "If you would like to save these credentials between runs\n"
-            << "(or restore from an earlier run) then enter a Google Email Address.\n"
-            << "Otherwise just press return.\n" << std::endl
-            << "Address: ";
-    
-    std::string email;
-    email = "ggneverdie92@gmail.com";
-    //std::getline(std::cin, email);
-    
-    if (!email.empty())
+    if (!profile.empty())
     {
-        Status status = ValidateUserName(email);
+        Status status = ValidateUserName(profile);
         if (!status.ok())
         {
             LOG(ERROR) << "Validate User Name failed " << status.error_message();
@@ -132,8 +123,7 @@ bool Authorize()
     }
     
     OAuth2RequestOptions options;
-    options.email = "ggneverdie92@gmail.com";
-    // options.email = email;
+    options.email = profile;
     
     Status status = flow->RefreshCredentialWithOptions(options, credential.get());
     if (!status.ok())
@@ -143,11 +133,11 @@ bool Authorize()
     }
     
     credential->set_flow(flow.get());
-    std::cout << "Authorized " << email << std::endl;
+    std::cout << "Authorized profile " << profile << std::endl;
     return true;
 }
 
-Status PromptShellForAuthorizationCode(
+static Status PromptShellForAuthorizationCode(
         OAuth2AuthorizationFlow *flow,
         const OAuth2RequestOptions &options,
         std::string *authorization_code)
@@ -169,7 +159,7 @@ Status PromptShellForAuthorizationCode(
     }
 }
 
-Status ValidateUserName(const std::string &name)
+static Status ValidateUserName(const std::string &name)
 {
     if (name.find('/') != string::npos)
     {
@@ -182,12 +172,15 @@ Status ValidateUserName(const std::string &name)
     return StatusOk();
 }
 
-void GetMail()
+void GetMail(const Date &from, const Date &to)
 {
-    auto &users = service->get_users();
-    auto &messages = users.get_messages();
+    auto &messages = service->get_users().get_messages();
     std::unique_ptr<UsersResource_MessagesResource_ListMethod> listMethod((messages.NewListMethod(credential.get(), "me")));
     std::unique_ptr<ListMessagesResponse> messageList(ListMessagesResponse::New());
+    
+    std::string query = std::string("in:sent after:") + from.ToYYYYMMDD() + std::string(" before:") + to.ToYYYYMMDD();
+    std::cout << "Query: " << query << std::endl;
+    listMethod->set_q(query.c_str());
     
     if (!listMethod->ExecuteAndParseResponse(messageList.get()).ok())
     {
@@ -195,8 +188,46 @@ void GetMail()
         return;
     }
     
-    std::cout << messageList->get_messages();
-    
-    //DisplayList<Message>("", "Message", messageList.get());
+    DisplayMessages<ListMessagesResponse>("", "Message", *messageList);
     std::cout << std::endl;
+}
+
+std::string LoadProfile()
+{
+    std::string profile;
+    std::ifstream ifs("./profile");
+    if (ifs.good())
+    {
+        ifs >> profile;
+        if (!profile.empty())
+        {
+            std::cout << "Profile "<< profile << " successfully loaded!\n";
+            return profile;
+        }
+    }
+    
+    ifs.close();
+    std::ofstream ofs("./profile");
+
+    std::cout << "There is no profile found, please create a new profile using your email. \n";
+    std::cout << "Enter your email address (Profile): ";
+    std ::cin >> profile;
+    ofs << profile;
+    
+    std::cout << "Profile "<< profile << " successfully created and loaded!\n";
+    return profile;
+    
+}
+
+// Note: Only delete the profile file and not the credentials file
+void DeleteProfile()
+{
+    if(remove("./profile"))
+    {
+        LOG(ERROR) << "Error deleting file";
+    }
+    else
+    {
+        std::cout << "Profile successfully deleted!\n";
+    }
 }
