@@ -65,7 +65,7 @@ template<typename T>
 void DisplayList(const std::string &prefix, const std::string &title, const T &list)
 {
     std::cout << prefix << "====  " << title << "  ====" << std::endl;
-    std::string sub_prefix = googleapis::StrCat(prefix, "  ");
+    std::string sub_prefix = StrCat(prefix, "  ");
     bool first = true;
     auto &items = list.get_items();
     
@@ -80,7 +80,7 @@ void DisplayList(const std::string &prefix, const std::string &title, const T &l
             std::cout << std::endl;
         }
         
-        Display(sub_prefix, elem);
+        //Display(sub_prefix, elem);
     }
     
     if (first)

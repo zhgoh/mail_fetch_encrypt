@@ -42,9 +42,9 @@ using googleapis::client::OAuth2AuthorizationFlow;
 using googleapis::client::OAuth2RequestOptions;
 
 using google_gmail_api::GmailService;
+using google_gmail_api::Message;
 using google_gmail_api::UsersResource_MessagesResource_ListMethod;
 using google_gmail_api::ListMessagesResponse;
-
 
 static std::unique_ptr<HttpTransportLayerConfig> config;
 static std::unique_ptr<OAuth2AuthorizationFlow> flow;
@@ -195,6 +195,8 @@ void GetMail()
         return;
     }
     
-    //DisplayList<google_gmail_api::CalendarList, google_calendar_api::CalendarListEntry>("", "CalendarList", *calendar_list);
+    std::cout << messageList->get_messages();
+    
+    //DisplayList<Message>("", "Message", messageList.get());
     std::cout << std::endl;
 }
