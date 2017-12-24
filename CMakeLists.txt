@@ -10,26 +10,34 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/certs/README DESTINATION ${EXECUTABLE_OUTP
 # Bring the headers into the project
 include_directories(include)
 
+#set (   PROJECT_LINK_LIBS
+#        google_calendar_api.a
+#        google_gmail_api.a
+#        google_storage_api.a
+#        googleapis_oauth2.a
+#        googleapis_curl_http.a
+#        googleapis_http.a
+#        googleapis_jsonplayback.a
+#        googleapis_scribes.a
+#        jsoncpp.a
+#        googleapis_jsoncpp.a
+#        googleapis_json.a
+#        googleapis_utils.a
+#        curl.a
+#        ssl.a
+#        crypto.a
+#        googleapis_openssl_codec.a
+#        glog.a
+#        googleapis_internal.a
+#        )
+
 set (   PROJECT_LINK_LIBS
-        google_calendar_api.a
-        google_gmail_api.a
-        google_storage_api.a
-        googleapis_oauth2.a
-        googleapis_curl_http.a
-        googleapis_http.a
-        googleapis_jsonplayback.a
-        googleapis_scribes.a
         jsoncpp.a
-        googleapis_jsoncpp.a
-        googleapis_json.a
-        googleapis_utils.a
         curl.a
         ssl.a
         crypto.a
-        googleapis_openssl_codec.a
         glog.a
-        googleapis_internal.a
-    )
+)
 
 link_directories( lib )
 
@@ -37,9 +45,12 @@ link_directories( lib )
 #file(GLOB google_headers
 #        "include/google/gmail_api/*.h")
 
+file(GLOB_RECURSE google_api_src "src/googleapis/*.cc")
+file(GLOB_RECURSE google_service_src "src/google/gmail_api/*.cc")
+
 # Compile my cpp files
 set(SOURCES src/main.cpp src/Client.cpp src/Display.cpp)
 #set(SOURCES src/samples/calendar/Calendar_main.cpp src/samples/calendar/CalendarSample.cpp)
 
-add_executable(Acronis_Mail ${SOURCES})
+add_executable(Acronis_Mail ${google_api_src} ${google_service_src} ${SOURCES})
 target_link_libraries(Acronis_Mail ${PROJECT_LINK_LIBS} pthread dl)
