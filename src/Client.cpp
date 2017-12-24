@@ -195,8 +195,6 @@ void GetMail()
         return;
     }
     
-    std::cout << messageList->get_messages();
-    
-    //DisplayList<Message>("", "Message", messageList.get());
+    DisplayMessages<ListMessagesResponse>("", "Message", *messageList);
     std::cout << std::endl;
 }

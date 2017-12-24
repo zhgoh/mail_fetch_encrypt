@@ -6,6 +6,7 @@
 #define MAILRETRIEVE_DISPLAY_H
 
 #include <iostream>
+#include <google/gmail_api/message_part.h>
 #include "googleapis/strings/strcat.h"
 #include "googleapis/client/data/data_reader.h"
 
@@ -22,10 +23,14 @@ namespace googleapis
 namespace google_gmail_api
 {
     class Message;
+    class MessagePart;
+    class MessagePartBody;
 }
 
 void DisplayError(googleapis::client::ClientServiceRequest *request);
 void Display(const std::string &prefix, const google_gmail_api::Message &entry);
+void Display(const std::string &prefix, const google_gmail_api::MessagePart &entry);
+void Display(const std::string &prefix, const google_gmail_api::MessagePartBody &entry);
 
 //void Display(const string &prefix, const google_calendar_api::Calendar &entry)
 //{
@@ -62,12 +67,12 @@ void Display(const std::string &prefix, const google_gmail_api::Message &entry);
 //}
 
 template<typename T>
-void DisplayList(const std::string &prefix, const std::string &title, const T &list)
+void DisplayMessages(const std::string &prefix, const std::string &title, const T &list)
 {
     std::cout << prefix << "====  " << title << "  ====" << std::endl;
     std::string sub_prefix = StrCat(prefix, "  ");
     bool first = true;
-    auto &items = list.get_items();
+    auto &items = list.get_messages();
     
     for (const auto &elem : items)
     {
@@ -80,7 +85,7 @@ void DisplayList(const std::string &prefix, const std::string &title, const T &l
             std::cout << std::endl;
         }
         
-        //Display(sub_prefix, elem);
+        Display(sub_prefix, elem);
     }
     
     if (first)
