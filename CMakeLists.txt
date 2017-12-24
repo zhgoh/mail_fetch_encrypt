@@ -38,7 +38,7 @@ link_directories( lib )
 #        "include/google/gmail_api/*.h")
 
 # Compile my cpp files
-set(SOURCES src/main.cpp src/Client.cpp)
+set(SOURCES src/main.cpp src/Client.cpp src/Display.cpp)
 #set(SOURCES src/samples/calendar/Calendar_main.cpp src/samples/calendar/CalendarSample.cpp)
 
 add_executable(Acronis_Mail ${SOURCES})
