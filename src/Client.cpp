@@ -17,6 +17,10 @@
 #include "google/gmail_api/gmail_service.h"
 #include "googleapis/strings/strcat.h"
 
+#include "Display.h"
+
+using googleapis::StrCat;
+using googleapis::NewPermanentCallback;
 using googleapis::util::Status;
 using googleapis::client::HttpResponse;
 using googleapis::client::HttpTransport;
@@ -36,14 +40,16 @@ using googleapis::client::StatusCanceled;
 using googleapis::client::StatusOk;
 using googleapis::client::OAuth2AuthorizationFlow;
 using googleapis::client::OAuth2RequestOptions;
-using googleapis::StrCat;
 
-using googleapis::NewPermanentCallback;
+using google_gmail_api::GmailService;
+using google_gmail_api::UsersResource_MessagesResource_ListMethod;
+using google_gmail_api::ListMessagesResponse;
+
 
 static std::unique_ptr<HttpTransportLayerConfig> config;
-static std::unique_ptr<HttpTransport> httpTransport;
 static std::unique_ptr<OAuth2AuthorizationFlow> flow;
 static std::unique_ptr<OAuth2Credential> credential;
+static std::unique_ptr<GmailService> service;
 
 Status PromptShellForAuthorizationCode(
         OAuth2AuthorizationFlow *flow,
@@ -51,10 +57,6 @@ Status PromptShellForAuthorizationCode(
         std::string *authorization_code);
 
 Status ValidateUserName(const std::string &name);
-
-void SendGet(const char *url);
-//void SendPost(const char *url);
-//void SendPostWithData(const char *url);
 
 bool Init(const char *client_secrets_path)
 {
@@ -93,12 +95,14 @@ bool Init(const char *client_secrets_path)
     flow->mutable_client_spec()->set_redirect_uri(OAuth2AuthorizationFlow::kOutOfBandUrl);
     flow->set_authorization_code_callback(NewPermanentCallback(&PromptShellForAuthorizationCode, flow.get()));
 
-    httpTransport = std::unique_ptr<HttpTransport>(config->NewDefaultTransport(&status));
+    auto httpTransport = config->NewDefaultTransport(&status);
     if (!status.ok())
     {
         LOG(ERROR) << "Failed to create transport" << std::endl;
         return false;
     }
+    
+    service = std::make_unique<GmailService>(httpTransport);
 }
 
 // Taken from Calendar sample
@@ -143,52 +147,6 @@ bool Authorize()
     return true;
 }
 
-static void Send(const char *url, const HttpRequest::HttpMethod &method, const char *data = nullptr)
-{
-    std::unique_ptr<HttpRequest> request(httpTransport->NewHttpRequest(method));
-    request->set_url(url);
-    request->set_credential(credential.get());
-    
-    if (data)
-    {
-        DataReader *reader = NewUnmanagedInMemoryDataReader(data);
-        request->set_content_reader(reader);
-        request->set_content_type("text/plain");
-    }
-    
-    Status status = request->Execute();
-    if (!status.ok())
-    {
-        LOG(ERROR) << status.error_message() << std::endl;
-    }
-    
-    
-    HttpResponse *response = request->response();
-    if (response->ok())
-    {
-        std::cout << "Success" << std::endl;
-    }
-    else
-    {
-        LOG(ERROR) << "Failed with status=" << response->status().error_message() << std::endl;
-    }
-}
-
-void SendGet(const char *url)
-{
-    Send(url, HttpRequest::GET);
-}
-
-//void SendPost(const char *url)
-//{
-//    Send(url, HttpRequest::POST);
-//}
-//
-//void SendPostWithData(const char *url)
-//{
-//    Send(url, HttpRequest::POST, "Hello World");
-//}
-
 Status PromptShellForAuthorizationCode(
         OAuth2AuthorizationFlow *flow,
         const OAuth2RequestOptions &options,
@@ -226,20 +184,17 @@ Status ValidateUserName(const std::string &name)
 
 void GetMail()
 {
-    SendGet("https://www.googleapis.com/gmail/v1/users/me/messages");
+    auto &users = service->get_users();
+    auto &messages = users.get_messages();
+    std::unique_ptr<UsersResource_MessagesResource_ListMethod> listMethod((messages.NewListMethod(credential.get(), "me")));
+    std::unique_ptr<ListMessagesResponse> messageList(ListMessagesResponse::New());
     
-//    std::string keys;
-//    while (true)
-//    {
-//        std::cout << "Commands: ";
-//        std::getline(std::cin, keys);
-//
-//        if (keys == "exit")
-//            break;
-//
-//        SendGet(keys.c_str());
-//        // https://www.googleapis.com/gmail/v1/users/me/messages
-//        // https://www.googleapis.com/gmail/v1/users/ggneverdie92@gmail.com/profile
-//    }
+    if (!listMethod->ExecuteAndParseResponse(messageList.get()).ok())
+    {
+        DisplayError(listMethod.get());
+        return;
+    }
     
+    //DisplayList<google_gmail_api::CalendarList, google_calendar_api::CalendarListEntry>("", "CalendarList", *calendar_list);
+    std::cout << std::endl;
 }
