@@ -20,7 +20,7 @@
 #include "googleapis/strings/strcat.h"
 
 #include "Display.h"
-#include "Crypt.h"
+#include "Crypto.h"
 
 static const char folder[] = "Messages/";
 

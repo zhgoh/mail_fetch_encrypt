@@ -7,12 +7,18 @@ Parameters are: mailbox name, mailbox password, start of the retrieval period, e
 You need to use official API provided by Google, no IMAP/POP3. 
 */
 #include "Client.h"
+#include "Crypto.h"
+
 #include <glog/logging.h>
-#include "googleapis/client/util/date_time.h"
 #include <iostream>
+#include "googleapis/client/util/date_time.h"
+
 
 int main(int argc, char *argv[])
 {
+    Encrypt("");
+    
+    return 0;
     // Init google logging otherwise it will complain
     google::InitGoogleLogging(argv[0]);
     
