@@ -36,88 +36,94 @@
 
 #include "google/gmail_api/filter.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * Response for the ListFilters method.
  *
  * @ingroup DataObject
  */
-class ListFiltersResponse : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static ListFiltersResponse* New();
-
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit ListFiltersResponse(const Json::Value& storage);
-
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit ListFiltersResponse(Json::Value* storage);
-
-  /**
-   * Standard destructor.
-   */
-  virtual ~ListFiltersResponse();
-
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::ListFiltersResponse</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::ListFiltersResponse");
-  }
-
-  /**
-   * Determine if the '<code>filter</code>' attribute was set.
-   *
-   * @return true if the '<code>filter</code>' attribute was set.
-   */
-  bool has_filter() const {
-    return Storage().isMember("filter");
-  }
-
-  /**
-   * Clears the '<code>filter</code>' attribute.
-   */
-  void clear_filter() {
-    MutableStorage()->removeMember("filter");
-  }
-
-
-  /**
-   * Get a reference to the value of the '<code>filter</code>' attribute.
-   */
-  const client::JsonCppArray<Filter > get_filter() const;
-
-  /**
-   * Gets a reference to a mutable value of the '<code>filter</code>' property.
-   *
-   * List of a user's filters.
-   *
-   * @return The result can be modified to change the attribute value.
-   */
-  client::JsonCppArray<Filter > mutable_filter();
-
- private:
-  void operator=(const ListFiltersResponse&);
-};  // ListFiltersResponse
+    class ListFiltersResponse : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static ListFiltersResponse *New();
+        
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit ListFiltersResponse(const Json::Value &storage);
+        
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit ListFiltersResponse(Json::Value *storage);
+        
+        /**
+         * Standard destructor.
+         */
+        virtual ~ListFiltersResponse();
+        
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::ListFiltersResponse</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::ListFiltersResponse");
+        }
+        
+        /**
+         * Determine if the '<code>filter</code>' attribute was set.
+         *
+         * @return true if the '<code>filter</code>' attribute was set.
+         */
+        bool has_filter() const
+        {
+            return Storage().isMember("filter");
+        }
+        
+        /**
+         * Clears the '<code>filter</code>' attribute.
+         */
+        void clear_filter()
+        {
+            MutableStorage()->removeMember("filter");
+        }
+        
+        
+        /**
+         * Get a reference to the value of the '<code>filter</code>' attribute.
+         */
+        const client::JsonCppArray<Filter> get_filter() const;
+        
+        /**
+         * Gets a reference to a mutable value of the '<code>filter</code>' property.
+         *
+         * List of a user's filters.
+         *
+         * @return The result can be modified to change the attribute value.
+         */
+        client::JsonCppArray<Filter> mutable_filter();
+    
+    private:
+        void operator=(const ListFiltersResponse &);
+    };  // ListFiltersResponse
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_LIST_FILTERS_RESPONSE_H_

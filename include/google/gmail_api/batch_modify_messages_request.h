@@ -35,172 +35,188 @@
 #include "googleapis/client/data/jsoncpp_data.h"
 #include "googleapis/strings/stringpiece.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * No description provided.
  *
  * @ingroup DataObject
  */
-class BatchModifyMessagesRequest : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static BatchModifyMessagesRequest* New();
+    class BatchModifyMessagesRequest : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static BatchModifyMessagesRequest *New();
 
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit BatchModifyMessagesRequest(const Json::Value& storage);
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit BatchModifyMessagesRequest(const Json::Value &storage);
 
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit BatchModifyMessagesRequest(Json::Value* storage);
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit BatchModifyMessagesRequest(Json::Value *storage);
 
-  /**
-   * Standard destructor.
-   */
-  virtual ~BatchModifyMessagesRequest();
+        /**
+         * Standard destructor.
+         */
+        virtual ~BatchModifyMessagesRequest();
 
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::BatchModifyMessagesRequest</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::BatchModifyMessagesRequest");
-  }
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::BatchModifyMessagesRequest</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::BatchModifyMessagesRequest");
+        }
 
-  /**
-   * Determine if the '<code>addLabelIds</code>' attribute was set.
-   *
-   * @return true if the '<code>addLabelIds</code>' attribute was set.
-   */
-  bool has_add_label_ids() const {
-    return Storage().isMember("addLabelIds");
-  }
+        /**
+         * Determine if the '<code>addLabelIds</code>' attribute was set.
+         *
+         * @return true if the '<code>addLabelIds</code>' attribute was set.
+         */
+        bool has_add_label_ids() const
+        {
+            return Storage().isMember("addLabelIds");
+        }
 
-  /**
-   * Clears the '<code>addLabelIds</code>' attribute.
-   */
-  void clear_add_label_ids() {
-    MutableStorage()->removeMember("addLabelIds");
-  }
-
-
-  /**
-   * Get a reference to the value of the '<code>addLabelIds</code>' attribute.
-   */
-  const client::JsonCppArray<string > get_add_label_ids() const {
-     const Json::Value& storage = Storage("addLabelIds");
-    return client::JsonValueToCppValueHelper<client::JsonCppArray<string > >(storage);
-  }
-
-  /**
-   * Gets a reference to a mutable value of the '<code>addLabelIds</code>'
-   * property.
-   *
-   * A list of label IDs to add to messages.
-   *
-   * @return The result can be modified to change the attribute value.
-   */
-  client::JsonCppArray<string > mutable_addLabelIds() {
-    Json::Value* storage = MutableStorage("addLabelIds");
-    return client::JsonValueToMutableCppValueHelper<client::JsonCppArray<string > >(storage);
-  }
-
-  /**
-   * Determine if the '<code>ids</code>' attribute was set.
-   *
-   * @return true if the '<code>ids</code>' attribute was set.
-   */
-  bool has_ids() const {
-    return Storage().isMember("ids");
-  }
-
-  /**
-   * Clears the '<code>ids</code>' attribute.
-   */
-  void clear_ids() {
-    MutableStorage()->removeMember("ids");
-  }
+        /**
+         * Clears the '<code>addLabelIds</code>' attribute.
+         */
+        void clear_add_label_ids()
+        {
+            MutableStorage()->removeMember("addLabelIds");
+        }
 
 
-  /**
-   * Get a reference to the value of the '<code>ids</code>' attribute.
-   */
-  const client::JsonCppArray<string > get_ids() const {
-     const Json::Value& storage = Storage("ids");
-    return client::JsonValueToCppValueHelper<client::JsonCppArray<string > >(storage);
-  }
+        /**
+         * Get a reference to the value of the '<code>addLabelIds</code>' attribute.
+         */
+        const client::JsonCppArray<string> get_add_label_ids() const
+        {
+            const Json::Value &storage = Storage("addLabelIds");
+            return client::JsonValueToCppValueHelper<client::JsonCppArray<string> >(storage);
+        }
 
-  /**
-   * Gets a reference to a mutable value of the '<code>ids</code>' property.
-   *
-   * The IDs of the messages to modify. There is a limit of 1000 ids per
-   * request.
-   *
-   * @return The result can be modified to change the attribute value.
-   */
-  client::JsonCppArray<string > mutable_ids() {
-    Json::Value* storage = MutableStorage("ids");
-    return client::JsonValueToMutableCppValueHelper<client::JsonCppArray<string > >(storage);
-  }
+        /**
+         * Gets a reference to a mutable value of the '<code>addLabelIds</code>'
+         * property.
+         *
+         * A list of label IDs to add to messages.
+         *
+         * @return The result can be modified to change the attribute value.
+         */
+        client::JsonCppArray<string> mutable_addLabelIds()
+        {
+            Json::Value *storage = MutableStorage("addLabelIds");
+            return client::JsonValueToMutableCppValueHelper<client::JsonCppArray<string> >(storage);
+        }
 
-  /**
-   * Determine if the '<code>removeLabelIds</code>' attribute was set.
-   *
-   * @return true if the '<code>removeLabelIds</code>' attribute was set.
-   */
-  bool has_remove_label_ids() const {
-    return Storage().isMember("removeLabelIds");
-  }
+        /**
+         * Determine if the '<code>ids</code>' attribute was set.
+         *
+         * @return true if the '<code>ids</code>' attribute was set.
+         */
+        bool has_ids() const
+        {
+            return Storage().isMember("ids");
+        }
 
-  /**
-   * Clears the '<code>removeLabelIds</code>' attribute.
-   */
-  void clear_remove_label_ids() {
-    MutableStorage()->removeMember("removeLabelIds");
-  }
+        /**
+         * Clears the '<code>ids</code>' attribute.
+         */
+        void clear_ids()
+        {
+            MutableStorage()->removeMember("ids");
+        }
 
 
-  /**
-   * Get a reference to the value of the '<code>removeLabelIds</code>'
-   * attribute.
-   */
-  const client::JsonCppArray<string > get_remove_label_ids() const {
-     const Json::Value& storage = Storage("removeLabelIds");
-    return client::JsonValueToCppValueHelper<client::JsonCppArray<string > >(storage);
-  }
+        /**
+         * Get a reference to the value of the '<code>ids</code>' attribute.
+         */
+        const client::JsonCppArray<string> get_ids() const
+        {
+            const Json::Value &storage = Storage("ids");
+            return client::JsonValueToCppValueHelper<client::JsonCppArray<string> >(storage);
+        }
 
-  /**
-   * Gets a reference to a mutable value of the '<code>removeLabelIds</code>'
-   * property.
-   *
-   * A list of label IDs to remove from messages.
-   *
-   * @return The result can be modified to change the attribute value.
-   */
-  client::JsonCppArray<string > mutable_removeLabelIds() {
-    Json::Value* storage = MutableStorage("removeLabelIds");
-    return client::JsonValueToMutableCppValueHelper<client::JsonCppArray<string > >(storage);
-  }
+        /**
+         * Gets a reference to a mutable value of the '<code>ids</code>' property.
+         *
+         * The IDs of the messages to modify. There is a limit of 1000 ids per
+         * request.
+         *
+         * @return The result can be modified to change the attribute value.
+         */
+        client::JsonCppArray<string> mutable_ids()
+        {
+            Json::Value *storage = MutableStorage("ids");
+            return client::JsonValueToMutableCppValueHelper<client::JsonCppArray<string> >(storage);
+        }
 
- private:
-  void operator=(const BatchModifyMessagesRequest&);
-};  // BatchModifyMessagesRequest
+        /**
+         * Determine if the '<code>removeLabelIds</code>' attribute was set.
+         *
+         * @return true if the '<code>removeLabelIds</code>' attribute was set.
+         */
+        bool has_remove_label_ids() const
+        {
+            return Storage().isMember("removeLabelIds");
+        }
+
+        /**
+         * Clears the '<code>removeLabelIds</code>' attribute.
+         */
+        void clear_remove_label_ids()
+        {
+            MutableStorage()->removeMember("removeLabelIds");
+        }
+
+
+        /**
+         * Get a reference to the value of the '<code>removeLabelIds</code>'
+         * attribute.
+         */
+        const client::JsonCppArray<string> get_remove_label_ids() const
+        {
+            const Json::Value &storage = Storage("removeLabelIds");
+            return client::JsonValueToCppValueHelper<client::JsonCppArray<string> >(storage);
+        }
+
+        /**
+         * Gets a reference to a mutable value of the '<code>removeLabelIds</code>'
+         * property.
+         *
+         * A list of label IDs to remove from messages.
+         *
+         * @return The result can be modified to change the attribute value.
+         */
+        client::JsonCppArray<string> mutable_removeLabelIds()
+        {
+            Json::Value *storage = MutableStorage("removeLabelIds");
+            return client::JsonValueToMutableCppValueHelper<client::JsonCppArray<string> >(storage);
+        }
+
+    private:
+        void operator=(const BatchModifyMessagesRequest &);
+    };  // BatchModifyMessagesRequest
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_BATCH_MODIFY_MESSAGES_REQUEST_H_

@@ -38,26 +38,31 @@
 #include <string>
 #include "googleapis/strings/strcat.h"
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 
 // Object factory method (static).
-SmimeInfo* SmimeInfo::New() {
-  return new client::JsonCppCapsule<SmimeInfo>;
-}
+    SmimeInfo *SmimeInfo::New()
+    {
+        return new client::JsonCppCapsule<SmimeInfo>;
+    }
 
 // Standard immutable constructor.
-SmimeInfo::SmimeInfo(const Json::Value& storage)
-  : client::JsonCppData(storage) {
-}
+    SmimeInfo::SmimeInfo(const Json::Value &storage)
+            : client::JsonCppData(storage)
+    {
+    }
 
 // Standard mutable constructor.
-SmimeInfo::SmimeInfo(Json::Value* storage)
-  : client::JsonCppData(storage) {
-}
+    SmimeInfo::SmimeInfo(Json::Value *storage)
+            : client::JsonCppData(storage)
+    {
+    }
 
 // Standard destructor.
-SmimeInfo::~SmimeInfo() {
-}
+    SmimeInfo::~SmimeInfo()
+    {
+    }
 }  // namespace google_gmail_api

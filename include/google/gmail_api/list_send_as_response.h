@@ -36,88 +36,94 @@
 
 #include "google/gmail_api/send_as.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * Response for the ListSendAs method.
  *
  * @ingroup DataObject
  */
-class ListSendAsResponse : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static ListSendAsResponse* New();
+    class ListSendAsResponse : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static ListSendAsResponse *New();
 
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit ListSendAsResponse(const Json::Value& storage);
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit ListSendAsResponse(const Json::Value &storage);
 
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit ListSendAsResponse(Json::Value* storage);
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit ListSendAsResponse(Json::Value *storage);
 
-  /**
-   * Standard destructor.
-   */
-  virtual ~ListSendAsResponse();
+        /**
+         * Standard destructor.
+         */
+        virtual ~ListSendAsResponse();
 
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::ListSendAsResponse</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::ListSendAsResponse");
-  }
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::ListSendAsResponse</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::ListSendAsResponse");
+        }
 
-  /**
-   * Determine if the '<code>sendAs</code>' attribute was set.
-   *
-   * @return true if the '<code>sendAs</code>' attribute was set.
-   */
-  bool has_send_as() const {
-    return Storage().isMember("sendAs");
-  }
+        /**
+         * Determine if the '<code>sendAs</code>' attribute was set.
+         *
+         * @return true if the '<code>sendAs</code>' attribute was set.
+         */
+        bool has_send_as() const
+        {
+            return Storage().isMember("sendAs");
+        }
 
-  /**
-   * Clears the '<code>sendAs</code>' attribute.
-   */
-  void clear_send_as() {
-    MutableStorage()->removeMember("sendAs");
-  }
+        /**
+         * Clears the '<code>sendAs</code>' attribute.
+         */
+        void clear_send_as()
+        {
+            MutableStorage()->removeMember("sendAs");
+        }
 
 
-  /**
-   * Get a reference to the value of the '<code>sendAs</code>' attribute.
-   */
-  const client::JsonCppArray<SendAs > get_send_as() const;
+        /**
+         * Get a reference to the value of the '<code>sendAs</code>' attribute.
+         */
+        const client::JsonCppArray<SendAs> get_send_as() const;
 
-  /**
-   * Gets a reference to a mutable value of the '<code>sendAs</code>' property.
-   *
-   * List of send-as aliases.
-   *
-   * @return The result can be modified to change the attribute value.
-   */
-  client::JsonCppArray<SendAs > mutable_sendAs();
+        /**
+         * Gets a reference to a mutable value of the '<code>sendAs</code>' property.
+         *
+         * List of send-as aliases.
+         *
+         * @return The result can be modified to change the attribute value.
+         */
+        client::JsonCppArray<SendAs> mutable_sendAs();
 
- private:
-  void operator=(const ListSendAsResponse&);
-};  // ListSendAsResponse
+    private:
+        void operator=(const ListSendAsResponse &);
+    };  // ListSendAsResponse
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_LIST_SEND_AS_RESPONSE_H_

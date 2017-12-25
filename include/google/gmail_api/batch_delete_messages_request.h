@@ -35,94 +35,102 @@
 #include "googleapis/client/data/jsoncpp_data.h"
 #include "googleapis/strings/stringpiece.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * No description provided.
  *
  * @ingroup DataObject
  */
-class BatchDeleteMessagesRequest : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static BatchDeleteMessagesRequest* New();
+    class BatchDeleteMessagesRequest : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static BatchDeleteMessagesRequest *New();
 
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit BatchDeleteMessagesRequest(const Json::Value& storage);
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit BatchDeleteMessagesRequest(const Json::Value &storage);
 
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit BatchDeleteMessagesRequest(Json::Value* storage);
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit BatchDeleteMessagesRequest(Json::Value *storage);
 
-  /**
-   * Standard destructor.
-   */
-  virtual ~BatchDeleteMessagesRequest();
+        /**
+         * Standard destructor.
+         */
+        virtual ~BatchDeleteMessagesRequest();
 
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::BatchDeleteMessagesRequest</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::BatchDeleteMessagesRequest");
-  }
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::BatchDeleteMessagesRequest</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::BatchDeleteMessagesRequest");
+        }
 
-  /**
-   * Determine if the '<code>ids</code>' attribute was set.
-   *
-   * @return true if the '<code>ids</code>' attribute was set.
-   */
-  bool has_ids() const {
-    return Storage().isMember("ids");
-  }
+        /**
+         * Determine if the '<code>ids</code>' attribute was set.
+         *
+         * @return true if the '<code>ids</code>' attribute was set.
+         */
+        bool has_ids() const
+        {
+            return Storage().isMember("ids");
+        }
 
-  /**
-   * Clears the '<code>ids</code>' attribute.
-   */
-  void clear_ids() {
-    MutableStorage()->removeMember("ids");
-  }
+        /**
+         * Clears the '<code>ids</code>' attribute.
+         */
+        void clear_ids()
+        {
+            MutableStorage()->removeMember("ids");
+        }
 
 
-  /**
-   * Get a reference to the value of the '<code>ids</code>' attribute.
-   */
-  const client::JsonCppArray<string > get_ids() const {
-     const Json::Value& storage = Storage("ids");
-    return client::JsonValueToCppValueHelper<client::JsonCppArray<string > >(storage);
-  }
+        /**
+         * Get a reference to the value of the '<code>ids</code>' attribute.
+         */
+        const client::JsonCppArray<string> get_ids() const
+        {
+            const Json::Value &storage = Storage("ids");
+            return client::JsonValueToCppValueHelper<client::JsonCppArray<string> >(storage);
+        }
 
-  /**
-   * Gets a reference to a mutable value of the '<code>ids</code>' property.
-   *
-   * The IDs of the messages to delete.
-   *
-   * @return The result can be modified to change the attribute value.
-   */
-  client::JsonCppArray<string > mutable_ids() {
-    Json::Value* storage = MutableStorage("ids");
-    return client::JsonValueToMutableCppValueHelper<client::JsonCppArray<string > >(storage);
-  }
+        /**
+         * Gets a reference to a mutable value of the '<code>ids</code>' property.
+         *
+         * The IDs of the messages to delete.
+         *
+         * @return The result can be modified to change the attribute value.
+         */
+        client::JsonCppArray<string> mutable_ids()
+        {
+            Json::Value *storage = MutableStorage("ids");
+            return client::JsonValueToMutableCppValueHelper<client::JsonCppArray<string> >(storage);
+        }
 
- private:
-  void operator=(const BatchDeleteMessagesRequest&);
-};  // BatchDeleteMessagesRequest
+    private:
+        void operator=(const BatchDeleteMessagesRequest &);
+    };  // BatchDeleteMessagesRequest
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_BATCH_DELETE_MESSAGES_REQUEST_H_

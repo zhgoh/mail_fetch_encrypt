@@ -35,169 +35,185 @@
 #include "googleapis/client/data/jsoncpp_data.h"
 #include "googleapis/strings/stringpiece.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * Auto-forwarding settings for an account.
  *
  * @ingroup DataObject
  */
-class AutoForwarding : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static AutoForwarding* New();
+    class AutoForwarding : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static AutoForwarding *New();
 
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit AutoForwarding(const Json::Value& storage);
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit AutoForwarding(const Json::Value &storage);
 
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit AutoForwarding(Json::Value* storage);
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit AutoForwarding(Json::Value *storage);
 
-  /**
-   * Standard destructor.
-   */
-  virtual ~AutoForwarding();
+        /**
+         * Standard destructor.
+         */
+        virtual ~AutoForwarding();
 
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::AutoForwarding</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::AutoForwarding");
-  }
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::AutoForwarding</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::AutoForwarding");
+        }
 
-  /**
-   * Determine if the '<code>disposition</code>' attribute was set.
-   *
-   * @return true if the '<code>disposition</code>' attribute was set.
-   */
-  bool has_disposition() const {
-    return Storage().isMember("disposition");
-  }
+        /**
+         * Determine if the '<code>disposition</code>' attribute was set.
+         *
+         * @return true if the '<code>disposition</code>' attribute was set.
+         */
+        bool has_disposition() const
+        {
+            return Storage().isMember("disposition");
+        }
 
-  /**
-   * Clears the '<code>disposition</code>' attribute.
-   */
-  void clear_disposition() {
-    MutableStorage()->removeMember("disposition");
-  }
-
-
-  /**
-   * Get the value of the '<code>disposition</code>' attribute.
-   */
-  const StringPiece get_disposition() const {
-    const Json::Value& v = Storage("disposition");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
-
-  /**
-   * Change the '<code>disposition</code>' attribute.
-   *
-   * The state that a message should be left in after it has been forwarded.
-   *
-   * @param[in] value The new value.
-   */
-  void set_disposition(const StringPiece& value) {
-    *MutableStorage("disposition") = value.data();
-  }
-
-  /**
-   * Determine if the '<code>emailAddress</code>' attribute was set.
-   *
-   * @return true if the '<code>emailAddress</code>' attribute was set.
-   */
-  bool has_email_address() const {
-    return Storage().isMember("emailAddress");
-  }
-
-  /**
-   * Clears the '<code>emailAddress</code>' attribute.
-   */
-  void clear_email_address() {
-    MutableStorage()->removeMember("emailAddress");
-  }
+        /**
+         * Clears the '<code>disposition</code>' attribute.
+         */
+        void clear_disposition()
+        {
+            MutableStorage()->removeMember("disposition");
+        }
 
 
-  /**
-   * Get the value of the '<code>emailAddress</code>' attribute.
-   */
-  const StringPiece get_email_address() const {
-    const Json::Value& v = Storage("emailAddress");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
+        /**
+         * Get the value of the '<code>disposition</code>' attribute.
+         */
+        const StringPiece get_disposition() const
+        {
+            const Json::Value &v = Storage("disposition");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
 
-  /**
-   * Change the '<code>emailAddress</code>' attribute.
-   *
-   * Email address to which all incoming messages are forwarded. This email
-   * address must be a verified member of the forwarding addresses.
-   *
-   * @param[in] value The new value.
-   */
-  void set_email_address(const StringPiece& value) {
-    *MutableStorage("emailAddress") = value.data();
-  }
+        /**
+         * Change the '<code>disposition</code>' attribute.
+         *
+         * The state that a message should be left in after it has been forwarded.
+         *
+         * @param[in] value The new value.
+         */
+        void set_disposition(const StringPiece &value)
+        {
+            *MutableStorage("disposition") = value.data();
+        }
 
-  /**
-   * Determine if the '<code>enabled</code>' attribute was set.
-   *
-   * @return true if the '<code>enabled</code>' attribute was set.
-   */
-  bool has_enabled() const {
-    return Storage().isMember("enabled");
-  }
+        /**
+         * Determine if the '<code>emailAddress</code>' attribute was set.
+         *
+         * @return true if the '<code>emailAddress</code>' attribute was set.
+         */
+        bool has_email_address() const
+        {
+            return Storage().isMember("emailAddress");
+        }
 
-  /**
-   * Clears the '<code>enabled</code>' attribute.
-   */
-  void clear_enabled() {
-    MutableStorage()->removeMember("enabled");
-  }
+        /**
+         * Clears the '<code>emailAddress</code>' attribute.
+         */
+        void clear_email_address()
+        {
+            MutableStorage()->removeMember("emailAddress");
+        }
 
 
-  /**
-   * Get the value of the '<code>enabled</code>' attribute.
-   */
-  bool get_enabled() const {
-    const Json::Value& storage = Storage("enabled");
-    return client::JsonValueToCppValueHelper<bool >(storage);
-  }
+        /**
+         * Get the value of the '<code>emailAddress</code>' attribute.
+         */
+        const StringPiece get_email_address() const
+        {
+            const Json::Value &v = Storage("emailAddress");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
 
-  /**
-   * Change the '<code>enabled</code>' attribute.
-   *
-   * Whether all incoming mail is automatically forwarded to another address.
-   *
-   * @param[in] value The new value.
-   */
-  void set_enabled(bool value) {
-    client::SetJsonValueFromCppValueHelper<bool >(
-      value, MutableStorage("enabled"));
-  }
+        /**
+         * Change the '<code>emailAddress</code>' attribute.
+         *
+         * Email address to which all incoming messages are forwarded. This email
+         * address must be a verified member of the forwarding addresses.
+         *
+         * @param[in] value The new value.
+         */
+        void set_email_address(const StringPiece &value)
+        {
+            *MutableStorage("emailAddress") = value.data();
+        }
 
- private:
-  void operator=(const AutoForwarding&);
-};  // AutoForwarding
+        /**
+         * Determine if the '<code>enabled</code>' attribute was set.
+         *
+         * @return true if the '<code>enabled</code>' attribute was set.
+         */
+        bool has_enabled() const
+        {
+            return Storage().isMember("enabled");
+        }
+
+        /**
+         * Clears the '<code>enabled</code>' attribute.
+         */
+        void clear_enabled()
+        {
+            MutableStorage()->removeMember("enabled");
+        }
+
+
+        /**
+         * Get the value of the '<code>enabled</code>' attribute.
+         */
+        bool get_enabled() const
+        {
+            const Json::Value &storage = Storage("enabled");
+            return client::JsonValueToCppValueHelper<bool>(storage);
+        }
+
+        /**
+         * Change the '<code>enabled</code>' attribute.
+         *
+         * Whether all incoming mail is automatically forwarded to another address.
+         *
+         * @param[in] value The new value.
+         */
+        void set_enabled(bool value)
+        {
+            client::SetJsonValueFromCppValueHelper<bool>(
+                    value, MutableStorage("enabled"));
+        }
+
+    private:
+        void operator=(const AutoForwarding &);
+    };  // AutoForwarding
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_AUTO_FORWARDING_H_

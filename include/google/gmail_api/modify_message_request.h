@@ -35,134 +35,146 @@
 #include "googleapis/client/data/jsoncpp_data.h"
 #include "googleapis/strings/stringpiece.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * No description provided.
  *
  * @ingroup DataObject
  */
-class ModifyMessageRequest : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static ModifyMessageRequest* New();
-
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit ModifyMessageRequest(const Json::Value& storage);
-
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit ModifyMessageRequest(Json::Value* storage);
-
-  /**
-   * Standard destructor.
-   */
-  virtual ~ModifyMessageRequest();
-
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::ModifyMessageRequest</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::ModifyMessageRequest");
-  }
-
-  /**
-   * Determine if the '<code>addLabelIds</code>' attribute was set.
-   *
-   * @return true if the '<code>addLabelIds</code>' attribute was set.
-   */
-  bool has_add_label_ids() const {
-    return Storage().isMember("addLabelIds");
-  }
-
-  /**
-   * Clears the '<code>addLabelIds</code>' attribute.
-   */
-  void clear_add_label_ids() {
-    MutableStorage()->removeMember("addLabelIds");
-  }
-
-
-  /**
-   * Get a reference to the value of the '<code>addLabelIds</code>' attribute.
-   */
-  const client::JsonCppArray<string > get_add_label_ids() const {
-     const Json::Value& storage = Storage("addLabelIds");
-    return client::JsonValueToCppValueHelper<client::JsonCppArray<string > >(storage);
-  }
-
-  /**
-   * Gets a reference to a mutable value of the '<code>addLabelIds</code>'
-   * property.
-   *
-   * A list of IDs of labels to add to this message.
-   *
-   * @return The result can be modified to change the attribute value.
-   */
-  client::JsonCppArray<string > mutable_addLabelIds() {
-    Json::Value* storage = MutableStorage("addLabelIds");
-    return client::JsonValueToMutableCppValueHelper<client::JsonCppArray<string > >(storage);
-  }
-
-  /**
-   * Determine if the '<code>removeLabelIds</code>' attribute was set.
-   *
-   * @return true if the '<code>removeLabelIds</code>' attribute was set.
-   */
-  bool has_remove_label_ids() const {
-    return Storage().isMember("removeLabelIds");
-  }
-
-  /**
-   * Clears the '<code>removeLabelIds</code>' attribute.
-   */
-  void clear_remove_label_ids() {
-    MutableStorage()->removeMember("removeLabelIds");
-  }
-
-
-  /**
-   * Get a reference to the value of the '<code>removeLabelIds</code>'
-   * attribute.
-   */
-  const client::JsonCppArray<string > get_remove_label_ids() const {
-     const Json::Value& storage = Storage("removeLabelIds");
-    return client::JsonValueToCppValueHelper<client::JsonCppArray<string > >(storage);
-  }
-
-  /**
-   * Gets a reference to a mutable value of the '<code>removeLabelIds</code>'
-   * property.
-   *
-   * A list IDs of labels to remove from this message.
-   *
-   * @return The result can be modified to change the attribute value.
-   */
-  client::JsonCppArray<string > mutable_removeLabelIds() {
-    Json::Value* storage = MutableStorage("removeLabelIds");
-    return client::JsonValueToMutableCppValueHelper<client::JsonCppArray<string > >(storage);
-  }
-
- private:
-  void operator=(const ModifyMessageRequest&);
-};  // ModifyMessageRequest
+    class ModifyMessageRequest : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static ModifyMessageRequest *New();
+        
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit ModifyMessageRequest(const Json::Value &storage);
+        
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit ModifyMessageRequest(Json::Value *storage);
+        
+        /**
+         * Standard destructor.
+         */
+        virtual ~ModifyMessageRequest();
+        
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::ModifyMessageRequest</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::ModifyMessageRequest");
+        }
+        
+        /**
+         * Determine if the '<code>addLabelIds</code>' attribute was set.
+         *
+         * @return true if the '<code>addLabelIds</code>' attribute was set.
+         */
+        bool has_add_label_ids() const
+        {
+            return Storage().isMember("addLabelIds");
+        }
+        
+        /**
+         * Clears the '<code>addLabelIds</code>' attribute.
+         */
+        void clear_add_label_ids()
+        {
+            MutableStorage()->removeMember("addLabelIds");
+        }
+        
+        
+        /**
+         * Get a reference to the value of the '<code>addLabelIds</code>' attribute.
+         */
+        const client::JsonCppArray<string> get_add_label_ids() const
+        {
+            const Json::Value &storage = Storage("addLabelIds");
+            return client::JsonValueToCppValueHelper<client::JsonCppArray<string> >(storage);
+        }
+        
+        /**
+         * Gets a reference to a mutable value of the '<code>addLabelIds</code>'
+         * property.
+         *
+         * A list of IDs of labels to add to this message.
+         *
+         * @return The result can be modified to change the attribute value.
+         */
+        client::JsonCppArray<string> mutable_addLabelIds()
+        {
+            Json::Value *storage = MutableStorage("addLabelIds");
+            return client::JsonValueToMutableCppValueHelper<client::JsonCppArray<string> >(storage);
+        }
+        
+        /**
+         * Determine if the '<code>removeLabelIds</code>' attribute was set.
+         *
+         * @return true if the '<code>removeLabelIds</code>' attribute was set.
+         */
+        bool has_remove_label_ids() const
+        {
+            return Storage().isMember("removeLabelIds");
+        }
+        
+        /**
+         * Clears the '<code>removeLabelIds</code>' attribute.
+         */
+        void clear_remove_label_ids()
+        {
+            MutableStorage()->removeMember("removeLabelIds");
+        }
+        
+        
+        /**
+         * Get a reference to the value of the '<code>removeLabelIds</code>'
+         * attribute.
+         */
+        const client::JsonCppArray<string> get_remove_label_ids() const
+        {
+            const Json::Value &storage = Storage("removeLabelIds");
+            return client::JsonValueToCppValueHelper<client::JsonCppArray<string> >(storage);
+        }
+        
+        /**
+         * Gets a reference to a mutable value of the '<code>removeLabelIds</code>'
+         * property.
+         *
+         * A list IDs of labels to remove from this message.
+         *
+         * @return The result can be modified to change the attribute value.
+         */
+        client::JsonCppArray<string> mutable_removeLabelIds()
+        {
+            Json::Value *storage = MutableStorage("removeLabelIds");
+            return client::JsonValueToMutableCppValueHelper<client::JsonCppArray<string> >(storage);
+        }
+    
+    private:
+        void operator=(const ModifyMessageRequest &);
+    };  // ModifyMessageRequest
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_MODIFY_MESSAGE_REQUEST_H_

@@ -37,26 +37,31 @@
 #include <string>
 #include "googleapis/strings/strcat.h"
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 
 // Object factory method (static).
-ModifyMessageRequest* ModifyMessageRequest::New() {
-  return new client::JsonCppCapsule<ModifyMessageRequest>;
-}
+    ModifyMessageRequest *ModifyMessageRequest::New()
+    {
+        return new client::JsonCppCapsule<ModifyMessageRequest>;
+    }
 
 // Standard immutable constructor.
-ModifyMessageRequest::ModifyMessageRequest(const Json::Value& storage)
-  : client::JsonCppData(storage) {
-}
+    ModifyMessageRequest::ModifyMessageRequest(const Json::Value &storage)
+            : client::JsonCppData(storage)
+    {
+    }
 
 // Standard mutable constructor.
-ModifyMessageRequest::ModifyMessageRequest(Json::Value* storage)
-  : client::JsonCppData(storage) {
-}
+    ModifyMessageRequest::ModifyMessageRequest(Json::Value *storage)
+            : client::JsonCppData(storage)
+    {
+    }
 
 // Standard destructor.
-ModifyMessageRequest::~ModifyMessageRequest() {
-}
+    ModifyMessageRequest::~ModifyMessageRequest()
+    {
+    }
 }  // namespace google_gmail_api

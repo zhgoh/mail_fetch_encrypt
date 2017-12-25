@@ -36,322 +36,354 @@
 #include "googleapis/client/data/jsoncpp_data.h"
 #include "googleapis/strings/stringpiece.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * An S/MIME email config.
  *
  * @ingroup DataObject
  */
-class SmimeInfo : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static SmimeInfo* New();
+    class SmimeInfo : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static SmimeInfo *New();
 
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit SmimeInfo(const Json::Value& storage);
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit SmimeInfo(const Json::Value &storage);
 
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit SmimeInfo(Json::Value* storage);
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit SmimeInfo(Json::Value *storage);
 
-  /**
-   * Standard destructor.
-   */
-  virtual ~SmimeInfo();
+        /**
+         * Standard destructor.
+         */
+        virtual ~SmimeInfo();
 
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::SmimeInfo</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::SmimeInfo");
-  }
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::SmimeInfo</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::SmimeInfo");
+        }
 
-  /**
-   * Determine if the '<code>encryptedKeyPassword</code>' attribute was set.
-   *
-   * @return true if the '<code>encryptedKeyPassword</code>' attribute was set.
-   */
-  bool has_encrypted_key_password() const {
-    return Storage().isMember("encryptedKeyPassword");
-  }
+        /**
+         * Determine if the '<code>encryptedKeyPassword</code>' attribute was set.
+         *
+         * @return true if the '<code>encryptedKeyPassword</code>' attribute was set.
+         */
+        bool has_encrypted_key_password() const
+        {
+            return Storage().isMember("encryptedKeyPassword");
+        }
 
-  /**
-   * Clears the '<code>encryptedKeyPassword</code>' attribute.
-   */
-  void clear_encrypted_key_password() {
-    MutableStorage()->removeMember("encryptedKeyPassword");
-  }
-
-
-  /**
-   * Get the value of the '<code>encryptedKeyPassword</code>' attribute.
-   */
-  const StringPiece get_encrypted_key_password() const {
-    const Json::Value& v = Storage("encryptedKeyPassword");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
-
-  /**
-   * Change the '<code>encryptedKeyPassword</code>' attribute.
-   *
-   * Encrypted key password, when key is encrypted.
-   *
-   * @param[in] value The new value.
-   */
-  void set_encrypted_key_password(const StringPiece& value) {
-    *MutableStorage("encryptedKeyPassword") = value.data();
-  }
-
-  /**
-   * Determine if the '<code>expiration</code>' attribute was set.
-   *
-   * @return true if the '<code>expiration</code>' attribute was set.
-   */
-  bool has_expiration() const {
-    return Storage().isMember("expiration");
-  }
-
-  /**
-   * Clears the '<code>expiration</code>' attribute.
-   */
-  void clear_expiration() {
-    MutableStorage()->removeMember("expiration");
-  }
+        /**
+         * Clears the '<code>encryptedKeyPassword</code>' attribute.
+         */
+        void clear_encrypted_key_password()
+        {
+            MutableStorage()->removeMember("encryptedKeyPassword");
+        }
 
 
-  /**
-   * Get the value of the '<code>expiration</code>' attribute.
-   */
-  int64 get_expiration() const {
-    const Json::Value& storage = Storage("expiration");
-    return client::JsonValueToCppValueHelper<int64 >(storage);
-  }
+        /**
+         * Get the value of the '<code>encryptedKeyPassword</code>' attribute.
+         */
+        const StringPiece get_encrypted_key_password() const
+        {
+            const Json::Value &v = Storage("encryptedKeyPassword");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
 
-  /**
-   * Change the '<code>expiration</code>' attribute.
-   *
-   * When the certificate expires (in milliseconds since epoch).
-   *
-   * @param[in] value The new value.
-   */
-  void set_expiration(int64 value) {
-    client::SetJsonValueFromCppValueHelper<int64 >(
-      value, MutableStorage("expiration"));
-  }
+        /**
+         * Change the '<code>encryptedKeyPassword</code>' attribute.
+         *
+         * Encrypted key password, when key is encrypted.
+         *
+         * @param[in] value The new value.
+         */
+        void set_encrypted_key_password(const StringPiece &value)
+        {
+            *MutableStorage("encryptedKeyPassword") = value.data();
+        }
 
-  /**
-   * Determine if the '<code>id</code>' attribute was set.
-   *
-   * @return true if the '<code>id</code>' attribute was set.
-   */
-  bool has_id() const {
-    return Storage().isMember("id");
-  }
+        /**
+         * Determine if the '<code>expiration</code>' attribute was set.
+         *
+         * @return true if the '<code>expiration</code>' attribute was set.
+         */
+        bool has_expiration() const
+        {
+            return Storage().isMember("expiration");
+        }
 
-  /**
-   * Clears the '<code>id</code>' attribute.
-   */
-  void clear_id() {
-    MutableStorage()->removeMember("id");
-  }
-
-
-  /**
-   * Get the value of the '<code>id</code>' attribute.
-   */
-  const StringPiece get_id() const {
-    const Json::Value& v = Storage("id");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
-
-  /**
-   * Change the '<code>id</code>' attribute.
-   *
-   * The immutable ID for the SmimeInfo.
-   *
-   * @param[in] value The new value.
-   */
-  void set_id(const StringPiece& value) {
-    *MutableStorage("id") = value.data();
-  }
-
-  /**
-   * Determine if the '<code>isDefault</code>' attribute was set.
-   *
-   * @return true if the '<code>isDefault</code>' attribute was set.
-   */
-  bool has_is_default() const {
-    return Storage().isMember("isDefault");
-  }
-
-  /**
-   * Clears the '<code>isDefault</code>' attribute.
-   */
-  void clear_is_default() {
-    MutableStorage()->removeMember("isDefault");
-  }
+        /**
+         * Clears the '<code>expiration</code>' attribute.
+         */
+        void clear_expiration()
+        {
+            MutableStorage()->removeMember("expiration");
+        }
 
 
-  /**
-   * Get the value of the '<code>isDefault</code>' attribute.
-   */
-  bool get_is_default() const {
-    const Json::Value& storage = Storage("isDefault");
-    return client::JsonValueToCppValueHelper<bool >(storage);
-  }
+        /**
+         * Get the value of the '<code>expiration</code>' attribute.
+         */
+        int64 get_expiration() const
+        {
+            const Json::Value &storage = Storage("expiration");
+            return client::JsonValueToCppValueHelper<int64>(storage);
+        }
 
-  /**
-   * Change the '<code>isDefault</code>' attribute.
-   *
-   * Whether this SmimeInfo is the default one for this user's send-as address.
-   *
-   * @param[in] value The new value.
-   */
-  void set_is_default(bool value) {
-    client::SetJsonValueFromCppValueHelper<bool >(
-      value, MutableStorage("isDefault"));
-  }
+        /**
+         * Change the '<code>expiration</code>' attribute.
+         *
+         * When the certificate expires (in milliseconds since epoch).
+         *
+         * @param[in] value The new value.
+         */
+        void set_expiration(int64 value)
+        {
+            client::SetJsonValueFromCppValueHelper<int64>(
+                    value, MutableStorage("expiration"));
+        }
 
-  /**
-   * Determine if the '<code>issuerCn</code>' attribute was set.
-   *
-   * @return true if the '<code>issuerCn</code>' attribute was set.
-   */
-  bool has_issuer_cn() const {
-    return Storage().isMember("issuerCn");
-  }
+        /**
+         * Determine if the '<code>id</code>' attribute was set.
+         *
+         * @return true if the '<code>id</code>' attribute was set.
+         */
+        bool has_id() const
+        {
+            return Storage().isMember("id");
+        }
 
-  /**
-   * Clears the '<code>issuerCn</code>' attribute.
-   */
-  void clear_issuer_cn() {
-    MutableStorage()->removeMember("issuerCn");
-  }
-
-
-  /**
-   * Get the value of the '<code>issuerCn</code>' attribute.
-   */
-  const StringPiece get_issuer_cn() const {
-    const Json::Value& v = Storage("issuerCn");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
-
-  /**
-   * Change the '<code>issuerCn</code>' attribute.
-   *
-   * The S/MIME certificate issuer's common name.
-   *
-   * @param[in] value The new value.
-   */
-  void set_issuer_cn(const StringPiece& value) {
-    *MutableStorage("issuerCn") = value.data();
-  }
-
-  /**
-   * Determine if the '<code>pem</code>' attribute was set.
-   *
-   * @return true if the '<code>pem</code>' attribute was set.
-   */
-  bool has_pem() const {
-    return Storage().isMember("pem");
-  }
-
-  /**
-   * Clears the '<code>pem</code>' attribute.
-   */
-  void clear_pem() {
-    MutableStorage()->removeMember("pem");
-  }
+        /**
+         * Clears the '<code>id</code>' attribute.
+         */
+        void clear_id()
+        {
+            MutableStorage()->removeMember("id");
+        }
 
 
-  /**
-   * Get the value of the '<code>pem</code>' attribute.
-   */
-  const StringPiece get_pem() const {
-    const Json::Value& v = Storage("pem");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
+        /**
+         * Get the value of the '<code>id</code>' attribute.
+         */
+        const StringPiece get_id() const
+        {
+            const Json::Value &v = Storage("id");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
 
-  /**
-   * Change the '<code>pem</code>' attribute.
-   *
-   * PEM formatted X509 concatenated certificate string (standard base64
-   * encoding). Format used for returning key, which includes public key as well
-   * as certificate chain (not private key).
-   *
-   * @param[in] value The new value.
-   */
-  void set_pem(const StringPiece& value) {
-    *MutableStorage("pem") = value.data();
-  }
+        /**
+         * Change the '<code>id</code>' attribute.
+         *
+         * The immutable ID for the SmimeInfo.
+         *
+         * @param[in] value The new value.
+         */
+        void set_id(const StringPiece &value)
+        {
+            *MutableStorage("id") = value.data();
+        }
 
-  /**
-   * Determine if the '<code>pkcs12</code>' attribute was set.
-   *
-   * @return true if the '<code>pkcs12</code>' attribute was set.
-   */
-  bool has_pkcs12() const {
-    return Storage().isMember("pkcs12");
-  }
+        /**
+         * Determine if the '<code>isDefault</code>' attribute was set.
+         *
+         * @return true if the '<code>isDefault</code>' attribute was set.
+         */
+        bool has_is_default() const
+        {
+            return Storage().isMember("isDefault");
+        }
 
-  /**
-   * Clears the '<code>pkcs12</code>' attribute.
-   */
-  void clear_pkcs12() {
-    MutableStorage()->removeMember("pkcs12");
-  }
+        /**
+         * Clears the '<code>isDefault</code>' attribute.
+         */
+        void clear_is_default()
+        {
+            MutableStorage()->removeMember("isDefault");
+        }
 
 
-  /**
-   * Get the value of the '<code>pkcs12</code>' attribute.
-   */
-  const StringPiece get_pkcs12() const {
-    const Json::Value& v = Storage("pkcs12");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
+        /**
+         * Get the value of the '<code>isDefault</code>' attribute.
+         */
+        bool get_is_default() const
+        {
+            const Json::Value &storage = Storage("isDefault");
+            return client::JsonValueToCppValueHelper<bool>(storage);
+        }
 
-  /**
-   * Change the '<code>pkcs12</code>' attribute.
-   *
-   * PKCS#12 format containing a single private/public key pair and certificate
-   * chain. This format is only accepted from client for creating a new
-   * SmimeInfo and is never returned, because the private key is not intended to
-   * be exported. PKCS#12 may be encrypted, in which case encryptedKeyPassword
-   * should be set appropriately.
-   *
-   * @param[in] value The new value.
-   */
-  void set_pkcs12(const StringPiece& value) {
-    *MutableStorage("pkcs12") = value.data();
-  }
+        /**
+         * Change the '<code>isDefault</code>' attribute.
+         *
+         * Whether this SmimeInfo is the default one for this user's send-as address.
+         *
+         * @param[in] value The new value.
+         */
+        void set_is_default(bool value)
+        {
+            client::SetJsonValueFromCppValueHelper<bool>(
+                    value, MutableStorage("isDefault"));
+        }
 
- private:
-  void operator=(const SmimeInfo&);
-};  // SmimeInfo
+        /**
+         * Determine if the '<code>issuerCn</code>' attribute was set.
+         *
+         * @return true if the '<code>issuerCn</code>' attribute was set.
+         */
+        bool has_issuer_cn() const
+        {
+            return Storage().isMember("issuerCn");
+        }
+
+        /**
+         * Clears the '<code>issuerCn</code>' attribute.
+         */
+        void clear_issuer_cn()
+        {
+            MutableStorage()->removeMember("issuerCn");
+        }
+
+
+        /**
+         * Get the value of the '<code>issuerCn</code>' attribute.
+         */
+        const StringPiece get_issuer_cn() const
+        {
+            const Json::Value &v = Storage("issuerCn");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
+
+        /**
+         * Change the '<code>issuerCn</code>' attribute.
+         *
+         * The S/MIME certificate issuer's common name.
+         *
+         * @param[in] value The new value.
+         */
+        void set_issuer_cn(const StringPiece &value)
+        {
+            *MutableStorage("issuerCn") = value.data();
+        }
+
+        /**
+         * Determine if the '<code>pem</code>' attribute was set.
+         *
+         * @return true if the '<code>pem</code>' attribute was set.
+         */
+        bool has_pem() const
+        {
+            return Storage().isMember("pem");
+        }
+
+        /**
+         * Clears the '<code>pem</code>' attribute.
+         */
+        void clear_pem()
+        {
+            MutableStorage()->removeMember("pem");
+        }
+
+
+        /**
+         * Get the value of the '<code>pem</code>' attribute.
+         */
+        const StringPiece get_pem() const
+        {
+            const Json::Value &v = Storage("pem");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
+
+        /**
+         * Change the '<code>pem</code>' attribute.
+         *
+         * PEM formatted X509 concatenated certificate string (standard base64
+         * encoding). Format used for returning key, which includes public key as well
+         * as certificate chain (not private key).
+         *
+         * @param[in] value The new value.
+         */
+        void set_pem(const StringPiece &value)
+        {
+            *MutableStorage("pem") = value.data();
+        }
+
+        /**
+         * Determine if the '<code>pkcs12</code>' attribute was set.
+         *
+         * @return true if the '<code>pkcs12</code>' attribute was set.
+         */
+        bool has_pkcs12() const
+        {
+            return Storage().isMember("pkcs12");
+        }
+
+        /**
+         * Clears the '<code>pkcs12</code>' attribute.
+         */
+        void clear_pkcs12()
+        {
+            MutableStorage()->removeMember("pkcs12");
+        }
+
+
+        /**
+         * Get the value of the '<code>pkcs12</code>' attribute.
+         */
+        const StringPiece get_pkcs12() const
+        {
+            const Json::Value &v = Storage("pkcs12");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
+
+        /**
+         * Change the '<code>pkcs12</code>' attribute.
+         *
+         * PKCS#12 format containing a single private/public key pair and certificate
+         * chain. This format is only accepted from client for creating a new
+         * SmimeInfo and is never returned, because the private key is not intended to
+         * be exported. PKCS#12 may be encrypted, in which case encryptedKeyPassword
+         * should be set appropriately.
+         *
+         * @param[in] value The new value.
+         */
+        void set_pkcs12(const StringPiece &value)
+        {
+            *MutableStorage("pkcs12") = value.data();
+        }
+
+    private:
+        void operator=(const SmimeInfo &);
+    };  // SmimeInfo
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_SMIME_INFO_H_

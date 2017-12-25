@@ -24,13 +24,15 @@ namespace google_gmail_api
 {
     class Message;
     class MessagePart;
+    class MessagePartHeader;
     class MessagePartBody;
 }
 
 void DisplayError(googleapis::client::ClientServiceRequest *request);
-void Display(const std::string &prefix, const google_gmail_api::Message &entry);
-void Display(const std::string &prefix, const google_gmail_api::MessagePart &entry);
-void Display(const std::string &prefix, const google_gmail_api::MessagePartBody &entry);
+void Display(const google_gmail_api::Message &entry);
+void Display(const google_gmail_api::MessagePart &entry);
+void Display(const google_gmail_api::MessagePartBody &entry);
+void Display(const google_gmail_api::MessagePartHeader &entry);
 
 //void Display(const string &prefix, const google_calendar_api::Calendar &entry)
 //{
@@ -73,7 +75,7 @@ void DisplayMessages(const std::string &prefix, const std::string &title, const 
     std::string sub_prefix = StrCat(prefix, "  ");
     bool first = true;
     auto &items = list.get_messages();
-    
+    std::cout << "Num of items:" << items.size() << std::endl;
     for (const auto &elem : items)
     {
         if (first)
@@ -85,7 +87,7 @@ void DisplayMessages(const std::string &prefix, const std::string &title, const 
             std::cout << std::endl;
         }
         
-        Display(sub_prefix, elem);
+        Display(elem);
     }
     
     if (first)

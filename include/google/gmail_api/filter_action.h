@@ -35,171 +35,187 @@
 #include "googleapis/client/data/jsoncpp_data.h"
 #include "googleapis/strings/stringpiece.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * A set of actions to perform on a message.
  *
  * @ingroup DataObject
  */
-class FilterAction : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static FilterAction* New();
+    class FilterAction : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static FilterAction *New();
 
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit FilterAction(const Json::Value& storage);
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit FilterAction(const Json::Value &storage);
 
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit FilterAction(Json::Value* storage);
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit FilterAction(Json::Value *storage);
 
-  /**
-   * Standard destructor.
-   */
-  virtual ~FilterAction();
+        /**
+         * Standard destructor.
+         */
+        virtual ~FilterAction();
 
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::FilterAction</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::FilterAction");
-  }
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::FilterAction</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::FilterAction");
+        }
 
-  /**
-   * Determine if the '<code>addLabelIds</code>' attribute was set.
-   *
-   * @return true if the '<code>addLabelIds</code>' attribute was set.
-   */
-  bool has_add_label_ids() const {
-    return Storage().isMember("addLabelIds");
-  }
+        /**
+         * Determine if the '<code>addLabelIds</code>' attribute was set.
+         *
+         * @return true if the '<code>addLabelIds</code>' attribute was set.
+         */
+        bool has_add_label_ids() const
+        {
+            return Storage().isMember("addLabelIds");
+        }
 
-  /**
-   * Clears the '<code>addLabelIds</code>' attribute.
-   */
-  void clear_add_label_ids() {
-    MutableStorage()->removeMember("addLabelIds");
-  }
-
-
-  /**
-   * Get a reference to the value of the '<code>addLabelIds</code>' attribute.
-   */
-  const client::JsonCppArray<string > get_add_label_ids() const {
-     const Json::Value& storage = Storage("addLabelIds");
-    return client::JsonValueToCppValueHelper<client::JsonCppArray<string > >(storage);
-  }
-
-  /**
-   * Gets a reference to a mutable value of the '<code>addLabelIds</code>'
-   * property.
-   *
-   * List of labels to add to the message.
-   *
-   * @return The result can be modified to change the attribute value.
-   */
-  client::JsonCppArray<string > mutable_addLabelIds() {
-    Json::Value* storage = MutableStorage("addLabelIds");
-    return client::JsonValueToMutableCppValueHelper<client::JsonCppArray<string > >(storage);
-  }
-
-  /**
-   * Determine if the '<code>forward</code>' attribute was set.
-   *
-   * @return true if the '<code>forward</code>' attribute was set.
-   */
-  bool has_forward() const {
-    return Storage().isMember("forward");
-  }
-
-  /**
-   * Clears the '<code>forward</code>' attribute.
-   */
-  void clear_forward() {
-    MutableStorage()->removeMember("forward");
-  }
+        /**
+         * Clears the '<code>addLabelIds</code>' attribute.
+         */
+        void clear_add_label_ids()
+        {
+            MutableStorage()->removeMember("addLabelIds");
+        }
 
 
-  /**
-   * Get the value of the '<code>forward</code>' attribute.
-   */
-  const StringPiece get_forward() const {
-    const Json::Value& v = Storage("forward");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
+        /**
+         * Get a reference to the value of the '<code>addLabelIds</code>' attribute.
+         */
+        const client::JsonCppArray<string> get_add_label_ids() const
+        {
+            const Json::Value &storage = Storage("addLabelIds");
+            return client::JsonValueToCppValueHelper<client::JsonCppArray<string> >(storage);
+        }
 
-  /**
-   * Change the '<code>forward</code>' attribute.
-   *
-   * Email address that the message should be forwarded to.
-   *
-   * @param[in] value The new value.
-   */
-  void set_forward(const StringPiece& value) {
-    *MutableStorage("forward") = value.data();
-  }
+        /**
+         * Gets a reference to a mutable value of the '<code>addLabelIds</code>'
+         * property.
+         *
+         * List of labels to add to the message.
+         *
+         * @return The result can be modified to change the attribute value.
+         */
+        client::JsonCppArray<string> mutable_addLabelIds()
+        {
+            Json::Value *storage = MutableStorage("addLabelIds");
+            return client::JsonValueToMutableCppValueHelper<client::JsonCppArray<string> >(storage);
+        }
 
-  /**
-   * Determine if the '<code>removeLabelIds</code>' attribute was set.
-   *
-   * @return true if the '<code>removeLabelIds</code>' attribute was set.
-   */
-  bool has_remove_label_ids() const {
-    return Storage().isMember("removeLabelIds");
-  }
+        /**
+         * Determine if the '<code>forward</code>' attribute was set.
+         *
+         * @return true if the '<code>forward</code>' attribute was set.
+         */
+        bool has_forward() const
+        {
+            return Storage().isMember("forward");
+        }
 
-  /**
-   * Clears the '<code>removeLabelIds</code>' attribute.
-   */
-  void clear_remove_label_ids() {
-    MutableStorage()->removeMember("removeLabelIds");
-  }
+        /**
+         * Clears the '<code>forward</code>' attribute.
+         */
+        void clear_forward()
+        {
+            MutableStorage()->removeMember("forward");
+        }
 
 
-  /**
-   * Get a reference to the value of the '<code>removeLabelIds</code>'
-   * attribute.
-   */
-  const client::JsonCppArray<string > get_remove_label_ids() const {
-     const Json::Value& storage = Storage("removeLabelIds");
-    return client::JsonValueToCppValueHelper<client::JsonCppArray<string > >(storage);
-  }
+        /**
+         * Get the value of the '<code>forward</code>' attribute.
+         */
+        const StringPiece get_forward() const
+        {
+            const Json::Value &v = Storage("forward");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
 
-  /**
-   * Gets a reference to a mutable value of the '<code>removeLabelIds</code>'
-   * property.
-   *
-   * List of labels to remove from the message.
-   *
-   * @return The result can be modified to change the attribute value.
-   */
-  client::JsonCppArray<string > mutable_removeLabelIds() {
-    Json::Value* storage = MutableStorage("removeLabelIds");
-    return client::JsonValueToMutableCppValueHelper<client::JsonCppArray<string > >(storage);
-  }
+        /**
+         * Change the '<code>forward</code>' attribute.
+         *
+         * Email address that the message should be forwarded to.
+         *
+         * @param[in] value The new value.
+         */
+        void set_forward(const StringPiece &value)
+        {
+            *MutableStorage("forward") = value.data();
+        }
 
- private:
-  void operator=(const FilterAction&);
-};  // FilterAction
+        /**
+         * Determine if the '<code>removeLabelIds</code>' attribute was set.
+         *
+         * @return true if the '<code>removeLabelIds</code>' attribute was set.
+         */
+        bool has_remove_label_ids() const
+        {
+            return Storage().isMember("removeLabelIds");
+        }
+
+        /**
+         * Clears the '<code>removeLabelIds</code>' attribute.
+         */
+        void clear_remove_label_ids()
+        {
+            MutableStorage()->removeMember("removeLabelIds");
+        }
+
+
+        /**
+         * Get a reference to the value of the '<code>removeLabelIds</code>'
+         * attribute.
+         */
+        const client::JsonCppArray<string> get_remove_label_ids() const
+        {
+            const Json::Value &storage = Storage("removeLabelIds");
+            return client::JsonValueToCppValueHelper<client::JsonCppArray<string> >(storage);
+        }
+
+        /**
+         * Gets a reference to a mutable value of the '<code>removeLabelIds</code>'
+         * property.
+         *
+         * List of labels to remove from the message.
+         *
+         * @return The result can be modified to change the attribute value.
+         */
+        client::JsonCppArray<string> mutable_removeLabelIds()
+        {
+            Json::Value *storage = MutableStorage("removeLabelIds");
+            return client::JsonValueToMutableCppValueHelper<client::JsonCppArray<string> >(storage);
+        }
+
+    private:
+        void operator=(const FilterAction &);
+    };  // FilterAction
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_FILTER_ACTION_H_

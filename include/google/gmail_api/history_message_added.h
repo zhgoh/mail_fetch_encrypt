@@ -36,85 +36,91 @@
 
 #include "google/gmail_api/message.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * No description provided.
  *
  * @ingroup DataObject
  */
-class HistoryMessageAdded : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static HistoryMessageAdded* New();
+    class HistoryMessageAdded : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static HistoryMessageAdded *New();
 
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit HistoryMessageAdded(const Json::Value& storage);
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit HistoryMessageAdded(const Json::Value &storage);
 
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit HistoryMessageAdded(Json::Value* storage);
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit HistoryMessageAdded(Json::Value *storage);
 
-  /**
-   * Standard destructor.
-   */
-  virtual ~HistoryMessageAdded();
+        /**
+         * Standard destructor.
+         */
+        virtual ~HistoryMessageAdded();
 
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::HistoryMessageAdded</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::HistoryMessageAdded");
-  }
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::HistoryMessageAdded</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::HistoryMessageAdded");
+        }
 
-  /**
-   * Determine if the '<code>message</code>' attribute was set.
-   *
-   * @return true if the '<code>message</code>' attribute was set.
-   */
-  bool has_message() const {
-    return Storage().isMember("message");
-  }
+        /**
+         * Determine if the '<code>message</code>' attribute was set.
+         *
+         * @return true if the '<code>message</code>' attribute was set.
+         */
+        bool has_message() const
+        {
+            return Storage().isMember("message");
+        }
 
-  /**
-   * Clears the '<code>message</code>' attribute.
-   */
-  void clear_message() {
-    MutableStorage()->removeMember("message");
-  }
+        /**
+         * Clears the '<code>message</code>' attribute.
+         */
+        void clear_message()
+        {
+            MutableStorage()->removeMember("message");
+        }
 
 
-  /**
-   * Get a reference to the value of the '<code>message</code>' attribute.
-   */
-  const Message get_message() const;
+        /**
+         * Get a reference to the value of the '<code>message</code>' attribute.
+         */
+        const Message get_message() const;
 
-  /**
-   * Gets a reference to a mutable value of the '<code>message</code>' property.
-   * @return The result can be modified to change the attribute value.
-   */
-  Message mutable_message();
+        /**
+         * Gets a reference to a mutable value of the '<code>message</code>' property.
+         * @return The result can be modified to change the attribute value.
+         */
+        Message mutable_message();
 
- private:
-  void operator=(const HistoryMessageAdded&);
-};  // HistoryMessageAdded
+    private:
+        void operator=(const HistoryMessageAdded &);
+    };  // HistoryMessageAdded
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_HISTORY_MESSAGE_ADDED_H_

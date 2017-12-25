@@ -40,32 +40,37 @@
 #include <string>
 #include "googleapis/strings/strcat.h"
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 
 // Object factory method (static).
-ListMessagesResponse* ListMessagesResponse::New() {
-  return new client::JsonCppCapsule<ListMessagesResponse>;
-}
+    ListMessagesResponse *ListMessagesResponse::New()
+    {
+        return new client::JsonCppCapsule<ListMessagesResponse>;
+    }
 
 // Standard immutable constructor.
-ListMessagesResponse::ListMessagesResponse(const Json::Value& storage)
-  : client::JsonCppData(storage) {
-}
+    ListMessagesResponse::ListMessagesResponse(const Json::Value &storage)
+            : client::JsonCppData(storage)
+    {
+    }
 
 // Standard mutable constructor.
-ListMessagesResponse::ListMessagesResponse(Json::Value* storage)
-  : client::JsonCppData(storage) {
-}
+    ListMessagesResponse::ListMessagesResponse(Json::Value *storage)
+            : client::JsonCppData(storage)
+    {
+    }
 
 // Standard destructor.
-ListMessagesResponse::~ListMessagesResponse() {
-}
-
-const client::JsonCppArray<Message> ListMessagesResponse::get_messages() const
-{
-  const Json::Value& storage = Storage("messages");
-  return client::JsonValueToCppValueHelper<client::JsonCppArray<Message>>(storage);
-}
+    ListMessagesResponse::~ListMessagesResponse()
+    {
+    }
+    
+    const client::JsonCppArray<Message> ListMessagesResponse::get_messages() const
+    {
+        const Json::Value &storage = Storage("messages");
+        return client::JsonValueToCppValueHelper<client::JsonCppArray<Message>>(storage);
+    }
 }  // namespace google_gmail_api

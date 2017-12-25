@@ -37,26 +37,31 @@
 #include <string>
 #include "googleapis/strings/strcat.h"
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 
 // Object factory method (static).
-ForwardingAddress* ForwardingAddress::New() {
-  return new client::JsonCppCapsule<ForwardingAddress>;
-}
+    ForwardingAddress *ForwardingAddress::New()
+    {
+        return new client::JsonCppCapsule<ForwardingAddress>;
+    }
 
 // Standard immutable constructor.
-ForwardingAddress::ForwardingAddress(const Json::Value& storage)
-  : client::JsonCppData(storage) {
-}
+    ForwardingAddress::ForwardingAddress(const Json::Value &storage)
+            : client::JsonCppData(storage)
+    {
+    }
 
 // Standard mutable constructor.
-ForwardingAddress::ForwardingAddress(Json::Value* storage)
-  : client::JsonCppData(storage) {
-}
+    ForwardingAddress::ForwardingAddress(Json::Value *storage)
+            : client::JsonCppData(storage)
+    {
+    }
 
 // Standard destructor.
-ForwardingAddress::~ForwardingAddress() {
-}
+    ForwardingAddress::~ForwardingAddress()
+    {
+    }
 }  // namespace google_gmail_api

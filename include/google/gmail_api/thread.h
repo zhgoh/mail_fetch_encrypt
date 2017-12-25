@@ -38,200 +38,218 @@
 
 #include "google/gmail_api/message.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * A collection of messages representing a conversation.
  *
  * @ingroup DataObject
  */
-class Thread : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static Thread* New();
-
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit Thread(const Json::Value& storage);
-
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit Thread(Json::Value* storage);
-
-  /**
-   * Standard destructor.
-   */
-  virtual ~Thread();
-
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::Thread</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::Thread");
-  }
-
-  /**
-   * Determine if the '<code>historyId</code>' attribute was set.
-   *
-   * @return true if the '<code>historyId</code>' attribute was set.
-   */
-  bool has_history_id() const {
-    return Storage().isMember("historyId");
-  }
-
-  /**
-   * Clears the '<code>historyId</code>' attribute.
-   */
-  void clear_history_id() {
-    MutableStorage()->removeMember("historyId");
-  }
-
-
-  /**
-   * Get the value of the '<code>historyId</code>' attribute.
-   */
-  uint64 get_history_id() const {
-    const Json::Value& storage = Storage("historyId");
-    return client::JsonValueToCppValueHelper<uint64 >(storage);
-  }
-
-  /**
-   * Change the '<code>historyId</code>' attribute.
-   *
-   * The ID of the last history record that modified this thread.
-   *
-   * @param[in] value The new value.
-   */
-  void set_history_id(uint64 value) {
-    client::SetJsonValueFromCppValueHelper<uint64 >(
-      value, MutableStorage("historyId"));
-  }
-
-  /**
-   * Determine if the '<code>id</code>' attribute was set.
-   *
-   * @return true if the '<code>id</code>' attribute was set.
-   */
-  bool has_id() const {
-    return Storage().isMember("id");
-  }
-
-  /**
-   * Clears the '<code>id</code>' attribute.
-   */
-  void clear_id() {
-    MutableStorage()->removeMember("id");
-  }
-
-
-  /**
-   * Get the value of the '<code>id</code>' attribute.
-   */
-  const StringPiece get_id() const {
-    const Json::Value& v = Storage("id");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
-
-  /**
-   * Change the '<code>id</code>' attribute.
-   *
-   * The unique ID of the thread.
-   *
-   * @param[in] value The new value.
-   */
-  void set_id(const StringPiece& value) {
-    *MutableStorage("id") = value.data();
-  }
-
-  /**
-   * Determine if the '<code>messages</code>' attribute was set.
-   *
-   * @return true if the '<code>messages</code>' attribute was set.
-   */
-  bool has_messages() const {
-    return Storage().isMember("messages");
-  }
-
-  /**
-   * Clears the '<code>messages</code>' attribute.
-   */
-  void clear_messages() {
-    MutableStorage()->removeMember("messages");
-  }
-
-
-  /**
-   * Get a reference to the value of the '<code>messages</code>' attribute.
-   */
-  const client::JsonCppArray<Message > get_messages() const;
-
-  /**
-   * Gets a reference to a mutable value of the '<code>messages</code>'
-   * property.
-   *
-   * The list of messages in the thread.
-   *
-   * @return The result can be modified to change the attribute value.
-   */
-  client::JsonCppArray<Message > mutable_messages();
-
-  /**
-   * Determine if the '<code>snippet</code>' attribute was set.
-   *
-   * @return true if the '<code>snippet</code>' attribute was set.
-   */
-  bool has_snippet() const {
-    return Storage().isMember("snippet");
-  }
-
-  /**
-   * Clears the '<code>snippet</code>' attribute.
-   */
-  void clear_snippet() {
-    MutableStorage()->removeMember("snippet");
-  }
-
-
-  /**
-   * Get the value of the '<code>snippet</code>' attribute.
-   */
-  const StringPiece get_snippet() const {
-    const Json::Value& v = Storage("snippet");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
-
-  /**
-   * Change the '<code>snippet</code>' attribute.
-   *
-   * A short part of the message text.
-   *
-   * @param[in] value The new value.
-   */
-  void set_snippet(const StringPiece& value) {
-    *MutableStorage("snippet") = value.data();
-  }
-
- private:
-  void operator=(const Thread&);
-};  // Thread
+    class Thread : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static Thread *New();
+        
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit Thread(const Json::Value &storage);
+        
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit Thread(Json::Value *storage);
+        
+        /**
+         * Standard destructor.
+         */
+        virtual ~Thread();
+        
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::Thread</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::Thread");
+        }
+        
+        /**
+         * Determine if the '<code>historyId</code>' attribute was set.
+         *
+         * @return true if the '<code>historyId</code>' attribute was set.
+         */
+        bool has_history_id() const
+        {
+            return Storage().isMember("historyId");
+        }
+        
+        /**
+         * Clears the '<code>historyId</code>' attribute.
+         */
+        void clear_history_id()
+        {
+            MutableStorage()->removeMember("historyId");
+        }
+        
+        
+        /**
+         * Get the value of the '<code>historyId</code>' attribute.
+         */
+        uint64 get_history_id() const
+        {
+            const Json::Value &storage = Storage("historyId");
+            return client::JsonValueToCppValueHelper<uint64>(storage);
+        }
+        
+        /**
+         * Change the '<code>historyId</code>' attribute.
+         *
+         * The ID of the last history record that modified this thread.
+         *
+         * @param[in] value The new value.
+         */
+        void set_history_id(uint64 value)
+        {
+            client::SetJsonValueFromCppValueHelper<uint64>(
+                    value, MutableStorage("historyId"));
+        }
+        
+        /**
+         * Determine if the '<code>id</code>' attribute was set.
+         *
+         * @return true if the '<code>id</code>' attribute was set.
+         */
+        bool has_id() const
+        {
+            return Storage().isMember("id");
+        }
+        
+        /**
+         * Clears the '<code>id</code>' attribute.
+         */
+        void clear_id()
+        {
+            MutableStorage()->removeMember("id");
+        }
+        
+        
+        /**
+         * Get the value of the '<code>id</code>' attribute.
+         */
+        const StringPiece get_id() const
+        {
+            const Json::Value &v = Storage("id");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
+        
+        /**
+         * Change the '<code>id</code>' attribute.
+         *
+         * The unique ID of the thread.
+         *
+         * @param[in] value The new value.
+         */
+        void set_id(const StringPiece &value)
+        {
+            *MutableStorage("id") = value.data();
+        }
+        
+        /**
+         * Determine if the '<code>messages</code>' attribute was set.
+         *
+         * @return true if the '<code>messages</code>' attribute was set.
+         */
+        bool has_messages() const
+        {
+            return Storage().isMember("messages");
+        }
+        
+        /**
+         * Clears the '<code>messages</code>' attribute.
+         */
+        void clear_messages()
+        {
+            MutableStorage()->removeMember("messages");
+        }
+        
+        
+        /**
+         * Get a reference to the value of the '<code>messages</code>' attribute.
+         */
+        const client::JsonCppArray<Message> get_messages() const;
+        
+        /**
+         * Gets a reference to a mutable value of the '<code>messages</code>'
+         * property.
+         *
+         * The list of messages in the thread.
+         *
+         * @return The result can be modified to change the attribute value.
+         */
+        client::JsonCppArray<Message> mutable_messages();
+        
+        /**
+         * Determine if the '<code>snippet</code>' attribute was set.
+         *
+         * @return true if the '<code>snippet</code>' attribute was set.
+         */
+        bool has_snippet() const
+        {
+            return Storage().isMember("snippet");
+        }
+        
+        /**
+         * Clears the '<code>snippet</code>' attribute.
+         */
+        void clear_snippet()
+        {
+            MutableStorage()->removeMember("snippet");
+        }
+        
+        
+        /**
+         * Get the value of the '<code>snippet</code>' attribute.
+         */
+        const StringPiece get_snippet() const
+        {
+            const Json::Value &v = Storage("snippet");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
+        
+        /**
+         * Change the '<code>snippet</code>' attribute.
+         *
+         * A short part of the message text.
+         *
+         * @param[in] value The new value.
+         */
+        void set_snippet(const StringPiece &value)
+        {
+            *MutableStorage("snippet") = value.data();
+        }
+    
+    private:
+        void operator=(const Thread &);
+    };  // Thread
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_THREAD_H_
