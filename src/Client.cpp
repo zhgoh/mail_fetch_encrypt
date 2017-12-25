@@ -47,6 +47,8 @@ using google_gmail_api::GmailService;
 using google_gmail_api::Message;
 using google_gmail_api::UsersResource_MessagesResource_ListMethod;
 using google_gmail_api::ListMessagesResponse;
+using google_gmail_api::UsersResource_MessagesResource_GetMethod;
+using google_gmail_api::ListMessagesResponse;
 
 static std::unique_ptr<HttpTransportLayerConfig> config;
 static std::unique_ptr<OAuth2AuthorizationFlow> flow;
@@ -178,7 +180,7 @@ void GetMail(const Date &from, const Date &to)
     std::unique_ptr<UsersResource_MessagesResource_ListMethod> listMethod((messages.NewListMethod(credential.get(), "me")));
     std::unique_ptr<ListMessagesResponse> messageList(ListMessagesResponse::New());
     
-    std::string query = std::string("in:sent after:") + from.ToYYYYMMDD() + std::string(" before:") + to.ToYYYYMMDD();
+    std::string query = std::string("in:inbox after:") + from.ToYYYYMMDD() + std::string(" before:") + to.ToYYYYMMDD();
     std::cout << "Query: " << query << std::endl;
     listMethod->set_q(query.c_str());
     
@@ -188,7 +190,26 @@ void GetMail(const Date &from, const Date &to)
         return;
     }
     
-    DisplayMessages<ListMessagesResponse>("", "Message", *messageList);
+    //DisplayMessages<ListMessagesResponse>("", "Messages", *messageList);
+    std::cout << std::endl;
+    
+    for (const auto &elem : messageList->get_messages())
+    {
+        auto msgID = elem.get_id();
+        std::cout << msgID << std::endl;
+        std::unique_ptr<UsersResource_MessagesResource_GetMethod> getMethod((messages.NewGetMethod(credential.get(), "me", msgID)));
+        std::unique_ptr<Message> msg(Message::New());
+        getMethod->set_format("full");
+    
+        if (!getMethod->ExecuteAndParseResponse(msg.get()).ok())
+        {
+            DisplayError(getMethod.get());
+            return;
+        }
+        
+        Display(*msg);
+    }
+    
     std::cout << std::endl;
 }
 

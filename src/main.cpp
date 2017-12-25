@@ -28,8 +28,8 @@ int main(int argc, char *argv[])
     std::cout << "2: Clear saved email profile. \n";
     std::cout << "Choice: ";
     
-    int options;
-    std::cin >> options;
+    int options = 1;
+    //std::cin >> options;
     switch(options)
     {
         case 1:
@@ -38,11 +38,11 @@ int main(int argc, char *argv[])
             if (Init(argv[1], profile))
             {
                 std::cout << "Type a start date, YYYY-MM-DD with dash: ";
-                std::string from = "2017-08-21";
+                std::string from = "2017-12-24";
                 //std::cin >> from;
         
                 std::cout << "Type an end date, YYYY-MM-DD with dash: ";
-                std::string to = "2017-10-24";
+                std::string to = "2017-12-25";
                 //std::cin >> to;
                 GetMail(googleapis::client::Date(from), googleapis::client::Date(to));
             }

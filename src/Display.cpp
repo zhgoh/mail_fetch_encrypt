@@ -11,6 +11,7 @@ using googleapis::client::HttpResponse;
 
 using google_gmail_api::Message;
 using google_gmail_api::MessagePart;
+using google_gmail_api::MessagePartHeader;
 using google_gmail_api::MessagePartBody;
 
 void DisplayError(ClientServiceRequest *request)
@@ -28,30 +29,63 @@ void DisplayError(ClientServiceRequest *request)
     std::cout << std::endl;
 }
 
-void Display(const std::string &prefix, const Message &entry)
+void Display(const Message &entry)
 {
-    std::cout << prefix << "Message Entry" << std::endl;
-    std::cout << prefix << "  Thread ID: " << entry.get_thread_id() << std::endl;
+    std::cout << "Message Entry" << std::endl;
+    std::cout << "  Thread ID: " << entry.get_thread_id() << std::endl;
     
     if (entry.has_payload())
     {
-        Display(prefix, entry.get_payload());
+        // Display Message Part
+        Display(entry.get_payload());
     }
 }
 
-void Display(const std::string &prefix, const MessagePart &entry)
+void Display( const MessagePart &entry)
 {
-    std::cout << prefix << "Message Part" << std::endl;
-    std::cout << prefix << "  ID: " << entry.get_part_id() << std::endl;
+    std::cout << "Message Parts" << std::endl;
+    if (entry.has_headers())
+    {
+        for (const auto &elem : entry.get_headers())
+        {
+            // Display Headers
+            Display(elem);
+        }
+    }
+    
+    if (entry.has_parts())
+    {
+        for (const auto &elem : entry.get_parts())
+        {
+            // Display Message Part
+            Display(elem);
+        }
+    }
     
     if (entry.has_body())
     {
-        Display(prefix, entry.get_body());
+        Display(entry.get_body());
     }
 }
 
-void Display(const std::string &prefix, const MessagePartBody &entry)
+void Display(const MessagePartHeader &entry)
 {
-    std::cout << prefix << "Message Part Body" << std::endl;
-    std::cout << prefix << "  Data: " << entry.get_data() << std::endl;
+    if (entry.has_name())
+    {
+        std::cout << "name: " << entry.get_name() << std::endl;
+    }
+    
+    if (entry.has_value())
+    {
+        std::cout << "value: " << entry.get_value() << std::endl;
+    }
+}
+
+void Display(const MessagePartBody &entry)
+{
+    std::cout << "Message Part Body" << std::endl;
+    if (entry.has_data())
+    {
+        std::cout << "  Data: " << entry.get_data() << std::endl;
+    }
 }
