@@ -25,7 +25,9 @@ int main(int argc, char *argv[])
     std::cout << "Welcome to the Mail Retrieve App.\n";
     std::cout << "Choose one of the options \n";
     std::cout << "1: Retrieve a mail with specified date. \n";
-    std::cout << "2: Clear saved email profile. \n";
+    //TODO: Delete credentials
+    std::cout << "2: Clear saved email profile and all saved credentials. \n";
+    std::cout << "3: Decrypt messages \n";
     std::cout << "Choice: ";
     
     int options = 1;
@@ -51,6 +53,11 @@ int main(int argc, char *argv[])
         case 2:
         {
             DeleteProfile();
+        } break;
+    
+        case 3:
+        {
+            //Decrypt();
         } break;
     }
     return 0;
