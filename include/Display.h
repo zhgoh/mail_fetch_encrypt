@@ -28,45 +28,13 @@ namespace google_gmail_api
     class MessagePartBody;
 }
 
+std::ostream &Indent(int tabs);
+
 void DisplayError(googleapis::client::ClientServiceRequest *request);
 void Display(const google_gmail_api::Message &entry);
-void Display(const google_gmail_api::MessagePart &entry);
-void Display(const google_gmail_api::MessagePartBody &entry);
-void Display(const google_gmail_api::MessagePartHeader &entry);
-
-//void Display(const string &prefix, const google_calendar_api::Calendar &entry)
-//{
-//    std::cout << prefix << "Calendar" << std::endl;
-//    std::cout << prefix << "  ID: " << entry.get_id() << std::endl;
-//    std::cout << prefix << "  Summary: " << entry.get_summary() << std::endl;
-//    if (!entry.get_description().empty())
-//    {
-//        std::cout << prefix << "  Description: " << entry.get_description()
-//                  << std::endl;
-//    }
-//}
-//
-//void Display(const string &prefix, const google_calendar_api::Event &event)
-//{
-//    std::cout << prefix << "Event" << std::endl;
-//    std::cout << prefix << "  ID: " << event.get_id() << std::endl;
-//    if (event.has_summary())
-//    {
-//        std::cout << prefix << "  Summary: " << event.get_summary() << std::endl;
-//    }
-//    if (event.get_start().has_date_time())
-//    {
-//        std::cout << prefix << "  Start Time: "
-//                  << event.get_start().get_date_time().ToString() << std::endl;
-//    }
-//
-//    if (event.get_end().has_date_time())
-//    {
-//        std::cout << prefix
-//                  << "  End Time: " << event.get_end().get_date_time().ToString()
-//                  << std::endl;
-//    }
-//}
+void Display(const google_gmail_api::MessagePart &entry, int tabs = 0);
+void Display(const google_gmail_api::MessagePartBody &entry, int tabs = 0);
+void Display(const google_gmail_api::MessagePartHeader &entry, int tabs = 0);
 
 template<typename T>
 void DisplayMessages(const std::string &prefix, const std::string &title, const T &list)
@@ -94,6 +62,12 @@ void DisplayMessages(const std::string &prefix, const std::string &title, const 
     {
         std::cout << sub_prefix << "<no items>" << std::endl;
     }
+}
+
+template <typename T>
+void WriteLine( const char *key, const T &val, int tabs)
+{
+    Indent(tabs) << "\"" << key << "\":\"" << val << "\", \n";
 }
 
 #endif //MAILRETRIEVE_DISPLAY_H
