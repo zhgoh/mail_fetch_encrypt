@@ -7,7 +7,7 @@ Parameters are: mailbox name, mailbox password, start of the retrieval period, e
 You need to use official API provided by Google, no IMAP/POP3. 
 */
 #include "Client.h"
-#include "Crypto.h"
+#include "MyCrypt.h"
 
 #include <glog/logging.h>
 #include <iostream>
@@ -16,9 +16,6 @@ You need to use official API provided by Google, no IMAP/POP3.
 
 int main(int argc, char *argv[])
 {
-    Encrypt("");
-    
-    return 0;
     // Init google logging otherwise it will complain
     google::InitGoogleLogging(argv[0]);
     
@@ -43,7 +40,7 @@ int main(int argc, char *argv[])
         case 1:
         {
             std::string profile = LoadProfile();
-            if (Init(argv[1], profile))
+            if (InitClient(argv[1], profile))
             {
                 std::cout << "Type a start date, YYYY-MM-DD with dash: ";
                 std::string from = "2017-12-24";

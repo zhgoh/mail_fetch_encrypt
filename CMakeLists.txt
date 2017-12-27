@@ -49,7 +49,7 @@ file(GLOB_RECURSE google_api_src "src/googleapis/*.cc")
 file(GLOB_RECURSE google_service_src "src/google/gmail_api/*.cc")
 
 # Compile my cpp files
-set(SOURCES src/main.cpp src/Client.cpp src/Display.cpp src/Crypto.cpp)
+set(SOURCES src/main.cpp src/Client.cpp src/Display.cpp src/MyCrypt.cpp)
 #set(SOURCES src/samples/calendar/Calendar_main.cpp src/samples/calendar/CalendarSample.cpp)
 
 add_executable(Acronis_Mail ${google_api_src} ${google_service_src} ${SOURCES})

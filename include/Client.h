@@ -18,7 +18,7 @@ namespace googleapis
 std::string LoadProfile();
 void DeleteProfile();
 
-bool Init(const std::string &client_secrets_path, const std::string &profile);
+bool InitClient(const std::string &client_secrets_path, const std::string &profile);
 void GetMail(const googleapis::client::Date &from, const googleapis::client::Date &to);
 
 #endif //MAILRETRIEVE_CLIENT_H
