@@ -37,125 +37,135 @@
 
 #include "google/gmail_api/message.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * A draft email in the user's mailbox.
  *
  * @ingroup DataObject
  */
-class Draft : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static Draft* New();
+    class Draft : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static Draft *New();
 
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit Draft(const Json::Value& storage);
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit Draft(const Json::Value &storage);
 
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit Draft(Json::Value* storage);
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit Draft(Json::Value *storage);
 
-  /**
-   * Standard destructor.
-   */
-  virtual ~Draft();
+        /**
+         * Standard destructor.
+         */
+        virtual ~Draft();
 
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::Draft</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::Draft");
-  }
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::Draft</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::Draft");
+        }
 
-  /**
-   * Determine if the '<code>id</code>' attribute was set.
-   *
-   * @return true if the '<code>id</code>' attribute was set.
-   */
-  bool has_id() const {
-    return Storage().isMember("id");
-  }
+        /**
+         * Determine if the '<code>id</code>' attribute was set.
+         *
+         * @return true if the '<code>id</code>' attribute was set.
+         */
+        bool has_id() const
+        {
+            return Storage().isMember("id");
+        }
 
-  /**
-   * Clears the '<code>id</code>' attribute.
-   */
-  void clear_id() {
-    MutableStorage()->removeMember("id");
-  }
-
-
-  /**
-   * Get the value of the '<code>id</code>' attribute.
-   */
-  const StringPiece get_id() const {
-    const Json::Value& v = Storage("id");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
-
-  /**
-   * Change the '<code>id</code>' attribute.
-   *
-   * The immutable ID of the draft.
-   *
-   * @param[in] value The new value.
-   */
-  void set_id(const StringPiece& value) {
-    *MutableStorage("id") = value.data();
-  }
-
-  /**
-   * Determine if the '<code>message</code>' attribute was set.
-   *
-   * @return true if the '<code>message</code>' attribute was set.
-   */
-  bool has_message() const {
-    return Storage().isMember("message");
-  }
-
-  /**
-   * Clears the '<code>message</code>' attribute.
-   */
-  void clear_message() {
-    MutableStorage()->removeMember("message");
-  }
+        /**
+         * Clears the '<code>id</code>' attribute.
+         */
+        void clear_id()
+        {
+            MutableStorage()->removeMember("id");
+        }
 
 
-  /**
-   * Get a reference to the value of the '<code>message</code>' attribute.
-   */
-  const Message get_message() const;
+        /**
+         * Get the value of the '<code>id</code>' attribute.
+         */
+        const StringPiece get_id() const
+        {
+            const Json::Value &v = Storage("id");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
 
-  /**
-   * Gets a reference to a mutable value of the '<code>message</code>' property.
-   *
-   * The message content of the draft.
-   *
-   * @return The result can be modified to change the attribute value.
-   */
-  Message mutable_message();
+        /**
+         * Change the '<code>id</code>' attribute.
+         *
+         * The immutable ID of the draft.
+         *
+         * @param[in] value The new value.
+         */
+        void set_id(const StringPiece &value)
+        {
+            *MutableStorage("id") = value.data();
+        }
 
- private:
-  void operator=(const Draft&);
-};  // Draft
+        /**
+         * Determine if the '<code>message</code>' attribute was set.
+         *
+         * @return true if the '<code>message</code>' attribute was set.
+         */
+        bool has_message() const
+        {
+            return Storage().isMember("message");
+        }
+
+        /**
+         * Clears the '<code>message</code>' attribute.
+         */
+        void clear_message()
+        {
+            MutableStorage()->removeMember("message");
+        }
+
+
+        /**
+         * Get a reference to the value of the '<code>message</code>' attribute.
+         */
+        const Message get_message() const;
+
+        /**
+         * Gets a reference to a mutable value of the '<code>message</code>' property.
+         *
+         * The message content of the draft.
+         *
+         * @return The result can be modified to change the attribute value.
+         */
+        Message mutable_message();
+
+    private:
+        void operator=(const Draft &);
+    };  // Draft
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_DRAFT_H_

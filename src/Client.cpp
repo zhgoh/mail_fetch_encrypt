@@ -15,13 +15,18 @@
 #include "googleapis/strings/stringpiece.h"
 #include "googleapis/client/auth/file_credential_store.h"
 #include "googleapis/client/auth/oauth2_authorization.h"
+#include "googleapis/client/data/base64_codec.h"
 #include "google/gmail_api/gmail_service.h"
 #include "googleapis/strings/strcat.h"
 
 #include "Display.h"
+#include "MyCrypt.h"
+
+static const char folder[] = "./Messages/";
 
 using googleapis::StrCat;
 using googleapis::NewPermanentCallback;
+
 using googleapis::util::Status;
 using googleapis::client::HttpResponse;
 using googleapis::client::HttpTransport;
@@ -43,9 +48,15 @@ using googleapis::client::OAuth2AuthorizationFlow;
 using googleapis::client::OAuth2RequestOptions;
 using googleapis::client::Date;
 
+using googleapis::client::Codec;
+using googleapis::client::Base64CodecFactory;
+using googleapis::client::Base64Codec;
+
 using google_gmail_api::GmailService;
 using google_gmail_api::Message;
 using google_gmail_api::UsersResource_MessagesResource_ListMethod;
+using google_gmail_api::ListMessagesResponse;
+using google_gmail_api::UsersResource_MessagesResource_GetMethod;
 using google_gmail_api::ListMessagesResponse;
 
 static std::unique_ptr<HttpTransportLayerConfig> config;
@@ -61,7 +72,7 @@ static Status PromptShellForAuthorizationCode(
 static Status ValidateUserName(const std::string &name);
 static bool Authorize(const std::string &profile);
 
-bool Init(const std::string &client_secrets_path, const std::string &profile)
+bool InitClient(const std::string &client_secrets_path, const std::string &profile)
 {
     // Set up the credential
     credential = std::make_unique<OAuth2Credential>();
@@ -178,7 +189,7 @@ void GetMail(const Date &from, const Date &to)
     std::unique_ptr<UsersResource_MessagesResource_ListMethod> listMethod((messages.NewListMethod(credential.get(), "me")));
     std::unique_ptr<ListMessagesResponse> messageList(ListMessagesResponse::New());
     
-    std::string query = std::string("in:sent after:") + from.ToYYYYMMDD() + std::string(" before:") + to.ToYYYYMMDD();
+    std::string query = std::string("in:inbox after:") + from.ToYYYYMMDD() + std::string(" before:") + to.ToYYYYMMDD();
     std::cout << "Query: " << query << std::endl;
     listMethod->set_q(query.c_str());
     
@@ -188,7 +199,37 @@ void GetMail(const Date &from, const Date &to)
         return;
     }
     
-    DisplayMessages<ListMessagesResponse>("", "Message", *messageList);
+    //DisplayMessages<ListMessagesResponse>("", "Messages", *messageList);
+    std::cout << std::endl;
+    
+    for (const auto &elem : messageList->get_messages())
+    {
+        auto msgID = elem.get_id();
+        //std::cout << msgID << std::endl;
+        std::unique_ptr<UsersResource_MessagesResource_GetMethod> getMethod((messages.NewGetMethod(credential.get(), "me", msgID)));
+        std::unique_ptr<Message> msg(Message::New());
+        getMethod->set_format("full");
+    
+        if (!getMethod->ExecuteAndParseResponse(msg.get()).ok())
+        {
+            DisplayError(getMethod.get());
+            return;
+        }
+        
+        // Write the JSON to a string stream
+        std::stringstream ss;
+        msg->StoreToJsonStream(&ss);
+        
+        // Store all messages inside folder
+        std::string file = std::string(folder) + msgID.data();
+        EncryptFile(ss.str().c_str(), file.c_str());
+        
+        std::string message_decrypted;
+        DecryptFile(file.c_str(), message_decrypted);
+        
+        //Display(*msg);
+    }
+    
     std::cout << std::endl;
 }
 

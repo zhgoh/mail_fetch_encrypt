@@ -36,89 +36,95 @@
 
 #include "google/gmail_api/smime_info.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * No description provided.
  *
  * @ingroup DataObject
  */
-class ListSmimeInfoResponse : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static ListSmimeInfoResponse* New();
-
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit ListSmimeInfoResponse(const Json::Value& storage);
-
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit ListSmimeInfoResponse(Json::Value* storage);
-
-  /**
-   * Standard destructor.
-   */
-  virtual ~ListSmimeInfoResponse();
-
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::ListSmimeInfoResponse</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::ListSmimeInfoResponse");
-  }
-
-  /**
-   * Determine if the '<code>smimeInfo</code>' attribute was set.
-   *
-   * @return true if the '<code>smimeInfo</code>' attribute was set.
-   */
-  bool has_smime_info() const {
-    return Storage().isMember("smimeInfo");
-  }
-
-  /**
-   * Clears the '<code>smimeInfo</code>' attribute.
-   */
-  void clear_smime_info() {
-    MutableStorage()->removeMember("smimeInfo");
-  }
-
-
-  /**
-   * Get a reference to the value of the '<code>smimeInfo</code>' attribute.
-   */
-  const client::JsonCppArray<SmimeInfo > get_smime_info() const;
-
-  /**
-   * Gets a reference to a mutable value of the '<code>smimeInfo</code>'
-   * property.
-   *
-   * List of SmimeInfo.
-   *
-   * @return The result can be modified to change the attribute value.
-   */
-  client::JsonCppArray<SmimeInfo > mutable_smimeInfo();
-
- private:
-  void operator=(const ListSmimeInfoResponse&);
-};  // ListSmimeInfoResponse
+    class ListSmimeInfoResponse : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static ListSmimeInfoResponse *New();
+        
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit ListSmimeInfoResponse(const Json::Value &storage);
+        
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit ListSmimeInfoResponse(Json::Value *storage);
+        
+        /**
+         * Standard destructor.
+         */
+        virtual ~ListSmimeInfoResponse();
+        
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::ListSmimeInfoResponse</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::ListSmimeInfoResponse");
+        }
+        
+        /**
+         * Determine if the '<code>smimeInfo</code>' attribute was set.
+         *
+         * @return true if the '<code>smimeInfo</code>' attribute was set.
+         */
+        bool has_smime_info() const
+        {
+            return Storage().isMember("smimeInfo");
+        }
+        
+        /**
+         * Clears the '<code>smimeInfo</code>' attribute.
+         */
+        void clear_smime_info()
+        {
+            MutableStorage()->removeMember("smimeInfo");
+        }
+        
+        
+        /**
+         * Get a reference to the value of the '<code>smimeInfo</code>' attribute.
+         */
+        const client::JsonCppArray<SmimeInfo> get_smime_info() const;
+        
+        /**
+         * Gets a reference to a mutable value of the '<code>smimeInfo</code>'
+         * property.
+         *
+         * List of SmimeInfo.
+         *
+         * @return The result can be modified to change the attribute value.
+         */
+        client::JsonCppArray<SmimeInfo> mutable_smimeInfo();
+    
+    private:
+        void operator=(const ListSmimeInfoResponse &);
+    };  // ListSmimeInfoResponse
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_LIST_SMIME_INFO_RESPONSE_H_

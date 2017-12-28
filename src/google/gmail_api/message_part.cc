@@ -41,32 +41,50 @@
 #include <string>
 #include "googleapis/strings/strcat.h"
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 
 // Object factory method (static).
-MessagePart* MessagePart::New() {
-  return new client::JsonCppCapsule<MessagePart>;
-}
+    MessagePart *MessagePart::New()
+    {
+        return new client::JsonCppCapsule<MessagePart>;
+    }
 
 // Standard immutable constructor.
-MessagePart::MessagePart(const Json::Value& storage)
-  : client::JsonCppData(storage) {
-}
+    MessagePart::MessagePart(const Json::Value &storage)
+            : client::JsonCppData(storage)
+    {
+    }
 
 // Standard mutable constructor.
-MessagePart::MessagePart(Json::Value* storage)
-  : client::JsonCppData(storage) {
-}
+    MessagePart::MessagePart(Json::Value *storage)
+            : client::JsonCppData(storage)
+    {
+    }
 
 // Standard destructor.
-MessagePart::~MessagePart() {
-}
-
-const MessagePartBody MessagePart::get_body() const
-{
-  const Json::Value& storage = Storage("body");
-  return client::JsonValueToCppValueHelper<MessagePartBody>(storage);
-}
+    MessagePart::~MessagePart()
+    {
+    }
+    
+    const MessagePartBody MessagePart::get_body() const
+    {
+        const Json::Value &storage = Storage("body");
+        return client::JsonValueToCppValueHelper<MessagePartBody>(storage);
+    }
+    
+    const client::JsonCppArray<MessagePart> MessagePart::get_parts() const
+    {
+        const Json::Value &storage = Storage("parts");
+        return client::JsonValueToCppValueHelper<client::JsonCppArray<MessagePart>>(storage);
+    }
+    
+    const client::JsonCppArray<MessagePartHeader> MessagePart::get_headers() const
+    {
+        const Json::Value &storage = Storage("headers");
+        return client::JsonValueToCppValueHelper<client::JsonCppArray<MessagePartHeader>>(storage);
+    }
+    
 }  // namespace google_gmail_api

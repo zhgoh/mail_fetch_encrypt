@@ -35,132 +35,144 @@
 #include "googleapis/client/data/jsoncpp_data.h"
 #include "googleapis/strings/stringpiece.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * Settings for a forwarding address.
  *
  * @ingroup DataObject
  */
-class ForwardingAddress : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static ForwardingAddress* New();
+    class ForwardingAddress : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static ForwardingAddress *New();
 
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit ForwardingAddress(const Json::Value& storage);
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit ForwardingAddress(const Json::Value &storage);
 
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit ForwardingAddress(Json::Value* storage);
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit ForwardingAddress(Json::Value *storage);
 
-  /**
-   * Standard destructor.
-   */
-  virtual ~ForwardingAddress();
+        /**
+         * Standard destructor.
+         */
+        virtual ~ForwardingAddress();
 
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::ForwardingAddress</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::ForwardingAddress");
-  }
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::ForwardingAddress</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::ForwardingAddress");
+        }
 
-  /**
-   * Determine if the '<code>forwardingEmail</code>' attribute was set.
-   *
-   * @return true if the '<code>forwardingEmail</code>' attribute was set.
-   */
-  bool has_forwarding_email() const {
-    return Storage().isMember("forwardingEmail");
-  }
+        /**
+         * Determine if the '<code>forwardingEmail</code>' attribute was set.
+         *
+         * @return true if the '<code>forwardingEmail</code>' attribute was set.
+         */
+        bool has_forwarding_email() const
+        {
+            return Storage().isMember("forwardingEmail");
+        }
 
-  /**
-   * Clears the '<code>forwardingEmail</code>' attribute.
-   */
-  void clear_forwarding_email() {
-    MutableStorage()->removeMember("forwardingEmail");
-  }
-
-
-  /**
-   * Get the value of the '<code>forwardingEmail</code>' attribute.
-   */
-  const StringPiece get_forwarding_email() const {
-    const Json::Value& v = Storage("forwardingEmail");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
-
-  /**
-   * Change the '<code>forwardingEmail</code>' attribute.
-   *
-   * An email address to which messages can be forwarded.
-   *
-   * @param[in] value The new value.
-   */
-  void set_forwarding_email(const StringPiece& value) {
-    *MutableStorage("forwardingEmail") = value.data();
-  }
-
-  /**
-   * Determine if the '<code>verificationStatus</code>' attribute was set.
-   *
-   * @return true if the '<code>verificationStatus</code>' attribute was set.
-   */
-  bool has_verification_status() const {
-    return Storage().isMember("verificationStatus");
-  }
-
-  /**
-   * Clears the '<code>verificationStatus</code>' attribute.
-   */
-  void clear_verification_status() {
-    MutableStorage()->removeMember("verificationStatus");
-  }
+        /**
+         * Clears the '<code>forwardingEmail</code>' attribute.
+         */
+        void clear_forwarding_email()
+        {
+            MutableStorage()->removeMember("forwardingEmail");
+        }
 
 
-  /**
-   * Get the value of the '<code>verificationStatus</code>' attribute.
-   */
-  const StringPiece get_verification_status() const {
-    const Json::Value& v = Storage("verificationStatus");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
+        /**
+         * Get the value of the '<code>forwardingEmail</code>' attribute.
+         */
+        const StringPiece get_forwarding_email() const
+        {
+            const Json::Value &v = Storage("forwardingEmail");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
 
-  /**
-   * Change the '<code>verificationStatus</code>' attribute.
-   *
-   * Indicates whether this address has been verified and is usable for
-   * forwarding. Read-only.
-   *
-   * @param[in] value The new value.
-   */
-  void set_verification_status(const StringPiece& value) {
-    *MutableStorage("verificationStatus") = value.data();
-  }
+        /**
+         * Change the '<code>forwardingEmail</code>' attribute.
+         *
+         * An email address to which messages can be forwarded.
+         *
+         * @param[in] value The new value.
+         */
+        void set_forwarding_email(const StringPiece &value)
+        {
+            *MutableStorage("forwardingEmail") = value.data();
+        }
 
- private:
-  void operator=(const ForwardingAddress&);
-};  // ForwardingAddress
+        /**
+         * Determine if the '<code>verificationStatus</code>' attribute was set.
+         *
+         * @return true if the '<code>verificationStatus</code>' attribute was set.
+         */
+        bool has_verification_status() const
+        {
+            return Storage().isMember("verificationStatus");
+        }
+
+        /**
+         * Clears the '<code>verificationStatus</code>' attribute.
+         */
+        void clear_verification_status()
+        {
+            MutableStorage()->removeMember("verificationStatus");
+        }
+
+
+        /**
+         * Get the value of the '<code>verificationStatus</code>' attribute.
+         */
+        const StringPiece get_verification_status() const
+        {
+            const Json::Value &v = Storage("verificationStatus");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
+
+        /**
+         * Change the '<code>verificationStatus</code>' attribute.
+         *
+         * Indicates whether this address has been verified and is usable for
+         * forwarding. Read-only.
+         *
+         * @param[in] value The new value.
+         */
+        void set_verification_status(const StringPiece &value)
+        {
+            *MutableStorage("verificationStatus") = value.data();
+        }
+
+    private:
+        void operator=(const ForwardingAddress &);
+    };  // ForwardingAddress
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_FORWARDING_ADDRESS_H_

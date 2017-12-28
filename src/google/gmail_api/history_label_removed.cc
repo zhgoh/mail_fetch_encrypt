@@ -39,26 +39,31 @@
 #include <string>
 #include "googleapis/strings/strcat.h"
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 
 // Object factory method (static).
-HistoryLabelRemoved* HistoryLabelRemoved::New() {
-  return new client::JsonCppCapsule<HistoryLabelRemoved>;
-}
+    HistoryLabelRemoved *HistoryLabelRemoved::New()
+    {
+        return new client::JsonCppCapsule<HistoryLabelRemoved>;
+    }
 
 // Standard immutable constructor.
-HistoryLabelRemoved::HistoryLabelRemoved(const Json::Value& storage)
-  : client::JsonCppData(storage) {
-}
+    HistoryLabelRemoved::HistoryLabelRemoved(const Json::Value &storage)
+            : client::JsonCppData(storage)
+    {
+    }
 
 // Standard mutable constructor.
-HistoryLabelRemoved::HistoryLabelRemoved(Json::Value* storage)
-  : client::JsonCppData(storage) {
-}
+    HistoryLabelRemoved::HistoryLabelRemoved(Json::Value *storage)
+            : client::JsonCppData(storage)
+    {
+    }
 
 // Standard destructor.
-HistoryLabelRemoved::~HistoryLabelRemoved() {
-}
+    HistoryLabelRemoved::~HistoryLabelRemoved()
+    {
+    }
 }  // namespace google_gmail_api

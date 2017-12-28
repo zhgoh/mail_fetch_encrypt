@@ -36,90 +36,96 @@
 
 #include "google/gmail_api/forwarding_address.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * Response for the ListForwardingAddresses method.
  *
  * @ingroup DataObject
  */
-class ListForwardingAddressesResponse : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static ListForwardingAddressesResponse* New();
+    class ListForwardingAddressesResponse : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static ListForwardingAddressesResponse *New();
 
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit ListForwardingAddressesResponse(const Json::Value& storage);
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit ListForwardingAddressesResponse(const Json::Value &storage);
 
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit ListForwardingAddressesResponse(Json::Value* storage);
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit ListForwardingAddressesResponse(Json::Value *storage);
 
-  /**
-   * Standard destructor.
-   */
-  virtual ~ListForwardingAddressesResponse();
+        /**
+         * Standard destructor.
+         */
+        virtual ~ListForwardingAddressesResponse();
 
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::ListForwardingAddressesResponse</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::ListForwardingAddressesResponse");
-  }
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::ListForwardingAddressesResponse</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::ListForwardingAddressesResponse");
+        }
 
-  /**
-   * Determine if the '<code>forwardingAddresses</code>' attribute was set.
-   *
-   * @return true if the '<code>forwardingAddresses</code>' attribute was set.
-   */
-  bool has_forwarding_addresses() const {
-    return Storage().isMember("forwardingAddresses");
-  }
+        /**
+         * Determine if the '<code>forwardingAddresses</code>' attribute was set.
+         *
+         * @return true if the '<code>forwardingAddresses</code>' attribute was set.
+         */
+        bool has_forwarding_addresses() const
+        {
+            return Storage().isMember("forwardingAddresses");
+        }
 
-  /**
-   * Clears the '<code>forwardingAddresses</code>' attribute.
-   */
-  void clear_forwarding_addresses() {
-    MutableStorage()->removeMember("forwardingAddresses");
-  }
+        /**
+         * Clears the '<code>forwardingAddresses</code>' attribute.
+         */
+        void clear_forwarding_addresses()
+        {
+            MutableStorage()->removeMember("forwardingAddresses");
+        }
 
 
-  /**
-   * Get a reference to the value of the '<code>forwardingAddresses</code>'
-   * attribute.
-   */
-  const client::JsonCppArray<ForwardingAddress > get_forwarding_addresses() const;
+        /**
+         * Get a reference to the value of the '<code>forwardingAddresses</code>'
+         * attribute.
+         */
+        const client::JsonCppArray<ForwardingAddress> get_forwarding_addresses() const;
 
-  /**
-   * Gets a reference to a mutable value of the
-   * '<code>forwardingAddresses</code>' property.
-   *
-   * List of addresses that may be used for forwarding.
-   *
-   * @return The result can be modified to change the attribute value.
-   */
-  client::JsonCppArray<ForwardingAddress > mutable_forwardingAddresses();
+        /**
+         * Gets a reference to a mutable value of the
+         * '<code>forwardingAddresses</code>' property.
+         *
+         * List of addresses that may be used for forwarding.
+         *
+         * @return The result can be modified to change the attribute value.
+         */
+        client::JsonCppArray<ForwardingAddress> mutable_forwardingAddresses();
 
- private:
-  void operator=(const ListForwardingAddressesResponse&);
-};  // ListForwardingAddressesResponse
+    private:
+        void operator=(const ListForwardingAddressesResponse &);
+    };  // ListForwardingAddressesResponse
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_LIST_FORWARDING_ADDRESSES_RESPONSE_H_

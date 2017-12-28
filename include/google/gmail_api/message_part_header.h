@@ -35,132 +35,144 @@
 #include "googleapis/client/data/jsoncpp_data.h"
 #include "googleapis/strings/stringpiece.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * No description provided.
  *
  * @ingroup DataObject
  */
-class MessagePartHeader : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static MessagePartHeader* New();
-
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit MessagePartHeader(const Json::Value& storage);
-
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit MessagePartHeader(Json::Value* storage);
-
-  /**
-   * Standard destructor.
-   */
-  virtual ~MessagePartHeader();
-
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::MessagePartHeader</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::MessagePartHeader");
-  }
-
-  /**
-   * Determine if the '<code>name</code>' attribute was set.
-   *
-   * @return true if the '<code>name</code>' attribute was set.
-   */
-  bool has_name() const {
-    return Storage().isMember("name");
-  }
-
-  /**
-   * Clears the '<code>name</code>' attribute.
-   */
-  void clear_name() {
-    MutableStorage()->removeMember("name");
-  }
-
-
-  /**
-   * Get the value of the '<code>name</code>' attribute.
-   */
-  const StringPiece get_name() const {
-    const Json::Value& v = Storage("name");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
-
-  /**
-   * Change the '<code>name</code>' attribute.
-   *
-   * The name of the header before the : separator. For example, To.
-   *
-   * @param[in] value The new value.
-   */
-  void set_name(const StringPiece& value) {
-    *MutableStorage("name") = value.data();
-  }
-
-  /**
-   * Determine if the '<code>value</code>' attribute was set.
-   *
-   * @return true if the '<code>value</code>' attribute was set.
-   */
-  bool has_value() const {
-    return Storage().isMember("value");
-  }
-
-  /**
-   * Clears the '<code>value</code>' attribute.
-   */
-  void clear_value() {
-    MutableStorage()->removeMember("value");
-  }
-
-
-  /**
-   * Get the value of the '<code>value</code>' attribute.
-   */
-  const StringPiece get_value() const {
-    const Json::Value& v = Storage("value");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
-
-  /**
-   * Change the '<code>value</code>' attribute.
-   *
-   * The value of the header after the : separator. For example,
-   * someuser@example.com.
-   *
-   * @param[in] value The new value.
-   */
-  void set_value(const StringPiece& value) {
-    *MutableStorage("value") = value.data();
-  }
-
- private:
-  void operator=(const MessagePartHeader&);
-};  // MessagePartHeader
+    class MessagePartHeader : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static MessagePartHeader *New();
+        
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit MessagePartHeader(const Json::Value &storage);
+        
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit MessagePartHeader(Json::Value *storage);
+        
+        /**
+         * Standard destructor.
+         */
+        virtual ~MessagePartHeader();
+        
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::MessagePartHeader</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::MessagePartHeader");
+        }
+        
+        /**
+         * Determine if the '<code>name</code>' attribute was set.
+         *
+         * @return true if the '<code>name</code>' attribute was set.
+         */
+        bool has_name() const
+        {
+            return Storage().isMember("name");
+        }
+        
+        /**
+         * Clears the '<code>name</code>' attribute.
+         */
+        void clear_name()
+        {
+            MutableStorage()->removeMember("name");
+        }
+        
+        
+        /**
+         * Get the value of the '<code>name</code>' attribute.
+         */
+        const StringPiece get_name() const
+        {
+            const Json::Value &v = Storage("name");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
+        
+        /**
+         * Change the '<code>name</code>' attribute.
+         *
+         * The name of the header before the : separator. For example, To.
+         *
+         * @param[in] value The new value.
+         */
+        void set_name(const StringPiece &value)
+        {
+            *MutableStorage("name") = value.data();
+        }
+        
+        /**
+         * Determine if the '<code>value</code>' attribute was set.
+         *
+         * @return true if the '<code>value</code>' attribute was set.
+         */
+        bool has_value() const
+        {
+            return Storage().isMember("value");
+        }
+        
+        /**
+         * Clears the '<code>value</code>' attribute.
+         */
+        void clear_value()
+        {
+            MutableStorage()->removeMember("value");
+        }
+        
+        
+        /**
+         * Get the value of the '<code>value</code>' attribute.
+         */
+        const StringPiece get_value() const
+        {
+            const Json::Value &v = Storage("value");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
+        
+        /**
+         * Change the '<code>value</code>' attribute.
+         *
+         * The value of the header after the : separator. For example,
+         * someuser@example.com.
+         *
+         * @param[in] value The new value.
+         */
+        void set_value(const StringPiece &value)
+        {
+            *MutableStorage("value") = value.data();
+        }
+    
+    private:
+        void operator=(const MessagePartHeader &);
+    };  // MessagePartHeader
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_MESSAGE_PART_HEADER_H_

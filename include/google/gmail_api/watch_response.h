@@ -35,132 +35,144 @@
 #include "googleapis/client/data/jsoncpp_data.h"
 #include "googleapis/strings/stringpiece.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * Push notification watch response.
  *
  * @ingroup DataObject
  */
-class WatchResponse : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static WatchResponse* New();
+    class WatchResponse : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static WatchResponse *New();
 
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit WatchResponse(const Json::Value& storage);
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit WatchResponse(const Json::Value &storage);
 
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit WatchResponse(Json::Value* storage);
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit WatchResponse(Json::Value *storage);
 
-  /**
-   * Standard destructor.
-   */
-  virtual ~WatchResponse();
+        /**
+         * Standard destructor.
+         */
+        virtual ~WatchResponse();
 
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::WatchResponse</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::WatchResponse");
-  }
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::WatchResponse</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::WatchResponse");
+        }
 
-  /**
-   * Determine if the '<code>expiration</code>' attribute was set.
-   *
-   * @return true if the '<code>expiration</code>' attribute was set.
-   */
-  bool has_expiration() const {
-    return Storage().isMember("expiration");
-  }
+        /**
+         * Determine if the '<code>expiration</code>' attribute was set.
+         *
+         * @return true if the '<code>expiration</code>' attribute was set.
+         */
+        bool has_expiration() const
+        {
+            return Storage().isMember("expiration");
+        }
 
-  /**
-   * Clears the '<code>expiration</code>' attribute.
-   */
-  void clear_expiration() {
-    MutableStorage()->removeMember("expiration");
-  }
-
-
-  /**
-   * Get the value of the '<code>expiration</code>' attribute.
-   */
-  int64 get_expiration() const {
-    const Json::Value& storage = Storage("expiration");
-    return client::JsonValueToCppValueHelper<int64 >(storage);
-  }
-
-  /**
-   * Change the '<code>expiration</code>' attribute.
-   *
-   * When Gmail will stop sending notifications for mailbox updates (epoch
-   * millis). Call watch again before this time to renew the watch.
-   *
-   * @param[in] value The new value.
-   */
-  void set_expiration(int64 value) {
-    client::SetJsonValueFromCppValueHelper<int64 >(
-      value, MutableStorage("expiration"));
-  }
-
-  /**
-   * Determine if the '<code>historyId</code>' attribute was set.
-   *
-   * @return true if the '<code>historyId</code>' attribute was set.
-   */
-  bool has_history_id() const {
-    return Storage().isMember("historyId");
-  }
-
-  /**
-   * Clears the '<code>historyId</code>' attribute.
-   */
-  void clear_history_id() {
-    MutableStorage()->removeMember("historyId");
-  }
+        /**
+         * Clears the '<code>expiration</code>' attribute.
+         */
+        void clear_expiration()
+        {
+            MutableStorage()->removeMember("expiration");
+        }
 
 
-  /**
-   * Get the value of the '<code>historyId</code>' attribute.
-   */
-  uint64 get_history_id() const {
-    const Json::Value& storage = Storage("historyId");
-    return client::JsonValueToCppValueHelper<uint64 >(storage);
-  }
+        /**
+         * Get the value of the '<code>expiration</code>' attribute.
+         */
+        int64 get_expiration() const
+        {
+            const Json::Value &storage = Storage("expiration");
+            return client::JsonValueToCppValueHelper<int64>(storage);
+        }
 
-  /**
-   * Change the '<code>historyId</code>' attribute.
-   *
-   * The ID of the mailbox's current history record.
-   *
-   * @param[in] value The new value.
-   */
-  void set_history_id(uint64 value) {
-    client::SetJsonValueFromCppValueHelper<uint64 >(
-      value, MutableStorage("historyId"));
-  }
+        /**
+         * Change the '<code>expiration</code>' attribute.
+         *
+         * When Gmail will stop sending notifications for mailbox updates (epoch
+         * millis). Call watch again before this time to renew the watch.
+         *
+         * @param[in] value The new value.
+         */
+        void set_expiration(int64 value)
+        {
+            client::SetJsonValueFromCppValueHelper<int64>(
+                    value, MutableStorage("expiration"));
+        }
 
- private:
-  void operator=(const WatchResponse&);
-};  // WatchResponse
+        /**
+         * Determine if the '<code>historyId</code>' attribute was set.
+         *
+         * @return true if the '<code>historyId</code>' attribute was set.
+         */
+        bool has_history_id() const
+        {
+            return Storage().isMember("historyId");
+        }
+
+        /**
+         * Clears the '<code>historyId</code>' attribute.
+         */
+        void clear_history_id()
+        {
+            MutableStorage()->removeMember("historyId");
+        }
+
+
+        /**
+         * Get the value of the '<code>historyId</code>' attribute.
+         */
+        uint64 get_history_id() const
+        {
+            const Json::Value &storage = Storage("historyId");
+            return client::JsonValueToCppValueHelper<uint64>(storage);
+        }
+
+        /**
+         * Change the '<code>historyId</code>' attribute.
+         *
+         * The ID of the mailbox's current history record.
+         *
+         * @param[in] value The new value.
+         */
+        void set_history_id(uint64 value)
+        {
+            client::SetJsonValueFromCppValueHelper<uint64>(
+                    value, MutableStorage("historyId"));
+        }
+
+    private:
+        void operator=(const WatchResponse &);
+    };  // WatchResponse
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_WATCH_RESPONSE_H_

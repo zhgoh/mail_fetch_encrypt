@@ -37,26 +37,31 @@
 #include <string>
 #include "googleapis/strings/strcat.h"
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 
 // Object factory method (static).
-PopSettings* PopSettings::New() {
-  return new client::JsonCppCapsule<PopSettings>;
-}
+    PopSettings *PopSettings::New()
+    {
+        return new client::JsonCppCapsule<PopSettings>;
+    }
 
 // Standard immutable constructor.
-PopSettings::PopSettings(const Json::Value& storage)
-  : client::JsonCppData(storage) {
-}
+    PopSettings::PopSettings(const Json::Value &storage)
+            : client::JsonCppData(storage)
+    {
+    }
 
 // Standard mutable constructor.
-PopSettings::PopSettings(Json::Value* storage)
-  : client::JsonCppData(storage) {
-}
+    PopSettings::PopSettings(Json::Value *storage)
+            : client::JsonCppData(storage)
+    {
+    }
 
 // Standard destructor.
-PopSettings::~PopSettings() {
-}
+    PopSettings::~PopSettings()
+    {
+    }
 }  // namespace google_gmail_api

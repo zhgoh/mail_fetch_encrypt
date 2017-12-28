@@ -64,8 +64,10 @@
 #include "google/gmail_api/watch_response.h"
 
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
+
 /**
  * \mainpage
  *   Gmail API Version v1
@@ -96,7 +98,7 @@ using namespace googleapis;
  * <a href='https://developers.google.com/api-client-library/cpp/start/get_started'>
  * https://developers.google.com/api-client-library/cpp/start/get_started</a>
  */
-class GmailService;
+    class GmailService;
 
 /**
  * Implements a common base method for all methods within the GmailService.
@@ -105,10 +107,11 @@ class GmailService;
  * It does not pertain to any specific service API so is not normally
  * explicitly instantiated.
  */
-class GmailServiceBaseRequest
-      : public client::ClientServiceRequest {
- public:
-  /**
+    class GmailServiceBaseRequest
+            : public client::ClientServiceRequest
+    {
+    public:
+        /**
    * Standard constructor.
    *
    * @param[in] service  The service instance to send to when executed.
@@ -129,285 +132,307 @@ class GmailServiceBaseRequest
    *        In practice this parameter is supplied internally by the derived
    *        class for the endpoint.
    */
-  GmailServiceBaseRequest(
-      const client::ClientService* service,
-      client::AuthorizationCredential* credential,
-      client::HttpRequest::HttpMethod method,
-      const StringPiece& uri_template);
+        GmailServiceBaseRequest(
+                const client::ClientService *service,
+                client::AuthorizationCredential *credential,
+                client::HttpRequest::HttpMethod method,
+                const StringPiece &uri_template);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~GmailServiceBaseRequest();
+        virtual ~GmailServiceBaseRequest();
 
 
-  /**
+        /**
    * Clears the '<code>alt</code>' attribute so it is no longer set.
    */
-  void clear_alt() {
-    _have_alt_ = false;
-    client::ClearCppValueHelper(&alt_);
-  }
+        void clear_alt()
+        {
+            _have_alt_ = false;
+            client::ClearCppValueHelper(&alt_);
+        }
 
 
-  /**
+        /**
    * Gets the optional '<code>alt</code>' attribute.
    *
    * If the value is not set then the default value will be returned.
    */
-  const string& get_alt() const { return alt_; }
+        const string &get_alt() const
+        { return alt_; }
 
-  /**
+        /**
    * Gets a modifiable pointer to the optional <code>alt</code>' attribute.
    *
    * @return  The value can be set by dereferencing the pointer.
    */
-  string* mutable_alt() {
-    _have_alt_ = true;
-    return &alt_;
-  }
+        string *mutable_alt()
+        {
+            _have_alt_ = true;
+            return &alt_;
+        }
 
 
-  /**
+        /**
    * Sets the '<code>alt</code>' attribute.
    *
    * @param[in] value Data format for the response.
    */
-  void set_alt(const string& value) {
-    _have_alt_ = true;
-    alt_ = value;
-  }
+        void set_alt(const string &value)
+        {
+            _have_alt_ = true;
+            alt_ = value;
+        }
 
 
-
-  /**
+        /**
    * Clears the '<code>fields</code>' attribute so it is no longer set.
    */
-  void clear_fields() {
-    _have_fields_ = false;
-    client::ClearCppValueHelper(&fields_);
-  }
+        void clear_fields()
+        {
+            _have_fields_ = false;
+            client::ClearCppValueHelper(&fields_);
+        }
 
 
-  /**
+        /**
    * Gets the optional '<code>fields</code>' attribute.
    *
    * If the value is not set then the default value will be returned.
    */
-  const string& get_fields() const { return fields_; }
+        const string &get_fields() const
+        { return fields_; }
 
-  /**
+        /**
    * Gets a modifiable pointer to the optional <code>fields</code>' attribute.
    *
    * @return  The value can be set by dereferencing the pointer.
    */
-  string* mutable_fields() {
-    _have_fields_ = true;
-    return &fields_;
-  }
+        string *mutable_fields()
+        {
+            _have_fields_ = true;
+            return &fields_;
+        }
 
 
-  /**
+        /**
    * Sets the '<code>fields</code>' attribute.
    *
    * @param[in] value Selector specifying which fields to include in a partial
    * response.
    */
-  void set_fields(const string& value) {
-    _have_fields_ = true;
-    fields_ = value;
-  }
+        void set_fields(const string &value)
+        {
+            _have_fields_ = true;
+            fields_ = value;
+        }
 
 
-
-  /**
+        /**
    * Clears the '<code>key</code>' attribute so it is no longer set.
    */
-  void clear_key() {
-    _have_key_ = false;
-    client::ClearCppValueHelper(&key_);
-  }
+        void clear_key()
+        {
+            _have_key_ = false;
+            client::ClearCppValueHelper(&key_);
+        }
 
 
-  /**
+        /**
    * Gets the optional '<code>key</code>' attribute.
    *
    * If the value is not set then the default value will be returned.
    */
-  const string& get_key() const { return key_; }
+        const string &get_key() const
+        { return key_; }
 
-  /**
+        /**
    * Gets a modifiable pointer to the optional <code>key</code>' attribute.
    *
    * @return  The value can be set by dereferencing the pointer.
    */
-  string* mutable_key() {
-    _have_key_ = true;
-    return &key_;
-  }
+        string *mutable_key()
+        {
+            _have_key_ = true;
+            return &key_;
+        }
 
 
-  /**
+        /**
    * Sets the '<code>key</code>' attribute.
    *
    * @param[in] value API key. Your API key identifies your project and provides
    * you with API access, quota, and reports. Required unless you provide an
    * OAuth 2.0 token.
    */
-  void set_key(const string& value) {
-    _have_key_ = true;
-    key_ = value;
-  }
+        void set_key(const string &value)
+        {
+            _have_key_ = true;
+            key_ = value;
+        }
 
 
-
-  /**
+        /**
    * Clears the '<code>oauth_token</code>' attribute so it is no longer set.
    */
-  void clear_oauth_token() {
-    _have_oauth_token_ = false;
-    client::ClearCppValueHelper(&oauth_token_);
-  }
+        void clear_oauth_token()
+        {
+            _have_oauth_token_ = false;
+            client::ClearCppValueHelper(&oauth_token_);
+        }
 
 
-  /**
+        /**
    * Gets the optional '<code>oauth_token</code>' attribute.
    *
    * If the value is not set then the default value will be returned.
    */
-  const string& get_oauth_token() const { return oauth_token_; }
+        const string &get_oauth_token() const
+        { return oauth_token_; }
 
-  /**
+        /**
    * Gets a modifiable pointer to the optional <code>oauth_token</code>'
    * attribute.
    *
    * @return  The value can be set by dereferencing the pointer.
    */
-  string* mutable_oauthToken() {
-    _have_oauth_token_ = true;
-    return &oauth_token_;
-  }
+        string *mutable_oauthToken()
+        {
+            _have_oauth_token_ = true;
+            return &oauth_token_;
+        }
 
 
-  /**
+        /**
    * Sets the '<code>oauth_token</code>' attribute.
    *
    * @param[in] value OAuth 2.0 token for the current user.
    */
-  void set_oauth_token(const string& value) {
-    _have_oauth_token_ = true;
-    oauth_token_ = value;
-  }
+        void set_oauth_token(const string &value)
+        {
+            _have_oauth_token_ = true;
+            oauth_token_ = value;
+        }
 
 
-
-  /**
+        /**
    * Clears the '<code>prettyPrint</code>' attribute so it is no longer set.
    */
-  void clear_pretty_print() {
-    _have_pretty_print_ = false;
-    client::ClearCppValueHelper(&pretty_print_);
-  }
+        void clear_pretty_print()
+        {
+            _have_pretty_print_ = false;
+            client::ClearCppValueHelper(&pretty_print_);
+        }
 
 
-  /**
+        /**
    * Gets the optional '<code>prettyPrint</code>' attribute.
    *
    * If the value is not set then the default value will be returned.
    */
-  bool get_pretty_print() const { return pretty_print_; }
+        bool get_pretty_print() const
+        { return pretty_print_; }
 
-  /**
+        /**
    * Sets the '<code>prettyPrint</code>' attribute.
    *
    * @param[in] value Returns response with indentations and line breaks.
    */
-  void set_pretty_print(bool value) {
-    _have_pretty_print_ = true;
-    pretty_print_ = value;
-  }
+        void set_pretty_print(bool value)
+        {
+            _have_pretty_print_ = true;
+            pretty_print_ = value;
+        }
 
-  /**
+        /**
    * Clears the '<code>quotaUser</code>' attribute so it is no longer set.
    */
-  void clear_quota_user() {
-    _have_quota_user_ = false;
-    client::ClearCppValueHelper(&quota_user_);
-  }
+        void clear_quota_user()
+        {
+            _have_quota_user_ = false;
+            client::ClearCppValueHelper(&quota_user_);
+        }
 
 
-  /**
+        /**
    * Gets the optional '<code>quotaUser</code>' attribute.
    *
    * If the value is not set then the default value will be returned.
    */
-  const string& get_quota_user() const { return quota_user_; }
+        const string &get_quota_user() const
+        { return quota_user_; }
 
-  /**
+        /**
    * Gets a modifiable pointer to the optional <code>quotaUser</code>'
    * attribute.
    *
    * @return  The value can be set by dereferencing the pointer.
    */
-  string* mutable_quotaUser() {
-    _have_quota_user_ = true;
-    return &quota_user_;
-  }
+        string *mutable_quotaUser()
+        {
+            _have_quota_user_ = true;
+            return &quota_user_;
+        }
 
 
-  /**
+        /**
    * Sets the '<code>quotaUser</code>' attribute.
    *
    * @param[in] value Available to use for quota purposes for server-side
    * applications. Can be any arbitrary string assigned to a user, but should
    * not exceed 40 characters. Overrides userIp if both are provided.
    */
-  void set_quota_user(const string& value) {
-    _have_quota_user_ = true;
-    quota_user_ = value;
-  }
+        void set_quota_user(const string &value)
+        {
+            _have_quota_user_ = true;
+            quota_user_ = value;
+        }
 
 
-
-  /**
+        /**
    * Clears the '<code>userIp</code>' attribute so it is no longer set.
    */
-  void clear_user_ip() {
-    _have_user_ip_ = false;
-    client::ClearCppValueHelper(&user_ip_);
-  }
+        void clear_user_ip()
+        {
+            _have_user_ip_ = false;
+            client::ClearCppValueHelper(&user_ip_);
+        }
 
 
-  /**
+        /**
    * Gets the optional '<code>userIp</code>' attribute.
    *
    * If the value is not set then the default value will be returned.
    */
-  const string& get_user_ip() const { return user_ip_; }
+        const string &get_user_ip() const
+        { return user_ip_; }
 
-  /**
+        /**
    * Gets a modifiable pointer to the optional <code>userIp</code>' attribute.
    *
    * @return  The value can be set by dereferencing the pointer.
    */
-  string* mutable_userIp() {
-    _have_user_ip_ = true;
-    return &user_ip_;
-  }
+        string *mutable_userIp()
+        {
+            _have_user_ip_ = true;
+            return &user_ip_;
+        }
 
 
-  /**
+        /**
    * Sets the '<code>userIp</code>' attribute.
    *
    * @param[in] value IP address of the site where the request originates. Use
    * this if you want to enforce per-user limits.
    */
-  void set_user_ip(const string& value) {
-    _have_user_ip_ = true;
-    user_ip_ = value;
-  }
+        void set_user_ip(const string &value)
+        {
+            _have_user_ip_ = true;
+            user_ip_ = value;
+        }
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the
@@ -417,46 +442,45 @@ class GmailServiceBaseRequest
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-      const StringPiece& variable_name,
-      const client::UriTemplateConfig& config,
-      string* target);
+        virtual util::Status AppendVariable(
+                const StringPiece &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
-  /**
+        /**
    * Appends the optional query parameters to the target URL.
    *
    * @param[in, out] target  The URL string to append to.
    */
-  virtual util::Status AppendOptionalQueryParameters(string* target);
+        virtual util::Status AppendOptionalQueryParameters(string *target);
 
 
- protected:
-  /**
+    protected:
+        /**
    * Prepares the method's HTTP request to send body content as JSON.
    *
    * Only to be used for method constructors.
    */
-  void AddJsonContentToRequest(const client::JsonCppData *content);
+        void AddJsonContentToRequest(const client::JsonCppData *content);
 
- private:
-  string alt_;
-  string fields_;
-  string key_;
-  string oauth_token_;
-  bool pretty_print_;
-  string quota_user_;
-  string user_ip_;
-  bool _have_alt_ : 1;
-  bool _have_fields_ : 1;
-  bool _have_key_ : 1;
-  bool _have_oauth_token_ : 1;
-  bool _have_pretty_print_ : 1;
-  bool _have_quota_user_ : 1;
-  bool _have_user_ip_ : 1;
+    private:
+        string alt_;
+        string fields_;
+        string key_;
+        string oauth_token_;
+        bool pretty_print_;
+        string quota_user_;
+        string user_ip_;
+        bool _have_alt_ : 1;
+        bool _have_fields_ : 1;
+        bool _have_key_ : 1;
+        bool _have_oauth_token_ : 1;
+        bool _have_pretty_print_ : 1;
+        bool _have_quota_user_ : 1;
+        bool _have_user_ip_ : 1;
 
-  DISALLOW_COPY_AND_ASSIGN(GmailServiceBaseRequest);
-};
-
+        DISALLOW_COPY_AND_ASSIGN(GmailServiceBaseRequest);
+    };
 
 
 /**
@@ -475,9 +499,10 @@ class GmailServiceBaseRequest
  * https://www.googleapis.com/auth/gmail.modify
  * https://www.googleapis.com/auth/gmail.readonly
  */
-class UsersResource_GetProfileMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_GetProfileMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -486,18 +511,18 @@ class UsersResource_GetProfileMethod : public GmailServiceBaseRequest {
    * @param[in] user_id The user's email address. The special value me can be
    * used to indicate the authenticated user.
    */
-  UsersResource_GetProfileMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id);
+        UsersResource_GetProfileMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_GetProfileMethod();
+        virtual ~UsersResource_GetProfileMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -506,13 +531,13 @@ class UsersResource_GetProfileMethod : public GmailServiceBaseRequest {
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -522,15 +547,16 @@ class UsersResource_GetProfileMethod : public GmailServiceBaseRequest {
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Profile* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Profile *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_GetProfileMethod);
-};
+    private:
+        string user_id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_GetProfileMethod);
+    };
 
 /**
  * Implements the stop method.
@@ -547,9 +573,10 @@ class UsersResource_GetProfileMethod : public GmailServiceBaseRequest {
  * https://www.googleapis.com/auth/gmail.modify
  * https://www.googleapis.com/auth/gmail.readonly
  */
-class UsersResource_StopMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_StopMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -558,18 +585,18 @@ class UsersResource_StopMethod : public GmailServiceBaseRequest {
    * @param[in] user_id The user's email address. The special value me can be
    * used to indicate the authenticated user.
    */
-  UsersResource_StopMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id);
+        UsersResource_StopMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_StopMethod();
+        virtual ~UsersResource_StopMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -578,16 +605,16 @@ class UsersResource_StopMethod : public GmailServiceBaseRequest {
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
- private:
-  string user_id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_StopMethod);
-};
+    private:
+        string user_id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_StopMethod);
+    };
 
 /**
  * Implements the watch method.
@@ -604,9 +631,10 @@ class UsersResource_StopMethod : public GmailServiceBaseRequest {
  * https://www.googleapis.com/auth/gmail.modify
  * https://www.googleapis.com/auth/gmail.readonly
  */
-class UsersResource_WatchMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_WatchMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -616,19 +644,19 @@ class UsersResource_WatchMethod : public GmailServiceBaseRequest {
    * used to indicate the authenticated user.
    * @param[in] _content_ The data object to watch.
    */
-  UsersResource_WatchMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const WatchRequest& _content_);
+        UsersResource_WatchMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const WatchRequest &_content_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_WatchMethod();
+        virtual ~UsersResource_WatchMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -637,13 +665,13 @@ class UsersResource_WatchMethod : public GmailServiceBaseRequest {
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -653,17 +681,17 @@ class UsersResource_WatchMethod : public GmailServiceBaseRequest {
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      WatchResponse* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                WatchResponse *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;  string _content_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_WatchMethod);
-};
-
-
+    private:
+        string user_id_;
+        string _content_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_WatchMethod);
+    };
 
 
 /**
@@ -680,9 +708,10 @@ class UsersResource_WatchMethod : public GmailServiceBaseRequest {
  * https://www.googleapis.com/auth/gmail.compose
  * https://www.googleapis.com/auth/gmail.modify
  */
-class UsersResource_DraftsResource_CreateMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_DraftsResource_CreateMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    *
    * @deprecated in favor constructor that includes the media upload parameters.
@@ -696,11 +725,12 @@ class UsersResource_DraftsResource_CreateMethod : public GmailServiceBaseRequest
    *
    * @param[in] _content_ The data object to create.
    */
-  UsersResource_DraftsResource_CreateMethod(
-        const GmailService* _service_,
-        client::AuthorizationCredential* _credential_,
-        const StringPiece& user_id);
-  /**
+        UsersResource_DraftsResource_CreateMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id);
+
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -716,21 +746,21 @@ class UsersResource_DraftsResource_CreateMethod : public GmailServiceBaseRequest
    *            this is NULL then do not upload any media and ignore
    *            _media_content_type_.
    */
-  UsersResource_DraftsResource_CreateMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const Draft* _metadata_,
-      const StringPiece& _media_content_type_,
-      client::DataReader* _media_content_reader_);
+        UsersResource_DraftsResource_CreateMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const Draft *_metadata_,
+                const StringPiece &_media_content_type_,
+                client::DataReader *_media_content_reader_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_DraftsResource_CreateMethod();
+        virtual ~UsersResource_DraftsResource_CreateMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -739,13 +769,13 @@ class UsersResource_DraftsResource_CreateMethod : public GmailServiceBaseRequest
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -755,29 +785,30 @@ class UsersResource_DraftsResource_CreateMethod : public GmailServiceBaseRequest
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Draft* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Draft *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
 
-  /**
+        /**
    * Returns MediaUploader for uploading the content.
    */
 
-  /**
+        /**
    * Returns the specification for media upload using the simple protocol.
    */
-  static const client::MediaUploadSpec SIMPLE_MEDIA_UPLOAD;
-  /**
+        static const client::MediaUploadSpec SIMPLE_MEDIA_UPLOAD;
+        /**
    * Returns the specification for media upload using the resumable protocol.
    */
-  static const client::MediaUploadSpec RESUMABLE_MEDIA_UPLOAD;
+        static const client::MediaUploadSpec RESUMABLE_MEDIA_UPLOAD;
 
- private:
-  string user_id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_DraftsResource_CreateMethod);
-};
+    private:
+        string user_id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_DraftsResource_CreateMethod);
+    };
 
 /**
  * Implements the delete method.
@@ -793,9 +824,10 @@ class UsersResource_DraftsResource_CreateMethod : public GmailServiceBaseRequest
  * https://www.googleapis.com/auth/gmail.compose
  * https://www.googleapis.com/auth/gmail.modify
  */
-class UsersResource_DraftsResource_DeleteMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_DraftsResource_DeleteMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -805,19 +837,19 @@ class UsersResource_DraftsResource_DeleteMethod : public GmailServiceBaseRequest
    * used to indicate the authenticated user.
    * @param[in] id The ID of the draft to delete.
    */
-  UsersResource_DraftsResource_DeleteMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& id);
+        UsersResource_DraftsResource_DeleteMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_DraftsResource_DeleteMethod();
+        virtual ~UsersResource_DraftsResource_DeleteMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -826,17 +858,17 @@ class UsersResource_DraftsResource_DeleteMethod : public GmailServiceBaseRequest
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
- private:
-  string user_id_;
-  string id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_DraftsResource_DeleteMethod);
-};
+    private:
+        string user_id_;
+        string id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_DraftsResource_DeleteMethod);
+    };
 
 /**
  * Implements the get method.
@@ -853,9 +885,10 @@ class UsersResource_DraftsResource_DeleteMethod : public GmailServiceBaseRequest
  * https://www.googleapis.com/auth/gmail.modify
  * https://www.googleapis.com/auth/gmail.readonly
  */
-class UsersResource_DraftsResource_GetMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_DraftsResource_GetMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -865,56 +898,60 @@ class UsersResource_DraftsResource_GetMethod : public GmailServiceBaseRequest {
    * used to indicate the authenticated user.
    * @param[in] id The ID of the draft to retrieve.
    */
-  UsersResource_DraftsResource_GetMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& id);
+        UsersResource_DraftsResource_GetMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_DraftsResource_GetMethod();
+        virtual ~UsersResource_DraftsResource_GetMethod();
 
 
-    /**
+        /**
      * Clears the '<code>format</code>' attribute so it is no longer set.
      */
-    void clear_format() {
-      _have_format_ = false;
-      client::ClearCppValueHelper(&format_);
-    }
+        void clear_format()
+        {
+            _have_format_ = false;
+            client::ClearCppValueHelper(&format_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>format</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    const string& get_format() const { return format_; }
+        const string &get_format() const
+        { return format_; }
 
-    /**
+        /**
      * Gets a modifiable pointer to the optional <code>format</code>' attribute.
      *
      * @return  The value can be set by dereferencing the pointer.
      */
-    string* mutable_format() {
-      _have_format_ = true;
-      return &format_;
-    }
+        string *mutable_format()
+        {
+            _have_format_ = true;
+            return &format_;
+        }
 
 
-    /**
+        /**
      * Sets the '<code>format</code>' attribute.
      *
      * @param[in] value The format to return the draft in.
      */
-    void set_format(const string& value) {
-      _have_format_ = true;
-      format_ = value;
-    }
+        void set_format(const string &value)
+        {
+            _have_format_ = true;
+            format_ = value;
+        }
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -923,20 +960,20 @@ class UsersResource_DraftsResource_GetMethod : public GmailServiceBaseRequest {
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
-  /**
+        /**
    * Appends the optional query parameters to the target URL.
    *
    * @param[in, out] target  The URL string to append to.
    */
-  virtual util::Status AppendOptionalQueryParameters(string* target);
+        virtual util::Status AppendOptionalQueryParameters(string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -946,18 +983,19 @@ class UsersResource_DraftsResource_GetMethod : public GmailServiceBaseRequest {
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Draft* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Draft *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string id_;
-  string format_;
-  bool _have_format_ : 1;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_DraftsResource_GetMethod);
-};
+    private:
+        string user_id_;
+        string id_;
+        string format_;
+        bool _have_format_ : 1;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_DraftsResource_GetMethod);
+    };
 
 /**
  * Implements the list method.
@@ -974,9 +1012,10 @@ class UsersResource_DraftsResource_GetMethod : public GmailServiceBaseRequest {
  * https://www.googleapis.com/auth/gmail.modify
  * https://www.googleapis.com/auth/gmail.readonly
  */
-class UsersResource_DraftsResource_ListMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_DraftsResource_ListMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -985,151 +1024,164 @@ class UsersResource_DraftsResource_ListMethod : public GmailServiceBaseRequest {
    * @param[in] user_id The user's email address. The special value me can be
    * used to indicate the authenticated user.
    */
-  UsersResource_DraftsResource_ListMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id);
+        UsersResource_DraftsResource_ListMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_DraftsResource_ListMethod();
+        virtual ~UsersResource_DraftsResource_ListMethod();
 
 
-    /**
+        /**
      * Clears the '<code>includeSpamTrash</code>' attribute so it is no longer
      * set.
      */
-    void clear_include_spam_trash() {
-      _have_include_spam_trash_ = false;
-      client::ClearCppValueHelper(&include_spam_trash_);
-    }
+        void clear_include_spam_trash()
+        {
+            _have_include_spam_trash_ = false;
+            client::ClearCppValueHelper(&include_spam_trash_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>includeSpamTrash</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    bool get_include_spam_trash() const { return include_spam_trash_; }
+        bool get_include_spam_trash() const
+        { return include_spam_trash_; }
 
-    /**
+        /**
      * Sets the '<code>includeSpamTrash</code>' attribute.
      *
      * @param[in] value Include drafts from SPAM and TRASH in the results.
      */
-    void set_include_spam_trash(bool value) {
-      _have_include_spam_trash_ = true;
-      include_spam_trash_ = value;
-    }
+        void set_include_spam_trash(bool value)
+        {
+            _have_include_spam_trash_ = true;
+            include_spam_trash_ = value;
+        }
 
-    /**
+        /**
      * Clears the '<code>maxResults</code>' attribute so it is no longer set.
      */
-    void clear_max_results() {
-      _have_max_results_ = false;
-      client::ClearCppValueHelper(&max_results_);
-    }
+        void clear_max_results()
+        {
+            _have_max_results_ = false;
+            client::ClearCppValueHelper(&max_results_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>maxResults</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    uint32 get_max_results() const { return max_results_; }
+        uint32 get_max_results() const
+        { return max_results_; }
 
-    /**
+        /**
      * Sets the '<code>maxResults</code>' attribute.
      *
      * @param[in] value Maximum number of drafts to return.
      */
-    void set_max_results(uint32 value) {
-      _have_max_results_ = true;
-      max_results_ = value;
-    }
+        void set_max_results(uint32 value)
+        {
+            _have_max_results_ = true;
+            max_results_ = value;
+        }
 
-    /**
+        /**
      * Clears the '<code>pageToken</code>' attribute so it is no longer set.
      */
-    void clear_page_token() {
-      _have_page_token_ = false;
-      client::ClearCppValueHelper(&page_token_);
-    }
+        void clear_page_token()
+        {
+            _have_page_token_ = false;
+            client::ClearCppValueHelper(&page_token_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>pageToken</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    const string& get_page_token() const { return page_token_; }
+        const string &get_page_token() const
+        { return page_token_; }
 
-    /**
+        /**
      * Gets a modifiable pointer to the optional <code>pageToken</code>'
      * attribute.
      *
      * @return  The value can be set by dereferencing the pointer.
      */
-    string* mutable_pageToken() {
-      _have_page_token_ = true;
-      return &page_token_;
-    }
+        string *mutable_pageToken()
+        {
+            _have_page_token_ = true;
+            return &page_token_;
+        }
 
 
-    /**
+        /**
      * Sets the '<code>pageToken</code>' attribute.
      *
      * @param[in] value Page token to retrieve a specific page of results in the
      * list.
      */
-    void set_page_token(const string& value) {
-      _have_page_token_ = true;
-      page_token_ = value;
-    }
+        void set_page_token(const string &value)
+        {
+            _have_page_token_ = true;
+            page_token_ = value;
+        }
 
 
-
-    /**
+        /**
      * Clears the '<code>q</code>' attribute so it is no longer set.
      */
-    void clear_q() {
-      _have_q_ = false;
-      client::ClearCppValueHelper(&q_);
-    }
+        void clear_q()
+        {
+            _have_q_ = false;
+            client::ClearCppValueHelper(&q_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>q</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    const string& get_q() const { return q_; }
+        const string &get_q() const
+        { return q_; }
 
-    /**
+        /**
      * Gets a modifiable pointer to the optional <code>q</code>' attribute.
      *
      * @return  The value can be set by dereferencing the pointer.
      */
-    string* mutable_q() {
-      _have_q_ = true;
-      return &q_;
-    }
+        string *mutable_q()
+        {
+            _have_q_ = true;
+            return &q_;
+        }
 
 
-    /**
+        /**
      * Sets the '<code>q</code>' attribute.
      *
      * @param[in] value Only return draft messages matching the specified query.
      * Supports the same query format as the Gmail search box. For example,
      * "from:someuser@example.com rfc822msgid: is:unread".
      */
-    void set_q(const string& value) {
-      _have_q_ = true;
-      q_ = value;
-    }
+        void set_q(const string &value)
+        {
+            _have_q_ = true;
+            q_ = value;
+        }
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -1138,20 +1190,20 @@ class UsersResource_DraftsResource_ListMethod : public GmailServiceBaseRequest {
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
-  /**
+        /**
    * Appends the optional query parameters to the target URL.
    *
    * @param[in, out] target  The URL string to append to.
    */
-  virtual util::Status AppendOptionalQueryParameters(string* target);
+        virtual util::Status AppendOptionalQueryParameters(string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -1161,28 +1213,29 @@ class UsersResource_DraftsResource_ListMethod : public GmailServiceBaseRequest {
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      ListDraftsResponse* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                ListDraftsResponse *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  bool include_spam_trash_;
-  uint32 max_results_;
-  string page_token_;
-  string q_;
-  bool _have_include_spam_trash_ : 1;
-  bool _have_max_results_ : 1;
-  bool _have_page_token_ : 1;
-  bool _have_q_ : 1;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_DraftsResource_ListMethod);
-};
+    private:
+        string user_id_;
+        bool include_spam_trash_;
+        uint32 max_results_;
+        string page_token_;
+        string q_;
+        bool _have_include_spam_trash_ : 1;
+        bool _have_max_results_ : 1;
+        bool _have_page_token_ : 1;
+        bool _have_q_ : 1;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_DraftsResource_ListMethod);
+    };
 
-typedef client::ServiceRequestPager<
+    typedef client::ServiceRequestPager<
             UsersResource_DraftsResource_ListMethod,
             ListDraftsResponse>
-        UsersResource_DraftsResource_ListMethodPager;
+            UsersResource_DraftsResource_ListMethodPager;
 
 /**
  * Implements the send method.
@@ -1198,9 +1251,10 @@ typedef client::ServiceRequestPager<
  * https://www.googleapis.com/auth/gmail.compose
  * https://www.googleapis.com/auth/gmail.modify
  */
-class UsersResource_DraftsResource_SendMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_DraftsResource_SendMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    *
    * @deprecated in favor constructor that includes the media upload parameters.
@@ -1214,11 +1268,12 @@ class UsersResource_DraftsResource_SendMethod : public GmailServiceBaseRequest {
    *
    * @param[in] _content_ The data object to send.
    */
-  UsersResource_DraftsResource_SendMethod(
-        const GmailService* _service_,
-        client::AuthorizationCredential* _credential_,
-        const StringPiece& user_id);
-  /**
+        UsersResource_DraftsResource_SendMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id);
+
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -1234,21 +1289,21 @@ class UsersResource_DraftsResource_SendMethod : public GmailServiceBaseRequest {
    *            this is NULL then do not upload any media and ignore
    *            _media_content_type_.
    */
-  UsersResource_DraftsResource_SendMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const Draft* _metadata_,
-      const StringPiece& _media_content_type_,
-      client::DataReader* _media_content_reader_);
+        UsersResource_DraftsResource_SendMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const Draft *_metadata_,
+                const StringPiece &_media_content_type_,
+                client::DataReader *_media_content_reader_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_DraftsResource_SendMethod();
+        virtual ~UsersResource_DraftsResource_SendMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -1257,13 +1312,13 @@ class UsersResource_DraftsResource_SendMethod : public GmailServiceBaseRequest {
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -1273,29 +1328,30 @@ class UsersResource_DraftsResource_SendMethod : public GmailServiceBaseRequest {
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Message* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Message *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
 
-  /**
+        /**
    * Returns MediaUploader for uploading the content.
    */
 
-  /**
+        /**
    * Returns the specification for media upload using the simple protocol.
    */
-  static const client::MediaUploadSpec SIMPLE_MEDIA_UPLOAD;
-  /**
+        static const client::MediaUploadSpec SIMPLE_MEDIA_UPLOAD;
+        /**
    * Returns the specification for media upload using the resumable protocol.
    */
-  static const client::MediaUploadSpec RESUMABLE_MEDIA_UPLOAD;
+        static const client::MediaUploadSpec RESUMABLE_MEDIA_UPLOAD;
 
- private:
-  string user_id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_DraftsResource_SendMethod);
-};
+    private:
+        string user_id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_DraftsResource_SendMethod);
+    };
 
 /**
  * Implements the update method.
@@ -1311,9 +1367,10 @@ class UsersResource_DraftsResource_SendMethod : public GmailServiceBaseRequest {
  * https://www.googleapis.com/auth/gmail.compose
  * https://www.googleapis.com/auth/gmail.modify
  */
-class UsersResource_DraftsResource_UpdateMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_DraftsResource_UpdateMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    *
    * @deprecated in favor constructor that includes the media upload parameters.
@@ -1329,12 +1386,13 @@ class UsersResource_DraftsResource_UpdateMethod : public GmailServiceBaseRequest
    *
    * @param[in] _content_ The data object to update.
    */
-  UsersResource_DraftsResource_UpdateMethod(
-        const GmailService* _service_,
-        client::AuthorizationCredential* _credential_,
-        const StringPiece& user_id,
-        const StringPiece& id);
-  /**
+        UsersResource_DraftsResource_UpdateMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id);
+
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -1351,22 +1409,22 @@ class UsersResource_DraftsResource_UpdateMethod : public GmailServiceBaseRequest
    *            this is NULL then do not upload any media and ignore
    *            _media_content_type_.
    */
-  UsersResource_DraftsResource_UpdateMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& id,
-      const Draft* _metadata_,
-      const StringPiece& _media_content_type_,
-      client::DataReader* _media_content_reader_);
+        UsersResource_DraftsResource_UpdateMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id,
+                const Draft *_metadata_,
+                const StringPiece &_media_content_type_,
+                client::DataReader *_media_content_reader_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_DraftsResource_UpdateMethod();
+        virtual ~UsersResource_DraftsResource_UpdateMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -1375,13 +1433,13 @@ class UsersResource_DraftsResource_UpdateMethod : public GmailServiceBaseRequest
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -1391,30 +1449,31 @@ class UsersResource_DraftsResource_UpdateMethod : public GmailServiceBaseRequest
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Draft* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Draft *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
 
-  /**
+        /**
    * Returns MediaUploader for uploading the content.
    */
 
-  /**
+        /**
    * Returns the specification for media upload using the simple protocol.
    */
-  static const client::MediaUploadSpec SIMPLE_MEDIA_UPLOAD;
-  /**
+        static const client::MediaUploadSpec SIMPLE_MEDIA_UPLOAD;
+        /**
    * Returns the specification for media upload using the resumable protocol.
    */
-  static const client::MediaUploadSpec RESUMABLE_MEDIA_UPLOAD;
+        static const client::MediaUploadSpec RESUMABLE_MEDIA_UPLOAD;
 
- private:
-  string user_id_;
-  string id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_DraftsResource_UpdateMethod);
-};
+    private:
+        string user_id_;
+        string id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_DraftsResource_UpdateMethod);
+    };
 
 
 /**
@@ -1432,9 +1491,10 @@ class UsersResource_DraftsResource_UpdateMethod : public GmailServiceBaseRequest
  * https://www.googleapis.com/auth/gmail.modify
  * https://www.googleapis.com/auth/gmail.readonly
  */
-class UsersResource_HistoryResource_ListMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_HistoryResource_ListMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -1443,171 +1503,184 @@ class UsersResource_HistoryResource_ListMethod : public GmailServiceBaseRequest 
    * @param[in] user_id The user's email address. The special value me can be
    * used to indicate the authenticated user.
    */
-  UsersResource_HistoryResource_ListMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id);
+        UsersResource_HistoryResource_ListMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_HistoryResource_ListMethod();
+        virtual ~UsersResource_HistoryResource_ListMethod();
 
 
-    /**
+        /**
      * Clears the '<code>historyTypes</code>' attribute so it is no longer set.
      */
-    void clear_history_types() {
-      _have_history_types_ = false;
-      client::ClearCppValueHelper(&history_types_);
-    }
+        void clear_history_types()
+        {
+            _have_history_types_ = false;
+            client::ClearCppValueHelper(&history_types_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>historyTypes</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    const client::JsonCppArray<string >& get_history_types() const { return history_types_; }
+        const client::JsonCppArray<string> &get_history_types() const
+        { return history_types_; }
 
-    /**
+        /**
      * Gets a modifiable pointer to the optional <code>historyTypes</code>'
      * attribute.
      *
      * @return  The value can be set by dereferencing the pointer.
      */
-    client::JsonCppArray<string >* mutable_historyTypes() {
-      _have_history_types_ = true;
-      return &history_types_;
-    }
+        client::JsonCppArray<string> *mutable_historyTypes()
+        {
+            _have_history_types_ = true;
+            return &history_types_;
+        }
 
 
-
-    /**
+        /**
      * Clears the '<code>labelId</code>' attribute so it is no longer set.
      */
-    void clear_label_id() {
-      _have_label_id_ = false;
-      client::ClearCppValueHelper(&label_id_);
-    }
+        void clear_label_id()
+        {
+            _have_label_id_ = false;
+            client::ClearCppValueHelper(&label_id_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>labelId</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    const string& get_label_id() const { return label_id_; }
+        const string &get_label_id() const
+        { return label_id_; }
 
-    /**
+        /**
      * Gets a modifiable pointer to the optional <code>labelId</code>'
      * attribute.
      *
      * @return  The value can be set by dereferencing the pointer.
      */
-    string* mutable_labelId() {
-      _have_label_id_ = true;
-      return &label_id_;
-    }
+        string *mutable_labelId()
+        {
+            _have_label_id_ = true;
+            return &label_id_;
+        }
 
 
-    /**
+        /**
      * Sets the '<code>labelId</code>' attribute.
      *
      * @param[in] value Only return messages with a label matching the ID.
      */
-    void set_label_id(const string& value) {
-      _have_label_id_ = true;
-      label_id_ = value;
-    }
+        void set_label_id(const string &value)
+        {
+            _have_label_id_ = true;
+            label_id_ = value;
+        }
 
 
-
-    /**
+        /**
      * Clears the '<code>maxResults</code>' attribute so it is no longer set.
      */
-    void clear_max_results() {
-      _have_max_results_ = false;
-      client::ClearCppValueHelper(&max_results_);
-    }
+        void clear_max_results()
+        {
+            _have_max_results_ = false;
+            client::ClearCppValueHelper(&max_results_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>maxResults</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    uint32 get_max_results() const { return max_results_; }
+        uint32 get_max_results() const
+        { return max_results_; }
 
-    /**
+        /**
      * Sets the '<code>maxResults</code>' attribute.
      *
      * @param[in] value The maximum number of history records to return.
      */
-    void set_max_results(uint32 value) {
-      _have_max_results_ = true;
-      max_results_ = value;
-    }
+        void set_max_results(uint32 value)
+        {
+            _have_max_results_ = true;
+            max_results_ = value;
+        }
 
-    /**
+        /**
      * Clears the '<code>pageToken</code>' attribute so it is no longer set.
      */
-    void clear_page_token() {
-      _have_page_token_ = false;
-      client::ClearCppValueHelper(&page_token_);
-    }
+        void clear_page_token()
+        {
+            _have_page_token_ = false;
+            client::ClearCppValueHelper(&page_token_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>pageToken</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    const string& get_page_token() const { return page_token_; }
+        const string &get_page_token() const
+        { return page_token_; }
 
-    /**
+        /**
      * Gets a modifiable pointer to the optional <code>pageToken</code>'
      * attribute.
      *
      * @return  The value can be set by dereferencing the pointer.
      */
-    string* mutable_pageToken() {
-      _have_page_token_ = true;
-      return &page_token_;
-    }
+        string *mutable_pageToken()
+        {
+            _have_page_token_ = true;
+            return &page_token_;
+        }
 
 
-    /**
+        /**
      * Sets the '<code>pageToken</code>' attribute.
      *
      * @param[in] value Page token to retrieve a specific page of results in the
      * list.
      */
-    void set_page_token(const string& value) {
-      _have_page_token_ = true;
-      page_token_ = value;
-    }
+        void set_page_token(const string &value)
+        {
+            _have_page_token_ = true;
+            page_token_ = value;
+        }
 
 
-
-    /**
+        /**
      * Clears the '<code>startHistoryId</code>' attribute so it is no longer
      * set.
      */
-    void clear_start_history_id() {
-      _have_start_history_id_ = false;
-      client::ClearCppValueHelper(&start_history_id_);
-    }
+        void clear_start_history_id()
+        {
+            _have_start_history_id_ = false;
+            client::ClearCppValueHelper(&start_history_id_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>startHistoryId</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    uint64 get_start_history_id() const { return start_history_id_; }
+        uint64 get_start_history_id() const
+        { return start_history_id_; }
 
-    /**
+        /**
      * Sets the '<code>startHistoryId</code>' attribute.
      *
      * @param[in] value Required. Returns history records after the specified
@@ -1622,12 +1695,13 @@ class UsersResource_HistoryResource_ListMethod : public GmailServiceBaseRequest 
      * response, there are no updates to retrieve and you can store the returned
      * historyId for a future request.
      */
-    void set_start_history_id(uint64 value) {
-      _have_start_history_id_ = true;
-      start_history_id_ = value;
-    }
+        void set_start_history_id(uint64 value)
+        {
+            _have_start_history_id_ = true;
+            start_history_id_ = value;
+        }
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -1636,20 +1710,20 @@ class UsersResource_HistoryResource_ListMethod : public GmailServiceBaseRequest 
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
-  /**
+        /**
    * Appends the optional query parameters to the target URL.
    *
    * @param[in, out] target  The URL string to append to.
    */
-  virtual util::Status AppendOptionalQueryParameters(string* target);
+        virtual util::Status AppendOptionalQueryParameters(string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -1659,30 +1733,31 @@ class UsersResource_HistoryResource_ListMethod : public GmailServiceBaseRequest 
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      ListHistoryResponse* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                ListHistoryResponse *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  client::JsonCppCapsule< client::JsonCppArray<string > > history_types_;
-  string label_id_;
-  uint32 max_results_;
-  string page_token_;
-  uint64 start_history_id_;
-  bool _have_history_types_ : 1;
-  bool _have_label_id_ : 1;
-  bool _have_max_results_ : 1;
-  bool _have_page_token_ : 1;
-  bool _have_start_history_id_ : 1;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_HistoryResource_ListMethod);
-};
+    private:
+        string user_id_;
+        client::JsonCppCapsule<client::JsonCppArray<string> > history_types_;
+        string label_id_;
+        uint32 max_results_;
+        string page_token_;
+        uint64 start_history_id_;
+        bool _have_history_types_ : 1;
+        bool _have_label_id_ : 1;
+        bool _have_max_results_ : 1;
+        bool _have_page_token_ : 1;
+        bool _have_start_history_id_ : 1;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_HistoryResource_ListMethod);
+    };
 
-typedef client::ServiceRequestPager<
+    typedef client::ServiceRequestPager<
             UsersResource_HistoryResource_ListMethod,
             ListHistoryResponse>
-        UsersResource_HistoryResource_ListMethodPager;
+            UsersResource_HistoryResource_ListMethodPager;
 
 
 /**
@@ -1699,9 +1774,10 @@ typedef client::ServiceRequestPager<
  * https://www.googleapis.com/auth/gmail.labels
  * https://www.googleapis.com/auth/gmail.modify
  */
-class UsersResource_LabelsResource_CreateMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_LabelsResource_CreateMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -1711,19 +1787,19 @@ class UsersResource_LabelsResource_CreateMethod : public GmailServiceBaseRequest
    * used to indicate the authenticated user.
    * @param[in] _content_ The data object to create.
    */
-  UsersResource_LabelsResource_CreateMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const Label& _content_);
+        UsersResource_LabelsResource_CreateMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const Label &_content_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_LabelsResource_CreateMethod();
+        virtual ~UsersResource_LabelsResource_CreateMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -1732,13 +1808,13 @@ class UsersResource_LabelsResource_CreateMethod : public GmailServiceBaseRequest
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -1748,15 +1824,17 @@ class UsersResource_LabelsResource_CreateMethod : public GmailServiceBaseRequest
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Label* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Label *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;  string _content_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_LabelsResource_CreateMethod);
-};
+    private:
+        string user_id_;
+        string _content_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_LabelsResource_CreateMethod);
+    };
 
 /**
  * Implements the delete method.
@@ -1772,9 +1850,10 @@ class UsersResource_LabelsResource_CreateMethod : public GmailServiceBaseRequest
  * https://www.googleapis.com/auth/gmail.labels
  * https://www.googleapis.com/auth/gmail.modify
  */
-class UsersResource_LabelsResource_DeleteMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_LabelsResource_DeleteMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -1784,19 +1863,19 @@ class UsersResource_LabelsResource_DeleteMethod : public GmailServiceBaseRequest
    * used to indicate the authenticated user.
    * @param[in] id The ID of the label to delete.
    */
-  UsersResource_LabelsResource_DeleteMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& id);
+        UsersResource_LabelsResource_DeleteMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_LabelsResource_DeleteMethod();
+        virtual ~UsersResource_LabelsResource_DeleteMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -1805,17 +1884,17 @@ class UsersResource_LabelsResource_DeleteMethod : public GmailServiceBaseRequest
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
- private:
-  string user_id_;
-  string id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_LabelsResource_DeleteMethod);
-};
+    private:
+        string user_id_;
+        string id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_LabelsResource_DeleteMethod);
+    };
 
 /**
  * Implements the get method.
@@ -1833,9 +1912,10 @@ class UsersResource_LabelsResource_DeleteMethod : public GmailServiceBaseRequest
  * https://www.googleapis.com/auth/gmail.modify
  * https://www.googleapis.com/auth/gmail.readonly
  */
-class UsersResource_LabelsResource_GetMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_LabelsResource_GetMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -1845,19 +1925,19 @@ class UsersResource_LabelsResource_GetMethod : public GmailServiceBaseRequest {
    * used to indicate the authenticated user.
    * @param[in] id The ID of the label to retrieve.
    */
-  UsersResource_LabelsResource_GetMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& id);
+        UsersResource_LabelsResource_GetMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_LabelsResource_GetMethod();
+        virtual ~UsersResource_LabelsResource_GetMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -1866,13 +1946,13 @@ class UsersResource_LabelsResource_GetMethod : public GmailServiceBaseRequest {
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -1882,16 +1962,17 @@ class UsersResource_LabelsResource_GetMethod : public GmailServiceBaseRequest {
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Label* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Label *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_LabelsResource_GetMethod);
-};
+    private:
+        string user_id_;
+        string id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_LabelsResource_GetMethod);
+    };
 
 /**
  * Implements the list method.
@@ -1909,9 +1990,10 @@ class UsersResource_LabelsResource_GetMethod : public GmailServiceBaseRequest {
  * https://www.googleapis.com/auth/gmail.modify
  * https://www.googleapis.com/auth/gmail.readonly
  */
-class UsersResource_LabelsResource_ListMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_LabelsResource_ListMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -1920,18 +2002,18 @@ class UsersResource_LabelsResource_ListMethod : public GmailServiceBaseRequest {
    * @param[in] user_id The user's email address. The special value me can be
    * used to indicate the authenticated user.
    */
-  UsersResource_LabelsResource_ListMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id);
+        UsersResource_LabelsResource_ListMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_LabelsResource_ListMethod();
+        virtual ~UsersResource_LabelsResource_ListMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -1940,13 +2022,13 @@ class UsersResource_LabelsResource_ListMethod : public GmailServiceBaseRequest {
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -1956,15 +2038,16 @@ class UsersResource_LabelsResource_ListMethod : public GmailServiceBaseRequest {
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      ListLabelsResponse* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                ListLabelsResponse *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_LabelsResource_ListMethod);
-};
+    private:
+        string user_id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_LabelsResource_ListMethod);
+    };
 
 /**
  * Implements the patch method.
@@ -1980,9 +2063,10 @@ class UsersResource_LabelsResource_ListMethod : public GmailServiceBaseRequest {
  * https://www.googleapis.com/auth/gmail.labels
  * https://www.googleapis.com/auth/gmail.modify
  */
-class UsersResource_LabelsResource_PatchMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_LabelsResource_PatchMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -1993,20 +2077,20 @@ class UsersResource_LabelsResource_PatchMethod : public GmailServiceBaseRequest 
    * @param[in] id The ID of the label to update.
    * @param[in] _content_ The data object to patch.
    */
-  UsersResource_LabelsResource_PatchMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& id,
-      const Label& _content_);
+        UsersResource_LabelsResource_PatchMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id,
+                const Label &_content_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_LabelsResource_PatchMethod();
+        virtual ~UsersResource_LabelsResource_PatchMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -2015,13 +2099,13 @@ class UsersResource_LabelsResource_PatchMethod : public GmailServiceBaseRequest 
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -2031,16 +2115,18 @@ class UsersResource_LabelsResource_PatchMethod : public GmailServiceBaseRequest 
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Label* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Label *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string id_;  string _content_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_LabelsResource_PatchMethod);
-};
+    private:
+        string user_id_;
+        string id_;
+        string _content_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_LabelsResource_PatchMethod);
+    };
 
 /**
  * Implements the update method.
@@ -2056,9 +2142,10 @@ class UsersResource_LabelsResource_PatchMethod : public GmailServiceBaseRequest 
  * https://www.googleapis.com/auth/gmail.labels
  * https://www.googleapis.com/auth/gmail.modify
  */
-class UsersResource_LabelsResource_UpdateMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_LabelsResource_UpdateMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -2069,20 +2156,20 @@ class UsersResource_LabelsResource_UpdateMethod : public GmailServiceBaseRequest
    * @param[in] id The ID of the label to update.
    * @param[in] _content_ The data object to update.
    */
-  UsersResource_LabelsResource_UpdateMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& id,
-      const Label& _content_);
+        UsersResource_LabelsResource_UpdateMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id,
+                const Label &_content_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_LabelsResource_UpdateMethod();
+        virtual ~UsersResource_LabelsResource_UpdateMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -2091,13 +2178,13 @@ class UsersResource_LabelsResource_UpdateMethod : public GmailServiceBaseRequest
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -2107,16 +2194,18 @@ class UsersResource_LabelsResource_UpdateMethod : public GmailServiceBaseRequest
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Label* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Label *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string id_;  string _content_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_LabelsResource_UpdateMethod);
-};
+    private:
+        string user_id_;
+        string id_;
+        string _content_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_LabelsResource_UpdateMethod);
+    };
 
 
 /**
@@ -2131,9 +2220,10 @@ class UsersResource_LabelsResource_UpdateMethod : public GmailServiceBaseRequest
  * One or more of these authorization scopes are required for this method:
  * https://mail.google.com/
  */
-class UsersResource_MessagesResource_BatchDeleteMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_MessagesResource_BatchDeleteMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -2143,19 +2233,19 @@ class UsersResource_MessagesResource_BatchDeleteMethod : public GmailServiceBase
    * used to indicate the authenticated user.
    * @param[in] _content_ The data object to batchDelete.
    */
-  UsersResource_MessagesResource_BatchDeleteMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const BatchDeleteMessagesRequest& _content_);
+        UsersResource_MessagesResource_BatchDeleteMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const BatchDeleteMessagesRequest &_content_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_MessagesResource_BatchDeleteMethod();
+        virtual ~UsersResource_MessagesResource_BatchDeleteMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -2164,16 +2254,17 @@ class UsersResource_MessagesResource_BatchDeleteMethod : public GmailServiceBase
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
- private:
-  string user_id_;  string _content_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_BatchDeleteMethod);
-};
+    private:
+        string user_id_;
+        string _content_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_BatchDeleteMethod);
+    };
 
 /**
  * Implements the batchModify method.
@@ -2188,9 +2279,10 @@ class UsersResource_MessagesResource_BatchDeleteMethod : public GmailServiceBase
  * https://mail.google.com/
  * https://www.googleapis.com/auth/gmail.modify
  */
-class UsersResource_MessagesResource_BatchModifyMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_MessagesResource_BatchModifyMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -2200,19 +2292,19 @@ class UsersResource_MessagesResource_BatchModifyMethod : public GmailServiceBase
    * used to indicate the authenticated user.
    * @param[in] _content_ The data object to batchModify.
    */
-  UsersResource_MessagesResource_BatchModifyMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const BatchModifyMessagesRequest& _content_);
+        UsersResource_MessagesResource_BatchModifyMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const BatchModifyMessagesRequest &_content_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_MessagesResource_BatchModifyMethod();
+        virtual ~UsersResource_MessagesResource_BatchModifyMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -2221,16 +2313,17 @@ class UsersResource_MessagesResource_BatchModifyMethod : public GmailServiceBase
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
- private:
-  string user_id_;  string _content_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_BatchModifyMethod);
-};
+    private:
+        string user_id_;
+        string _content_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_BatchModifyMethod);
+    };
 
 /**
  * Implements the delete method.
@@ -2244,9 +2337,10 @@ class UsersResource_MessagesResource_BatchModifyMethod : public GmailServiceBase
  * One or more of these authorization scopes are required for this method:
  * https://mail.google.com/
  */
-class UsersResource_MessagesResource_DeleteMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_MessagesResource_DeleteMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -2256,19 +2350,19 @@ class UsersResource_MessagesResource_DeleteMethod : public GmailServiceBaseReque
    * used to indicate the authenticated user.
    * @param[in] id The ID of the message to delete.
    */
-  UsersResource_MessagesResource_DeleteMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& id);
+        UsersResource_MessagesResource_DeleteMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_MessagesResource_DeleteMethod();
+        virtual ~UsersResource_MessagesResource_DeleteMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -2277,17 +2371,17 @@ class UsersResource_MessagesResource_DeleteMethod : public GmailServiceBaseReque
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
- private:
-  string user_id_;
-  string id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_DeleteMethod);
-};
+    private:
+        string user_id_;
+        string id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_DeleteMethod);
+    };
 
 /**
  * Implements the get method.
@@ -2304,9 +2398,10 @@ class UsersResource_MessagesResource_DeleteMethod : public GmailServiceBaseReque
  * https://www.googleapis.com/auth/gmail.modify
  * https://www.googleapis.com/auth/gmail.readonly
  */
-class UsersResource_MessagesResource_GetMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_MessagesResource_GetMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -2316,86 +2411,92 @@ class UsersResource_MessagesResource_GetMethod : public GmailServiceBaseRequest 
    * used to indicate the authenticated user.
    * @param[in] id The ID of the message to retrieve.
    */
-  UsersResource_MessagesResource_GetMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& id);
+        UsersResource_MessagesResource_GetMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_MessagesResource_GetMethod();
+        virtual ~UsersResource_MessagesResource_GetMethod();
 
 
-    /**
+        /**
      * Clears the '<code>format</code>' attribute so it is no longer set.
      */
-    void clear_format() {
-      _have_format_ = false;
-      client::ClearCppValueHelper(&format_);
-    }
+        void clear_format()
+        {
+            _have_format_ = false;
+            client::ClearCppValueHelper(&format_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>format</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    const string& get_format() const { return format_; }
+        const string &get_format() const
+        { return format_; }
 
-    /**
+        /**
      * Gets a modifiable pointer to the optional <code>format</code>' attribute.
      *
      * @return  The value can be set by dereferencing the pointer.
      */
-    string* mutable_format() {
-      _have_format_ = true;
-      return &format_;
-    }
+        string *mutable_format()
+        {
+            _have_format_ = true;
+            return &format_;
+        }
 
 
-    /**
+        /**
      * Sets the '<code>format</code>' attribute.
      *
      * @param[in] value The format to return the message in.
      */
-    void set_format(const string& value) {
-      _have_format_ = true;
-      format_ = value;
-    }
+        void set_format(const string &value)
+        {
+            _have_format_ = true;
+            format_ = value;
+        }
 
 
-
-    /**
+        /**
      * Clears the '<code>metadataHeaders</code>' attribute so it is no longer
      * set.
      */
-    void clear_metadata_headers() {
-      _have_metadata_headers_ = false;
-      client::ClearCppValueHelper(&metadata_headers_);
-    }
+        void clear_metadata_headers()
+        {
+            _have_metadata_headers_ = false;
+            client::ClearCppValueHelper(&metadata_headers_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>metadataHeaders</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    const client::JsonCppArray<string >& get_metadata_headers() const { return metadata_headers_; }
+        const client::JsonCppArray<string> &get_metadata_headers() const
+        { return metadata_headers_; }
 
-    /**
+        /**
      * Gets a modifiable pointer to the optional <code>metadataHeaders</code>'
      * attribute.
      *
      * @return  The value can be set by dereferencing the pointer.
      */
-    client::JsonCppArray<string >* mutable_metadataHeaders() {
-      _have_metadata_headers_ = true;
-      return &metadata_headers_;
-    }
+        client::JsonCppArray<string> *mutable_metadataHeaders()
+        {
+            _have_metadata_headers_ = true;
+            return &metadata_headers_;
+        }
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -2404,20 +2505,20 @@ class UsersResource_MessagesResource_GetMethod : public GmailServiceBaseRequest 
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
-  /**
+        /**
    * Appends the optional query parameters to the target URL.
    *
    * @param[in, out] target  The URL string to append to.
    */
-  virtual util::Status AppendOptionalQueryParameters(string* target);
+        virtual util::Status AppendOptionalQueryParameters(string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -2427,20 +2528,21 @@ class UsersResource_MessagesResource_GetMethod : public GmailServiceBaseRequest 
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Message* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Message *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string id_;
-  string format_;
-  client::JsonCppCapsule< client::JsonCppArray<string > > metadata_headers_;
-  bool _have_format_ : 1;
-  bool _have_metadata_headers_ : 1;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_GetMethod);
-};
+    private:
+        string user_id_;
+        string id_;
+        string format_;
+        client::JsonCppCapsule<client::JsonCppArray<string> > metadata_headers_;
+        bool _have_format_ : 1;
+        bool _have_metadata_headers_ : 1;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_GetMethod);
+    };
 
 /**
  * Implements the import method.
@@ -2456,9 +2558,10 @@ class UsersResource_MessagesResource_GetMethod : public GmailServiceBaseRequest 
  * https://www.googleapis.com/auth/gmail.insert
  * https://www.googleapis.com/auth/gmail.modify
  */
-class UsersResource_MessagesResource_ImportMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_MessagesResource_ImportMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    *
    * @deprecated in favor constructor that includes the media upload parameters.
@@ -2472,11 +2575,12 @@ class UsersResource_MessagesResource_ImportMethod : public GmailServiceBaseReque
    *
    * @param[in] _content_ The data object to import.
    */
-  UsersResource_MessagesResource_ImportMethod(
-        const GmailService* _service_,
-        client::AuthorizationCredential* _credential_,
-        const StringPiece& user_id);
-  /**
+        UsersResource_MessagesResource_ImportMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id);
+
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -2492,145 +2596,157 @@ class UsersResource_MessagesResource_ImportMethod : public GmailServiceBaseReque
    *            this is NULL then do not upload any media and ignore
    *            _media_content_type_.
    */
-  UsersResource_MessagesResource_ImportMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const Message* _metadata_,
-      const StringPiece& _media_content_type_,
-      client::DataReader* _media_content_reader_);
+        UsersResource_MessagesResource_ImportMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const Message *_metadata_,
+                const StringPiece &_media_content_type_,
+                client::DataReader *_media_content_reader_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_MessagesResource_ImportMethod();
+        virtual ~UsersResource_MessagesResource_ImportMethod();
 
 
-    /**
+        /**
      * Clears the '<code>deleted</code>' attribute so it is no longer set.
      */
-    void clear_deleted() {
-      _have_deleted_ = false;
-      client::ClearCppValueHelper(&deleted_);
-    }
+        void clear_deleted()
+        {
+            _have_deleted_ = false;
+            client::ClearCppValueHelper(&deleted_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>deleted</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    bool get_deleted() const { return deleted_; }
+        bool get_deleted() const
+        { return deleted_; }
 
-    /**
+        /**
      * Sets the '<code>deleted</code>' attribute.
      *
      * @param[in] value Mark the email as permanently deleted (not TRASH) and
      * only visible in Google Vault to a Vault administrator. Only used for G
      * Suite accounts.
      */
-    void set_deleted(bool value) {
-      _have_deleted_ = true;
-      deleted_ = value;
-    }
+        void set_deleted(bool value)
+        {
+            _have_deleted_ = true;
+            deleted_ = value;
+        }
 
-    /**
+        /**
      * Clears the '<code>internalDateSource</code>' attribute so it is no longer
      * set.
      */
-    void clear_internal_date_source() {
-      _have_internal_date_source_ = false;
-      client::ClearCppValueHelper(&internal_date_source_);
-    }
+        void clear_internal_date_source()
+        {
+            _have_internal_date_source_ = false;
+            client::ClearCppValueHelper(&internal_date_source_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>internalDateSource</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    const string& get_internal_date_source() const { return internal_date_source_; }
+        const string &get_internal_date_source() const
+        { return internal_date_source_; }
 
-    /**
+        /**
      * Gets a modifiable pointer to the optional
      * <code>internalDateSource</code>' attribute.
      *
      * @return  The value can be set by dereferencing the pointer.
      */
-    string* mutable_internalDateSource() {
-      _have_internal_date_source_ = true;
-      return &internal_date_source_;
-    }
+        string *mutable_internalDateSource()
+        {
+            _have_internal_date_source_ = true;
+            return &internal_date_source_;
+        }
 
 
-    /**
+        /**
      * Sets the '<code>internalDateSource</code>' attribute.
      *
      * @param[in] value Source for Gmail's internal date of the message.
      */
-    void set_internal_date_source(const string& value) {
-      _have_internal_date_source_ = true;
-      internal_date_source_ = value;
-    }
+        void set_internal_date_source(const string &value)
+        {
+            _have_internal_date_source_ = true;
+            internal_date_source_ = value;
+        }
 
 
-
-    /**
+        /**
      * Clears the '<code>neverMarkSpam</code>' attribute so it is no longer set.
      */
-    void clear_never_mark_spam() {
-      _have_never_mark_spam_ = false;
-      client::ClearCppValueHelper(&never_mark_spam_);
-    }
+        void clear_never_mark_spam()
+        {
+            _have_never_mark_spam_ = false;
+            client::ClearCppValueHelper(&never_mark_spam_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>neverMarkSpam</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    bool get_never_mark_spam() const { return never_mark_spam_; }
+        bool get_never_mark_spam() const
+        { return never_mark_spam_; }
 
-    /**
+        /**
      * Sets the '<code>neverMarkSpam</code>' attribute.
      *
      * @param[in] value Ignore the Gmail spam classifier decision and never mark
      * this email as SPAM in the mailbox.
      */
-    void set_never_mark_spam(bool value) {
-      _have_never_mark_spam_ = true;
-      never_mark_spam_ = value;
-    }
+        void set_never_mark_spam(bool value)
+        {
+            _have_never_mark_spam_ = true;
+            never_mark_spam_ = value;
+        }
 
-    /**
+        /**
      * Clears the '<code>processForCalendar</code>' attribute so it is no longer
      * set.
      */
-    void clear_process_for_calendar() {
-      _have_process_for_calendar_ = false;
-      client::ClearCppValueHelper(&process_for_calendar_);
-    }
+        void clear_process_for_calendar()
+        {
+            _have_process_for_calendar_ = false;
+            client::ClearCppValueHelper(&process_for_calendar_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>processForCalendar</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    bool get_process_for_calendar() const { return process_for_calendar_; }
+        bool get_process_for_calendar() const
+        { return process_for_calendar_; }
 
-    /**
+        /**
      * Sets the '<code>processForCalendar</code>' attribute.
      *
      * @param[in] value Process calendar invites in the email and add any
      * extracted meetings to the Google Calendar for this user.
      */
-    void set_process_for_calendar(bool value) {
-      _have_process_for_calendar_ = true;
-      process_for_calendar_ = value;
-    }
+        void set_process_for_calendar(bool value)
+        {
+            _have_process_for_calendar_ = true;
+            process_for_calendar_ = value;
+        }
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -2639,20 +2755,20 @@ class UsersResource_MessagesResource_ImportMethod : public GmailServiceBaseReque
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
-  /**
+        /**
    * Appends the optional query parameters to the target URL.
    *
    * @param[in, out] target  The URL string to append to.
    */
-  virtual util::Status AppendOptionalQueryParameters(string* target);
+        virtual util::Status AppendOptionalQueryParameters(string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -2662,37 +2778,38 @@ class UsersResource_MessagesResource_ImportMethod : public GmailServiceBaseReque
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Message* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Message *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
 
-  /**
+        /**
    * Returns MediaUploader for uploading the content.
    */
 
-  /**
+        /**
    * Returns the specification for media upload using the simple protocol.
    */
-  static const client::MediaUploadSpec SIMPLE_MEDIA_UPLOAD;
-  /**
+        static const client::MediaUploadSpec SIMPLE_MEDIA_UPLOAD;
+        /**
    * Returns the specification for media upload using the resumable protocol.
    */
-  static const client::MediaUploadSpec RESUMABLE_MEDIA_UPLOAD;
+        static const client::MediaUploadSpec RESUMABLE_MEDIA_UPLOAD;
 
- private:
-  string user_id_;
-  bool deleted_;
-  string internal_date_source_;
-  bool never_mark_spam_;
-  bool process_for_calendar_;
-  bool _have_deleted_ : 1;
-  bool _have_internal_date_source_ : 1;
-  bool _have_never_mark_spam_ : 1;
-  bool _have_process_for_calendar_ : 1;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_ImportMethod);
-};
+    private:
+        string user_id_;
+        bool deleted_;
+        string internal_date_source_;
+        bool never_mark_spam_;
+        bool process_for_calendar_;
+        bool _have_deleted_ : 1;
+        bool _have_internal_date_source_ : 1;
+        bool _have_never_mark_spam_ : 1;
+        bool _have_process_for_calendar_ : 1;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_ImportMethod);
+    };
 
 /**
  * Implements the insert method.
@@ -2708,9 +2825,10 @@ class UsersResource_MessagesResource_ImportMethod : public GmailServiceBaseReque
  * https://www.googleapis.com/auth/gmail.insert
  * https://www.googleapis.com/auth/gmail.modify
  */
-class UsersResource_MessagesResource_InsertMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_MessagesResource_InsertMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    *
    * @deprecated in favor constructor that includes the media upload parameters.
@@ -2724,11 +2842,12 @@ class UsersResource_MessagesResource_InsertMethod : public GmailServiceBaseReque
    *
    * @param[in] _content_ The data object to insert.
    */
-  UsersResource_MessagesResource_InsertMethod(
-        const GmailService* _service_,
-        client::AuthorizationCredential* _credential_,
-        const StringPiece& user_id);
-  /**
+        UsersResource_MessagesResource_InsertMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id);
+
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -2744,88 +2863,95 @@ class UsersResource_MessagesResource_InsertMethod : public GmailServiceBaseReque
    *            this is NULL then do not upload any media and ignore
    *            _media_content_type_.
    */
-  UsersResource_MessagesResource_InsertMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const Message* _metadata_,
-      const StringPiece& _media_content_type_,
-      client::DataReader* _media_content_reader_);
+        UsersResource_MessagesResource_InsertMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const Message *_metadata_,
+                const StringPiece &_media_content_type_,
+                client::DataReader *_media_content_reader_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_MessagesResource_InsertMethod();
+        virtual ~UsersResource_MessagesResource_InsertMethod();
 
 
-    /**
+        /**
      * Clears the '<code>deleted</code>' attribute so it is no longer set.
      */
-    void clear_deleted() {
-      _have_deleted_ = false;
-      client::ClearCppValueHelper(&deleted_);
-    }
+        void clear_deleted()
+        {
+            _have_deleted_ = false;
+            client::ClearCppValueHelper(&deleted_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>deleted</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    bool get_deleted() const { return deleted_; }
+        bool get_deleted() const
+        { return deleted_; }
 
-    /**
+        /**
      * Sets the '<code>deleted</code>' attribute.
      *
      * @param[in] value Mark the email as permanently deleted (not TRASH) and
      * only visible in Google Vault to a Vault administrator. Only used for G
      * Suite accounts.
      */
-    void set_deleted(bool value) {
-      _have_deleted_ = true;
-      deleted_ = value;
-    }
+        void set_deleted(bool value)
+        {
+            _have_deleted_ = true;
+            deleted_ = value;
+        }
 
-    /**
+        /**
      * Clears the '<code>internalDateSource</code>' attribute so it is no longer
      * set.
      */
-    void clear_internal_date_source() {
-      _have_internal_date_source_ = false;
-      client::ClearCppValueHelper(&internal_date_source_);
-    }
+        void clear_internal_date_source()
+        {
+            _have_internal_date_source_ = false;
+            client::ClearCppValueHelper(&internal_date_source_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>internalDateSource</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    const string& get_internal_date_source() const { return internal_date_source_; }
+        const string &get_internal_date_source() const
+        { return internal_date_source_; }
 
-    /**
+        /**
      * Gets a modifiable pointer to the optional
      * <code>internalDateSource</code>' attribute.
      *
      * @return  The value can be set by dereferencing the pointer.
      */
-    string* mutable_internalDateSource() {
-      _have_internal_date_source_ = true;
-      return &internal_date_source_;
-    }
+        string *mutable_internalDateSource()
+        {
+            _have_internal_date_source_ = true;
+            return &internal_date_source_;
+        }
 
 
-    /**
+        /**
      * Sets the '<code>internalDateSource</code>' attribute.
      *
      * @param[in] value Source for Gmail's internal date of the message.
      */
-    void set_internal_date_source(const string& value) {
-      _have_internal_date_source_ = true;
-      internal_date_source_ = value;
-    }
+        void set_internal_date_source(const string &value)
+        {
+            _have_internal_date_source_ = true;
+            internal_date_source_ = value;
+        }
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -2834,20 +2960,20 @@ class UsersResource_MessagesResource_InsertMethod : public GmailServiceBaseReque
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
-  /**
+        /**
    * Appends the optional query parameters to the target URL.
    *
    * @param[in, out] target  The URL string to append to.
    */
-  virtual util::Status AppendOptionalQueryParameters(string* target);
+        virtual util::Status AppendOptionalQueryParameters(string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -2857,33 +2983,34 @@ class UsersResource_MessagesResource_InsertMethod : public GmailServiceBaseReque
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Message* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Message *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
 
-  /**
+        /**
    * Returns MediaUploader for uploading the content.
    */
 
-  /**
+        /**
    * Returns the specification for media upload using the simple protocol.
    */
-  static const client::MediaUploadSpec SIMPLE_MEDIA_UPLOAD;
-  /**
+        static const client::MediaUploadSpec SIMPLE_MEDIA_UPLOAD;
+        /**
    * Returns the specification for media upload using the resumable protocol.
    */
-  static const client::MediaUploadSpec RESUMABLE_MEDIA_UPLOAD;
+        static const client::MediaUploadSpec RESUMABLE_MEDIA_UPLOAD;
 
- private:
-  string user_id_;
-  bool deleted_;
-  string internal_date_source_;
-  bool _have_deleted_ : 1;
-  bool _have_internal_date_source_ : 1;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_InsertMethod);
-};
+    private:
+        string user_id_;
+        bool deleted_;
+        string internal_date_source_;
+        bool _have_deleted_ : 1;
+        bool _have_internal_date_source_ : 1;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_InsertMethod);
+    };
 
 /**
  * Implements the list method.
@@ -2900,9 +3027,10 @@ class UsersResource_MessagesResource_InsertMethod : public GmailServiceBaseReque
  * https://www.googleapis.com/auth/gmail.modify
  * https://www.googleapis.com/auth/gmail.readonly
  */
-class UsersResource_MessagesResource_ListMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_MessagesResource_ListMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -2911,168 +3039,182 @@ class UsersResource_MessagesResource_ListMethod : public GmailServiceBaseRequest
    * @param[in] user_id The user's email address. The special value me can be
    * used to indicate the authenticated user.
    */
-  UsersResource_MessagesResource_ListMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id);
+        UsersResource_MessagesResource_ListMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_MessagesResource_ListMethod();
+        virtual ~UsersResource_MessagesResource_ListMethod();
 
 
-    /**
+        /**
      * Clears the '<code>includeSpamTrash</code>' attribute so it is no longer
      * set.
      */
-    void clear_include_spam_trash() {
-      _have_include_spam_trash_ = false;
-      client::ClearCppValueHelper(&include_spam_trash_);
-    }
+        void clear_include_spam_trash()
+        {
+            _have_include_spam_trash_ = false;
+            client::ClearCppValueHelper(&include_spam_trash_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>includeSpamTrash</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    bool get_include_spam_trash() const { return include_spam_trash_; }
+        bool get_include_spam_trash() const
+        { return include_spam_trash_; }
 
-    /**
+        /**
      * Sets the '<code>includeSpamTrash</code>' attribute.
      *
      * @param[in] value Include messages from SPAM and TRASH in the results.
      */
-    void set_include_spam_trash(bool value) {
-      _have_include_spam_trash_ = true;
-      include_spam_trash_ = value;
-    }
+        void set_include_spam_trash(bool value)
+        {
+            _have_include_spam_trash_ = true;
+            include_spam_trash_ = value;
+        }
 
-    /**
+        /**
      * Clears the '<code>labelIds</code>' attribute so it is no longer set.
      */
-    void clear_label_ids() {
-      _have_label_ids_ = false;
-      client::ClearCppValueHelper(&label_ids_);
-    }
+        void clear_label_ids()
+        {
+            _have_label_ids_ = false;
+            client::ClearCppValueHelper(&label_ids_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>labelIds</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    const client::JsonCppArray<string >& get_label_ids() const { return label_ids_; }
+        const client::JsonCppArray<string> &get_label_ids() const
+        { return label_ids_; }
 
-    /**
+        /**
      * Gets a modifiable pointer to the optional <code>labelIds</code>'
      * attribute.
      *
      * @return  The value can be set by dereferencing the pointer.
      */
-    client::JsonCppArray<string >* mutable_labelIds() {
-      _have_label_ids_ = true;
-      return &label_ids_;
-    }
+        client::JsonCppArray<string> *mutable_labelIds()
+        {
+            _have_label_ids_ = true;
+            return &label_ids_;
+        }
 
 
-
-    /**
+        /**
      * Clears the '<code>maxResults</code>' attribute so it is no longer set.
      */
-    void clear_max_results() {
-      _have_max_results_ = false;
-      client::ClearCppValueHelper(&max_results_);
-    }
+        void clear_max_results()
+        {
+            _have_max_results_ = false;
+            client::ClearCppValueHelper(&max_results_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>maxResults</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    uint32 get_max_results() const { return max_results_; }
+        uint32 get_max_results() const
+        { return max_results_; }
 
-    /**
+        /**
      * Sets the '<code>maxResults</code>' attribute.
      *
      * @param[in] value Maximum number of messages to return.
      */
-    void set_max_results(uint32 value) {
-      _have_max_results_ = true;
-      max_results_ = value;
-    }
+        void set_max_results(uint32 value)
+        {
+            _have_max_results_ = true;
+            max_results_ = value;
+        }
 
-    /**
+        /**
      * Clears the '<code>pageToken</code>' attribute so it is no longer set.
      */
-    void clear_page_token() {
-      _have_page_token_ = false;
-      client::ClearCppValueHelper(&page_token_);
-    }
+        void clear_page_token()
+        {
+            _have_page_token_ = false;
+            client::ClearCppValueHelper(&page_token_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>pageToken</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    const string& get_page_token() const { return page_token_; }
+        const string &get_page_token() const
+        { return page_token_; }
 
-    /**
+        /**
      * Gets a modifiable pointer to the optional <code>pageToken</code>'
      * attribute.
      *
      * @return  The value can be set by dereferencing the pointer.
      */
-    string* mutable_pageToken() {
-      _have_page_token_ = true;
-      return &page_token_;
-    }
+        string *mutable_pageToken()
+        {
+            _have_page_token_ = true;
+            return &page_token_;
+        }
 
 
-    /**
+        /**
      * Sets the '<code>pageToken</code>' attribute.
      *
      * @param[in] value Page token to retrieve a specific page of results in the
      * list.
      */
-    void set_page_token(const string& value) {
-      _have_page_token_ = true;
-      page_token_ = value;
-    }
+        void set_page_token(const string &value)
+        {
+            _have_page_token_ = true;
+            page_token_ = value;
+        }
 
 
-
-    /**
+        /**
      * Clears the '<code>q</code>' attribute so it is no longer set.
      */
-    void clear_q() {
-      _have_q_ = false;
-      client::ClearCppValueHelper(&q_);
-    }
+        void clear_q()
+        {
+            _have_q_ = false;
+            client::ClearCppValueHelper(&q_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>q</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    const string& get_q() const { return q_; }
+        const string &get_q() const
+        { return q_; }
 
-    /**
+        /**
      * Gets a modifiable pointer to the optional <code>q</code>' attribute.
      *
      * @return  The value can be set by dereferencing the pointer.
      */
-    string* mutable_q() {
-      _have_q_ = true;
-      return &q_;
-    }
+        string *mutable_q()
+        {
+            _have_q_ = true;
+            return &q_;
+        }
 
 
-    /**
+        /**
      * Sets the '<code>q</code>' attribute.
      *
      * @param[in] value Only return messages matching the specified query.
@@ -3080,12 +3222,13 @@ class UsersResource_MessagesResource_ListMethod : public GmailServiceBaseRequest
      * "from:someuser@example.com rfc822msgid: is:unread". Parameter cannot be
      * used when accessing the api using the gmail.metadata scope.
      */
-    void set_q(const string& value) {
-      _have_q_ = true;
-      q_ = value;
-    }
+        void set_q(const string &value)
+        {
+            _have_q_ = true;
+            q_ = value;
+        }
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -3094,20 +3237,20 @@ class UsersResource_MessagesResource_ListMethod : public GmailServiceBaseRequest
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
-  /**
+        /**
    * Appends the optional query parameters to the target URL.
    *
    * @param[in, out] target  The URL string to append to.
    */
-  virtual util::Status AppendOptionalQueryParameters(string* target);
+        virtual util::Status AppendOptionalQueryParameters(string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -3117,30 +3260,31 @@ class UsersResource_MessagesResource_ListMethod : public GmailServiceBaseRequest
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      ListMessagesResponse* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                ListMessagesResponse *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  bool include_spam_trash_;
-  client::JsonCppCapsule< client::JsonCppArray<string > > label_ids_;
-  uint32 max_results_;
-  string page_token_;
-  string q_;
-  bool _have_include_spam_trash_ : 1;
-  bool _have_label_ids_ : 1;
-  bool _have_max_results_ : 1;
-  bool _have_page_token_ : 1;
-  bool _have_q_ : 1;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_ListMethod);
-};
+    private:
+        string user_id_;
+        bool include_spam_trash_;
+        client::JsonCppCapsule<client::JsonCppArray<string> > label_ids_;
+        uint32 max_results_;
+        string page_token_;
+        string q_;
+        bool _have_include_spam_trash_ : 1;
+        bool _have_label_ids_ : 1;
+        bool _have_max_results_ : 1;
+        bool _have_page_token_ : 1;
+        bool _have_q_ : 1;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_ListMethod);
+    };
 
-typedef client::ServiceRequestPager<
+    typedef client::ServiceRequestPager<
             UsersResource_MessagesResource_ListMethod,
             ListMessagesResponse>
-        UsersResource_MessagesResource_ListMethodPager;
+            UsersResource_MessagesResource_ListMethodPager;
 
 /**
  * Implements the modify method.
@@ -3155,9 +3299,10 @@ typedef client::ServiceRequestPager<
  * https://mail.google.com/
  * https://www.googleapis.com/auth/gmail.modify
  */
-class UsersResource_MessagesResource_ModifyMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_MessagesResource_ModifyMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -3168,20 +3313,20 @@ class UsersResource_MessagesResource_ModifyMethod : public GmailServiceBaseReque
    * @param[in] id The ID of the message to modify.
    * @param[in] _content_ The data object to modify.
    */
-  UsersResource_MessagesResource_ModifyMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& id,
-      const ModifyMessageRequest& _content_);
+        UsersResource_MessagesResource_ModifyMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id,
+                const ModifyMessageRequest &_content_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_MessagesResource_ModifyMethod();
+        virtual ~UsersResource_MessagesResource_ModifyMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -3190,13 +3335,13 @@ class UsersResource_MessagesResource_ModifyMethod : public GmailServiceBaseReque
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -3206,16 +3351,18 @@ class UsersResource_MessagesResource_ModifyMethod : public GmailServiceBaseReque
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Message* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Message *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string id_;  string _content_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_ModifyMethod);
-};
+    private:
+        string user_id_;
+        string id_;
+        string _content_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_ModifyMethod);
+    };
 
 /**
  * Implements the send method.
@@ -3232,9 +3379,10 @@ class UsersResource_MessagesResource_ModifyMethod : public GmailServiceBaseReque
  * https://www.googleapis.com/auth/gmail.modify
  * https://www.googleapis.com/auth/gmail.send
  */
-class UsersResource_MessagesResource_SendMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_MessagesResource_SendMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    *
    * @deprecated in favor constructor that includes the media upload parameters.
@@ -3248,11 +3396,12 @@ class UsersResource_MessagesResource_SendMethod : public GmailServiceBaseRequest
    *
    * @param[in] _content_ The data object to send.
    */
-  UsersResource_MessagesResource_SendMethod(
-        const GmailService* _service_,
-        client::AuthorizationCredential* _credential_,
-        const StringPiece& user_id);
-  /**
+        UsersResource_MessagesResource_SendMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id);
+
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -3268,21 +3417,21 @@ class UsersResource_MessagesResource_SendMethod : public GmailServiceBaseRequest
    *            this is NULL then do not upload any media and ignore
    *            _media_content_type_.
    */
-  UsersResource_MessagesResource_SendMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const Message* _metadata_,
-      const StringPiece& _media_content_type_,
-      client::DataReader* _media_content_reader_);
+        UsersResource_MessagesResource_SendMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const Message *_metadata_,
+                const StringPiece &_media_content_type_,
+                client::DataReader *_media_content_reader_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_MessagesResource_SendMethod();
+        virtual ~UsersResource_MessagesResource_SendMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -3291,13 +3440,13 @@ class UsersResource_MessagesResource_SendMethod : public GmailServiceBaseRequest
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -3307,29 +3456,30 @@ class UsersResource_MessagesResource_SendMethod : public GmailServiceBaseRequest
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Message* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Message *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
 
-  /**
+        /**
    * Returns MediaUploader for uploading the content.
    */
 
-  /**
+        /**
    * Returns the specification for media upload using the simple protocol.
    */
-  static const client::MediaUploadSpec SIMPLE_MEDIA_UPLOAD;
-  /**
+        static const client::MediaUploadSpec SIMPLE_MEDIA_UPLOAD;
+        /**
    * Returns the specification for media upload using the resumable protocol.
    */
-  static const client::MediaUploadSpec RESUMABLE_MEDIA_UPLOAD;
+        static const client::MediaUploadSpec RESUMABLE_MEDIA_UPLOAD;
 
- private:
-  string user_id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_SendMethod);
-};
+    private:
+        string user_id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_SendMethod);
+    };
 
 /**
  * Implements the trash method.
@@ -3344,9 +3494,10 @@ class UsersResource_MessagesResource_SendMethod : public GmailServiceBaseRequest
  * https://mail.google.com/
  * https://www.googleapis.com/auth/gmail.modify
  */
-class UsersResource_MessagesResource_TrashMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_MessagesResource_TrashMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -3356,19 +3507,19 @@ class UsersResource_MessagesResource_TrashMethod : public GmailServiceBaseReques
    * used to indicate the authenticated user.
    * @param[in] id The ID of the message to Trash.
    */
-  UsersResource_MessagesResource_TrashMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& id);
+        UsersResource_MessagesResource_TrashMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_MessagesResource_TrashMethod();
+        virtual ~UsersResource_MessagesResource_TrashMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -3377,13 +3528,13 @@ class UsersResource_MessagesResource_TrashMethod : public GmailServiceBaseReques
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -3393,16 +3544,17 @@ class UsersResource_MessagesResource_TrashMethod : public GmailServiceBaseReques
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Message* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Message *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_TrashMethod);
-};
+    private:
+        string user_id_;
+        string id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_TrashMethod);
+    };
 
 /**
  * Implements the untrash method.
@@ -3417,9 +3569,10 @@ class UsersResource_MessagesResource_TrashMethod : public GmailServiceBaseReques
  * https://mail.google.com/
  * https://www.googleapis.com/auth/gmail.modify
  */
-class UsersResource_MessagesResource_UntrashMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_MessagesResource_UntrashMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -3429,19 +3582,19 @@ class UsersResource_MessagesResource_UntrashMethod : public GmailServiceBaseRequ
    * used to indicate the authenticated user.
    * @param[in] id The ID of the message to remove from Trash.
    */
-  UsersResource_MessagesResource_UntrashMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& id);
+        UsersResource_MessagesResource_UntrashMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_MessagesResource_UntrashMethod();
+        virtual ~UsersResource_MessagesResource_UntrashMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -3450,13 +3603,13 @@ class UsersResource_MessagesResource_UntrashMethod : public GmailServiceBaseRequ
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -3466,18 +3619,17 @@ class UsersResource_MessagesResource_UntrashMethod : public GmailServiceBaseRequ
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Message* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Message *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_UntrashMethod);
-};
-
-
+    private:
+        string user_id_;
+        string id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_UntrashMethod);
+    };
 
 
 /**
@@ -3494,9 +3646,10 @@ class UsersResource_MessagesResource_UntrashMethod : public GmailServiceBaseRequ
  * https://www.googleapis.com/auth/gmail.modify
  * https://www.googleapis.com/auth/gmail.readonly
  */
-class UsersResource_MessagesResource_AttachmentsResource_GetMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_MessagesResource_AttachmentsResource_GetMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -3507,20 +3660,20 @@ class UsersResource_MessagesResource_AttachmentsResource_GetMethod : public Gmai
    * @param[in] message_id The ID of the message containing the attachment.
    * @param[in] id The ID of the attachment.
    */
-  UsersResource_MessagesResource_AttachmentsResource_GetMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& message_id,
-      const StringPiece& id);
+        UsersResource_MessagesResource_AttachmentsResource_GetMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &message_id,
+                const StringPiece &id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_MessagesResource_AttachmentsResource_GetMethod();
+        virtual ~UsersResource_MessagesResource_AttachmentsResource_GetMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -3529,13 +3682,13 @@ class UsersResource_MessagesResource_AttachmentsResource_GetMethod : public Gmai
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -3545,17 +3698,18 @@ class UsersResource_MessagesResource_AttachmentsResource_GetMethod : public Gmai
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      MessagePartBody* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                MessagePartBody *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string message_id_;
-  string id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_AttachmentsResource_GetMethod);
-};
+    private:
+        string user_id_;
+        string message_id_;
+        string id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_MessagesResource_AttachmentsResource_GetMethod);
+    };
 
 
 /**
@@ -3573,9 +3727,10 @@ class UsersResource_MessagesResource_AttachmentsResource_GetMethod : public Gmai
  * https://www.googleapis.com/auth/gmail.readonly
  * https://www.googleapis.com/auth/gmail.settings.basic
  */
-class UsersResource_SettingsResource_GetAutoForwardingMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_GetAutoForwardingMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -3584,18 +3739,18 @@ class UsersResource_SettingsResource_GetAutoForwardingMethod : public GmailServi
    * @param[in] user_id User's email address. The special value "me" can be used
    * to indicate the authenticated user.
    */
-  UsersResource_SettingsResource_GetAutoForwardingMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id);
+        UsersResource_SettingsResource_GetAutoForwardingMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_GetAutoForwardingMethod();
+        virtual ~UsersResource_SettingsResource_GetAutoForwardingMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -3604,13 +3759,13 @@ class UsersResource_SettingsResource_GetAutoForwardingMethod : public GmailServi
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -3620,15 +3775,16 @@ class UsersResource_SettingsResource_GetAutoForwardingMethod : public GmailServi
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      AutoForwarding* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                AutoForwarding *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_GetAutoForwardingMethod);
-};
+    private:
+        string user_id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_GetAutoForwardingMethod);
+    };
 
 /**
  * Implements the getImap method.
@@ -3645,9 +3801,10 @@ class UsersResource_SettingsResource_GetAutoForwardingMethod : public GmailServi
  * https://www.googleapis.com/auth/gmail.readonly
  * https://www.googleapis.com/auth/gmail.settings.basic
  */
-class UsersResource_SettingsResource_GetImapMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_GetImapMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -3656,18 +3813,18 @@ class UsersResource_SettingsResource_GetImapMethod : public GmailServiceBaseRequ
    * @param[in] user_id User's email address. The special value "me" can be used
    * to indicate the authenticated user.
    */
-  UsersResource_SettingsResource_GetImapMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id);
+        UsersResource_SettingsResource_GetImapMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_GetImapMethod();
+        virtual ~UsersResource_SettingsResource_GetImapMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -3676,13 +3833,13 @@ class UsersResource_SettingsResource_GetImapMethod : public GmailServiceBaseRequ
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -3692,15 +3849,16 @@ class UsersResource_SettingsResource_GetImapMethod : public GmailServiceBaseRequ
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      ImapSettings* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                ImapSettings *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_GetImapMethod);
-};
+    private:
+        string user_id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_GetImapMethod);
+    };
 
 /**
  * Implements the getPop method.
@@ -3717,9 +3875,10 @@ class UsersResource_SettingsResource_GetImapMethod : public GmailServiceBaseRequ
  * https://www.googleapis.com/auth/gmail.readonly
  * https://www.googleapis.com/auth/gmail.settings.basic
  */
-class UsersResource_SettingsResource_GetPopMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_GetPopMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -3728,18 +3887,18 @@ class UsersResource_SettingsResource_GetPopMethod : public GmailServiceBaseReque
    * @param[in] user_id User's email address. The special value "me" can be used
    * to indicate the authenticated user.
    */
-  UsersResource_SettingsResource_GetPopMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id);
+        UsersResource_SettingsResource_GetPopMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_GetPopMethod();
+        virtual ~UsersResource_SettingsResource_GetPopMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -3748,13 +3907,13 @@ class UsersResource_SettingsResource_GetPopMethod : public GmailServiceBaseReque
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -3764,15 +3923,16 @@ class UsersResource_SettingsResource_GetPopMethod : public GmailServiceBaseReque
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      PopSettings* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                PopSettings *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_GetPopMethod);
-};
+    private:
+        string user_id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_GetPopMethod);
+    };
 
 /**
  * Implements the getVacation method.
@@ -3789,9 +3949,10 @@ class UsersResource_SettingsResource_GetPopMethod : public GmailServiceBaseReque
  * https://www.googleapis.com/auth/gmail.readonly
  * https://www.googleapis.com/auth/gmail.settings.basic
  */
-class UsersResource_SettingsResource_GetVacationMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_GetVacationMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -3800,18 +3961,18 @@ class UsersResource_SettingsResource_GetVacationMethod : public GmailServiceBase
    * @param[in] user_id User's email address. The special value "me" can be used
    * to indicate the authenticated user.
    */
-  UsersResource_SettingsResource_GetVacationMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id);
+        UsersResource_SettingsResource_GetVacationMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_GetVacationMethod();
+        virtual ~UsersResource_SettingsResource_GetVacationMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -3820,13 +3981,13 @@ class UsersResource_SettingsResource_GetVacationMethod : public GmailServiceBase
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -3836,15 +3997,16 @@ class UsersResource_SettingsResource_GetVacationMethod : public GmailServiceBase
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      VacationSettings* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                VacationSettings *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_GetVacationMethod);
-};
+    private:
+        string user_id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_GetVacationMethod);
+    };
 
 /**
  * Implements the updateAutoForwarding method.
@@ -3858,9 +4020,10 @@ class UsersResource_SettingsResource_GetVacationMethod : public GmailServiceBase
  * One or more of these authorization scopes are required for this method:
  * https://www.googleapis.com/auth/gmail.settings.sharing
  */
-class UsersResource_SettingsResource_UpdateAutoForwardingMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_UpdateAutoForwardingMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -3870,19 +4033,19 @@ class UsersResource_SettingsResource_UpdateAutoForwardingMethod : public GmailSe
    * to indicate the authenticated user.
    * @param[in] _content_ The data object to updateAutoForwarding.
    */
-  UsersResource_SettingsResource_UpdateAutoForwardingMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const AutoForwarding& _content_);
+        UsersResource_SettingsResource_UpdateAutoForwardingMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const AutoForwarding &_content_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_UpdateAutoForwardingMethod();
+        virtual ~UsersResource_SettingsResource_UpdateAutoForwardingMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -3891,13 +4054,13 @@ class UsersResource_SettingsResource_UpdateAutoForwardingMethod : public GmailSe
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -3907,15 +4070,17 @@ class UsersResource_SettingsResource_UpdateAutoForwardingMethod : public GmailSe
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      AutoForwarding* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                AutoForwarding *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;  string _content_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_UpdateAutoForwardingMethod);
-};
+    private:
+        string user_id_;
+        string _content_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_UpdateAutoForwardingMethod);
+    };
 
 /**
  * Implements the updateImap method.
@@ -3929,9 +4094,10 @@ class UsersResource_SettingsResource_UpdateAutoForwardingMethod : public GmailSe
  * One or more of these authorization scopes are required for this method:
  * https://www.googleapis.com/auth/gmail.settings.basic
  */
-class UsersResource_SettingsResource_UpdateImapMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_UpdateImapMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -3941,19 +4107,19 @@ class UsersResource_SettingsResource_UpdateImapMethod : public GmailServiceBaseR
    * to indicate the authenticated user.
    * @param[in] _content_ The data object to updateImap.
    */
-  UsersResource_SettingsResource_UpdateImapMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const ImapSettings& _content_);
+        UsersResource_SettingsResource_UpdateImapMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const ImapSettings &_content_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_UpdateImapMethod();
+        virtual ~UsersResource_SettingsResource_UpdateImapMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -3962,13 +4128,13 @@ class UsersResource_SettingsResource_UpdateImapMethod : public GmailServiceBaseR
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -3978,15 +4144,17 @@ class UsersResource_SettingsResource_UpdateImapMethod : public GmailServiceBaseR
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      ImapSettings* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                ImapSettings *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;  string _content_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_UpdateImapMethod);
-};
+    private:
+        string user_id_;
+        string _content_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_UpdateImapMethod);
+    };
 
 /**
  * Implements the updatePop method.
@@ -4000,9 +4168,10 @@ class UsersResource_SettingsResource_UpdateImapMethod : public GmailServiceBaseR
  * One or more of these authorization scopes are required for this method:
  * https://www.googleapis.com/auth/gmail.settings.basic
  */
-class UsersResource_SettingsResource_UpdatePopMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_UpdatePopMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -4012,19 +4181,19 @@ class UsersResource_SettingsResource_UpdatePopMethod : public GmailServiceBaseRe
    * to indicate the authenticated user.
    * @param[in] _content_ The data object to updatePop.
    */
-  UsersResource_SettingsResource_UpdatePopMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const PopSettings& _content_);
+        UsersResource_SettingsResource_UpdatePopMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const PopSettings &_content_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_UpdatePopMethod();
+        virtual ~UsersResource_SettingsResource_UpdatePopMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -4033,13 +4202,13 @@ class UsersResource_SettingsResource_UpdatePopMethod : public GmailServiceBaseRe
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -4049,15 +4218,17 @@ class UsersResource_SettingsResource_UpdatePopMethod : public GmailServiceBaseRe
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      PopSettings* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                PopSettings *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;  string _content_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_UpdatePopMethod);
-};
+    private:
+        string user_id_;
+        string _content_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_UpdatePopMethod);
+    };
 
 /**
  * Implements the updateVacation method.
@@ -4071,9 +4242,10 @@ class UsersResource_SettingsResource_UpdatePopMethod : public GmailServiceBaseRe
  * One or more of these authorization scopes are required for this method:
  * https://www.googleapis.com/auth/gmail.settings.basic
  */
-class UsersResource_SettingsResource_UpdateVacationMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_UpdateVacationMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -4083,19 +4255,19 @@ class UsersResource_SettingsResource_UpdateVacationMethod : public GmailServiceB
    * to indicate the authenticated user.
    * @param[in] _content_ The data object to updateVacation.
    */
-  UsersResource_SettingsResource_UpdateVacationMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const VacationSettings& _content_);
+        UsersResource_SettingsResource_UpdateVacationMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const VacationSettings &_content_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_UpdateVacationMethod();
+        virtual ~UsersResource_SettingsResource_UpdateVacationMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -4104,13 +4276,13 @@ class UsersResource_SettingsResource_UpdateVacationMethod : public GmailServiceB
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -4120,17 +4292,17 @@ class UsersResource_SettingsResource_UpdateVacationMethod : public GmailServiceB
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      VacationSettings* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                VacationSettings *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;  string _content_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_UpdateVacationMethod);
-};
-
-
+    private:
+        string user_id_;
+        string _content_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_UpdateVacationMethod);
+    };
 
 
 /**
@@ -4145,9 +4317,10 @@ class UsersResource_SettingsResource_UpdateVacationMethod : public GmailServiceB
  * One or more of these authorization scopes are required for this method:
  * https://www.googleapis.com/auth/gmail.settings.basic
  */
-class UsersResource_SettingsResource_FiltersResource_CreateMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_FiltersResource_CreateMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -4157,19 +4330,19 @@ class UsersResource_SettingsResource_FiltersResource_CreateMethod : public Gmail
    * to indicate the authenticated user.
    * @param[in] _content_ The data object to create.
    */
-  UsersResource_SettingsResource_FiltersResource_CreateMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const Filter& _content_);
+        UsersResource_SettingsResource_FiltersResource_CreateMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const Filter &_content_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_FiltersResource_CreateMethod();
+        virtual ~UsersResource_SettingsResource_FiltersResource_CreateMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -4178,13 +4351,13 @@ class UsersResource_SettingsResource_FiltersResource_CreateMethod : public Gmail
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -4194,15 +4367,17 @@ class UsersResource_SettingsResource_FiltersResource_CreateMethod : public Gmail
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Filter* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Filter *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;  string _content_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_FiltersResource_CreateMethod);
-};
+    private:
+        string user_id_;
+        string _content_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_FiltersResource_CreateMethod);
+    };
 
 /**
  * Implements the delete method.
@@ -4216,9 +4391,10 @@ class UsersResource_SettingsResource_FiltersResource_CreateMethod : public Gmail
  * One or more of these authorization scopes are required for this method:
  * https://www.googleapis.com/auth/gmail.settings.basic
  */
-class UsersResource_SettingsResource_FiltersResource_DeleteMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_FiltersResource_DeleteMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -4228,19 +4404,19 @@ class UsersResource_SettingsResource_FiltersResource_DeleteMethod : public Gmail
    * to indicate the authenticated user.
    * @param[in] id The ID of the filter to be deleted.
    */
-  UsersResource_SettingsResource_FiltersResource_DeleteMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& id);
+        UsersResource_SettingsResource_FiltersResource_DeleteMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_FiltersResource_DeleteMethod();
+        virtual ~UsersResource_SettingsResource_FiltersResource_DeleteMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -4249,17 +4425,17 @@ class UsersResource_SettingsResource_FiltersResource_DeleteMethod : public Gmail
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
- private:
-  string user_id_;
-  string id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_FiltersResource_DeleteMethod);
-};
+    private:
+        string user_id_;
+        string id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_FiltersResource_DeleteMethod);
+    };
 
 /**
  * Implements the get method.
@@ -4276,9 +4452,10 @@ class UsersResource_SettingsResource_FiltersResource_DeleteMethod : public Gmail
  * https://www.googleapis.com/auth/gmail.readonly
  * https://www.googleapis.com/auth/gmail.settings.basic
  */
-class UsersResource_SettingsResource_FiltersResource_GetMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_FiltersResource_GetMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -4288,19 +4465,19 @@ class UsersResource_SettingsResource_FiltersResource_GetMethod : public GmailSer
    * to indicate the authenticated user.
    * @param[in] id The ID of the filter to be fetched.
    */
-  UsersResource_SettingsResource_FiltersResource_GetMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& id);
+        UsersResource_SettingsResource_FiltersResource_GetMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_FiltersResource_GetMethod();
+        virtual ~UsersResource_SettingsResource_FiltersResource_GetMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -4309,13 +4486,13 @@ class UsersResource_SettingsResource_FiltersResource_GetMethod : public GmailSer
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -4325,16 +4502,17 @@ class UsersResource_SettingsResource_FiltersResource_GetMethod : public GmailSer
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Filter* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Filter *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_FiltersResource_GetMethod);
-};
+    private:
+        string user_id_;
+        string id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_FiltersResource_GetMethod);
+    };
 
 /**
  * Implements the list method.
@@ -4351,9 +4529,10 @@ class UsersResource_SettingsResource_FiltersResource_GetMethod : public GmailSer
  * https://www.googleapis.com/auth/gmail.readonly
  * https://www.googleapis.com/auth/gmail.settings.basic
  */
-class UsersResource_SettingsResource_FiltersResource_ListMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_FiltersResource_ListMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -4362,18 +4541,18 @@ class UsersResource_SettingsResource_FiltersResource_ListMethod : public GmailSe
    * @param[in] user_id User's email address. The special value "me" can be used
    * to indicate the authenticated user.
    */
-  UsersResource_SettingsResource_FiltersResource_ListMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id);
+        UsersResource_SettingsResource_FiltersResource_ListMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_FiltersResource_ListMethod();
+        virtual ~UsersResource_SettingsResource_FiltersResource_ListMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -4382,13 +4561,13 @@ class UsersResource_SettingsResource_FiltersResource_ListMethod : public GmailSe
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -4398,15 +4577,16 @@ class UsersResource_SettingsResource_FiltersResource_ListMethod : public GmailSe
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      ListFiltersResponse* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                ListFiltersResponse *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_FiltersResource_ListMethod);
-};
+    private:
+        string user_id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_FiltersResource_ListMethod);
+    };
 
 
 /**
@@ -4421,9 +4601,10 @@ class UsersResource_SettingsResource_FiltersResource_ListMethod : public GmailSe
  * One or more of these authorization scopes are required for this method:
  * https://www.googleapis.com/auth/gmail.settings.sharing
  */
-class UsersResource_SettingsResource_ForwardingAddressesResource_CreateMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_ForwardingAddressesResource_CreateMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -4433,19 +4614,19 @@ class UsersResource_SettingsResource_ForwardingAddressesResource_CreateMethod : 
    * to indicate the authenticated user.
    * @param[in] _content_ The data object to create.
    */
-  UsersResource_SettingsResource_ForwardingAddressesResource_CreateMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const ForwardingAddress& _content_);
+        UsersResource_SettingsResource_ForwardingAddressesResource_CreateMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const ForwardingAddress &_content_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_ForwardingAddressesResource_CreateMethod();
+        virtual ~UsersResource_SettingsResource_ForwardingAddressesResource_CreateMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -4454,13 +4635,13 @@ class UsersResource_SettingsResource_ForwardingAddressesResource_CreateMethod : 
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -4470,15 +4651,17 @@ class UsersResource_SettingsResource_ForwardingAddressesResource_CreateMethod : 
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      ForwardingAddress* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                ForwardingAddress *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;  string _content_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_ForwardingAddressesResource_CreateMethod);
-};
+    private:
+        string user_id_;
+        string _content_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_ForwardingAddressesResource_CreateMethod);
+    };
 
 /**
  * Implements the delete method.
@@ -4492,9 +4675,10 @@ class UsersResource_SettingsResource_ForwardingAddressesResource_CreateMethod : 
  * One or more of these authorization scopes are required for this method:
  * https://www.googleapis.com/auth/gmail.settings.sharing
  */
-class UsersResource_SettingsResource_ForwardingAddressesResource_DeleteMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_ForwardingAddressesResource_DeleteMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -4504,19 +4688,19 @@ class UsersResource_SettingsResource_ForwardingAddressesResource_DeleteMethod : 
    * to indicate the authenticated user.
    * @param[in] forwarding_email The forwarding address to be deleted.
    */
-  UsersResource_SettingsResource_ForwardingAddressesResource_DeleteMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& forwarding_email);
+        UsersResource_SettingsResource_ForwardingAddressesResource_DeleteMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &forwarding_email);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_ForwardingAddressesResource_DeleteMethod();
+        virtual ~UsersResource_SettingsResource_ForwardingAddressesResource_DeleteMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -4525,17 +4709,17 @@ class UsersResource_SettingsResource_ForwardingAddressesResource_DeleteMethod : 
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
- private:
-  string user_id_;
-  string forwarding_email_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_ForwardingAddressesResource_DeleteMethod);
-};
+    private:
+        string user_id_;
+        string forwarding_email_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_ForwardingAddressesResource_DeleteMethod);
+    };
 
 /**
  * Implements the get method.
@@ -4552,9 +4736,10 @@ class UsersResource_SettingsResource_ForwardingAddressesResource_DeleteMethod : 
  * https://www.googleapis.com/auth/gmail.readonly
  * https://www.googleapis.com/auth/gmail.settings.basic
  */
-class UsersResource_SettingsResource_ForwardingAddressesResource_GetMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_ForwardingAddressesResource_GetMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -4564,19 +4749,19 @@ class UsersResource_SettingsResource_ForwardingAddressesResource_GetMethod : pub
    * to indicate the authenticated user.
    * @param[in] forwarding_email The forwarding address to be retrieved.
    */
-  UsersResource_SettingsResource_ForwardingAddressesResource_GetMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& forwarding_email);
+        UsersResource_SettingsResource_ForwardingAddressesResource_GetMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &forwarding_email);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_ForwardingAddressesResource_GetMethod();
+        virtual ~UsersResource_SettingsResource_ForwardingAddressesResource_GetMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -4585,13 +4770,13 @@ class UsersResource_SettingsResource_ForwardingAddressesResource_GetMethod : pub
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -4601,16 +4786,17 @@ class UsersResource_SettingsResource_ForwardingAddressesResource_GetMethod : pub
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      ForwardingAddress* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                ForwardingAddress *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string forwarding_email_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_ForwardingAddressesResource_GetMethod);
-};
+    private:
+        string user_id_;
+        string forwarding_email_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_ForwardingAddressesResource_GetMethod);
+    };
 
 /**
  * Implements the list method.
@@ -4627,9 +4813,10 @@ class UsersResource_SettingsResource_ForwardingAddressesResource_GetMethod : pub
  * https://www.googleapis.com/auth/gmail.readonly
  * https://www.googleapis.com/auth/gmail.settings.basic
  */
-class UsersResource_SettingsResource_ForwardingAddressesResource_ListMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_ForwardingAddressesResource_ListMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -4638,18 +4825,18 @@ class UsersResource_SettingsResource_ForwardingAddressesResource_ListMethod : pu
    * @param[in] user_id User's email address. The special value "me" can be used
    * to indicate the authenticated user.
    */
-  UsersResource_SettingsResource_ForwardingAddressesResource_ListMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id);
+        UsersResource_SettingsResource_ForwardingAddressesResource_ListMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_ForwardingAddressesResource_ListMethod();
+        virtual ~UsersResource_SettingsResource_ForwardingAddressesResource_ListMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -4658,13 +4845,13 @@ class UsersResource_SettingsResource_ForwardingAddressesResource_ListMethod : pu
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -4674,15 +4861,16 @@ class UsersResource_SettingsResource_ForwardingAddressesResource_ListMethod : pu
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      ListForwardingAddressesResponse* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                ListForwardingAddressesResponse *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_ForwardingAddressesResource_ListMethod);
-};
+    private:
+        string user_id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_ForwardingAddressesResource_ListMethod);
+    };
 
 
 /**
@@ -4697,9 +4885,10 @@ class UsersResource_SettingsResource_ForwardingAddressesResource_ListMethod : pu
  * One or more of these authorization scopes are required for this method:
  * https://www.googleapis.com/auth/gmail.settings.sharing
  */
-class UsersResource_SettingsResource_SendAsResource_CreateMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_SendAsResource_CreateMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -4709,19 +4898,19 @@ class UsersResource_SettingsResource_SendAsResource_CreateMethod : public GmailS
    * to indicate the authenticated user.
    * @param[in] _content_ The data object to create.
    */
-  UsersResource_SettingsResource_SendAsResource_CreateMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const SendAs& _content_);
+        UsersResource_SettingsResource_SendAsResource_CreateMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const SendAs &_content_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_SendAsResource_CreateMethod();
+        virtual ~UsersResource_SettingsResource_SendAsResource_CreateMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -4730,13 +4919,13 @@ class UsersResource_SettingsResource_SendAsResource_CreateMethod : public GmailS
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -4746,15 +4935,17 @@ class UsersResource_SettingsResource_SendAsResource_CreateMethod : public GmailS
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      SendAs* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                SendAs *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;  string _content_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_CreateMethod);
-};
+    private:
+        string user_id_;
+        string _content_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_CreateMethod);
+    };
 
 /**
  * Implements the delete method.
@@ -4768,9 +4959,10 @@ class UsersResource_SettingsResource_SendAsResource_CreateMethod : public GmailS
  * One or more of these authorization scopes are required for this method:
  * https://www.googleapis.com/auth/gmail.settings.sharing
  */
-class UsersResource_SettingsResource_SendAsResource_DeleteMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_SendAsResource_DeleteMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -4780,19 +4972,19 @@ class UsersResource_SettingsResource_SendAsResource_DeleteMethod : public GmailS
    * to indicate the authenticated user.
    * @param[in] send_as_email The send-as alias to be deleted.
    */
-  UsersResource_SettingsResource_SendAsResource_DeleteMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& send_as_email);
+        UsersResource_SettingsResource_SendAsResource_DeleteMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &send_as_email);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_SendAsResource_DeleteMethod();
+        virtual ~UsersResource_SettingsResource_SendAsResource_DeleteMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -4801,17 +4993,17 @@ class UsersResource_SettingsResource_SendAsResource_DeleteMethod : public GmailS
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
- private:
-  string user_id_;
-  string send_as_email_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_DeleteMethod);
-};
+    private:
+        string user_id_;
+        string send_as_email_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_DeleteMethod);
+    };
 
 /**
  * Implements the get method.
@@ -4828,9 +5020,10 @@ class UsersResource_SettingsResource_SendAsResource_DeleteMethod : public GmailS
  * https://www.googleapis.com/auth/gmail.readonly
  * https://www.googleapis.com/auth/gmail.settings.basic
  */
-class UsersResource_SettingsResource_SendAsResource_GetMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_SendAsResource_GetMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -4840,19 +5033,19 @@ class UsersResource_SettingsResource_SendAsResource_GetMethod : public GmailServ
    * to indicate the authenticated user.
    * @param[in] send_as_email The send-as alias to be retrieved.
    */
-  UsersResource_SettingsResource_SendAsResource_GetMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& send_as_email);
+        UsersResource_SettingsResource_SendAsResource_GetMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &send_as_email);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_SendAsResource_GetMethod();
+        virtual ~UsersResource_SettingsResource_SendAsResource_GetMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -4861,13 +5054,13 @@ class UsersResource_SettingsResource_SendAsResource_GetMethod : public GmailServ
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -4877,16 +5070,17 @@ class UsersResource_SettingsResource_SendAsResource_GetMethod : public GmailServ
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      SendAs* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                SendAs *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string send_as_email_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_GetMethod);
-};
+    private:
+        string user_id_;
+        string send_as_email_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_GetMethod);
+    };
 
 /**
  * Implements the list method.
@@ -4903,9 +5097,10 @@ class UsersResource_SettingsResource_SendAsResource_GetMethod : public GmailServ
  * https://www.googleapis.com/auth/gmail.readonly
  * https://www.googleapis.com/auth/gmail.settings.basic
  */
-class UsersResource_SettingsResource_SendAsResource_ListMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_SendAsResource_ListMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -4914,18 +5109,18 @@ class UsersResource_SettingsResource_SendAsResource_ListMethod : public GmailSer
    * @param[in] user_id User's email address. The special value "me" can be used
    * to indicate the authenticated user.
    */
-  UsersResource_SettingsResource_SendAsResource_ListMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id);
+        UsersResource_SettingsResource_SendAsResource_ListMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_SendAsResource_ListMethod();
+        virtual ~UsersResource_SettingsResource_SendAsResource_ListMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -4934,13 +5129,13 @@ class UsersResource_SettingsResource_SendAsResource_ListMethod : public GmailSer
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -4950,15 +5145,16 @@ class UsersResource_SettingsResource_SendAsResource_ListMethod : public GmailSer
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      ListSendAsResponse* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                ListSendAsResponse *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_ListMethod);
-};
+    private:
+        string user_id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_ListMethod);
+    };
 
 /**
  * Implements the patch method.
@@ -4973,9 +5169,10 @@ class UsersResource_SettingsResource_SendAsResource_ListMethod : public GmailSer
  * https://www.googleapis.com/auth/gmail.settings.basic
  * https://www.googleapis.com/auth/gmail.settings.sharing
  */
-class UsersResource_SettingsResource_SendAsResource_PatchMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_SendAsResource_PatchMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -4986,20 +5183,20 @@ class UsersResource_SettingsResource_SendAsResource_PatchMethod : public GmailSe
    * @param[in] send_as_email The send-as alias to be updated.
    * @param[in] _content_ The data object to patch.
    */
-  UsersResource_SettingsResource_SendAsResource_PatchMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& send_as_email,
-      const SendAs& _content_);
+        UsersResource_SettingsResource_SendAsResource_PatchMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &send_as_email,
+                const SendAs &_content_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_SendAsResource_PatchMethod();
+        virtual ~UsersResource_SettingsResource_SendAsResource_PatchMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -5008,13 +5205,13 @@ class UsersResource_SettingsResource_SendAsResource_PatchMethod : public GmailSe
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -5024,16 +5221,18 @@ class UsersResource_SettingsResource_SendAsResource_PatchMethod : public GmailSe
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      SendAs* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                SendAs *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string send_as_email_;  string _content_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_PatchMethod);
-};
+    private:
+        string user_id_;
+        string send_as_email_;
+        string _content_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_PatchMethod);
+    };
 
 /**
  * Implements the update method.
@@ -5048,9 +5247,10 @@ class UsersResource_SettingsResource_SendAsResource_PatchMethod : public GmailSe
  * https://www.googleapis.com/auth/gmail.settings.basic
  * https://www.googleapis.com/auth/gmail.settings.sharing
  */
-class UsersResource_SettingsResource_SendAsResource_UpdateMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_SendAsResource_UpdateMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -5061,20 +5261,20 @@ class UsersResource_SettingsResource_SendAsResource_UpdateMethod : public GmailS
    * @param[in] send_as_email The send-as alias to be updated.
    * @param[in] _content_ The data object to update.
    */
-  UsersResource_SettingsResource_SendAsResource_UpdateMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& send_as_email,
-      const SendAs& _content_);
+        UsersResource_SettingsResource_SendAsResource_UpdateMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &send_as_email,
+                const SendAs &_content_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_SendAsResource_UpdateMethod();
+        virtual ~UsersResource_SettingsResource_SendAsResource_UpdateMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -5083,13 +5283,13 @@ class UsersResource_SettingsResource_SendAsResource_UpdateMethod : public GmailS
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -5099,16 +5299,18 @@ class UsersResource_SettingsResource_SendAsResource_UpdateMethod : public GmailS
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      SendAs* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                SendAs *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string send_as_email_;  string _content_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_UpdateMethod);
-};
+    private:
+        string user_id_;
+        string send_as_email_;
+        string _content_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_UpdateMethod);
+    };
 
 /**
  * Implements the verify method.
@@ -5122,9 +5324,10 @@ class UsersResource_SettingsResource_SendAsResource_UpdateMethod : public GmailS
  * One or more of these authorization scopes are required for this method:
  * https://www.googleapis.com/auth/gmail.settings.sharing
  */
-class UsersResource_SettingsResource_SendAsResource_VerifyMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_SendAsResource_VerifyMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -5134,19 +5337,19 @@ class UsersResource_SettingsResource_SendAsResource_VerifyMethod : public GmailS
    * to indicate the authenticated user.
    * @param[in] send_as_email The send-as alias to be verified.
    */
-  UsersResource_SettingsResource_SendAsResource_VerifyMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& send_as_email);
+        UsersResource_SettingsResource_SendAsResource_VerifyMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &send_as_email);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_SendAsResource_VerifyMethod();
+        virtual ~UsersResource_SettingsResource_SendAsResource_VerifyMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -5155,19 +5358,17 @@ class UsersResource_SettingsResource_SendAsResource_VerifyMethod : public GmailS
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
- private:
-  string user_id_;
-  string send_as_email_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_VerifyMethod);
-};
-
-
+    private:
+        string user_id_;
+        string send_as_email_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_VerifyMethod);
+    };
 
 
 /**
@@ -5183,9 +5384,10 @@ class UsersResource_SettingsResource_SendAsResource_VerifyMethod : public GmailS
  * https://www.googleapis.com/auth/gmail.settings.basic
  * https://www.googleapis.com/auth/gmail.settings.sharing
  */
-class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_DeleteMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_DeleteMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -5197,20 +5399,20 @@ class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_DeleteMeth
    * header for mail sent using this alias.
    * @param[in] id The immutable ID for the SmimeInfo.
    */
-  UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_DeleteMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& send_as_email,
-      const StringPiece& id);
+        UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_DeleteMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &send_as_email,
+                const StringPiece &id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_DeleteMethod();
+        virtual ~UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_DeleteMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -5219,18 +5421,18 @@ class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_DeleteMeth
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
- private:
-  string user_id_;
-  string send_as_email_;
-  string id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_DeleteMethod);
-};
+    private:
+        string user_id_;
+        string send_as_email_;
+        string id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_DeleteMethod);
+    };
 
 /**
  * Implements the get method.
@@ -5248,9 +5450,10 @@ class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_DeleteMeth
  * https://www.googleapis.com/auth/gmail.settings.basic
  * https://www.googleapis.com/auth/gmail.settings.sharing
  */
-class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_GetMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_GetMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -5262,20 +5465,20 @@ class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_GetMethod 
    * header for mail sent using this alias.
    * @param[in] id The immutable ID for the SmimeInfo.
    */
-  UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_GetMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& send_as_email,
-      const StringPiece& id);
+        UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_GetMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &send_as_email,
+                const StringPiece &id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_GetMethod();
+        virtual ~UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_GetMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -5284,13 +5487,13 @@ class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_GetMethod 
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -5300,17 +5503,18 @@ class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_GetMethod 
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      SmimeInfo* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                SmimeInfo *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string send_as_email_;
-  string id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_GetMethod);
-};
+    private:
+        string user_id_;
+        string send_as_email_;
+        string id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_GetMethod);
+    };
 
 /**
  * Implements the insert method.
@@ -5325,9 +5529,10 @@ class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_GetMethod 
  * https://www.googleapis.com/auth/gmail.settings.basic
  * https://www.googleapis.com/auth/gmail.settings.sharing
  */
-class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_InsertMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_InsertMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -5339,20 +5544,20 @@ class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_InsertMeth
    * header for mail sent using this alias.
    * @param[in] _content_ The data object to insert.
    */
-  UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_InsertMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& send_as_email,
-      const SmimeInfo& _content_);
+        UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_InsertMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &send_as_email,
+                const SmimeInfo &_content_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_InsertMethod();
+        virtual ~UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_InsertMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -5361,13 +5566,13 @@ class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_InsertMeth
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -5377,16 +5582,18 @@ class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_InsertMeth
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      SmimeInfo* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                SmimeInfo *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string send_as_email_;  string _content_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_InsertMethod);
-};
+    private:
+        string user_id_;
+        string send_as_email_;
+        string _content_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_InsertMethod);
+    };
 
 /**
  * Implements the list method.
@@ -5404,9 +5611,10 @@ class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_InsertMeth
  * https://www.googleapis.com/auth/gmail.settings.basic
  * https://www.googleapis.com/auth/gmail.settings.sharing
  */
-class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_ListMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_ListMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -5417,19 +5625,19 @@ class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_ListMethod
    * @param[in] send_as_email The email address that appears in the "From:"
    * header for mail sent using this alias.
    */
-  UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_ListMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& send_as_email);
+        UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_ListMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &send_as_email);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_ListMethod();
+        virtual ~UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_ListMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -5438,13 +5646,13 @@ class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_ListMethod
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -5454,16 +5662,17 @@ class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_ListMethod
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      ListSmimeInfoResponse* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                ListSmimeInfoResponse *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string send_as_email_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_ListMethod);
-};
+    private:
+        string user_id_;
+        string send_as_email_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_ListMethod);
+    };
 
 /**
  * Implements the setDefault method.
@@ -5478,9 +5687,11 @@ class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_ListMethod
  * https://www.googleapis.com/auth/gmail.settings.basic
  * https://www.googleapis.com/auth/gmail.settings.sharing
  */
-class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_SetDefaultMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_SetDefaultMethod
+            : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -5492,20 +5703,20 @@ class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_SetDefault
    * header for mail sent using this alias.
    * @param[in] id The immutable ID for the SmimeInfo.
    */
-  UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_SetDefaultMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& send_as_email,
-      const StringPiece& id);
+        UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_SetDefaultMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &send_as_email,
+                const StringPiece &id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_SetDefaultMethod();
+        virtual ~UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_SetDefaultMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -5514,18 +5725,18 @@ class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_SetDefault
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
- private:
-  string user_id_;
-  string send_as_email_;
-  string id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_SetDefaultMethod);
-};
+    private:
+        string user_id_;
+        string send_as_email_;
+        string id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_SetDefaultMethod);
+    };
 
 
 /**
@@ -5540,9 +5751,10 @@ class UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_SetDefault
  * One or more of these authorization scopes are required for this method:
  * https://mail.google.com/
  */
-class UsersResource_ThreadsResource_DeleteMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_ThreadsResource_DeleteMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -5552,19 +5764,19 @@ class UsersResource_ThreadsResource_DeleteMethod : public GmailServiceBaseReques
    * used to indicate the authenticated user.
    * @param[in] id ID of the Thread to delete.
    */
-  UsersResource_ThreadsResource_DeleteMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& id);
+        UsersResource_ThreadsResource_DeleteMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_ThreadsResource_DeleteMethod();
+        virtual ~UsersResource_ThreadsResource_DeleteMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -5573,17 +5785,17 @@ class UsersResource_ThreadsResource_DeleteMethod : public GmailServiceBaseReques
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
- private:
-  string user_id_;
-  string id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_ThreadsResource_DeleteMethod);
-};
+    private:
+        string user_id_;
+        string id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_ThreadsResource_DeleteMethod);
+    };
 
 /**
  * Implements the get method.
@@ -5600,9 +5812,10 @@ class UsersResource_ThreadsResource_DeleteMethod : public GmailServiceBaseReques
  * https://www.googleapis.com/auth/gmail.modify
  * https://www.googleapis.com/auth/gmail.readonly
  */
-class UsersResource_ThreadsResource_GetMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_ThreadsResource_GetMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -5612,86 +5825,92 @@ class UsersResource_ThreadsResource_GetMethod : public GmailServiceBaseRequest {
    * used to indicate the authenticated user.
    * @param[in] id The ID of the thread to retrieve.
    */
-  UsersResource_ThreadsResource_GetMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& id);
+        UsersResource_ThreadsResource_GetMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_ThreadsResource_GetMethod();
+        virtual ~UsersResource_ThreadsResource_GetMethod();
 
 
-    /**
+        /**
      * Clears the '<code>format</code>' attribute so it is no longer set.
      */
-    void clear_format() {
-      _have_format_ = false;
-      client::ClearCppValueHelper(&format_);
-    }
+        void clear_format()
+        {
+            _have_format_ = false;
+            client::ClearCppValueHelper(&format_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>format</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    const string& get_format() const { return format_; }
+        const string &get_format() const
+        { return format_; }
 
-    /**
+        /**
      * Gets a modifiable pointer to the optional <code>format</code>' attribute.
      *
      * @return  The value can be set by dereferencing the pointer.
      */
-    string* mutable_format() {
-      _have_format_ = true;
-      return &format_;
-    }
+        string *mutable_format()
+        {
+            _have_format_ = true;
+            return &format_;
+        }
 
 
-    /**
+        /**
      * Sets the '<code>format</code>' attribute.
      *
      * @param[in] value The format to return the messages in.
      */
-    void set_format(const string& value) {
-      _have_format_ = true;
-      format_ = value;
-    }
+        void set_format(const string &value)
+        {
+            _have_format_ = true;
+            format_ = value;
+        }
 
 
-
-    /**
+        /**
      * Clears the '<code>metadataHeaders</code>' attribute so it is no longer
      * set.
      */
-    void clear_metadata_headers() {
-      _have_metadata_headers_ = false;
-      client::ClearCppValueHelper(&metadata_headers_);
-    }
+        void clear_metadata_headers()
+        {
+            _have_metadata_headers_ = false;
+            client::ClearCppValueHelper(&metadata_headers_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>metadataHeaders</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    const client::JsonCppArray<string >& get_metadata_headers() const { return metadata_headers_; }
+        const client::JsonCppArray<string> &get_metadata_headers() const
+        { return metadata_headers_; }
 
-    /**
+        /**
      * Gets a modifiable pointer to the optional <code>metadataHeaders</code>'
      * attribute.
      *
      * @return  The value can be set by dereferencing the pointer.
      */
-    client::JsonCppArray<string >* mutable_metadataHeaders() {
-      _have_metadata_headers_ = true;
-      return &metadata_headers_;
-    }
+        client::JsonCppArray<string> *mutable_metadataHeaders()
+        {
+            _have_metadata_headers_ = true;
+            return &metadata_headers_;
+        }
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -5700,20 +5919,20 @@ class UsersResource_ThreadsResource_GetMethod : public GmailServiceBaseRequest {
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
-  /**
+        /**
    * Appends the optional query parameters to the target URL.
    *
    * @param[in, out] target  The URL string to append to.
    */
-  virtual util::Status AppendOptionalQueryParameters(string* target);
+        virtual util::Status AppendOptionalQueryParameters(string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -5723,20 +5942,21 @@ class UsersResource_ThreadsResource_GetMethod : public GmailServiceBaseRequest {
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Thread* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Thread *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string id_;
-  string format_;
-  client::JsonCppCapsule< client::JsonCppArray<string > > metadata_headers_;
-  bool _have_format_ : 1;
-  bool _have_metadata_headers_ : 1;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_ThreadsResource_GetMethod);
-};
+    private:
+        string user_id_;
+        string id_;
+        string format_;
+        client::JsonCppCapsule<client::JsonCppArray<string> > metadata_headers_;
+        bool _have_format_ : 1;
+        bool _have_metadata_headers_ : 1;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_ThreadsResource_GetMethod);
+    };
 
 /**
  * Implements the list method.
@@ -5753,9 +5973,10 @@ class UsersResource_ThreadsResource_GetMethod : public GmailServiceBaseRequest {
  * https://www.googleapis.com/auth/gmail.modify
  * https://www.googleapis.com/auth/gmail.readonly
  */
-class UsersResource_ThreadsResource_ListMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_ThreadsResource_ListMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -5764,168 +5985,182 @@ class UsersResource_ThreadsResource_ListMethod : public GmailServiceBaseRequest 
    * @param[in] user_id The user's email address. The special value me can be
    * used to indicate the authenticated user.
    */
-  UsersResource_ThreadsResource_ListMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id);
+        UsersResource_ThreadsResource_ListMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_ThreadsResource_ListMethod();
+        virtual ~UsersResource_ThreadsResource_ListMethod();
 
 
-    /**
+        /**
      * Clears the '<code>includeSpamTrash</code>' attribute so it is no longer
      * set.
      */
-    void clear_include_spam_trash() {
-      _have_include_spam_trash_ = false;
-      client::ClearCppValueHelper(&include_spam_trash_);
-    }
+        void clear_include_spam_trash()
+        {
+            _have_include_spam_trash_ = false;
+            client::ClearCppValueHelper(&include_spam_trash_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>includeSpamTrash</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    bool get_include_spam_trash() const { return include_spam_trash_; }
+        bool get_include_spam_trash() const
+        { return include_spam_trash_; }
 
-    /**
+        /**
      * Sets the '<code>includeSpamTrash</code>' attribute.
      *
      * @param[in] value Include threads from SPAM and TRASH in the results.
      */
-    void set_include_spam_trash(bool value) {
-      _have_include_spam_trash_ = true;
-      include_spam_trash_ = value;
-    }
+        void set_include_spam_trash(bool value)
+        {
+            _have_include_spam_trash_ = true;
+            include_spam_trash_ = value;
+        }
 
-    /**
+        /**
      * Clears the '<code>labelIds</code>' attribute so it is no longer set.
      */
-    void clear_label_ids() {
-      _have_label_ids_ = false;
-      client::ClearCppValueHelper(&label_ids_);
-    }
+        void clear_label_ids()
+        {
+            _have_label_ids_ = false;
+            client::ClearCppValueHelper(&label_ids_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>labelIds</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    const client::JsonCppArray<string >& get_label_ids() const { return label_ids_; }
+        const client::JsonCppArray<string> &get_label_ids() const
+        { return label_ids_; }
 
-    /**
+        /**
      * Gets a modifiable pointer to the optional <code>labelIds</code>'
      * attribute.
      *
      * @return  The value can be set by dereferencing the pointer.
      */
-    client::JsonCppArray<string >* mutable_labelIds() {
-      _have_label_ids_ = true;
-      return &label_ids_;
-    }
+        client::JsonCppArray<string> *mutable_labelIds()
+        {
+            _have_label_ids_ = true;
+            return &label_ids_;
+        }
 
 
-
-    /**
+        /**
      * Clears the '<code>maxResults</code>' attribute so it is no longer set.
      */
-    void clear_max_results() {
-      _have_max_results_ = false;
-      client::ClearCppValueHelper(&max_results_);
-    }
+        void clear_max_results()
+        {
+            _have_max_results_ = false;
+            client::ClearCppValueHelper(&max_results_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>maxResults</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    uint32 get_max_results() const { return max_results_; }
+        uint32 get_max_results() const
+        { return max_results_; }
 
-    /**
+        /**
      * Sets the '<code>maxResults</code>' attribute.
      *
      * @param[in] value Maximum number of threads to return.
      */
-    void set_max_results(uint32 value) {
-      _have_max_results_ = true;
-      max_results_ = value;
-    }
+        void set_max_results(uint32 value)
+        {
+            _have_max_results_ = true;
+            max_results_ = value;
+        }
 
-    /**
+        /**
      * Clears the '<code>pageToken</code>' attribute so it is no longer set.
      */
-    void clear_page_token() {
-      _have_page_token_ = false;
-      client::ClearCppValueHelper(&page_token_);
-    }
+        void clear_page_token()
+        {
+            _have_page_token_ = false;
+            client::ClearCppValueHelper(&page_token_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>pageToken</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    const string& get_page_token() const { return page_token_; }
+        const string &get_page_token() const
+        { return page_token_; }
 
-    /**
+        /**
      * Gets a modifiable pointer to the optional <code>pageToken</code>'
      * attribute.
      *
      * @return  The value can be set by dereferencing the pointer.
      */
-    string* mutable_pageToken() {
-      _have_page_token_ = true;
-      return &page_token_;
-    }
+        string *mutable_pageToken()
+        {
+            _have_page_token_ = true;
+            return &page_token_;
+        }
 
 
-    /**
+        /**
      * Sets the '<code>pageToken</code>' attribute.
      *
      * @param[in] value Page token to retrieve a specific page of results in the
      * list.
      */
-    void set_page_token(const string& value) {
-      _have_page_token_ = true;
-      page_token_ = value;
-    }
+        void set_page_token(const string &value)
+        {
+            _have_page_token_ = true;
+            page_token_ = value;
+        }
 
 
-
-    /**
+        /**
      * Clears the '<code>q</code>' attribute so it is no longer set.
      */
-    void clear_q() {
-      _have_q_ = false;
-      client::ClearCppValueHelper(&q_);
-    }
+        void clear_q()
+        {
+            _have_q_ = false;
+            client::ClearCppValueHelper(&q_);
+        }
 
 
-    /**
+        /**
      * Gets the optional '<code>q</code>' attribute.
      *
      * If the value is not set then the default value will be returned.
      */
-    const string& get_q() const { return q_; }
+        const string &get_q() const
+        { return q_; }
 
-    /**
+        /**
      * Gets a modifiable pointer to the optional <code>q</code>' attribute.
      *
      * @return  The value can be set by dereferencing the pointer.
      */
-    string* mutable_q() {
-      _have_q_ = true;
-      return &q_;
-    }
+        string *mutable_q()
+        {
+            _have_q_ = true;
+            return &q_;
+        }
 
 
-    /**
+        /**
      * Sets the '<code>q</code>' attribute.
      *
      * @param[in] value Only return threads matching the specified query.
@@ -5933,12 +6168,13 @@ class UsersResource_ThreadsResource_ListMethod : public GmailServiceBaseRequest 
      * "from:someuser@example.com rfc822msgid: is:unread". Parameter cannot be
      * used when accessing the api using the gmail.metadata scope.
      */
-    void set_q(const string& value) {
-      _have_q_ = true;
-      q_ = value;
-    }
+        void set_q(const string &value)
+        {
+            _have_q_ = true;
+            q_ = value;
+        }
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -5947,20 +6183,20 @@ class UsersResource_ThreadsResource_ListMethod : public GmailServiceBaseRequest 
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
-  /**
+        /**
    * Appends the optional query parameters to the target URL.
    *
    * @param[in, out] target  The URL string to append to.
    */
-  virtual util::Status AppendOptionalQueryParameters(string* target);
+        virtual util::Status AppendOptionalQueryParameters(string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -5970,30 +6206,31 @@ class UsersResource_ThreadsResource_ListMethod : public GmailServiceBaseRequest 
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      ListThreadsResponse* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                ListThreadsResponse *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  bool include_spam_trash_;
-  client::JsonCppCapsule< client::JsonCppArray<string > > label_ids_;
-  uint32 max_results_;
-  string page_token_;
-  string q_;
-  bool _have_include_spam_trash_ : 1;
-  bool _have_label_ids_ : 1;
-  bool _have_max_results_ : 1;
-  bool _have_page_token_ : 1;
-  bool _have_q_ : 1;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_ThreadsResource_ListMethod);
-};
+    private:
+        string user_id_;
+        bool include_spam_trash_;
+        client::JsonCppCapsule<client::JsonCppArray<string> > label_ids_;
+        uint32 max_results_;
+        string page_token_;
+        string q_;
+        bool _have_include_spam_trash_ : 1;
+        bool _have_label_ids_ : 1;
+        bool _have_max_results_ : 1;
+        bool _have_page_token_ : 1;
+        bool _have_q_ : 1;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_ThreadsResource_ListMethod);
+    };
 
-typedef client::ServiceRequestPager<
+    typedef client::ServiceRequestPager<
             UsersResource_ThreadsResource_ListMethod,
             ListThreadsResponse>
-        UsersResource_ThreadsResource_ListMethodPager;
+            UsersResource_ThreadsResource_ListMethodPager;
 
 /**
  * Implements the modify method.
@@ -6008,9 +6245,10 @@ typedef client::ServiceRequestPager<
  * https://mail.google.com/
  * https://www.googleapis.com/auth/gmail.modify
  */
-class UsersResource_ThreadsResource_ModifyMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_ThreadsResource_ModifyMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -6021,20 +6259,20 @@ class UsersResource_ThreadsResource_ModifyMethod : public GmailServiceBaseReques
    * @param[in] id The ID of the thread to modify.
    * @param[in] _content_ The data object to modify.
    */
-  UsersResource_ThreadsResource_ModifyMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& id,
-      const ModifyThreadRequest& _content_);
+        UsersResource_ThreadsResource_ModifyMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id,
+                const ModifyThreadRequest &_content_);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_ThreadsResource_ModifyMethod();
+        virtual ~UsersResource_ThreadsResource_ModifyMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -6043,13 +6281,13 @@ class UsersResource_ThreadsResource_ModifyMethod : public GmailServiceBaseReques
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -6059,16 +6297,18 @@ class UsersResource_ThreadsResource_ModifyMethod : public GmailServiceBaseReques
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Thread* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Thread *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string id_;  string _content_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_ThreadsResource_ModifyMethod);
-};
+    private:
+        string user_id_;
+        string id_;
+        string _content_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_ThreadsResource_ModifyMethod);
+    };
 
 /**
  * Implements the trash method.
@@ -6083,9 +6323,10 @@ class UsersResource_ThreadsResource_ModifyMethod : public GmailServiceBaseReques
  * https://mail.google.com/
  * https://www.googleapis.com/auth/gmail.modify
  */
-class UsersResource_ThreadsResource_TrashMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_ThreadsResource_TrashMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -6095,19 +6336,19 @@ class UsersResource_ThreadsResource_TrashMethod : public GmailServiceBaseRequest
    * used to indicate the authenticated user.
    * @param[in] id The ID of the thread to Trash.
    */
-  UsersResource_ThreadsResource_TrashMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& id);
+        UsersResource_ThreadsResource_TrashMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_ThreadsResource_TrashMethod();
+        virtual ~UsersResource_ThreadsResource_TrashMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -6116,13 +6357,13 @@ class UsersResource_ThreadsResource_TrashMethod : public GmailServiceBaseRequest
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -6132,16 +6373,17 @@ class UsersResource_ThreadsResource_TrashMethod : public GmailServiceBaseRequest
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Thread* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Thread *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_ThreadsResource_TrashMethod);
-};
+    private:
+        string user_id_;
+        string id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_ThreadsResource_TrashMethod);
+    };
 
 /**
  * Implements the untrash method.
@@ -6156,9 +6398,10 @@ class UsersResource_ThreadsResource_TrashMethod : public GmailServiceBaseRequest
  * https://mail.google.com/
  * https://www.googleapis.com/auth/gmail.modify
  */
-class UsersResource_ThreadsResource_UntrashMethod : public GmailServiceBaseRequest {
- public:
-  /**
+    class UsersResource_ThreadsResource_UntrashMethod : public GmailServiceBaseRequest
+    {
+    public:
+        /**
    * The standard constructor takes all the required method parameters.
    * @param[in] _service_  The service instance to send to when executed.
    * @param[in] _credential_  If not NULL, the credential to authorize with.
@@ -6168,19 +6411,19 @@ class UsersResource_ThreadsResource_UntrashMethod : public GmailServiceBaseReque
    * used to indicate the authenticated user.
    * @param[in] id The ID of the thread to remove from Trash.
    */
-  UsersResource_ThreadsResource_UntrashMethod(
-      const GmailService* _service_,
-      client::AuthorizationCredential* _credential_,
-      const StringPiece& user_id,
-      const StringPiece& id);
+        UsersResource_ThreadsResource_UntrashMethod(
+                const GmailService *_service_,
+                client::AuthorizationCredential *_credential_,
+                const StringPiece &user_id,
+                const StringPiece &id);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~UsersResource_ThreadsResource_UntrashMethod();
+        virtual ~UsersResource_ThreadsResource_UntrashMethod();
 
 
-  /**
+        /**
    * Appends variable value to the target string.
    *
    * This is a helper function used to resolve templated variables in the URI.
@@ -6189,13 +6432,13 @@ class UsersResource_ThreadsResource_UntrashMethod : public GmailServiceBaseReque
    * @param[in] config  A pass-through parameter used for lists and maps.
    * @param[in, out] target The string to append the value to.
    */
-  virtual util::Status AppendVariable(
-        const string& variable_name,
-        const client::UriTemplateConfig& config,
-        string* target);
+        virtual util::Status AppendVariable(
+                const string &variable_name,
+                const client::UriTemplateConfig &config,
+                string *target);
 
 
-  /**
+        /**
    * Executes the method and parses the response into a data object on success.
    *
    * @param[out] data Loads from the response payload JSON data on success.
@@ -6205,17 +6448,17 @@ class UsersResource_ThreadsResource_UntrashMethod : public GmailServiceBaseReque
    *         available from the underlying http_request to distinguish the
    *         transport_status from the overal HTTP request status.
    */
-  util::Status ExecuteAndParseResponse(
-      Thread* data) {
-    return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
-  }
+        util::Status ExecuteAndParseResponse(
+                Thread *data)
+        {
+            return GmailServiceBaseRequest::ExecuteAndParseResponse(data);
+        }
 
- private:
-  string user_id_;
-  string id_;
-  DISALLOW_COPY_AND_ASSIGN(UsersResource_ThreadsResource_UntrashMethod);
-};
-
+    private:
+        string user_id_;
+        string id_;
+        DISALLOW_COPY_AND_ASSIGN(UsersResource_ThreadsResource_UntrashMethod);
+    };
 
 
 /**
@@ -6226,69 +6469,73 @@ class UsersResource_ThreadsResource_UntrashMethod : public GmailServiceBaseReque
  * For more information about this service, see the API Documentation at
  * <a href='https://developers.google.com/gmail/api/'>'https://developers.google.com/gmail/api/</a>
  */
-class GmailService : public client::ClientService {
- public:
-  /**
+    class GmailService : public client::ClientService
+    {
+    public:
+        /**
    * The name of the API that this was generated from.
    */
-  static const char googleapis_API_NAME[];
+        static const char googleapis_API_NAME[];
 
-  /**
+        /**
    * The version of the API that this interface was generated from.
    */
-  static const char googleapis_API_VERSION[];
+        static const char googleapis_API_VERSION[];
 
-  /**
+        /**
    * The code generator used to generate this API.
    */
-  static const char googleapis_API_GENERATOR[];
+        static const char googleapis_API_GENERATOR[];
 
 
-  /**
+        /**
    * Acts as message factory for accessing  data.
    *
    * @ingroup ServiceClass
    */
-  class UsersResource {
-   public:
-    /**
+        class UsersResource
+        {
+        public:
+            /**
      * Standard constructor.
      *
      * @param[in] service  The service instance is used to bind to the
      *            methods created from this resource instance.  This will be
      *            the service that methods are invoked on.
      */
-    explicit UsersResource(GmailService* service);
+            explicit UsersResource(GmailService *service);
 
-    /**
+            /**
      * Standard destructor.
      */
-    ~UsersResource() {}
+            ~UsersResource()
+            {}
 
-    /**
+            /**
      * Acts as message factory for accessing  data.
      *
      * @ingroup ServiceClass
      */
-    class DraftsResource {
-     public:
-      /**
+            class DraftsResource
+            {
+            public:
+                /**
        * Standard constructor.
        *
        * @param[in] service  The service instance is used to bind to the
        *            methods created from this resource instance.  This will be
        *            the service that methods are invoked on.
        */
-      explicit DraftsResource(GmailService* service);
+                explicit DraftsResource(GmailService *service);
 
-      /**
+                /**
        * Standard destructor.
        */
-      ~DraftsResource() {}
+                ~DraftsResource()
+                {}
 
 
-
-      /**
+                /**
        * Creates a new UsersResource_DraftsResource_CreateMethod instance.
        * @deprecated
        *
@@ -6300,11 +6547,11 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_DraftsResource_CreateMethod* NewCreateMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id) const;
+                UsersResource_DraftsResource_CreateMethod *NewCreateMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_DraftsResource_CreateMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6321,14 +6568,14 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_DraftsResource_CreateMethod* NewCreateMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const Draft* _metadata_,
-          const StringPiece& _media_content_type_,
-          client::DataReader* _media_content_reader_) const;
+                UsersResource_DraftsResource_CreateMethod *NewCreateMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const Draft *_metadata_,
+                        const StringPiece &_media_content_type_,
+                        client::DataReader *_media_content_reader_) const;
 
-      /**
+                /**
        * Creates a new UsersResource_DraftsResource_DeleteMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6339,12 +6586,12 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_DraftsResource_DeleteMethod* NewDeleteMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const StringPiece& id) const;
+                UsersResource_DraftsResource_DeleteMethod *NewDeleteMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const StringPiece &id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_DraftsResource_GetMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6355,12 +6602,12 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_DraftsResource_GetMethod* NewGetMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const StringPiece& id) const;
+                UsersResource_DraftsResource_GetMethod *NewGetMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const StringPiece &id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_DraftsResource_ListMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6370,11 +6617,11 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_DraftsResource_ListMethod* NewListMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id) const;
+                UsersResource_DraftsResource_ListMethod *NewListMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id) const;
 
-      /**
+                /**
        * Creates a pager for iterating over incremental result pages.
        * @param[in] _credential_  NULL credentials will not authorize the
        * request.
@@ -6384,12 +6631,12 @@ class GmailService : public client::ClientService {
        *
        * @see googleapis::googleapis::ServiceRequestPager
        */
-      UsersResource_DraftsResource_ListMethodPager* NewListMethodPager(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id) const;
+                UsersResource_DraftsResource_ListMethodPager *NewListMethodPager(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id) const;
 
 
-      /**
+                /**
        * Creates a new UsersResource_DraftsResource_SendMethod instance.
        * @deprecated
        *
@@ -6401,11 +6648,11 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_DraftsResource_SendMethod* NewSendMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id) const;
+                UsersResource_DraftsResource_SendMethod *NewSendMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_DraftsResource_SendMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6422,15 +6669,15 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_DraftsResource_SendMethod* NewSendMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const Draft* _metadata_,
-          const StringPiece& _media_content_type_,
-          client::DataReader* _media_content_reader_) const;
+                UsersResource_DraftsResource_SendMethod *NewSendMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const Draft *_metadata_,
+                        const StringPiece &_media_content_type_,
+                        client::DataReader *_media_content_reader_) const;
 
 
-      /**
+                /**
        * Creates a new UsersResource_DraftsResource_UpdateMethod instance.
        * @deprecated
        *
@@ -6443,12 +6690,12 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_DraftsResource_UpdateMethod* NewUpdateMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const StringPiece& id) const;
+                UsersResource_DraftsResource_UpdateMethod *NewUpdateMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const StringPiece &id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_DraftsResource_UpdateMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6466,52 +6713,56 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_DraftsResource_UpdateMethod* NewUpdateMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const StringPiece& id,
-          const Draft* _metadata_,
-          const StringPiece& _media_content_type_,
-          client::DataReader* _media_content_reader_) const;
+                UsersResource_DraftsResource_UpdateMethod *NewUpdateMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const StringPiece &id,
+                        const Draft *_metadata_,
+                        const StringPiece &_media_content_type_,
+                        client::DataReader *_media_content_reader_) const;
 
-     private:
-      GmailService* service_;
+            private:
+                GmailService *service_;
 
-      DISALLOW_COPY_AND_ASSIGN(DraftsResource);
-    };
-    /**
+                DISALLOW_COPY_AND_ASSIGN(DraftsResource);
+            };
+
+            /**
      * Gets the drafts resource method factory.
      *
      * @return DraftsResource for creating methods.
      */
-    const DraftsResource& get_drafts() const {
-      return drafts_;
-    }
+            const DraftsResource &get_drafts() const
+            {
+                return drafts_;
+            }
 
 
-    /**
+            /**
      * Acts as message factory for accessing  data.
      *
      * @ingroup ServiceClass
      */
-    class HistoryResource {
-     public:
-      /**
+            class HistoryResource
+            {
+            public:
+                /**
        * Standard constructor.
        *
        * @param[in] service  The service instance is used to bind to the
        *            methods created from this resource instance.  This will be
        *            the service that methods are invoked on.
        */
-      explicit HistoryResource(GmailService* service);
+                explicit HistoryResource(GmailService *service);
 
-      /**
+                /**
        * Standard destructor.
        */
-      ~HistoryResource() {}
+                ~HistoryResource()
+                {}
 
 
-      /**
+                /**
        * Creates a new UsersResource_HistoryResource_ListMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6521,11 +6772,11 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_HistoryResource_ListMethod* NewListMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id) const;
+                UsersResource_HistoryResource_ListMethod *NewListMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id) const;
 
-      /**
+                /**
        * Creates a pager for iterating over incremental result pages.
        * @param[in] _credential_  NULL credentials will not authorize the
        * request.
@@ -6535,48 +6786,52 @@ class GmailService : public client::ClientService {
        *
        * @see googleapis::googleapis::ServiceRequestPager
        */
-      UsersResource_HistoryResource_ListMethodPager* NewListMethodPager(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id) const;
+                UsersResource_HistoryResource_ListMethodPager *NewListMethodPager(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id) const;
 
-     private:
-      GmailService* service_;
+            private:
+                GmailService *service_;
 
-      DISALLOW_COPY_AND_ASSIGN(HistoryResource);
-    };
-    /**
+                DISALLOW_COPY_AND_ASSIGN(HistoryResource);
+            };
+
+            /**
      * Gets the history resource method factory.
      *
      * @return HistoryResource for creating methods.
      */
-    const HistoryResource& get_history() const {
-      return history_;
-    }
+            const HistoryResource &get_history() const
+            {
+                return history_;
+            }
 
 
-    /**
+            /**
      * Acts as message factory for accessing  data.
      *
      * @ingroup ServiceClass
      */
-    class LabelsResource {
-     public:
-      /**
+            class LabelsResource
+            {
+            public:
+                /**
        * Standard constructor.
        *
        * @param[in] service  The service instance is used to bind to the
        *            methods created from this resource instance.  This will be
        *            the service that methods are invoked on.
        */
-      explicit LabelsResource(GmailService* service);
+                explicit LabelsResource(GmailService *service);
 
-      /**
+                /**
        * Standard destructor.
        */
-      ~LabelsResource() {}
+                ~LabelsResource()
+                {}
 
 
-      /**
+                /**
        * Creates a new UsersResource_LabelsResource_CreateMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6587,12 +6842,12 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_LabelsResource_CreateMethod* NewCreateMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const Label& _content_) const;
+                UsersResource_LabelsResource_CreateMethod *NewCreateMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const Label &_content_) const;
 
-      /**
+                /**
        * Creates a new UsersResource_LabelsResource_DeleteMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6603,12 +6858,12 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_LabelsResource_DeleteMethod* NewDeleteMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const StringPiece& id) const;
+                UsersResource_LabelsResource_DeleteMethod *NewDeleteMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const StringPiece &id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_LabelsResource_GetMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6619,12 +6874,12 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_LabelsResource_GetMethod* NewGetMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const StringPiece& id) const;
+                UsersResource_LabelsResource_GetMethod *NewGetMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const StringPiece &id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_LabelsResource_ListMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6634,11 +6889,11 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_LabelsResource_ListMethod* NewListMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id) const;
+                UsersResource_LabelsResource_ListMethod *NewListMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_LabelsResource_PatchMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6650,13 +6905,13 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_LabelsResource_PatchMethod* NewPatchMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const StringPiece& id,
-          const Label& _content_) const;
+                UsersResource_LabelsResource_PatchMethod *NewPatchMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const StringPiece &id,
+                        const Label &_content_) const;
 
-      /**
+                /**
        * Creates a new UsersResource_LabelsResource_UpdateMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6668,71 +6923,77 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_LabelsResource_UpdateMethod* NewUpdateMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const StringPiece& id,
-          const Label& _content_) const;
+                UsersResource_LabelsResource_UpdateMethod *NewUpdateMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const StringPiece &id,
+                        const Label &_content_) const;
 
-     private:
-      GmailService* service_;
+            private:
+                GmailService *service_;
 
-      DISALLOW_COPY_AND_ASSIGN(LabelsResource);
-    };
-    /**
+                DISALLOW_COPY_AND_ASSIGN(LabelsResource);
+            };
+
+            /**
      * Gets the labels resource method factory.
      *
      * @return LabelsResource for creating methods.
      */
-    const LabelsResource& get_labels() const {
-      return labels_;
-    }
+            const LabelsResource &get_labels() const
+            {
+                return labels_;
+            }
 
 
-    /**
+            /**
      * Acts as message factory for accessing  data.
      *
      * @ingroup ServiceClass
      */
-    class MessagesResource {
-     public:
-      /**
+            class MessagesResource
+            {
+            public:
+                /**
        * Standard constructor.
        *
        * @param[in] service  The service instance is used to bind to the
        *            methods created from this resource instance.  This will be
        *            the service that methods are invoked on.
        */
-      explicit MessagesResource(GmailService* service);
+                explicit MessagesResource(GmailService *service);
 
-      /**
+                /**
        * Standard destructor.
        */
-      ~MessagesResource() {}
+                ~MessagesResource()
+                {}
 
-      /**
+                /**
        * Acts as message factory for accessing  data.
        *
        * @ingroup ServiceClass
        */
-      class AttachmentsResource {
-       public:
-        /**
+                class AttachmentsResource
+                {
+                public:
+                    /**
          * Standard constructor.
          *
          * @param[in] service  The service instance is used to bind to the
          *            methods created from this resource instance.  This will be
          *            the service that methods are invoked on.
          */
-        explicit AttachmentsResource(GmailService* service);
+                    explicit AttachmentsResource(GmailService *service);
 
-        /**
+                    /**
          * Standard destructor.
          */
-        ~AttachmentsResource() {}
+                    ~AttachmentsResource()
+                    {}
 
 
-        /**
+                    /**
          * Creates a new
          * UsersResource_MessagesResource_AttachmentsResource_GetMethod
          * instance.
@@ -6747,29 +7008,30 @@ class GmailService : public client::ClientService {
          * @returns  The caller should <code>Execute</code> the method instance,
          *           then destroy it when they are finished.
          */
-        UsersResource_MessagesResource_AttachmentsResource_GetMethod* NewGetMethod(
-            client::AuthorizationCredential* _credential_,
-            const StringPiece& user_id,
-            const StringPiece& message_id,
-            const StringPiece& id) const;
+                    UsersResource_MessagesResource_AttachmentsResource_GetMethod *NewGetMethod(
+                            client::AuthorizationCredential *_credential_,
+                            const StringPiece &user_id,
+                            const StringPiece &message_id,
+                            const StringPiece &id) const;
 
-       private:
-        GmailService* service_;
+                private:
+                    GmailService *service_;
 
-        DISALLOW_COPY_AND_ASSIGN(AttachmentsResource);
-      };
-      /**
+                    DISALLOW_COPY_AND_ASSIGN(AttachmentsResource);
+                };
+
+                /**
        * Gets the attachments resource method factory.
        *
        * @return AttachmentsResource for creating methods.
        */
-      const AttachmentsResource& get_attachments() const {
-        return attachments_;
-      }
+                const AttachmentsResource &get_attachments() const
+                {
+                    return attachments_;
+                }
 
 
-
-      /**
+                /**
        * Creates a new UsersResource_MessagesResource_BatchDeleteMethod
        * instance.
        *
@@ -6781,12 +7043,12 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_MessagesResource_BatchDeleteMethod* NewBatchDeleteMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const BatchDeleteMessagesRequest& _content_) const;
+                UsersResource_MessagesResource_BatchDeleteMethod *NewBatchDeleteMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const BatchDeleteMessagesRequest &_content_) const;
 
-      /**
+                /**
        * Creates a new UsersResource_MessagesResource_BatchModifyMethod
        * instance.
        *
@@ -6798,12 +7060,12 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_MessagesResource_BatchModifyMethod* NewBatchModifyMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const BatchModifyMessagesRequest& _content_) const;
+                UsersResource_MessagesResource_BatchModifyMethod *NewBatchModifyMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const BatchModifyMessagesRequest &_content_) const;
 
-      /**
+                /**
        * Creates a new UsersResource_MessagesResource_DeleteMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6814,12 +7076,12 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_MessagesResource_DeleteMethod* NewDeleteMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const StringPiece& id) const;
+                UsersResource_MessagesResource_DeleteMethod *NewDeleteMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const StringPiece &id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_MessagesResource_GetMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6830,13 +7092,13 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_MessagesResource_GetMethod* NewGetMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const StringPiece& id) const;
+                UsersResource_MessagesResource_GetMethod *NewGetMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const StringPiece &id) const;
 
 
-      /**
+                /**
        * Creates a new UsersResource_MessagesResource_ImportMethod instance.
        * @deprecated
        *
@@ -6848,11 +7110,11 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_MessagesResource_ImportMethod* NewImportMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id) const;
+                UsersResource_MessagesResource_ImportMethod *NewImportMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_MessagesResource_ImportMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6869,15 +7131,15 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_MessagesResource_ImportMethod* NewImportMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const Message* _metadata_,
-          const StringPiece& _media_content_type_,
-          client::DataReader* _media_content_reader_) const;
+                UsersResource_MessagesResource_ImportMethod *NewImportMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const Message *_metadata_,
+                        const StringPiece &_media_content_type_,
+                        client::DataReader *_media_content_reader_) const;
 
 
-      /**
+                /**
        * Creates a new UsersResource_MessagesResource_InsertMethod instance.
        * @deprecated
        *
@@ -6889,11 +7151,11 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_MessagesResource_InsertMethod* NewInsertMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id) const;
+                UsersResource_MessagesResource_InsertMethod *NewInsertMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_MessagesResource_InsertMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6910,14 +7172,14 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_MessagesResource_InsertMethod* NewInsertMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const Message* _metadata_,
-          const StringPiece& _media_content_type_,
-          client::DataReader* _media_content_reader_) const;
+                UsersResource_MessagesResource_InsertMethod *NewInsertMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const Message *_metadata_,
+                        const StringPiece &_media_content_type_,
+                        client::DataReader *_media_content_reader_) const;
 
-      /**
+                /**
        * Creates a new UsersResource_MessagesResource_ListMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6927,11 +7189,11 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_MessagesResource_ListMethod* NewListMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id) const;
+                UsersResource_MessagesResource_ListMethod *NewListMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id) const;
 
-      /**
+                /**
        * Creates a pager for iterating over incremental result pages.
        * @param[in] _credential_  NULL credentials will not authorize the
        * request.
@@ -6941,11 +7203,11 @@ class GmailService : public client::ClientService {
        *
        * @see googleapis::googleapis::ServiceRequestPager
        */
-      UsersResource_MessagesResource_ListMethodPager* NewListMethodPager(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id) const;
+                UsersResource_MessagesResource_ListMethodPager *NewListMethodPager(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_MessagesResource_ModifyMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6957,14 +7219,14 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_MessagesResource_ModifyMethod* NewModifyMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const StringPiece& id,
-          const ModifyMessageRequest& _content_) const;
+                UsersResource_MessagesResource_ModifyMethod *NewModifyMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const StringPiece &id,
+                        const ModifyMessageRequest &_content_) const;
 
 
-      /**
+                /**
        * Creates a new UsersResource_MessagesResource_SendMethod instance.
        * @deprecated
        *
@@ -6976,11 +7238,11 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_MessagesResource_SendMethod* NewSendMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id) const;
+                UsersResource_MessagesResource_SendMethod *NewSendMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_MessagesResource_SendMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -6997,14 +7259,14 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_MessagesResource_SendMethod* NewSendMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const Message* _metadata_,
-          const StringPiece& _media_content_type_,
-          client::DataReader* _media_content_reader_) const;
+                UsersResource_MessagesResource_SendMethod *NewSendMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const Message *_metadata_,
+                        const StringPiece &_media_content_type_,
+                        client::DataReader *_media_content_reader_) const;
 
-      /**
+                /**
        * Creates a new UsersResource_MessagesResource_TrashMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -7015,12 +7277,12 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_MessagesResource_TrashMethod* NewTrashMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const StringPiece& id) const;
+                UsersResource_MessagesResource_TrashMethod *NewTrashMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const StringPiece &id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_MessagesResource_UntrashMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -7031,71 +7293,77 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_MessagesResource_UntrashMethod* NewUntrashMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const StringPiece& id) const;
+                UsersResource_MessagesResource_UntrashMethod *NewUntrashMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const StringPiece &id) const;
 
-     private:
-      GmailService* service_;
-      AttachmentsResource attachments_;
+            private:
+                GmailService *service_;
+                AttachmentsResource attachments_;
 
-      DISALLOW_COPY_AND_ASSIGN(MessagesResource);
-    };
-    /**
+                DISALLOW_COPY_AND_ASSIGN(MessagesResource);
+            };
+
+            /**
      * Gets the messages resource method factory.
      *
      * @return MessagesResource for creating methods.
      */
-    const MessagesResource& get_messages() const {
-      return messages_;
-    }
+            const MessagesResource &get_messages() const
+            {
+                return messages_;
+            }
 
 
-    /**
+            /**
      * Acts as message factory for accessing  data.
      *
      * @ingroup ServiceClass
      */
-    class SettingsResource {
-     public:
-      /**
+            class SettingsResource
+            {
+            public:
+                /**
        * Standard constructor.
        *
        * @param[in] service  The service instance is used to bind to the
        *            methods created from this resource instance.  This will be
        *            the service that methods are invoked on.
        */
-      explicit SettingsResource(GmailService* service);
+                explicit SettingsResource(GmailService *service);
 
-      /**
+                /**
        * Standard destructor.
        */
-      ~SettingsResource() {}
+                ~SettingsResource()
+                {}
 
-      /**
+                /**
        * Acts as message factory for accessing  data.
        *
        * @ingroup ServiceClass
        */
-      class FiltersResource {
-       public:
-        /**
+                class FiltersResource
+                {
+                public:
+                    /**
          * Standard constructor.
          *
          * @param[in] service  The service instance is used to bind to the
          *            methods created from this resource instance.  This will be
          *            the service that methods are invoked on.
          */
-        explicit FiltersResource(GmailService* service);
+                    explicit FiltersResource(GmailService *service);
 
-        /**
+                    /**
          * Standard destructor.
          */
-        ~FiltersResource() {}
+                    ~FiltersResource()
+                    {}
 
 
-        /**
+                    /**
          * Creates a new
          * UsersResource_SettingsResource_FiltersResource_CreateMethod instance.
          *
@@ -7107,12 +7375,12 @@ class GmailService : public client::ClientService {
          * @returns  The caller should <code>Execute</code> the method instance,
          *           then destroy it when they are finished.
          */
-        UsersResource_SettingsResource_FiltersResource_CreateMethod* NewCreateMethod(
-            client::AuthorizationCredential* _credential_,
-            const StringPiece& user_id,
-            const Filter& _content_) const;
+                    UsersResource_SettingsResource_FiltersResource_CreateMethod *NewCreateMethod(
+                            client::AuthorizationCredential *_credential_,
+                            const StringPiece &user_id,
+                            const Filter &_content_) const;
 
-        /**
+                    /**
          * Creates a new
          * UsersResource_SettingsResource_FiltersResource_DeleteMethod instance.
          *
@@ -7124,12 +7392,12 @@ class GmailService : public client::ClientService {
          * @returns  The caller should <code>Execute</code> the method instance,
          *           then destroy it when they are finished.
          */
-        UsersResource_SettingsResource_FiltersResource_DeleteMethod* NewDeleteMethod(
-            client::AuthorizationCredential* _credential_,
-            const StringPiece& user_id,
-            const StringPiece& id) const;
+                    UsersResource_SettingsResource_FiltersResource_DeleteMethod *NewDeleteMethod(
+                            client::AuthorizationCredential *_credential_,
+                            const StringPiece &user_id,
+                            const StringPiece &id) const;
 
-        /**
+                    /**
          * Creates a new
          * UsersResource_SettingsResource_FiltersResource_GetMethod instance.
          *
@@ -7141,12 +7409,12 @@ class GmailService : public client::ClientService {
          * @returns  The caller should <code>Execute</code> the method instance,
          *           then destroy it when they are finished.
          */
-        UsersResource_SettingsResource_FiltersResource_GetMethod* NewGetMethod(
-            client::AuthorizationCredential* _credential_,
-            const StringPiece& user_id,
-            const StringPiece& id) const;
+                    UsersResource_SettingsResource_FiltersResource_GetMethod *NewGetMethod(
+                            client::AuthorizationCredential *_credential_,
+                            const StringPiece &user_id,
+                            const StringPiece &id) const;
 
-        /**
+                    /**
          * Creates a new
          * UsersResource_SettingsResource_FiltersResource_ListMethod instance.
          *
@@ -7157,48 +7425,52 @@ class GmailService : public client::ClientService {
          * @returns  The caller should <code>Execute</code> the method instance,
          *           then destroy it when they are finished.
          */
-        UsersResource_SettingsResource_FiltersResource_ListMethod* NewListMethod(
-            client::AuthorizationCredential* _credential_,
-            const StringPiece& user_id) const;
+                    UsersResource_SettingsResource_FiltersResource_ListMethod *NewListMethod(
+                            client::AuthorizationCredential *_credential_,
+                            const StringPiece &user_id) const;
 
-       private:
-        GmailService* service_;
+                private:
+                    GmailService *service_;
 
-        DISALLOW_COPY_AND_ASSIGN(FiltersResource);
-      };
-      /**
+                    DISALLOW_COPY_AND_ASSIGN(FiltersResource);
+                };
+
+                /**
        * Gets the filters resource method factory.
        *
        * @return FiltersResource for creating methods.
        */
-      const FiltersResource& get_filters() const {
-        return filters_;
-      }
+                const FiltersResource &get_filters() const
+                {
+                    return filters_;
+                }
 
 
-      /**
+                /**
        * Acts as message factory for accessing  data.
        *
        * @ingroup ServiceClass
        */
-      class ForwardingAddressesResource {
-       public:
-        /**
+                class ForwardingAddressesResource
+                {
+                public:
+                    /**
          * Standard constructor.
          *
          * @param[in] service  The service instance is used to bind to the
          *            methods created from this resource instance.  This will be
          *            the service that methods are invoked on.
          */
-        explicit ForwardingAddressesResource(GmailService* service);
+                    explicit ForwardingAddressesResource(GmailService *service);
 
-        /**
+                    /**
          * Standard destructor.
          */
-        ~ForwardingAddressesResource() {}
+                    ~ForwardingAddressesResource()
+                    {}
 
 
-        /**
+                    /**
          * Creates a new UsersResource_SettingsResource_ForwardingAddressesResou
          * rce_CreateMethod instance.
          *
@@ -7210,12 +7482,12 @@ class GmailService : public client::ClientService {
          * @returns  The caller should <code>Execute</code> the method instance,
          *           then destroy it when they are finished.
          */
-        UsersResource_SettingsResource_ForwardingAddressesResource_CreateMethod* NewCreateMethod(
-            client::AuthorizationCredential* _credential_,
-            const StringPiece& user_id,
-            const ForwardingAddress& _content_) const;
+                    UsersResource_SettingsResource_ForwardingAddressesResource_CreateMethod *NewCreateMethod(
+                            client::AuthorizationCredential *_credential_,
+                            const StringPiece &user_id,
+                            const ForwardingAddress &_content_) const;
 
-        /**
+                    /**
          * Creates a new UsersResource_SettingsResource_ForwardingAddressesResou
          * rce_DeleteMethod instance.
          *
@@ -7227,12 +7499,12 @@ class GmailService : public client::ClientService {
          * @returns  The caller should <code>Execute</code> the method instance,
          *           then destroy it when they are finished.
          */
-        UsersResource_SettingsResource_ForwardingAddressesResource_DeleteMethod* NewDeleteMethod(
-            client::AuthorizationCredential* _credential_,
-            const StringPiece& user_id,
-            const StringPiece& forwarding_email) const;
+                    UsersResource_SettingsResource_ForwardingAddressesResource_DeleteMethod *NewDeleteMethod(
+                            client::AuthorizationCredential *_credential_,
+                            const StringPiece &user_id,
+                            const StringPiece &forwarding_email) const;
 
-        /**
+                    /**
          * Creates a new
          * UsersResource_SettingsResource_ForwardingAddressesResource_GetMethod
          * instance.
@@ -7245,12 +7517,12 @@ class GmailService : public client::ClientService {
          * @returns  The caller should <code>Execute</code> the method instance,
          *           then destroy it when they are finished.
          */
-        UsersResource_SettingsResource_ForwardingAddressesResource_GetMethod* NewGetMethod(
-            client::AuthorizationCredential* _credential_,
-            const StringPiece& user_id,
-            const StringPiece& forwarding_email) const;
+                    UsersResource_SettingsResource_ForwardingAddressesResource_GetMethod *NewGetMethod(
+                            client::AuthorizationCredential *_credential_,
+                            const StringPiece &user_id,
+                            const StringPiece &forwarding_email) const;
 
-        /**
+                    /**
          * Creates a new
          * UsersResource_SettingsResource_ForwardingAddressesResource_ListMethod
          * instance.
@@ -7262,69 +7534,75 @@ class GmailService : public client::ClientService {
          * @returns  The caller should <code>Execute</code> the method instance,
          *           then destroy it when they are finished.
          */
-        UsersResource_SettingsResource_ForwardingAddressesResource_ListMethod* NewListMethod(
-            client::AuthorizationCredential* _credential_,
-            const StringPiece& user_id) const;
+                    UsersResource_SettingsResource_ForwardingAddressesResource_ListMethod *NewListMethod(
+                            client::AuthorizationCredential *_credential_,
+                            const StringPiece &user_id) const;
 
-       private:
-        GmailService* service_;
+                private:
+                    GmailService *service_;
 
-        DISALLOW_COPY_AND_ASSIGN(ForwardingAddressesResource);
-      };
-      /**
+                    DISALLOW_COPY_AND_ASSIGN(ForwardingAddressesResource);
+                };
+
+                /**
        * Gets the forwardingAddresses resource method factory.
        *
        * @return ForwardingAddressesResource for creating methods.
        */
-      const ForwardingAddressesResource& get_forwarding_addresses() const {
-        return forwarding_addresses_;
-      }
+                const ForwardingAddressesResource &get_forwarding_addresses() const
+                {
+                    return forwarding_addresses_;
+                }
 
 
-      /**
+                /**
        * Acts as message factory for accessing  data.
        *
        * @ingroup ServiceClass
        */
-      class SendAsResource {
-       public:
-        /**
+                class SendAsResource
+                {
+                public:
+                    /**
          * Standard constructor.
          *
          * @param[in] service  The service instance is used to bind to the
          *            methods created from this resource instance.  This will be
          *            the service that methods are invoked on.
          */
-        explicit SendAsResource(GmailService* service);
+                    explicit SendAsResource(GmailService *service);
 
-        /**
+                    /**
          * Standard destructor.
          */
-        ~SendAsResource() {}
+                    ~SendAsResource()
+                    {}
 
-        /**
+                    /**
          * Acts as message factory for accessing  data.
          *
          * @ingroup ServiceClass
          */
-        class SmimeInfoResource {
-         public:
-          /**
+                    class SmimeInfoResource
+                    {
+                    public:
+                        /**
            * Standard constructor.
            *
            * @param[in] service  The service instance is used to bind to the
            *            methods created from this resource instance.  This will be
            *            the service that methods are invoked on.
            */
-          explicit SmimeInfoResource(GmailService* service);
+                        explicit SmimeInfoResource(GmailService *service);
 
-          /**
+                        /**
            * Standard destructor.
            */
-          ~SmimeInfoResource() {}
+                        ~SmimeInfoResource()
+                        {}
 
 
-          /**
+                        /**
            * Creates a new UsersResource_SettingsResource_SendAsResource_SmimeIn
            * foResource_DeleteMethod instance.
            *
@@ -7339,13 +7617,13 @@ class GmailService : public client::ClientService {
            * instance,
            *           then destroy it when they are finished.
            */
-          UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_DeleteMethod* NewDeleteMethod(
-              client::AuthorizationCredential* _credential_,
-              const StringPiece& user_id,
-              const StringPiece& send_as_email,
-              const StringPiece& id) const;
+                        UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_DeleteMethod *NewDeleteMethod(
+                                client::AuthorizationCredential *_credential_,
+                                const StringPiece &user_id,
+                                const StringPiece &send_as_email,
+                                const StringPiece &id) const;
 
-          /**
+                        /**
            * Creates a new UsersResource_SettingsResource_SendAsResource_SmimeIn
            * foResource_GetMethod instance.
            *
@@ -7360,13 +7638,13 @@ class GmailService : public client::ClientService {
            * instance,
            *           then destroy it when they are finished.
            */
-          UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_GetMethod* NewGetMethod(
-              client::AuthorizationCredential* _credential_,
-              const StringPiece& user_id,
-              const StringPiece& send_as_email,
-              const StringPiece& id) const;
+                        UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_GetMethod *NewGetMethod(
+                                client::AuthorizationCredential *_credential_,
+                                const StringPiece &user_id,
+                                const StringPiece &send_as_email,
+                                const StringPiece &id) const;
 
-          /**
+                        /**
            * Creates a new UsersResource_SettingsResource_SendAsResource_SmimeIn
            * foResource_InsertMethod instance.
            *
@@ -7381,13 +7659,13 @@ class GmailService : public client::ClientService {
            * instance,
            *           then destroy it when they are finished.
            */
-          UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_InsertMethod* NewInsertMethod(
-              client::AuthorizationCredential* _credential_,
-              const StringPiece& user_id,
-              const StringPiece& send_as_email,
-              const SmimeInfo& _content_) const;
+                        UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_InsertMethod *NewInsertMethod(
+                                client::AuthorizationCredential *_credential_,
+                                const StringPiece &user_id,
+                                const StringPiece &send_as_email,
+                                const SmimeInfo &_content_) const;
 
-          /**
+                        /**
            * Creates a new UsersResource_SettingsResource_SendAsResource_SmimeIn
            * foResource_ListMethod instance.
            *
@@ -7401,12 +7679,12 @@ class GmailService : public client::ClientService {
            * instance,
            *           then destroy it when they are finished.
            */
-          UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_ListMethod* NewListMethod(
-              client::AuthorizationCredential* _credential_,
-              const StringPiece& user_id,
-              const StringPiece& send_as_email) const;
+                        UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_ListMethod *NewListMethod(
+                                client::AuthorizationCredential *_credential_,
+                                const StringPiece &user_id,
+                                const StringPiece &send_as_email) const;
 
-          /**
+                        /**
            * Creates a new UsersResource_SettingsResource_SendAsResource_SmimeIn
            * foResource_SetDefaultMethod instance.
            *
@@ -7421,29 +7699,31 @@ class GmailService : public client::ClientService {
            * instance,
            *           then destroy it when they are finished.
            */
-          UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_SetDefaultMethod* NewSetDefaultMethod(
-              client::AuthorizationCredential* _credential_,
-              const StringPiece& user_id,
-              const StringPiece& send_as_email,
-              const StringPiece& id) const;
+                        UsersResource_SettingsResource_SendAsResource_SmimeInfoResource_SetDefaultMethod *
+                        NewSetDefaultMethod(
+                                client::AuthorizationCredential *_credential_,
+                                const StringPiece &user_id,
+                                const StringPiece &send_as_email,
+                                const StringPiece &id) const;
 
-         private:
-          GmailService* service_;
+                    private:
+                        GmailService *service_;
 
-          DISALLOW_COPY_AND_ASSIGN(SmimeInfoResource);
-        };
-        /**
+                        DISALLOW_COPY_AND_ASSIGN(SmimeInfoResource);
+                    };
+
+                    /**
          * Gets the smimeInfo resource method factory.
          *
          * @return SmimeInfoResource for creating methods.
          */
-        const SmimeInfoResource& get_smime_info() const {
-          return smime_info_;
-        }
+                    const SmimeInfoResource &get_smime_info() const
+                    {
+                        return smime_info_;
+                    }
 
 
-
-        /**
+                    /**
          * Creates a new
          * UsersResource_SettingsResource_SendAsResource_CreateMethod instance.
          *
@@ -7455,12 +7735,12 @@ class GmailService : public client::ClientService {
          * @returns  The caller should <code>Execute</code> the method instance,
          *           then destroy it when they are finished.
          */
-        UsersResource_SettingsResource_SendAsResource_CreateMethod* NewCreateMethod(
-            client::AuthorizationCredential* _credential_,
-            const StringPiece& user_id,
-            const SendAs& _content_) const;
+                    UsersResource_SettingsResource_SendAsResource_CreateMethod *NewCreateMethod(
+                            client::AuthorizationCredential *_credential_,
+                            const StringPiece &user_id,
+                            const SendAs &_content_) const;
 
-        /**
+                    /**
          * Creates a new
          * UsersResource_SettingsResource_SendAsResource_DeleteMethod instance.
          *
@@ -7472,12 +7752,12 @@ class GmailService : public client::ClientService {
          * @returns  The caller should <code>Execute</code> the method instance,
          *           then destroy it when they are finished.
          */
-        UsersResource_SettingsResource_SendAsResource_DeleteMethod* NewDeleteMethod(
-            client::AuthorizationCredential* _credential_,
-            const StringPiece& user_id,
-            const StringPiece& send_as_email) const;
+                    UsersResource_SettingsResource_SendAsResource_DeleteMethod *NewDeleteMethod(
+                            client::AuthorizationCredential *_credential_,
+                            const StringPiece &user_id,
+                            const StringPiece &send_as_email) const;
 
-        /**
+                    /**
          * Creates a new UsersResource_SettingsResource_SendAsResource_GetMethod
          * instance.
          *
@@ -7489,12 +7769,12 @@ class GmailService : public client::ClientService {
          * @returns  The caller should <code>Execute</code> the method instance,
          *           then destroy it when they are finished.
          */
-        UsersResource_SettingsResource_SendAsResource_GetMethod* NewGetMethod(
-            client::AuthorizationCredential* _credential_,
-            const StringPiece& user_id,
-            const StringPiece& send_as_email) const;
+                    UsersResource_SettingsResource_SendAsResource_GetMethod *NewGetMethod(
+                            client::AuthorizationCredential *_credential_,
+                            const StringPiece &user_id,
+                            const StringPiece &send_as_email) const;
 
-        /**
+                    /**
          * Creates a new
          * UsersResource_SettingsResource_SendAsResource_ListMethod instance.
          *
@@ -7505,11 +7785,11 @@ class GmailService : public client::ClientService {
          * @returns  The caller should <code>Execute</code> the method instance,
          *           then destroy it when they are finished.
          */
-        UsersResource_SettingsResource_SendAsResource_ListMethod* NewListMethod(
-            client::AuthorizationCredential* _credential_,
-            const StringPiece& user_id) const;
+                    UsersResource_SettingsResource_SendAsResource_ListMethod *NewListMethod(
+                            client::AuthorizationCredential *_credential_,
+                            const StringPiece &user_id) const;
 
-        /**
+                    /**
          * Creates a new
          * UsersResource_SettingsResource_SendAsResource_PatchMethod instance.
          *
@@ -7522,13 +7802,13 @@ class GmailService : public client::ClientService {
          * @returns  The caller should <code>Execute</code> the method instance,
          *           then destroy it when they are finished.
          */
-        UsersResource_SettingsResource_SendAsResource_PatchMethod* NewPatchMethod(
-            client::AuthorizationCredential* _credential_,
-            const StringPiece& user_id,
-            const StringPiece& send_as_email,
-            const SendAs& _content_) const;
+                    UsersResource_SettingsResource_SendAsResource_PatchMethod *NewPatchMethod(
+                            client::AuthorizationCredential *_credential_,
+                            const StringPiece &user_id,
+                            const StringPiece &send_as_email,
+                            const SendAs &_content_) const;
 
-        /**
+                    /**
          * Creates a new
          * UsersResource_SettingsResource_SendAsResource_UpdateMethod instance.
          *
@@ -7541,13 +7821,13 @@ class GmailService : public client::ClientService {
          * @returns  The caller should <code>Execute</code> the method instance,
          *           then destroy it when they are finished.
          */
-        UsersResource_SettingsResource_SendAsResource_UpdateMethod* NewUpdateMethod(
-            client::AuthorizationCredential* _credential_,
-            const StringPiece& user_id,
-            const StringPiece& send_as_email,
-            const SendAs& _content_) const;
+                    UsersResource_SettingsResource_SendAsResource_UpdateMethod *NewUpdateMethod(
+                            client::AuthorizationCredential *_credential_,
+                            const StringPiece &user_id,
+                            const StringPiece &send_as_email,
+                            const SendAs &_content_) const;
 
-        /**
+                    /**
          * Creates a new
          * UsersResource_SettingsResource_SendAsResource_VerifyMethod instance.
          *
@@ -7559,29 +7839,30 @@ class GmailService : public client::ClientService {
          * @returns  The caller should <code>Execute</code> the method instance,
          *           then destroy it when they are finished.
          */
-        UsersResource_SettingsResource_SendAsResource_VerifyMethod* NewVerifyMethod(
-            client::AuthorizationCredential* _credential_,
-            const StringPiece& user_id,
-            const StringPiece& send_as_email) const;
+                    UsersResource_SettingsResource_SendAsResource_VerifyMethod *NewVerifyMethod(
+                            client::AuthorizationCredential *_credential_,
+                            const StringPiece &user_id,
+                            const StringPiece &send_as_email) const;
 
-       private:
-        GmailService* service_;
-        SmimeInfoResource smime_info_;
+                private:
+                    GmailService *service_;
+                    SmimeInfoResource smime_info_;
 
-        DISALLOW_COPY_AND_ASSIGN(SendAsResource);
-      };
-      /**
+                    DISALLOW_COPY_AND_ASSIGN(SendAsResource);
+                };
+
+                /**
        * Gets the sendAs resource method factory.
        *
        * @return SendAsResource for creating methods.
        */
-      const SendAsResource& get_send_as() const {
-        return send_as_;
-      }
+                const SendAsResource &get_send_as() const
+                {
+                    return send_as_;
+                }
 
 
-
-      /**
+                /**
        * Creates a new UsersResource_SettingsResource_GetAutoForwardingMethod
        * instance.
        *
@@ -7592,11 +7873,11 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_SettingsResource_GetAutoForwardingMethod* NewGetAutoForwardingMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id) const;
+                UsersResource_SettingsResource_GetAutoForwardingMethod *NewGetAutoForwardingMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_SettingsResource_GetImapMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -7606,11 +7887,11 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_SettingsResource_GetImapMethod* NewGetImapMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id) const;
+                UsersResource_SettingsResource_GetImapMethod *NewGetImapMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_SettingsResource_GetPopMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -7620,11 +7901,11 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_SettingsResource_GetPopMethod* NewGetPopMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id) const;
+                UsersResource_SettingsResource_GetPopMethod *NewGetPopMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_SettingsResource_GetVacationMethod
        * instance.
        *
@@ -7635,11 +7916,11 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_SettingsResource_GetVacationMethod* NewGetVacationMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id) const;
+                UsersResource_SettingsResource_GetVacationMethod *NewGetVacationMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_SettingsResource_UpdateAutoForwardingMethod
        * instance.
        *
@@ -7651,12 +7932,12 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_SettingsResource_UpdateAutoForwardingMethod* NewUpdateAutoForwardingMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const AutoForwarding& _content_) const;
+                UsersResource_SettingsResource_UpdateAutoForwardingMethod *NewUpdateAutoForwardingMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const AutoForwarding &_content_) const;
 
-      /**
+                /**
        * Creates a new UsersResource_SettingsResource_UpdateImapMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -7667,12 +7948,12 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_SettingsResource_UpdateImapMethod* NewUpdateImapMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const ImapSettings& _content_) const;
+                UsersResource_SettingsResource_UpdateImapMethod *NewUpdateImapMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const ImapSettings &_content_) const;
 
-      /**
+                /**
        * Creates a new UsersResource_SettingsResource_UpdatePopMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -7683,12 +7964,12 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_SettingsResource_UpdatePopMethod* NewUpdatePopMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const PopSettings& _content_) const;
+                UsersResource_SettingsResource_UpdatePopMethod *NewUpdatePopMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const PopSettings &_content_) const;
 
-      /**
+                /**
        * Creates a new UsersResource_SettingsResource_UpdateVacationMethod
        * instance.
        *
@@ -7700,52 +7981,56 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_SettingsResource_UpdateVacationMethod* NewUpdateVacationMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const VacationSettings& _content_) const;
+                UsersResource_SettingsResource_UpdateVacationMethod *NewUpdateVacationMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const VacationSettings &_content_) const;
 
-     private:
-      GmailService* service_;
-      FiltersResource filters_;
-      ForwardingAddressesResource forwarding_addresses_;
-      SendAsResource send_as_;
+            private:
+                GmailService *service_;
+                FiltersResource filters_;
+                ForwardingAddressesResource forwarding_addresses_;
+                SendAsResource send_as_;
 
-      DISALLOW_COPY_AND_ASSIGN(SettingsResource);
-    };
-    /**
+                DISALLOW_COPY_AND_ASSIGN(SettingsResource);
+            };
+
+            /**
      * Gets the settings resource method factory.
      *
      * @return SettingsResource for creating methods.
      */
-    const SettingsResource& get_settings() const {
-      return settings_;
-    }
+            const SettingsResource &get_settings() const
+            {
+                return settings_;
+            }
 
 
-    /**
+            /**
      * Acts as message factory for accessing  data.
      *
      * @ingroup ServiceClass
      */
-    class ThreadsResource {
-     public:
-      /**
+            class ThreadsResource
+            {
+            public:
+                /**
        * Standard constructor.
        *
        * @param[in] service  The service instance is used to bind to the
        *            methods created from this resource instance.  This will be
        *            the service that methods are invoked on.
        */
-      explicit ThreadsResource(GmailService* service);
+                explicit ThreadsResource(GmailService *service);
 
-      /**
+                /**
        * Standard destructor.
        */
-      ~ThreadsResource() {}
+                ~ThreadsResource()
+                {}
 
 
-      /**
+                /**
        * Creates a new UsersResource_ThreadsResource_DeleteMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -7756,12 +8041,12 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_ThreadsResource_DeleteMethod* NewDeleteMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const StringPiece& id) const;
+                UsersResource_ThreadsResource_DeleteMethod *NewDeleteMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const StringPiece &id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_ThreadsResource_GetMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -7772,12 +8057,12 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_ThreadsResource_GetMethod* NewGetMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const StringPiece& id) const;
+                UsersResource_ThreadsResource_GetMethod *NewGetMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const StringPiece &id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_ThreadsResource_ListMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -7787,11 +8072,11 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_ThreadsResource_ListMethod* NewListMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id) const;
+                UsersResource_ThreadsResource_ListMethod *NewListMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id) const;
 
-      /**
+                /**
        * Creates a pager for iterating over incremental result pages.
        * @param[in] _credential_  NULL credentials will not authorize the
        * request.
@@ -7801,11 +8086,11 @@ class GmailService : public client::ClientService {
        *
        * @see googleapis::googleapis::ServiceRequestPager
        */
-      UsersResource_ThreadsResource_ListMethodPager* NewListMethodPager(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id) const;
+                UsersResource_ThreadsResource_ListMethodPager *NewListMethodPager(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_ThreadsResource_ModifyMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -7817,13 +8102,13 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_ThreadsResource_ModifyMethod* NewModifyMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const StringPiece& id,
-          const ModifyThreadRequest& _content_) const;
+                UsersResource_ThreadsResource_ModifyMethod *NewModifyMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const StringPiece &id,
+                        const ModifyThreadRequest &_content_) const;
 
-      /**
+                /**
        * Creates a new UsersResource_ThreadsResource_TrashMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -7834,12 +8119,12 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_ThreadsResource_TrashMethod* NewTrashMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const StringPiece& id) const;
+                UsersResource_ThreadsResource_TrashMethod *NewTrashMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const StringPiece &id) const;
 
-      /**
+                /**
        * Creates a new UsersResource_ThreadsResource_UntrashMethod instance.
        *
        * @param[in] _credential_  Can be NULL.
@@ -7850,28 +8135,29 @@ class GmailService : public client::ClientService {
        * @returns  The caller should <code>Execute</code> the method instance,
        *           then destroy it when they are finished.
        */
-      UsersResource_ThreadsResource_UntrashMethod* NewUntrashMethod(
-          client::AuthorizationCredential* _credential_,
-          const StringPiece& user_id,
-          const StringPiece& id) const;
+                UsersResource_ThreadsResource_UntrashMethod *NewUntrashMethod(
+                        client::AuthorizationCredential *_credential_,
+                        const StringPiece &user_id,
+                        const StringPiece &id) const;
 
-     private:
-      GmailService* service_;
+            private:
+                GmailService *service_;
 
-      DISALLOW_COPY_AND_ASSIGN(ThreadsResource);
-    };
-    /**
+                DISALLOW_COPY_AND_ASSIGN(ThreadsResource);
+            };
+
+            /**
      * Gets the threads resource method factory.
      *
      * @return ThreadsResource for creating methods.
      */
-    const ThreadsResource& get_threads() const {
-      return threads_;
-    }
+            const ThreadsResource &get_threads() const
+            {
+                return threads_;
+            }
 
 
-
-    /**
+            /**
      * Creates a new UsersResource_GetProfileMethod instance.
      *
      * @param[in] _credential_  Can be NULL.
@@ -7881,11 +8167,11 @@ class GmailService : public client::ClientService {
      * @returns  The caller should <code>Execute</code> the method instance,
      *           then destroy it when they are finished.
      */
-    UsersResource_GetProfileMethod* NewGetProfileMethod(
-        client::AuthorizationCredential* _credential_,
-        const StringPiece& user_id) const;
+            UsersResource_GetProfileMethod *NewGetProfileMethod(
+                    client::AuthorizationCredential *_credential_,
+                    const StringPiece &user_id) const;
 
-    /**
+            /**
      * Creates a new UsersResource_StopMethod instance.
      *
      * @param[in] _credential_  Can be NULL.
@@ -7895,11 +8181,11 @@ class GmailService : public client::ClientService {
      * @returns  The caller should <code>Execute</code> the method instance,
      *           then destroy it when they are finished.
      */
-    UsersResource_StopMethod* NewStopMethod(
-        client::AuthorizationCredential* _credential_,
-        const StringPiece& user_id) const;
+            UsersResource_StopMethod *NewStopMethod(
+                    client::AuthorizationCredential *_credential_,
+                    const StringPiece &user_id) const;
 
-    /**
+            /**
      * Creates a new UsersResource_WatchMethod instance.
      *
      * @param[in] _credential_  Can be NULL.
@@ -7910,116 +8196,117 @@ class GmailService : public client::ClientService {
      * @returns  The caller should <code>Execute</code> the method instance,
      *           then destroy it when they are finished.
      */
-    UsersResource_WatchMethod* NewWatchMethod(
-        client::AuthorizationCredential* _credential_,
-        const StringPiece& user_id,
-        const WatchRequest& _content_) const;
+            UsersResource_WatchMethod *NewWatchMethod(
+                    client::AuthorizationCredential *_credential_,
+                    const StringPiece &user_id,
+                    const WatchRequest &_content_) const;
 
-   private:
-    GmailService* service_;
-    DraftsResource drafts_;
-    HistoryResource history_;
-    LabelsResource labels_;
-    MessagesResource messages_;
-    SettingsResource settings_;
-    ThreadsResource threads_;
+        private:
+            GmailService *service_;
+            DraftsResource drafts_;
+            HistoryResource history_;
+            LabelsResource labels_;
+            MessagesResource messages_;
+            SettingsResource settings_;
+            ThreadsResource threads_;
 
-    DISALLOW_COPY_AND_ASSIGN(UsersResource);
-  };
+            DISALLOW_COPY_AND_ASSIGN(UsersResource);
+        };
 
 
-
-  /**
+        /**
    * Standard constructor.
    *
    * @param[in] transport  The transport to use when creating methods to invoke
    *                       on this service instance.
    */
-  explicit GmailService(client::HttpTransport* transport);
+        explicit GmailService(client::HttpTransport *transport);
 
-  /**
+        /**
    * Standard destructor.
    */
-  virtual ~GmailService();
+        virtual ~GmailService();
 
-  /**
+        /**
    * Gets the  resource method factory.
    *
    * @return UsersResource for creating methods.
    */
-  const UsersResource& get_users() const {
-    return users_;
-  }
+        const UsersResource &get_users() const
+        {
+            return users_;
+        }
 
-  /**
+        /**
    * Declares the OAuth2.0 scopes used within Gmail API
    *
    * These scopes shoudl be used when asking for credentials to invoke methods
    * in the GmailService.
    */
-  class SCOPES {
-   public:
-    /**
+        class SCOPES
+        {
+        public:
+            /**
      * Read, send, delete, and manage your email.
      */
-    static const char MAIL_GOOGLE_COM[];
+            static const char MAIL_GOOGLE_COM[];
 
-    /**
+            /**
      * Manage drafts and send emails.
      */
-    static const char GMAIL_COMPOSE[];
+            static const char GMAIL_COMPOSE[];
 
-    /**
+            /**
      * Insert mail into your mailbox.
      */
-    static const char GMAIL_INSERT[];
+            static const char GMAIL_INSERT[];
 
-    /**
+            /**
      * Manage mailbox labels.
      */
-    static const char GMAIL_LABELS[];
+            static const char GMAIL_LABELS[];
 
-    /**
+            /**
      * View your email message metadata such as labels and headers, but not the
      * email body.
      */
-    static const char GMAIL_METADATA[];
+            static const char GMAIL_METADATA[];
 
-    /**
+            /**
      * View and modify but not delete your email.
      */
-    static const char GMAIL_MODIFY[];
+            static const char GMAIL_MODIFY[];
 
-    /**
+            /**
      * View your email messages and settings.
      */
-    static const char GMAIL_READONLY[];
+            static const char GMAIL_READONLY[];
 
-    /**
+            /**
      * Send email on your behalf.
      */
-    static const char GMAIL_SEND[];
+            static const char GMAIL_SEND[];
 
-    /**
+            /**
      * Manage your basic mail settings.
      */
-    static const char GMAIL_SETTINGS_BASIC[];
+            static const char GMAIL_SETTINGS_BASIC[];
 
-    /**
+            /**
      * Manage your sensitive mail settings, including who can manage your mail.
      */
-    static const char GMAIL_SETTINGS_SHARING[];
+            static const char GMAIL_SETTINGS_SHARING[];
 
-   private:
-    SCOPES();  // Never instantiated.
-    ~SCOPES();  // Never instantiated.
-  };
+        private:
+            SCOPES();  // Never instantiated.
+            ~SCOPES();  // Never instantiated.
+        };
 
- private:
-  UsersResource users_;
+    private:
+        UsersResource users_;
 
-  DISALLOW_COPY_AND_ASSIGN(GmailService);
-};
+        DISALLOW_COPY_AND_ASSIGN(GmailService);
+    };
 
 
 /**

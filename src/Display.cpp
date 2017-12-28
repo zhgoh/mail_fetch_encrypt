@@ -11,7 +11,9 @@ using googleapis::client::HttpResponse;
 
 using google_gmail_api::Message;
 using google_gmail_api::MessagePart;
+using google_gmail_api::MessagePartHeader;
 using google_gmail_api::MessagePartBody;
+using googleapis::client::JsonCppArray;
 
 void DisplayError(ClientServiceRequest *request)
 {
@@ -28,30 +30,102 @@ void DisplayError(ClientServiceRequest *request)
     std::cout << std::endl;
 }
 
-void Display(const std::string &prefix, const Message &entry)
+const int tabSize = 2;
+
+void Display(const JsonCppArray<std::string> &entry, int tabs)
 {
-    std::cout << prefix << "Message Entry" << std::endl;
-    std::cout << prefix << "  Thread ID: " << entry.get_thread_id() << std::endl;
+    for (const auto &elem : entry)
+    {
+        Indent(tabs + tabSize) << elem << ",\n";
+    }
+}
+
+void Display(const Message &entry)
+{
+    int tabs = 0;
+    std::cout << "{" << std::endl;
+    WriteLine("id", entry.get_thread_id(), tabs + tabSize);
+    WriteLine("threadid", entry.get_thread_id(), tabs + tabSize);
+    
+    if (entry.has_label_ids())
+    {
+        Indent(tabs + tabSize) << "\"labelIds\": [\n";
+        // Display Label party
+        Display(entry.get_label_ids(), tabs + tabSize);
+        Indent(tabs + tabSize) << "],\n";
+    }
+    
+    if (entry.has_snippet())
+    {
+    
+    }
     
     if (entry.has_payload())
     {
-        Display(prefix, entry.get_payload());
+        Indent(tabs + tabSize) << "\"payload\": {\n";
+        // Display Message Part
+        Display(entry.get_payload(), tabs + tabSize);
+        Indent(tabs + tabSize) << "}\n";
     }
+    std::cout << "}" << std::endl;
 }
 
-void Display(const std::string &prefix, const MessagePart &entry)
+void Display(const MessagePart &entry, int tabs)
 {
-    std::cout << prefix << "Message Part" << std::endl;
-    std::cout << prefix << "  ID: " << entry.get_part_id() << std::endl;
+    if (entry.has_headers())
+    {
+        Indent(tabs + tabSize) << "\"headers\": [\n";
+        for (const auto &elem : entry.get_headers())
+        {
+            Indent(tabs + tabSize) << "{\n";
+            // Display Headers
+            Display(elem, tabs + tabSize);
+            Indent(tabs + tabSize) << "},\n";
+        }
+        Indent(tabs + tabSize) << "],\n";
+    }
+    
+    if (entry.has_parts())
+    {
+        for (const auto &elem : entry.get_parts())
+        {
+            // Display Message Part
+            //Display(elem, tabs + tabSize);
+        }
+    }
     
     if (entry.has_body())
     {
-        Display(prefix, entry.get_body());
+        //Display(entry.get_body(), tabs + tabSize);
     }
 }
 
-void Display(const std::string &prefix, const MessagePartBody &entry)
+void Display(const MessagePartHeader &entry, int tabs)
 {
-    std::cout << prefix << "Message Part Body" << std::endl;
-    std::cout << prefix << "  Data: " << entry.get_data() << std::endl;
+    if (entry.has_name())
+    {
+        WriteLine("name", entry.get_name(), tabs + tabSize);
+    }
+    
+    if (entry.has_value())
+    {
+        WriteLine("value", entry.get_value(), tabs + tabSize);
+    }
+}
+
+void Display(const MessagePartBody &entry, int tabs)
+{
+    if (entry.has_data())
+    {
+        //WriteLine("Data", entry.get_data(), tabs + tabSize);
+    }
+}
+
+std::ostream &Indent(int tabs)
+{
+    for (int i = 0; i < tabs; ++i)
+    {
+        std::cout << " ";
+    }
+    return std::cout;
 }

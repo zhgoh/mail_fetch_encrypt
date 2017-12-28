@@ -35,132 +35,144 @@
 #include "googleapis/client/data/jsoncpp_data.h"
 #include "googleapis/strings/stringpiece.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * POP settings for an account.
  *
  * @ingroup DataObject
  */
-class PopSettings : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static PopSettings* New();
+    class PopSettings : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static PopSettings *New();
 
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit PopSettings(const Json::Value& storage);
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit PopSettings(const Json::Value &storage);
 
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit PopSettings(Json::Value* storage);
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit PopSettings(Json::Value *storage);
 
-  /**
-   * Standard destructor.
-   */
-  virtual ~PopSettings();
+        /**
+         * Standard destructor.
+         */
+        virtual ~PopSettings();
 
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::PopSettings</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::PopSettings");
-  }
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::PopSettings</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::PopSettings");
+        }
 
-  /**
-   * Determine if the '<code>accessWindow</code>' attribute was set.
-   *
-   * @return true if the '<code>accessWindow</code>' attribute was set.
-   */
-  bool has_access_window() const {
-    return Storage().isMember("accessWindow");
-  }
+        /**
+         * Determine if the '<code>accessWindow</code>' attribute was set.
+         *
+         * @return true if the '<code>accessWindow</code>' attribute was set.
+         */
+        bool has_access_window() const
+        {
+            return Storage().isMember("accessWindow");
+        }
 
-  /**
-   * Clears the '<code>accessWindow</code>' attribute.
-   */
-  void clear_access_window() {
-    MutableStorage()->removeMember("accessWindow");
-  }
-
-
-  /**
-   * Get the value of the '<code>accessWindow</code>' attribute.
-   */
-  const StringPiece get_access_window() const {
-    const Json::Value& v = Storage("accessWindow");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
-
-  /**
-   * Change the '<code>accessWindow</code>' attribute.
-   *
-   * The range of messages which are accessible via POP.
-   *
-   * @param[in] value The new value.
-   */
-  void set_access_window(const StringPiece& value) {
-    *MutableStorage("accessWindow") = value.data();
-  }
-
-  /**
-   * Determine if the '<code>disposition</code>' attribute was set.
-   *
-   * @return true if the '<code>disposition</code>' attribute was set.
-   */
-  bool has_disposition() const {
-    return Storage().isMember("disposition");
-  }
-
-  /**
-   * Clears the '<code>disposition</code>' attribute.
-   */
-  void clear_disposition() {
-    MutableStorage()->removeMember("disposition");
-  }
+        /**
+         * Clears the '<code>accessWindow</code>' attribute.
+         */
+        void clear_access_window()
+        {
+            MutableStorage()->removeMember("accessWindow");
+        }
 
 
-  /**
-   * Get the value of the '<code>disposition</code>' attribute.
-   */
-  const StringPiece get_disposition() const {
-    const Json::Value& v = Storage("disposition");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
+        /**
+         * Get the value of the '<code>accessWindow</code>' attribute.
+         */
+        const StringPiece get_access_window() const
+        {
+            const Json::Value &v = Storage("accessWindow");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
 
-  /**
-   * Change the '<code>disposition</code>' attribute.
-   *
-   * The action that will be executed on a message after it has been fetched via
-   * POP.
-   *
-   * @param[in] value The new value.
-   */
-  void set_disposition(const StringPiece& value) {
-    *MutableStorage("disposition") = value.data();
-  }
+        /**
+         * Change the '<code>accessWindow</code>' attribute.
+         *
+         * The range of messages which are accessible via POP.
+         *
+         * @param[in] value The new value.
+         */
+        void set_access_window(const StringPiece &value)
+        {
+            *MutableStorage("accessWindow") = value.data();
+        }
 
- private:
-  void operator=(const PopSettings&);
-};  // PopSettings
+        /**
+         * Determine if the '<code>disposition</code>' attribute was set.
+         *
+         * @return true if the '<code>disposition</code>' attribute was set.
+         */
+        bool has_disposition() const
+        {
+            return Storage().isMember("disposition");
+        }
+
+        /**
+         * Clears the '<code>disposition</code>' attribute.
+         */
+        void clear_disposition()
+        {
+            MutableStorage()->removeMember("disposition");
+        }
+
+
+        /**
+         * Get the value of the '<code>disposition</code>' attribute.
+         */
+        const StringPiece get_disposition() const
+        {
+            const Json::Value &v = Storage("disposition");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
+
+        /**
+         * Change the '<code>disposition</code>' attribute.
+         *
+         * The action that will be executed on a message after it has been fetched via
+         * POP.
+         *
+         * @param[in] value The new value.
+         */
+        void set_disposition(const StringPiece &value)
+        {
+            *MutableStorage("disposition") = value.data();
+        }
+
+    private:
+        void operator=(const PopSettings &);
+    };  // PopSettings
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_POP_SETTINGS_H_

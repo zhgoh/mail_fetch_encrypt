@@ -36,88 +36,94 @@
 
 #include "google/gmail_api/label.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * No description provided.
  *
  * @ingroup DataObject
  */
-class ListLabelsResponse : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static ListLabelsResponse* New();
+    class ListLabelsResponse : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static ListLabelsResponse *New();
 
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit ListLabelsResponse(const Json::Value& storage);
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit ListLabelsResponse(const Json::Value &storage);
 
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit ListLabelsResponse(Json::Value* storage);
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit ListLabelsResponse(Json::Value *storage);
 
-  /**
-   * Standard destructor.
-   */
-  virtual ~ListLabelsResponse();
+        /**
+         * Standard destructor.
+         */
+        virtual ~ListLabelsResponse();
 
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::ListLabelsResponse</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::ListLabelsResponse");
-  }
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::ListLabelsResponse</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::ListLabelsResponse");
+        }
 
-  /**
-   * Determine if the '<code>labels</code>' attribute was set.
-   *
-   * @return true if the '<code>labels</code>' attribute was set.
-   */
-  bool has_labels() const {
-    return Storage().isMember("labels");
-  }
+        /**
+         * Determine if the '<code>labels</code>' attribute was set.
+         *
+         * @return true if the '<code>labels</code>' attribute was set.
+         */
+        bool has_labels() const
+        {
+            return Storage().isMember("labels");
+        }
 
-  /**
-   * Clears the '<code>labels</code>' attribute.
-   */
-  void clear_labels() {
-    MutableStorage()->removeMember("labels");
-  }
+        /**
+         * Clears the '<code>labels</code>' attribute.
+         */
+        void clear_labels()
+        {
+            MutableStorage()->removeMember("labels");
+        }
 
 
-  /**
-   * Get a reference to the value of the '<code>labels</code>' attribute.
-   */
-  const client::JsonCppArray<Label > get_labels() const;
+        /**
+         * Get a reference to the value of the '<code>labels</code>' attribute.
+         */
+        const client::JsonCppArray<Label> get_labels() const;
 
-  /**
-   * Gets a reference to a mutable value of the '<code>labels</code>' property.
-   *
-   * List of labels.
-   *
-   * @return The result can be modified to change the attribute value.
-   */
-  client::JsonCppArray<Label > mutable_labels();
+        /**
+         * Gets a reference to a mutable value of the '<code>labels</code>' property.
+         *
+         * List of labels.
+         *
+         * @return The result can be modified to change the attribute value.
+         */
+        client::JsonCppArray<Label> mutable_labels();
 
- private:
-  void operator=(const ListLabelsResponse&);
-};  // ListLabelsResponse
+    private:
+        void operator=(const ListLabelsResponse &);
+    };  // ListLabelsResponse
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_LIST_LABELS_RESPONSE_H_

@@ -40,26 +40,31 @@
 #include <string>
 #include "googleapis/strings/strcat.h"
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 
 // Object factory method (static).
-ListThreadsResponse* ListThreadsResponse::New() {
-  return new client::JsonCppCapsule<ListThreadsResponse>;
-}
+    ListThreadsResponse *ListThreadsResponse::New()
+    {
+        return new client::JsonCppCapsule<ListThreadsResponse>;
+    }
 
 // Standard immutable constructor.
-ListThreadsResponse::ListThreadsResponse(const Json::Value& storage)
-  : client::JsonCppData(storage) {
-}
+    ListThreadsResponse::ListThreadsResponse(const Json::Value &storage)
+            : client::JsonCppData(storage)
+    {
+    }
 
 // Standard mutable constructor.
-ListThreadsResponse::ListThreadsResponse(Json::Value* storage)
-  : client::JsonCppData(storage) {
-}
+    ListThreadsResponse::ListThreadsResponse(Json::Value *storage)
+            : client::JsonCppData(storage)
+    {
+    }
 
 // Standard destructor.
-ListThreadsResponse::~ListThreadsResponse() {
-}
+    ListThreadsResponse::~ListThreadsResponse()
+    {
+    }
 }  // namespace google_gmail_api

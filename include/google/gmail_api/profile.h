@@ -36,205 +36,225 @@
 #include "googleapis/client/data/jsoncpp_data.h"
 #include "googleapis/strings/stringpiece.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * Profile for a Gmail user.
  *
  * @ingroup DataObject
  */
-class Profile : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static Profile* New();
+    class Profile : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static Profile *New();
 
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit Profile(const Json::Value& storage);
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit Profile(const Json::Value &storage);
 
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit Profile(Json::Value* storage);
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit Profile(Json::Value *storage);
 
-  /**
-   * Standard destructor.
-   */
-  virtual ~Profile();
+        /**
+         * Standard destructor.
+         */
+        virtual ~Profile();
 
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::Profile</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::Profile");
-  }
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::Profile</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::Profile");
+        }
 
-  /**
-   * Determine if the '<code>emailAddress</code>' attribute was set.
-   *
-   * @return true if the '<code>emailAddress</code>' attribute was set.
-   */
-  bool has_email_address() const {
-    return Storage().isMember("emailAddress");
-  }
+        /**
+         * Determine if the '<code>emailAddress</code>' attribute was set.
+         *
+         * @return true if the '<code>emailAddress</code>' attribute was set.
+         */
+        bool has_email_address() const
+        {
+            return Storage().isMember("emailAddress");
+        }
 
-  /**
-   * Clears the '<code>emailAddress</code>' attribute.
-   */
-  void clear_email_address() {
-    MutableStorage()->removeMember("emailAddress");
-  }
-
-
-  /**
-   * Get the value of the '<code>emailAddress</code>' attribute.
-   */
-  const StringPiece get_email_address() const {
-    const Json::Value& v = Storage("emailAddress");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
-
-  /**
-   * Change the '<code>emailAddress</code>' attribute.
-   *
-   * The user's email address.
-   *
-   * @param[in] value The new value.
-   */
-  void set_email_address(const StringPiece& value) {
-    *MutableStorage("emailAddress") = value.data();
-  }
-
-  /**
-   * Determine if the '<code>historyId</code>' attribute was set.
-   *
-   * @return true if the '<code>historyId</code>' attribute was set.
-   */
-  bool has_history_id() const {
-    return Storage().isMember("historyId");
-  }
-
-  /**
-   * Clears the '<code>historyId</code>' attribute.
-   */
-  void clear_history_id() {
-    MutableStorage()->removeMember("historyId");
-  }
+        /**
+         * Clears the '<code>emailAddress</code>' attribute.
+         */
+        void clear_email_address()
+        {
+            MutableStorage()->removeMember("emailAddress");
+        }
 
 
-  /**
-   * Get the value of the '<code>historyId</code>' attribute.
-   */
-  uint64 get_history_id() const {
-    const Json::Value& storage = Storage("historyId");
-    return client::JsonValueToCppValueHelper<uint64 >(storage);
-  }
+        /**
+         * Get the value of the '<code>emailAddress</code>' attribute.
+         */
+        const StringPiece get_email_address() const
+        {
+            const Json::Value &v = Storage("emailAddress");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
 
-  /**
-   * Change the '<code>historyId</code>' attribute.
-   *
-   * The ID of the mailbox's current history record.
-   *
-   * @param[in] value The new value.
-   */
-  void set_history_id(uint64 value) {
-    client::SetJsonValueFromCppValueHelper<uint64 >(
-      value, MutableStorage("historyId"));
-  }
+        /**
+         * Change the '<code>emailAddress</code>' attribute.
+         *
+         * The user's email address.
+         *
+         * @param[in] value The new value.
+         */
+        void set_email_address(const StringPiece &value)
+        {
+            *MutableStorage("emailAddress") = value.data();
+        }
 
-  /**
-   * Determine if the '<code>messagesTotal</code>' attribute was set.
-   *
-   * @return true if the '<code>messagesTotal</code>' attribute was set.
-   */
-  bool has_messages_total() const {
-    return Storage().isMember("messagesTotal");
-  }
+        /**
+         * Determine if the '<code>historyId</code>' attribute was set.
+         *
+         * @return true if the '<code>historyId</code>' attribute was set.
+         */
+        bool has_history_id() const
+        {
+            return Storage().isMember("historyId");
+        }
 
-  /**
-   * Clears the '<code>messagesTotal</code>' attribute.
-   */
-  void clear_messages_total() {
-    MutableStorage()->removeMember("messagesTotal");
-  }
-
-
-  /**
-   * Get the value of the '<code>messagesTotal</code>' attribute.
-   */
-  int32 get_messages_total() const {
-    const Json::Value& storage = Storage("messagesTotal");
-    return client::JsonValueToCppValueHelper<int32 >(storage);
-  }
-
-  /**
-   * Change the '<code>messagesTotal</code>' attribute.
-   *
-   * The total number of messages in the mailbox.
-   *
-   * @param[in] value The new value.
-   */
-  void set_messages_total(int32 value) {
-    client::SetJsonValueFromCppValueHelper<int32 >(
-      value, MutableStorage("messagesTotal"));
-  }
-
-  /**
-   * Determine if the '<code>threadsTotal</code>' attribute was set.
-   *
-   * @return true if the '<code>threadsTotal</code>' attribute was set.
-   */
-  bool has_threads_total() const {
-    return Storage().isMember("threadsTotal");
-  }
-
-  /**
-   * Clears the '<code>threadsTotal</code>' attribute.
-   */
-  void clear_threads_total() {
-    MutableStorage()->removeMember("threadsTotal");
-  }
+        /**
+         * Clears the '<code>historyId</code>' attribute.
+         */
+        void clear_history_id()
+        {
+            MutableStorage()->removeMember("historyId");
+        }
 
 
-  /**
-   * Get the value of the '<code>threadsTotal</code>' attribute.
-   */
-  int32 get_threads_total() const {
-    const Json::Value& storage = Storage("threadsTotal");
-    return client::JsonValueToCppValueHelper<int32 >(storage);
-  }
+        /**
+         * Get the value of the '<code>historyId</code>' attribute.
+         */
+        uint64 get_history_id() const
+        {
+            const Json::Value &storage = Storage("historyId");
+            return client::JsonValueToCppValueHelper<uint64>(storage);
+        }
 
-  /**
-   * Change the '<code>threadsTotal</code>' attribute.
-   *
-   * The total number of threads in the mailbox.
-   *
-   * @param[in] value The new value.
-   */
-  void set_threads_total(int32 value) {
-    client::SetJsonValueFromCppValueHelper<int32 >(
-      value, MutableStorage("threadsTotal"));
-  }
+        /**
+         * Change the '<code>historyId</code>' attribute.
+         *
+         * The ID of the mailbox's current history record.
+         *
+         * @param[in] value The new value.
+         */
+        void set_history_id(uint64 value)
+        {
+            client::SetJsonValueFromCppValueHelper<uint64>(
+                    value, MutableStorage("historyId"));
+        }
 
- private:
-  void operator=(const Profile&);
-};  // Profile
+        /**
+         * Determine if the '<code>messagesTotal</code>' attribute was set.
+         *
+         * @return true if the '<code>messagesTotal</code>' attribute was set.
+         */
+        bool has_messages_total() const
+        {
+            return Storage().isMember("messagesTotal");
+        }
+
+        /**
+         * Clears the '<code>messagesTotal</code>' attribute.
+         */
+        void clear_messages_total()
+        {
+            MutableStorage()->removeMember("messagesTotal");
+        }
+
+
+        /**
+         * Get the value of the '<code>messagesTotal</code>' attribute.
+         */
+        int32 get_messages_total() const
+        {
+            const Json::Value &storage = Storage("messagesTotal");
+            return client::JsonValueToCppValueHelper<int32>(storage);
+        }
+
+        /**
+         * Change the '<code>messagesTotal</code>' attribute.
+         *
+         * The total number of messages in the mailbox.
+         *
+         * @param[in] value The new value.
+         */
+        void set_messages_total(int32 value)
+        {
+            client::SetJsonValueFromCppValueHelper<int32>(
+                    value, MutableStorage("messagesTotal"));
+        }
+
+        /**
+         * Determine if the '<code>threadsTotal</code>' attribute was set.
+         *
+         * @return true if the '<code>threadsTotal</code>' attribute was set.
+         */
+        bool has_threads_total() const
+        {
+            return Storage().isMember("threadsTotal");
+        }
+
+        /**
+         * Clears the '<code>threadsTotal</code>' attribute.
+         */
+        void clear_threads_total()
+        {
+            MutableStorage()->removeMember("threadsTotal");
+        }
+
+
+        /**
+         * Get the value of the '<code>threadsTotal</code>' attribute.
+         */
+        int32 get_threads_total() const
+        {
+            const Json::Value &storage = Storage("threadsTotal");
+            return client::JsonValueToCppValueHelper<int32>(storage);
+        }
+
+        /**
+         * Change the '<code>threadsTotal</code>' attribute.
+         *
+         * The total number of threads in the mailbox.
+         *
+         * @param[in] value The new value.
+         */
+        void set_threads_total(int32 value)
+        {
+            client::SetJsonValueFromCppValueHelper<int32>(
+                    value, MutableStorage("threadsTotal"));
+        }
+
+    private:
+        void operator=(const Profile &);
+    };  // Profile
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_PROFILE_H_

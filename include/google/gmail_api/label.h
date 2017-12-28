@@ -36,397 +36,437 @@
 #include "googleapis/client/data/jsoncpp_data.h"
 #include "googleapis/strings/stringpiece.h"
 
-namespace Json {
-class Value;
+namespace Json
+{
+    class Value;
 }  // namespace Json
 
-namespace google_gmail_api {
-using namespace googleapis;
+namespace google_gmail_api
+{
+    using namespace googleapis;
 
 /**
  * Labels are used to categorize messages and threads within the user's mailbox.
  *
  * @ingroup DataObject
  */
-class Label : public client::JsonCppData {
- public:
-  /**
-   * Creates a new default instance.
-   *
-   * @return Ownership is passed back to the caller.
-   */
-  static Label* New();
+    class Label : public client::JsonCppData
+    {
+    public:
+        /**
+         * Creates a new default instance.
+         *
+         * @return Ownership is passed back to the caller.
+         */
+        static Label *New();
 
-  /**
-   * Standard constructor for an immutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit Label(const Json::Value& storage);
+        /**
+         * Standard constructor for an immutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit Label(const Json::Value &storage);
 
-  /**
-   * Standard constructor for a mutable data object instance.
-   *
-   * @param[in] storage  The underlying data storage for this instance.
-   */
-  explicit Label(Json::Value* storage);
+        /**
+         * Standard constructor for a mutable data object instance.
+         *
+         * @param[in] storage  The underlying data storage for this instance.
+         */
+        explicit Label(Json::Value *storage);
 
-  /**
-   * Standard destructor.
-   */
-  virtual ~Label();
+        /**
+         * Standard destructor.
+         */
+        virtual ~Label();
 
-  /**
-   * Returns a string denoting the type of this data object.
-   *
-   * @return <code>google_gmail_api::Label</code>
-   */
-  const StringPiece GetTypeName() const {
-    return StringPiece("google_gmail_api::Label");
-  }
+        /**
+         * Returns a string denoting the type of this data object.
+         *
+         * @return <code>google_gmail_api::Label</code>
+         */
+        const StringPiece GetTypeName() const
+        {
+            return StringPiece("google_gmail_api::Label");
+        }
 
-  /**
-   * Determine if the '<code>id</code>' attribute was set.
-   *
-   * @return true if the '<code>id</code>' attribute was set.
-   */
-  bool has_id() const {
-    return Storage().isMember("id");
-  }
+        /**
+         * Determine if the '<code>id</code>' attribute was set.
+         *
+         * @return true if the '<code>id</code>' attribute was set.
+         */
+        bool has_id() const
+        {
+            return Storage().isMember("id");
+        }
 
-  /**
-   * Clears the '<code>id</code>' attribute.
-   */
-  void clear_id() {
-    MutableStorage()->removeMember("id");
-  }
-
-
-  /**
-   * Get the value of the '<code>id</code>' attribute.
-   */
-  const StringPiece get_id() const {
-    const Json::Value& v = Storage("id");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
-
-  /**
-   * Change the '<code>id</code>' attribute.
-   *
-   * The immutable ID of the label.
-   *
-   * @param[in] value The new value.
-   */
-  void set_id(const StringPiece& value) {
-    *MutableStorage("id") = value.data();
-  }
-
-  /**
-   * Determine if the '<code>labelListVisibility</code>' attribute was set.
-   *
-   * @return true if the '<code>labelListVisibility</code>' attribute was set.
-   */
-  bool has_label_list_visibility() const {
-    return Storage().isMember("labelListVisibility");
-  }
-
-  /**
-   * Clears the '<code>labelListVisibility</code>' attribute.
-   */
-  void clear_label_list_visibility() {
-    MutableStorage()->removeMember("labelListVisibility");
-  }
+        /**
+         * Clears the '<code>id</code>' attribute.
+         */
+        void clear_id()
+        {
+            MutableStorage()->removeMember("id");
+        }
 
 
-  /**
-   * Get the value of the '<code>labelListVisibility</code>' attribute.
-   */
-  const StringPiece get_label_list_visibility() const {
-    const Json::Value& v = Storage("labelListVisibility");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
+        /**
+         * Get the value of the '<code>id</code>' attribute.
+         */
+        const StringPiece get_id() const
+        {
+            const Json::Value &v = Storage("id");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
 
-  /**
-   * Change the '<code>labelListVisibility</code>' attribute.
-   *
-   * The visibility of the label in the label list in the Gmail web interface.
-   *
-   * @param[in] value The new value.
-   */
-  void set_label_list_visibility(const StringPiece& value) {
-    *MutableStorage("labelListVisibility") = value.data();
-  }
+        /**
+         * Change the '<code>id</code>' attribute.
+         *
+         * The immutable ID of the label.
+         *
+         * @param[in] value The new value.
+         */
+        void set_id(const StringPiece &value)
+        {
+            *MutableStorage("id") = value.data();
+        }
 
-  /**
-   * Determine if the '<code>messageListVisibility</code>' attribute was set.
-   *
-   * @return true if the '<code>messageListVisibility</code>' attribute was set.
-   */
-  bool has_message_list_visibility() const {
-    return Storage().isMember("messageListVisibility");
-  }
+        /**
+         * Determine if the '<code>labelListVisibility</code>' attribute was set.
+         *
+         * @return true if the '<code>labelListVisibility</code>' attribute was set.
+         */
+        bool has_label_list_visibility() const
+        {
+            return Storage().isMember("labelListVisibility");
+        }
 
-  /**
-   * Clears the '<code>messageListVisibility</code>' attribute.
-   */
-  void clear_message_list_visibility() {
-    MutableStorage()->removeMember("messageListVisibility");
-  }
-
-
-  /**
-   * Get the value of the '<code>messageListVisibility</code>' attribute.
-   */
-  const StringPiece get_message_list_visibility() const {
-    const Json::Value& v = Storage("messageListVisibility");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
-
-  /**
-   * Change the '<code>messageListVisibility</code>' attribute.
-   *
-   * The visibility of the label in the message list in the Gmail web interface.
-   *
-   * @param[in] value The new value.
-   */
-  void set_message_list_visibility(const StringPiece& value) {
-    *MutableStorage("messageListVisibility") = value.data();
-  }
-
-  /**
-   * Determine if the '<code>messagesTotal</code>' attribute was set.
-   *
-   * @return true if the '<code>messagesTotal</code>' attribute was set.
-   */
-  bool has_messages_total() const {
-    return Storage().isMember("messagesTotal");
-  }
-
-  /**
-   * Clears the '<code>messagesTotal</code>' attribute.
-   */
-  void clear_messages_total() {
-    MutableStorage()->removeMember("messagesTotal");
-  }
+        /**
+         * Clears the '<code>labelListVisibility</code>' attribute.
+         */
+        void clear_label_list_visibility()
+        {
+            MutableStorage()->removeMember("labelListVisibility");
+        }
 
 
-  /**
-   * Get the value of the '<code>messagesTotal</code>' attribute.
-   */
-  int32 get_messages_total() const {
-    const Json::Value& storage = Storage("messagesTotal");
-    return client::JsonValueToCppValueHelper<int32 >(storage);
-  }
+        /**
+         * Get the value of the '<code>labelListVisibility</code>' attribute.
+         */
+        const StringPiece get_label_list_visibility() const
+        {
+            const Json::Value &v = Storage("labelListVisibility");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
 
-  /**
-   * Change the '<code>messagesTotal</code>' attribute.
-   *
-   * The total number of messages with the label.
-   *
-   * @param[in] value The new value.
-   */
-  void set_messages_total(int32 value) {
-    client::SetJsonValueFromCppValueHelper<int32 >(
-      value, MutableStorage("messagesTotal"));
-  }
+        /**
+         * Change the '<code>labelListVisibility</code>' attribute.
+         *
+         * The visibility of the label in the label list in the Gmail web interface.
+         *
+         * @param[in] value The new value.
+         */
+        void set_label_list_visibility(const StringPiece &value)
+        {
+            *MutableStorage("labelListVisibility") = value.data();
+        }
 
-  /**
-   * Determine if the '<code>messagesUnread</code>' attribute was set.
-   *
-   * @return true if the '<code>messagesUnread</code>' attribute was set.
-   */
-  bool has_messages_unread() const {
-    return Storage().isMember("messagesUnread");
-  }
+        /**
+         * Determine if the '<code>messageListVisibility</code>' attribute was set.
+         *
+         * @return true if the '<code>messageListVisibility</code>' attribute was set.
+         */
+        bool has_message_list_visibility() const
+        {
+            return Storage().isMember("messageListVisibility");
+        }
 
-  /**
-   * Clears the '<code>messagesUnread</code>' attribute.
-   */
-  void clear_messages_unread() {
-    MutableStorage()->removeMember("messagesUnread");
-  }
-
-
-  /**
-   * Get the value of the '<code>messagesUnread</code>' attribute.
-   */
-  int32 get_messages_unread() const {
-    const Json::Value& storage = Storage("messagesUnread");
-    return client::JsonValueToCppValueHelper<int32 >(storage);
-  }
-
-  /**
-   * Change the '<code>messagesUnread</code>' attribute.
-   *
-   * The number of unread messages with the label.
-   *
-   * @param[in] value The new value.
-   */
-  void set_messages_unread(int32 value) {
-    client::SetJsonValueFromCppValueHelper<int32 >(
-      value, MutableStorage("messagesUnread"));
-  }
-
-  /**
-   * Determine if the '<code>name</code>' attribute was set.
-   *
-   * @return true if the '<code>name</code>' attribute was set.
-   */
-  bool has_name() const {
-    return Storage().isMember("name");
-  }
-
-  /**
-   * Clears the '<code>name</code>' attribute.
-   */
-  void clear_name() {
-    MutableStorage()->removeMember("name");
-  }
+        /**
+         * Clears the '<code>messageListVisibility</code>' attribute.
+         */
+        void clear_message_list_visibility()
+        {
+            MutableStorage()->removeMember("messageListVisibility");
+        }
 
 
-  /**
-   * Get the value of the '<code>name</code>' attribute.
-   */
-  const StringPiece get_name() const {
-    const Json::Value& v = Storage("name");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
+        /**
+         * Get the value of the '<code>messageListVisibility</code>' attribute.
+         */
+        const StringPiece get_message_list_visibility() const
+        {
+            const Json::Value &v = Storage("messageListVisibility");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
 
-  /**
-   * Change the '<code>name</code>' attribute.
-   *
-   * The display name of the label.
-   *
-   * @param[in] value The new value.
-   */
-  void set_name(const StringPiece& value) {
-    *MutableStorage("name") = value.data();
-  }
+        /**
+         * Change the '<code>messageListVisibility</code>' attribute.
+         *
+         * The visibility of the label in the message list in the Gmail web interface.
+         *
+         * @param[in] value The new value.
+         */
+        void set_message_list_visibility(const StringPiece &value)
+        {
+            *MutableStorage("messageListVisibility") = value.data();
+        }
 
-  /**
-   * Determine if the '<code>threadsTotal</code>' attribute was set.
-   *
-   * @return true if the '<code>threadsTotal</code>' attribute was set.
-   */
-  bool has_threads_total() const {
-    return Storage().isMember("threadsTotal");
-  }
+        /**
+         * Determine if the '<code>messagesTotal</code>' attribute was set.
+         *
+         * @return true if the '<code>messagesTotal</code>' attribute was set.
+         */
+        bool has_messages_total() const
+        {
+            return Storage().isMember("messagesTotal");
+        }
 
-  /**
-   * Clears the '<code>threadsTotal</code>' attribute.
-   */
-  void clear_threads_total() {
-    MutableStorage()->removeMember("threadsTotal");
-  }
-
-
-  /**
-   * Get the value of the '<code>threadsTotal</code>' attribute.
-   */
-  int32 get_threads_total() const {
-    const Json::Value& storage = Storage("threadsTotal");
-    return client::JsonValueToCppValueHelper<int32 >(storage);
-  }
-
-  /**
-   * Change the '<code>threadsTotal</code>' attribute.
-   *
-   * The total number of threads with the label.
-   *
-   * @param[in] value The new value.
-   */
-  void set_threads_total(int32 value) {
-    client::SetJsonValueFromCppValueHelper<int32 >(
-      value, MutableStorage("threadsTotal"));
-  }
-
-  /**
-   * Determine if the '<code>threadsUnread</code>' attribute was set.
-   *
-   * @return true if the '<code>threadsUnread</code>' attribute was set.
-   */
-  bool has_threads_unread() const {
-    return Storage().isMember("threadsUnread");
-  }
-
-  /**
-   * Clears the '<code>threadsUnread</code>' attribute.
-   */
-  void clear_threads_unread() {
-    MutableStorage()->removeMember("threadsUnread");
-  }
+        /**
+         * Clears the '<code>messagesTotal</code>' attribute.
+         */
+        void clear_messages_total()
+        {
+            MutableStorage()->removeMember("messagesTotal");
+        }
 
 
-  /**
-   * Get the value of the '<code>threadsUnread</code>' attribute.
-   */
-  int32 get_threads_unread() const {
-    const Json::Value& storage = Storage("threadsUnread");
-    return client::JsonValueToCppValueHelper<int32 >(storage);
-  }
+        /**
+         * Get the value of the '<code>messagesTotal</code>' attribute.
+         */
+        int32 get_messages_total() const
+        {
+            const Json::Value &storage = Storage("messagesTotal");
+            return client::JsonValueToCppValueHelper<int32>(storage);
+        }
 
-  /**
-   * Change the '<code>threadsUnread</code>' attribute.
-   *
-   * The number of unread threads with the label.
-   *
-   * @param[in] value The new value.
-   */
-  void set_threads_unread(int32 value) {
-    client::SetJsonValueFromCppValueHelper<int32 >(
-      value, MutableStorage("threadsUnread"));
-  }
+        /**
+         * Change the '<code>messagesTotal</code>' attribute.
+         *
+         * The total number of messages with the label.
+         *
+         * @param[in] value The new value.
+         */
+        void set_messages_total(int32 value)
+        {
+            client::SetJsonValueFromCppValueHelper<int32>(
+                    value, MutableStorage("messagesTotal"));
+        }
 
-  /**
-   * Determine if the '<code>type</code>' attribute was set.
-   *
-   * @return true if the '<code>type</code>' attribute was set.
-   */
-  bool has_type() const {
-    return Storage().isMember("type");
-  }
+        /**
+         * Determine if the '<code>messagesUnread</code>' attribute was set.
+         *
+         * @return true if the '<code>messagesUnread</code>' attribute was set.
+         */
+        bool has_messages_unread() const
+        {
+            return Storage().isMember("messagesUnread");
+        }
 
-  /**
-   * Clears the '<code>type</code>' attribute.
-   */
-  void clear_type() {
-    MutableStorage()->removeMember("type");
-  }
+        /**
+         * Clears the '<code>messagesUnread</code>' attribute.
+         */
+        void clear_messages_unread()
+        {
+            MutableStorage()->removeMember("messagesUnread");
+        }
 
 
-  /**
-   * Get the value of the '<code>type</code>' attribute.
-   */
-  const StringPiece get_type() const {
-    const Json::Value& v = Storage("type");
-    if (v == Json::Value::null) return StringPiece("");
-    return StringPiece(v.asCString());
-  }
+        /**
+         * Get the value of the '<code>messagesUnread</code>' attribute.
+         */
+        int32 get_messages_unread() const
+        {
+            const Json::Value &storage = Storage("messagesUnread");
+            return client::JsonValueToCppValueHelper<int32>(storage);
+        }
 
-  /**
-   * Change the '<code>type</code>' attribute.
-   *
-   * The owner type for the label. User labels are created by the user and can
-   * be modified and deleted by the user and can be applied to any message or
-   * thread. System labels are internally created and cannot be added, modified,
-   * or deleted. System labels may be able to be applied to or removed from
-   * messages and threads under some circumstances but this is not guaranteed.
-   * For example, users can apply and remove the INBOX and UNREAD labels from
-   * messages and threads, but cannot apply or remove the DRAFTS or SENT labels
-   * from messages or threads.
-   *
-   * @param[in] value The new value.
-   */
-  void set_type(const StringPiece& value) {
-    *MutableStorage("type") = value.data();
-  }
+        /**
+         * Change the '<code>messagesUnread</code>' attribute.
+         *
+         * The number of unread messages with the label.
+         *
+         * @param[in] value The new value.
+         */
+        void set_messages_unread(int32 value)
+        {
+            client::SetJsonValueFromCppValueHelper<int32>(
+                    value, MutableStorage("messagesUnread"));
+        }
 
- private:
-  void operator=(const Label&);
-};  // Label
+        /**
+         * Determine if the '<code>name</code>' attribute was set.
+         *
+         * @return true if the '<code>name</code>' attribute was set.
+         */
+        bool has_name() const
+        {
+            return Storage().isMember("name");
+        }
+
+        /**
+         * Clears the '<code>name</code>' attribute.
+         */
+        void clear_name()
+        {
+            MutableStorage()->removeMember("name");
+        }
+
+
+        /**
+         * Get the value of the '<code>name</code>' attribute.
+         */
+        const StringPiece get_name() const
+        {
+            const Json::Value &v = Storage("name");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
+
+        /**
+         * Change the '<code>name</code>' attribute.
+         *
+         * The display name of the label.
+         *
+         * @param[in] value The new value.
+         */
+        void set_name(const StringPiece &value)
+        {
+            *MutableStorage("name") = value.data();
+        }
+
+        /**
+         * Determine if the '<code>threadsTotal</code>' attribute was set.
+         *
+         * @return true if the '<code>threadsTotal</code>' attribute was set.
+         */
+        bool has_threads_total() const
+        {
+            return Storage().isMember("threadsTotal");
+        }
+
+        /**
+         * Clears the '<code>threadsTotal</code>' attribute.
+         */
+        void clear_threads_total()
+        {
+            MutableStorage()->removeMember("threadsTotal");
+        }
+
+
+        /**
+         * Get the value of the '<code>threadsTotal</code>' attribute.
+         */
+        int32 get_threads_total() const
+        {
+            const Json::Value &storage = Storage("threadsTotal");
+            return client::JsonValueToCppValueHelper<int32>(storage);
+        }
+
+        /**
+         * Change the '<code>threadsTotal</code>' attribute.
+         *
+         * The total number of threads with the label.
+         *
+         * @param[in] value The new value.
+         */
+        void set_threads_total(int32 value)
+        {
+            client::SetJsonValueFromCppValueHelper<int32>(
+                    value, MutableStorage("threadsTotal"));
+        }
+
+        /**
+         * Determine if the '<code>threadsUnread</code>' attribute was set.
+         *
+         * @return true if the '<code>threadsUnread</code>' attribute was set.
+         */
+        bool has_threads_unread() const
+        {
+            return Storage().isMember("threadsUnread");
+        }
+
+        /**
+         * Clears the '<code>threadsUnread</code>' attribute.
+         */
+        void clear_threads_unread()
+        {
+            MutableStorage()->removeMember("threadsUnread");
+        }
+
+
+        /**
+         * Get the value of the '<code>threadsUnread</code>' attribute.
+         */
+        int32 get_threads_unread() const
+        {
+            const Json::Value &storage = Storage("threadsUnread");
+            return client::JsonValueToCppValueHelper<int32>(storage);
+        }
+
+        /**
+         * Change the '<code>threadsUnread</code>' attribute.
+         *
+         * The number of unread threads with the label.
+         *
+         * @param[in] value The new value.
+         */
+        void set_threads_unread(int32 value)
+        {
+            client::SetJsonValueFromCppValueHelper<int32>(
+                    value, MutableStorage("threadsUnread"));
+        }
+
+        /**
+         * Determine if the '<code>type</code>' attribute was set.
+         *
+         * @return true if the '<code>type</code>' attribute was set.
+         */
+        bool has_type() const
+        {
+            return Storage().isMember("type");
+        }
+
+        /**
+         * Clears the '<code>type</code>' attribute.
+         */
+        void clear_type()
+        {
+            MutableStorage()->removeMember("type");
+        }
+
+
+        /**
+         * Get the value of the '<code>type</code>' attribute.
+         */
+        const StringPiece get_type() const
+        {
+            const Json::Value &v = Storage("type");
+            if (v == Json::Value::null) return StringPiece("");
+            return StringPiece(v.asCString());
+        }
+
+        /**
+         * Change the '<code>type</code>' attribute.
+         *
+         * The owner type for the label. User labels are created by the user and can
+         * be modified and deleted by the user and can be applied to any message or
+         * thread. System labels are internally created and cannot be added, modified,
+         * or deleted. System labels may be able to be applied to or removed from
+         * messages and threads under some circumstances but this is not guaranteed.
+         * For example, users can apply and remove the INBOX and UNREAD labels from
+         * messages and threads, but cannot apply or remove the DRAFTS or SENT labels
+         * from messages or threads.
+         *
+         * @param[in] value The new value.
+         */
+        void set_type(const StringPiece &value)
+        {
+            *MutableStorage("type") = value.data();
+        }
+
+    private:
+        void operator=(const Label &);
+    };  // Label
 }  // namespace google_gmail_api
 #endif  // GOOGLE_GMAIL_API_LABEL_H_
