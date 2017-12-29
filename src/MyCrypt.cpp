@@ -54,10 +54,13 @@ void EncryptFile(const char *plainMessage, const char *outputFile)
 {
     auto len = static_cast<int>(strlen(plainMessage));
     File file(outputFile, "wb");
-    if (!Envelope_Seal(reinterpret_cast<const unsigned char *>(plainMessage), len, file))
+    if (file.IsOpen())
     {
-        std::cout << "EVP_Seal Success!\n";
-        return;
+        if (!Envelope_Seal(reinterpret_cast<const unsigned char *>(plainMessage), len, file))
+        {
+            std::cout << "EVP_Seal Success!\n";
+            return;
+        }
     }
     
     LOG(ERROR) << "EVP_Seal Failed! \n";

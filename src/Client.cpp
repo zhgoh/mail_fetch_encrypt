@@ -22,7 +22,7 @@
 #include "Display.h"
 #include "MyCrypt.h"
 
-static const char folder[] = "./Messages/";
+static const char folder[] = "./messages/";
 
 using googleapis::StrCat;
 using googleapis::NewPermanentCallback;
