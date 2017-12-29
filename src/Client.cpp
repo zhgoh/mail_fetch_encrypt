@@ -199,13 +199,12 @@ void GetMail(const Date &from, const Date &to)
         return;
     }
     
-    //DisplayMessages<ListMessagesResponse>("", "Messages", *messageList);
     std::cout << std::endl;
     
     for (const auto &elem : messageList->get_messages())
     {
         auto msgID = elem.get_id();
-        //std::cout << msgID << std::endl;
+        
         std::unique_ptr<UsersResource_MessagesResource_GetMethod> getMethod((messages.NewGetMethod(credential.get(), "me", msgID)));
         std::unique_ptr<Message> msg(Message::New());
         getMethod->set_format("full");
@@ -220,16 +219,14 @@ void GetMail(const Date &from, const Date &to)
         std::stringstream ss;
         msg->StoreToJsonStream(&ss);
         
-        // Store all messages inside folder
+        // Store all messages inside messages folder
         const std::string file = std::string(folder) + msgID.data();
         const std::string encryptedFileName = file + "_enc";
-        const std::string decryptedFileName = file + "_dec";
         
         EncryptFile(ss.str().c_str(), encryptedFileName.c_str());
-        
-        std::string message_decrypted;
-        DecryptFile(encryptedFileName.c_str(), decryptedFileName.c_str());
-        //Display(*msg);
+    
+        //const std::string decryptedFileName = file + "_dec";
+        //DecryptFile(encryptedFileName.c_str(), decryptedFileName.c_str());
     }
     
     std::cout << std::endl;
