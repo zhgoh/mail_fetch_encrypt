@@ -1,0 +1,17 @@
+#!/bin/bash
+mkdir BUILD
+cd BUILD
+cmake ..
+make
+cp -r bin ../
+
+echo "-------------------------------------------------------------------------"
+echo "Application can be found in bin/"
+echo "To retrieve" 
+echo "$> ./MailFetcher ./secrets.json inbox 2017-12-10 2017-12-20"
+echo "To decrypt"
+echo "$> ./MailFetcher"
+echo "Message stored in bin/messages"
+echo "-------------------------------------------------------------------------"
+read -p "[Press Enter]"
+

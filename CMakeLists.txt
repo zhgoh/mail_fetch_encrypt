@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 3.1)
-project (MailRetrieve)
+project (MailFetcher)
 
 set(CMAKE_CXX_STANDARD 14)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
@@ -21,7 +21,6 @@ link_directories(lib)
 
 # Compile my cpp files
 set(SOURCES src/main.cpp src/Client.cpp src/Display.cpp src/MyCrypt.cpp)
-#set(SOURCES src/samples/calendar/Calendar_main.cpp src/samples/calendar/CalendarSample.cpp)
 
 if(USE_LIB)
 set (   PROJECT_LINK_LIBS
@@ -61,9 +60,9 @@ endif()
 #        "include/google/gmail_api/*.h")
 
 if(USE_LIB)
-add_executable(MailRetrieve ${SOURCES})
-target_link_libraries(MailRetrieve ${PROJECT_LINK_LIBS} pthread dl)
+add_executable(MailFetcher ${SOURCES})
+target_link_libraries(MailFetcher ${PROJECT_LINK_LIBS} pthread dl)
 else()
-add_executable(MailRetrieve ${google_api_src} ${google_service_src} ${SOURCES})
-target_link_libraries(MailRetrieve ${PROJECT_LINK_LIBS} pthread dl)
+add_executable(MailFetcher ${google_api_src} ${google_service_src} ${SOURCES})
+target_link_libraries(MailFetcher ${PROJECT_LINK_LIBS} pthread dl)
 endif()
