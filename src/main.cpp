@@ -33,6 +33,8 @@ int main(int argc, char *argv[])
     std::cout << "3: Decrypt messages \n";
     std::cout << "Choice: ";
     
+    EncryptInit();
+    
     int options = 1;
     //std::cin >> options;
     switch(options)
