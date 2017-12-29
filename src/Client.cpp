@@ -22,7 +22,7 @@
 #include "Display.h"
 #include "MyCrypt.h"
 
-static const char folder[] = "./messages/";
+static const char encryptedFolder[] = "./messages/enc/";
 
 using googleapis::StrCat;
 using googleapis::NewPermanentCallback;
@@ -183,14 +183,19 @@ static Status ValidateUserName(const std::string &name)
     return StatusOk();
 }
 
-void GetMail(const Date &from, const Date &to)
+void GetMail(const Date &from, const Date &to, const char *folder)
 {
+    if (strlen(folder) == 0)
+    {
+        folder = "inbox";
+    }
+    
     auto &messages = service->get_users().get_messages();
     std::unique_ptr<UsersResource_MessagesResource_ListMethod> listMethod((messages.NewListMethod(credential.get(), "me")));
     std::unique_ptr<ListMessagesResponse> messageList(ListMessagesResponse::New());
     
-    std::string query = std::string("in:inbox after:") + from.ToYYYYMMDD() + std::string(" before:") + to.ToYYYYMMDD();
-    std::cout << "Query: " << query << std::endl;
+    std::string query = std::string("in:") + folder + std::string(" after:") + from.ToYYYYMMDD() + std::string(" before:") + to.ToYYYYMMDD();
+    std::cout << "Downloading from: " << folder << std::endl;
     listMethod->set_q(query.c_str());
     
     if (!listMethod->ExecuteAndParseResponse(messageList.get()).ok())
@@ -220,13 +225,10 @@ void GetMail(const Date &from, const Date &to)
         msg->StoreToJsonStream(&ss);
         
         // Store all messages inside messages folder
-        const std::string file = std::string(folder) + msgID.data();
-        const std::string encryptedFileName = file + "_enc";
+        const std::string file = std::string(encryptedFolder) + msgID.data();
+        const std::string encryptedFileName = file;
         
         EncryptFile(ss.str().c_str(), encryptedFileName.c_str());
-    
-        //const std::string decryptedFileName = file + "_dec";
-        //DecryptFile(encryptedFileName.c_str(), decryptedFileName.c_str());
     }
     
     std::cout << std::endl;
@@ -257,17 +259,4 @@ std::string LoadProfile()
     std::cout << "Profile "<< profile << " successfully created and loaded!\n";
     return profile;
     
-}
-
-// Note: Only delete the profile file and not the credentials file
-void DeleteProfile()
-{
-    if(remove("./profile"))
-    {
-        LOG(ERROR) << "Error deleting file";
-    }
-    else
-    {
-        std::cout << "Profile successfully deleted!\n";
-    }
 }

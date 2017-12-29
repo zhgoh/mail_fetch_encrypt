@@ -27,11 +27,11 @@ void EncryptInit()
         PUB_KEY = PEM_read_PUBKEY(pub_keyFile.Get(), nullptr, nullptr, nullptr);
         if (!PUB_KEY)
         {
-            LOG(ERROR) << "Load Public Key Failed" << std::endl;
+            LOG(ERROR) << "Load Public Key Failed\n" ;
         }
         else
         {
-            std::cout << "Loaded Public Key successfully" << std::endl;
+            LOG(INFO) << "Loaded Public Key successfully\n";
         }
     }
     
@@ -41,11 +41,11 @@ void EncryptInit()
         PRI_KEY = PEM_read_PrivateKey(pri_keyFile.Get(), nullptr, nullptr, nullptr);
         if (!PRI_KEY)
         {
-            LOG(ERROR) << "Load Private Key Failed" << std::endl;
+            LOG(ERROR) << "Load Private Key Failed\n";
         }
         else
         {
-            std::cout << "Loaded Private Key successfully" << std::endl;
+            LOG(INFO) << "Loaded Private Key successfully\n";
         }
     }
 }
@@ -58,12 +58,12 @@ void EncryptFile(const char *plainMessage, const char *outputFile)
     {
         if (!Envelope_Seal(reinterpret_cast<const unsigned char *>(plainMessage), len, file))
         {
-            std::cout << "EVP_Seal Success!\n";
+            std::cout << "Encrypt Message Success!\n";
             return;
         }
     }
     
-    LOG(ERROR) << "EVP_Seal Failed! \n";
+    LOG(ERROR) << "Encrypt Message Failed! \n";
 }
 
 void DecryptFile(const char *inputFileName, const char *outputFileName)
@@ -76,13 +76,13 @@ void DecryptFile(const char *inputFileName, const char *outputFileName)
         {
             if (!Envelope_Open(input, output))
             {
-                std::cout << "EVP_Open Success!\n";
+                std::cout << "Decrypt Message Success!\n";
                 return;
             }
         }
     }
     
-    LOG(ERROR) << "EVP_Open Failed! \n";
+    LOG(ERROR) << "Decrypt Message Failed! \n";
 }
 
 int Envelope_Seal(const unsigned char *plainMessage, int messageLen, File &outputFile)
@@ -96,12 +96,12 @@ int Envelope_Seal(const unsigned char *plainMessage, int messageLen, File &outpu
     ctx = EVP_CIPHER_CTX_new();
     if (!ctx)
     {
-        fprintf(stderr, "EVP_CIPHER_CTX_new: failed.\n");
+        LOG(ERROR) <<"EVP_CIPHER_CTX_new: failed.\n";
     }
     
     if (!EVP_SealInit(ctx, EVP_aes_256_cbc(), encryptedKey.GetPtr(), encryptedKey.LengthPtr(), iv, &PUB_KEY, 1))
     {
-        fprintf(stderr, "EVP_SealInit: failed.\n");
+        LOG(ERROR) <<"EVP_SealInit: failed.\n";
         return 3;
     }
     
@@ -112,19 +112,19 @@ int Envelope_Seal(const unsigned char *plainMessage, int messageLen, File &outpu
     encryptedKeyLen_n = htonl(encryptedKey.USize());
     if (fwrite(&encryptedKeyLen_n, sizeof encryptedKeyLen_n, 1, outputFile.Get()) != 1)
     {
-        perror("output file");
+        LOG(ERROR) <<"output file\n";
         return 5;
     }
     
     if (fwrite(encryptedKey.Get(), encryptedKey.Size(), 1, outputFile.Get()) != 1)
     {
-        perror("output file");
+        LOG(ERROR) <<"output file\n";
         return 5;
     }
     
     if (fwrite(iv, static_cast<size_t>(EVP_CIPHER_iv_length(EVP_aes_256_cbc())), 1, outputFile.Get()) != 1)
     {
-        perror("output file");
+        LOG(ERROR) <<"output file\n";
         return 5;
     }
     
@@ -133,29 +133,30 @@ int Envelope_Seal(const unsigned char *plainMessage, int messageLen, File &outpu
     CipherText text(plainMessage, messageLen);
     if (!EVP_SealUpdate(ctx, text.str(), text.len(), plainMessage, messageLen))
     {
-        fprintf(stderr, "EVP_SealUpdate: failed.\n");
+        LOG(ERROR) <<"EVP_SealUpdate: failed.\n";
         return 3;
     }
     
     if (fwrite(text.str(), text.size(), 1, outputFile.Get()) != 1)
     {
-        perror("output file");
+        LOG(ERROR) <<"output file\n";
         return 5;
     }
 
     
     if (!EVP_SealFinal(ctx, text.str(), text.len()))
     {
-        fprintf(stderr, "EVP_SealFinal: failed.\n");
+        LOG(ERROR) <<"EVP_SealFinal: failed.\n";
         return 3;
     }
     
     if (fwrite(text.str(), text.size(), 1, outputFile.Get()) != 1)
     {
-        perror("output file");
+        LOG(ERROR) <<"output file\n";
         return 5;
     }
     
+    EVP_CIPHER_CTX_free(ctx);
     return 0;
 }
 
@@ -178,32 +179,32 @@ int Envelope_Open(File &inputFile, File &outputFile)
     /* First need to fetch the encrypted key length, encrypted key and IV */
     if (fread(&encryptedKeyLen_n, sizeof encryptedKeyLen_n, 1, inputFile.Get()) != 1)
     {
-        perror("input file");
+        LOG(ERROR) <<"input file\n";
         return 4;
     }
     
     EKey encryptionKey(PRI_KEY, ntohl(encryptedKeyLen_n));
     if (encryptionKey.Length() > EVP_PKEY_size(PRI_KEY))
     {
-        fprintf(stderr, "Bad encrypted key length (%u > %d)\n", encryptionKey.Length(), EVP_PKEY_size(PRI_KEY));
+        LOG(ERROR) <<"Bad encrypted key length ( " << encryptionKey.Length() << " > " <<  EVP_PKEY_size(PRI_KEY) << ")\n";
         return 4;
     }
     
     if (fread(encryptionKey.Get(), encryptionKey.Size(), 1, inputFile.Get()) != 1)
     {
-        perror("input file");
+        LOG(ERROR) <<"input file\n";
         return 4;
     }
     
     if (fread(iv, static_cast<size_t>(EVP_CIPHER_iv_length(EVP_aes_256_cbc())), 1, inputFile.Get()) != 1)
     {
-        perror("input file");
+        LOG(ERROR) <<"input file\n";
         return 4;
     }
     
     if (!EVP_OpenInit(ctx, EVP_aes_256_cbc(), encryptionKey.Get(), encryptionKey.Length(), iv, PRI_KEY))
     {
-        fprintf(stderr, "EVP_OpenInit: failed.\n");
+        LOG(ERROR) <<"EVP_OpenInit: failed.\n";
         return 3;
     }
     
@@ -211,29 +212,33 @@ int Envelope_Open(File &inputFile, File &outputFile)
     {
         if (!EVP_OpenUpdate(ctx, buffer_out, &len_out, buffer, static_cast<int>(len)))
         {
-            fprintf(stderr, "EVP_OpenUpdate: failed.\n");
+            LOG(ERROR) <<"EVP_OpenUpdate: failed.\n";
             return 3;
         }
         
         if (fwrite(buffer_out, static_cast<size_t>(len_out), 1, outputFile.Get()) != 1)
         {
-            perror("output file");
+            LOG(ERROR) <<"output file\n";
             return 5;
         }
     }
     
     if (!EVP_OpenFinal(ctx, buffer_out, &len_out))
     {
-        fprintf(stderr, "EVP_SealFinal: failed.\n");
+        LOG(ERROR) <<"EVP_SealFinal: failed.\n";
         return 3;
     }
     
-    if (fwrite(buffer_out, static_cast<size_t>(len_out), 1, outputFile.Get()) != 1)
+    if (len_out)
     {
-        perror("output file");
-        return 5;
+        if (fwrite(buffer_out, static_cast<size_t>(len_out), 1, outputFile.Get()) != 1)
+        {
+            LOG(ERROR) <<"output file\n";
+            return 5;
+        }
     }
     
+    EVP_CIPHER_CTX_free(ctx);
     return 0;
 }
 
