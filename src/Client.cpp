@@ -221,12 +221,14 @@ void GetMail(const Date &from, const Date &to)
         msg->StoreToJsonStream(&ss);
         
         // Store all messages inside folder
-        std::string file = std::string(folder) + msgID.data();
-        EncryptFile(ss.str().c_str(), file.c_str());
+        const std::string file = std::string(folder) + msgID.data();
+        const std::string encryptedFileName = file + "_enc";
+        const std::string decryptedFileName = file + "_dec";
+        
+        EncryptFile(ss.str().c_str(), encryptedFileName.c_str());
         
         std::string message_decrypted;
-        DecryptFile(file.c_str(), message_decrypted);
-        
+        DecryptFile(encryptedFileName.c_str(), decryptedFileName.c_str());
         //Display(*msg);
     }
     

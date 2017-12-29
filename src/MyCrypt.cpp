@@ -5,29 +5,19 @@
 #include "MyCrypt.h"
 
 #include <glog/logging.h>
-#include <openssl/evp.h>
 #include <openssl/pem.h>
 #include <cstring>
 #include <iostream>
 #include <fstream>
 #include <algorithm>
 
-bool Envelope_Seal(const unsigned char *plain_text, int plain_text_len,
-                   unsigned char **encrypted_key, int *encrypted_key_len,
-                   unsigned  char *iv,
-                   unsigned char *cipher_text, int *cipher_text_len);
-
-bool Envelope_Open(unsigned char *cipher_text, int cipher_text_len,
-                   unsigned char *encrypted_key, int encrypted_key_len, unsigned char *iv,
-                   unsigned char *plain_text, int *plain_text_len);
+#include <arpa/inet.h> /* For htonl() */
 
 static EVP_PKEY *PUB_KEY = nullptr;
 static EVP_PKEY *PRI_KEY = nullptr;
-static unsigned char IV[] = "45213456a23fdg";
 
-static unsigned char encryptedKey[512];
-static unsigned char *eKeys = encryptedKey;
-static int encryptedKeyLen = 0;
+int Envelope_Seal(const unsigned char *plainMessage, int messageLen, File &outputFile);
+int Envelope_Open(File &inputFile, File &outputFile);
 
 void EncryptInit()
 {
@@ -63,139 +53,186 @@ void EncryptInit()
 void EncryptFile(const char *plainMessage, const char *outputFile)
 {
     auto len = static_cast<int>(strlen(plainMessage));
-    
-
-    CipherText encrypted(plainMessage, len);
-    if (Envelope_Seal(reinterpret_cast<const unsigned char *>(plainMessage), len,
-                      &eKeys, &encryptedKeyLen,
-                      IV,
-                      reinterpret_cast<unsigned char *>(encrypted.str()), &encrypted.len()))
+    File file(outputFile, "wb");
+    if (!Envelope_Seal(reinterpret_cast<const unsigned char *>(plainMessage), len, file))
     {
-        File ec("ec", "wb");
-        if (ec.IsOpen())
+        std::cout << "EVP_Seal Success!\n";
+        return;
+    }
+    
+    LOG(ERROR) << "EVP_Seal Failed! \n";
+}
+
+void DecryptFile(const char *inputFileName, const char *outputFileName)
+{
+    File input(inputFileName, "rb");
+    if (input.IsOpen())
+    {
+        File output(outputFileName, "wb");
+        if (output.IsOpen())
         {
-            //PEM_write(ec.Get(), "EncryptedKey", "", encryptedKey, encryptedKeyLen);
+            if (!Envelope_Open(input, output))
+            {
+                std::cout << "EVP_Open Success!\n";
+                return;
+            }
+        }
+    }
+    
+    LOG(ERROR) << "EVP_Open Failed! \n";
+}
+
+int Envelope_Seal(const unsigned char *plainMessage, int messageLen, File &outputFile)
+{
+    EVP_CIPHER_CTX *ctx = nullptr;
+    EKey encryptedKey(PUB_KEY);
+    
+    uint32_t encryptedKeyLen_n;
+    unsigned char iv[EVP_MAX_IV_LENGTH];
+    
+    ctx = EVP_CIPHER_CTX_new();
+    if (!ctx)
+    {
+        fprintf(stderr, "EVP_CIPHER_CTX_new: failed.\n");
+    }
+    
+    if (!EVP_SealInit(ctx, EVP_aes_256_cbc(), encryptedKey.GetPtr(), encryptedKey.LengthPtr(), iv, &PUB_KEY, 1))
+    {
+        fprintf(stderr, "EVP_SealInit: failed.\n");
+        return 3;
+    }
+    
+    /* First we write out the encrypted key length, then the encrypted key,
+     * then the iv (the IV length is fixed by the cipher we have chosen).
+     */
+    
+    encryptedKeyLen_n = htonl(encryptedKey.USize());
+    if (fwrite(&encryptedKeyLen_n, sizeof encryptedKeyLen_n, 1, outputFile.Get()) != 1)
+    {
+        perror("output file");
+        return 5;
+    }
+    
+    if (fwrite(encryptedKey.Get(), encryptedKey.Size(), 1, outputFile.Get()) != 1)
+    {
+        perror("output file");
+        return 5;
+    }
+    
+    if (fwrite(iv, static_cast<size_t>(EVP_CIPHER_iv_length(EVP_aes_256_cbc())), 1, outputFile.Get()) != 1)
+    {
+        perror("output file");
+        return 5;
+    }
+    
+    /* Now we process the input file and write the encrypted data to the
+     * output file. */
+    CipherText text(plainMessage, messageLen);
+    if (!EVP_SealUpdate(ctx, text.str(), text.len(), plainMessage, messageLen))
+    {
+        fprintf(stderr, "EVP_SealUpdate: failed.\n");
+        return 3;
+    }
+    
+    if (fwrite(text.str(), text.size(), 1, outputFile.Get()) != 1)
+    {
+        perror("output file");
+        return 5;
+    }
+
+    
+    if (!EVP_SealFinal(ctx, text.str(), text.len()))
+    {
+        fprintf(stderr, "EVP_SealFinal: failed.\n");
+        return 3;
+    }
+    
+    if (fwrite(text.str(), text.size(), 1, outputFile.Get()) != 1)
+    {
+        perror("output file");
+        return 5;
+    }
+    
+    return 0;
+}
+
+int Envelope_Open(File &inputFile, File &outputFile)
+{
+    size_t len;
+    int len_out;
+    uint32_t encryptedKeyLen_n;
+    
+    unsigned char iv[EVP_MAX_IV_LENGTH];
+    unsigned char buffer[4096];
+    unsigned char buffer_out[4096 + EVP_MAX_IV_LENGTH];
+    
+    EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
+    if (!ctx)
+    {
+        return 1;
+    }
+    
+    /* First need to fetch the encrypted key length, encrypted key and IV */
+    if (fread(&encryptedKeyLen_n, sizeof encryptedKeyLen_n, 1, inputFile.Get()) != 1)
+    {
+        perror("input file");
+        return 4;
+    }
+    
+    EKey encryptionKey(PRI_KEY, ntohl(encryptedKeyLen_n));
+    if (encryptionKey.Length() > EVP_PKEY_size(PRI_KEY))
+    {
+        fprintf(stderr, "Bad encrypted key length (%u > %d)\n", encryptionKey.Length(), EVP_PKEY_size(PRI_KEY));
+        return 4;
+    }
+    
+    if (fread(encryptionKey.Get(), encryptionKey.Size(), 1, inputFile.Get()) != 1)
+    {
+        perror("input file");
+        return 4;
+    }
+    
+    if (fread(iv, static_cast<size_t>(EVP_CIPHER_iv_length(EVP_aes_256_cbc())), 1, inputFile.Get()) != 1)
+    {
+        perror("input file");
+        return 4;
+    }
+    
+    if (!EVP_OpenInit(ctx, EVP_aes_256_cbc(), encryptionKey.Get(), encryptionKey.Length(), iv, PRI_KEY))
+    {
+        fprintf(stderr, "EVP_OpenInit: failed.\n");
+        return 3;
+    }
+    
+    while ((len = fread(buffer, 1, sizeof buffer, inputFile.Get())) > 0)
+    {
+        if (!EVP_OpenUpdate(ctx, buffer_out, &len_out, buffer, static_cast<int>(len)))
+        {
+            fprintf(stderr, "EVP_OpenUpdate: failed.\n");
+            return 3;
         }
         
-        File file(outputFile, "wb");
-        if (file.IsOpen())
+        if (fwrite(buffer_out, static_cast<size_t>(len_out), 1, outputFile.Get()) != 1)
         {
-            fwrite(file.Get(), sizeof(char), encrypted.size(), file.Get());
+            perror("output file");
+            return 5;
         }
     }
     
-}
-
-void DecryptFile(const char *inputFile, std::string &plainMessage)
-{
-    File file(inputFile, "rb");
-    if (file.IsOpen())
+    if (!EVP_OpenFinal(ctx, buffer_out, &len_out))
     {
-        // obtain file size:
-        fseek (file.Get() , 0 , SEEK_END);
-        long lSize = ftell (file.Get());
-        rewind (file.Get());
-    
-        // allocate memory to contain the whole file:
-        Buffer buffer(static_cast<size_t>(lSize));
-        fread (buffer.Get(), 1, size_t(lSize), file.Get());
-
-        CipherText decrypted(buffer.Get(), static_cast<int>(lSize));
-        if (Envelope_Open(reinterpret_cast<unsigned char *>(buffer.Get()), static_cast<int>(lSize),
-                          encryptedKey, encryptedKeyLen, IV,
-                          reinterpret_cast<unsigned char *>(decrypted.str()), &decrypted.len()))
-        {
-            plainMessage = decrypted.str();
-            //std::cout << plainMessage << std::endl;
-        }
+        fprintf(stderr, "EVP_SealFinal: failed.\n");
+        return 3;
     }
+    
+    if (fwrite(buffer_out, static_cast<size_t>(len_out), 1, outputFile.Get()) != 1)
+    {
+        perror("output file");
+        return 5;
+    }
+    
+    return 0;
 }
-
-
-void handleErrors()
-{
-    LOG(ERROR) << "Error in OpenSSL functionality\n";
-}
-
-// https://wiki.openssl.org/index.php/EVP_Asymmetric_Encryption_and_Decryption_of_an_Envelope
-bool Envelope_Seal(const unsigned char *plain_text, int plain_text_len,
-                  unsigned char **encrypted_key, int *encrypted_key_len,
-                  unsigned char *iv,
-                  unsigned char *cipher_text, int *cipher_text_len)
-{
-    int len = 0;
-    
-    /* Create and initialise the context */
-    EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
-    if(!ctx)
-        handleErrors();
-    
-    /* Initialise the envelope seal operation. This operation generates
-     * a key for the provided cipher, and then encrypts that key a number
-     * of times (one for each public key provided in the pub_key array). In
-     * this example the array size is just one. This operation also
-     * generates an IV and places it in iv. */
-    if(EVP_SealInit(ctx, EVP_aes_256_cbc(), encrypted_key, encrypted_key_len, iv, &PUB_KEY, 1) != 1)
-        handleErrors();
-    
-    /* Provide the message to be encrypted, and obtain the encrypted output.
-     * EVP_SealUpdate can be called multiple times if necessary
-     */
-    if(EVP_SealUpdate(ctx, cipher_text, cipher_text_len, plain_text, plain_text_len) != 1)
-        handleErrors();
-    *cipher_text_len = len;
-    
-    /* Finalise the encryption. Further cipher_text bytes may be written at
-     * this stage.
-     */
-    if(EVP_SealFinal(ctx, cipher_text + len, &len) != 1)
-        handleErrors();
-    *cipher_text_len += len;
-    
-    /* Clean up */
-    EVP_CIPHER_CTX_free(ctx);
-    
-    return true;
-}
-
-bool Envelope_Open(unsigned char *cipher_text, int cipher_text_len,
-                  unsigned char *encrypted_key, int encrypted_key_len, unsigned char *iv,
-                  unsigned char *plain_text, int *plain_text_len)
-{
-    int len = 0;
-    
-    EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
-    
-    /* Create and initialise the context */
-    if(!ctx)
-        handleErrors();
-    
-    /* Initialise the decryption operation. The asymmetric private key is
-     * provided and priv_key, whilst the encrypted session key is held in
-     * encrypted_key */
-    if(EVP_OpenInit(ctx, EVP_aes_256_cbc(), encrypted_key, encrypted_key_len, iv, PRI_KEY) != 1)
-        handleErrors();
-    
-    /* Provide the message to be decrypted, and obtain the plaintext output.
-     * EVP_OpenUpdate can be called multiple times if necessary
-     */
-    if(EVP_OpenUpdate(ctx, plain_text, &len, cipher_text, cipher_text_len) != 1)
-        handleErrors();
-    *plain_text_len = len;
-    
-    /* Finalise the decryption. Further plaintext bytes may be written at
-     * this stage.
-     */
-    if(EVP_OpenFinal(ctx, plain_text + len, &len) != 1)
-        handleErrors();
-    *plain_text_len += len;
-    
-    /* Clean up */
-    EVP_CIPHER_CTX_free(ctx);
-    return true;
-}
-
-
 
 File::File(const char *file, const char *mode) :
         file(fopen(file, mode))
@@ -217,7 +254,7 @@ FILE *File::Get() const
     return file;
 }
 
-Buffer::Buffer(size_t sz):
+Buffer::Buffer(int sz):
         ptr(new char[sz])
 {
 }
@@ -232,8 +269,8 @@ Buffer::~Buffer()
     delete[] ptr;
 }
 
-CipherText::CipherText(const char *str, int len) :
-        ptr(new char[len]), length(len)
+CipherText::CipherText(const unsigned char *str, int len) :
+        ptr(new unsigned char[len]), length(len)
 {
     std::copy(str, str + len, ptr);
 }
@@ -243,17 +280,77 @@ CipherText::~CipherText()
     delete[] ptr;
 }
 
-char *CipherText::str()
+unsigned char *CipherText::str()
 {
     return ptr;
 }
 
-int &CipherText::len()
+const unsigned char *CipherText::str() const
 {
-    return length;
+    return ptr;
+}
+
+int *CipherText::len()
+{
+    return &length;
 }
 
 size_t CipherText::size() const
 {
     return static_cast<size_t>(length);
+}
+
+PKey::PKey(const File &file) :
+        key(nullptr)
+{
+    if (file.IsOpen())
+    {
+        key = PEM_read_PUBKEY(file.Get(), nullptr, nullptr, nullptr);
+    }
+    
+}
+
+PKey::~PKey()
+{
+    EVP_PKEY_free(key);
+}
+
+EKey::EKey(EVP_PKEY *pKey, int len)
+        : key(new unsigned char[EVP_PKEY_size(pKey)]), keyLength(len)
+{
+}
+
+EKey::~EKey()
+{
+    free(key);
+}
+
+unsigned char **EKey::GetPtr()
+{
+    return &key;
+}
+
+unsigned char *EKey::Get()
+{
+    return key;
+}
+
+int *EKey::LengthPtr()
+{
+    return &keyLength;
+}
+
+int EKey::Length() const
+{
+    return keyLength;
+}
+
+size_t EKey::Size() const
+{
+    return static_cast<size_t>(keyLength);
+}
+
+uint32_t EKey::USize() const
+{
+    return static_cast<uint32_t>(keyLength);
 }

@@ -6,6 +6,7 @@
 #define MAILRETRIEVE_CRYPT_H
 
 #include <string>
+#include <openssl/evp.h>
 
 class File
 {
@@ -23,7 +24,7 @@ private:
 class Buffer
 {
 public:
-    Buffer(size_t sz);
+    Buffer(int sz);
     char *Get() const;
     ~Buffer();
     
@@ -34,21 +35,50 @@ private:
 class CipherText
 {
 public:
-    CipherText(const char *str, int len);
+    CipherText(const unsigned char *str, int len);
     ~CipherText();
-    char *str();
-    int &len();
+    
+    unsigned char *str();
+    const unsigned char *str() const;
+    int *len();
     size_t size() const;
 
 private:
-    char *ptr;
+    unsigned char *ptr;
     int length;
+};
+
+class PKey
+{
+public:
+    PKey(const File &file);
+    ~PKey();
+
+private:
+    EVP_PKEY *key;
+};
+
+class EKey
+{
+public:
+    EKey(EVP_PKEY *pKey, int len = 0);
+    ~EKey();
+    
+    unsigned char **GetPtr();
+    unsigned char *Get();
+    
+    int *LengthPtr();
+    int Length() const;
+    size_t Size() const;
+    uint32_t USize() const;
+
+private:
+    unsigned char *key;
+    int keyLength;
 };
 
 void EncryptInit();
 void EncryptFile(const char *plainMessage, const char *outputFile);
-void DecryptFile(const char *inputFile, std::string &plainMessage);
-bool Encrypt(const char *plainMessage, char *cipherText, int *cipherLen);
-bool Decrypt(const char *cipherText, int cipherLen, char *plainText);
+void DecryptFile(const char *inputFileName, const char *outputFileName);
 
 #endif //MAILRETRIEVE_CRYPT_H
