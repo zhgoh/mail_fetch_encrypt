@@ -34,6 +34,15 @@ To use this project, certain files are needed but I am providing it with the pro
 This application will download mails from GMail, encrypt the mails and store it into a folder named messages.
 You can use the same application to decrypt the messages.
 
+## Generating OpenSSL asymmetric keys
+    # Generate private key
+    $ openssl genrsa -out rsa_privkey.pem 1024
+    
+    # Generate public key from private key
+    $ openssl rsa -pubout -in rsa_privkey.pem -out rsa_pubkey.pem
+     
+## OpenSSL EVP_SEAL functions
+I took the reference code from this [stack overflow link](https://stackoverflow.com/questions/9406840/rsa-encrypt-decrypt)
 
 ## Issues with Google API
 - Missing function
